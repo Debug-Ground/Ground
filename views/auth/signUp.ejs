@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ground</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="../signup_assets/fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="../signup_assets/css/style.css">
+</head>
+<body>
+
+    <div class="main">
+
+        <section class="signup">
+            <!-- <img src="images/signup-bg.jpg" alt=""> -->
+            <div class="container">
+                <div class="signup-content">
+                    <form method="POST" id="signup-form" class="signup-form">
+                        <h2 class="form-title">Ground Create account</h2>
+                        <div class="form-group">
+                            <input type="email" class="form-input" name="email" id="email" placeholder="아이디"/>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-input" name="password" id="password" placeholder="비밀번호"/>
+                            <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-input" name="re_password" id="re_password" placeholder="비밀번호 확인"/>
+                        </div>
+                        <div class="form-group">
+                          <input type="text" class="form-input" name="name" id="name" placeholder="성함"/>
+                        </div>
+                        <div class="form-group">
+                          <input type="tel" class="form-input" name="phone" id="phone" placeholder="전화번호"/>
+                        </div>
+                        <div class="form-group">
+                          <input type="text" class="form-input" name="company" id="company" placeholder="소속"/>
+                        </div>
+                        <div class="form-group" style="margin-top: 40px;">
+                            <input type="checkbox" name="agree-term" id="agree-term" class="agree-term"/>
+                            <label for="agree-term" class="label-agree-term" ><span><span></span></span><a href="#" class="term-service">약관 동의</a> 확인 이후 동의해주세요!</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" name="submit" id="submit" class="form-submit" value="Sign up"/>
+                        </div>
+                    </form>
+                    <p class="loginhere">
+                        이미 Ground 회원 이신가요?  <a href="/auth/signIn" class="loginhere-link">로그인 하기</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- JS -->
+    <script src="../signup_assets/vendor/jquery/jquery.min.js"></script>
+    <script src="../signup_assets/js/main.js"></script>
+</body>
+</html>
