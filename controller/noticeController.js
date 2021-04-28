@@ -11,7 +11,12 @@ function nwrite(req, res, next) {
   res.render('notice_write');
 }
 function ndetail(req, res, next) {
-  res.render('notice_detail');
+  var parameter = {
+    "nid" : req.params.num
+  }
+  noticeDao.getNoticeDetail(parameter).then((db_data) => {
+    res.render('notice_detail', { db_data, n_num : req.params.num , max_value : 10, dayjs});
+  }).catch(err=>res.send("<script>alert('err');</script>"));
 }
 
 module.exports = {

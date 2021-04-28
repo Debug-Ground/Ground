@@ -83,7 +83,7 @@
                     if(data_value == undefined){
                       continue;
                     }%>
-                    <tr style="text-align: center;">
+                    <tr onclick ="location.href='/notice/detail/<%= data_value.nid %>'"style="text-align: center;">
                         <td><%= data_value.nid %></td>
                         <td><%= data_value.ntitle %></td>
                         <td><%= data_value.nwriter %></td>
@@ -93,7 +93,7 @@
                  </tbody>
             </table>
             <div style="text-align: right; margin-top:10px; margin-bottom: 20px;">
-              <button type="button" class="btn btn-primary m-1" id="btnSave" style="background-color: #3D4D6A; border-color: #3D4D6A;">글쓰기</button>
+              <button type="button" class="btn btn-primary m-1" id="btnSave" style="background-color: #3D4D6A; border-color: #3D4D6A" onclick="location.href='/notice/write'">글쓰기</button>
             </div>
             <div class="clearfix">
                 <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
