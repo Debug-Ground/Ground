@@ -1,18 +1,18 @@
 var db = require('../config/db');
 
-function getauth() {
+function getNotice() {
     return new Promise ((resolve, reject) => {
-        db.query(`select * from UserInfo`, function(err,result) {
+        db.query(`select * from Notice`, function(err,db_data) {
             if(err) {
                 reject(err);
             }
             else {
-                resolve(result);
+                resolve(db_data);
             }
         });
     })
 };
 
 module.exports = {
-    getauth
+    getNotice
 }
