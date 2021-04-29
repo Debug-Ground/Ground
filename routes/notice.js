@@ -3,6 +3,8 @@ var router = express.Router();
 var noticeController = require('../controller/noticeController')
 
 /* GET home page. */
-router.get('/', noticeController.notice);
+router.get('/write', noticeController.nwrite);
+router.get('/detail/:num', noticeController.ndetail);
+router.get('/:num', noticeController.notice);
 
 module.exports = router;

@@ -1,10 +1,26 @@
 var express = require('express');
-var index = require('../model/indexDao');
+var noticeDao = require('../model/noticeDao');
+var dayjs =  require('dayjs')
 
 function notice(req, res, next) {
-        res.render('notice');
+  noticeDao.getNotice().then((db_data) => {
+    res.render('notice', { db_data, n_num : req.params.num , max_value : 10, dayjs});
+  }).catch(err=>res.send("<script>alert('err');</script>"));
+}
+function nwrite(req, res, next) {
+  res.render('notice_write');
+}
+function ndetail(req, res, next) {
+  var parameter = {
+    "nid" : req.params.num
+  }
+  noticeDao.getNoticeDetail(parameter).then((db_data) => {
+    res.render('notice_detail', { db_data, n_num : req.params.num , max_value : 10, dayjs});
+  }).catch(err=>res.send("<script>alert('err');</script>"));
 }
 
 module.exports = {
-    notice
+  notice,
+  nwrite,
+  ndetail
 }

@@ -1,5 +1,5 @@
 var express = require('express');
-var auth = require('../model/userinfoDao');
+
 
 function signIn(req, res, next) {
 	res.render('auth/signIn');
