@@ -2,19 +2,30 @@
   "name": "ground",
   "version": "0.0.0",
   "private": true,
+  "main": "app.js",
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./bin/www",
+    "mon": "nodemon src/app.js",
+    "watch": "watchify public/index.js -o public/bundle.js -v"
   },
+  "author": "",
   "dependencies": {
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "dotenv": "^8.2.0",
     "ejs": "~2.6.1",
-    "express": "~4.16.1",
-    "http-errors": "~1.6.3",
+    "express": "^4.16.4",
+    "http-errors": "^1.6.3",
+    "httpolyglot": "^0.1.2",
     "jsonwebtoken": "^8.5.1",
+    "mediasoup": "^3.6.16",
+    "mediasoup-client": "^3.6.12",
     "morgan": "~1.9.1",
     "mysql": "^2.18.1",
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "protoo-client": "^4.0.4",
+    "protoo-server": "^4.0.4",
+    "socket.io": "^2.4.1"
   }
 }

@@ -15,6 +15,7 @@ var noticewriteRouter = require('./routes/notice_write');
 var noticedetailRouter = require('./routes/notice_detail');
 var questionwriteRouter = require('./routes/question_write');
 var manualRouter = require('./routes/manual');
+var meetingRouter = require('./routes/meeting');
 var app = express();
 
 // view engine setup
@@ -38,6 +39,7 @@ app.use('/noticewrite', noticewriteRouter);
 app.use('/questionwrite', questionwriteRouter);
 app.use('/noticedetail', noticedetailRouter);
 app.use('/manual', manualRouter);
+app.use('/meeting', meetingRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
