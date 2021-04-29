@@ -96,7 +96,6 @@
               <button type="button" class="btn btn-primary m-1" id="btnSave" style="background-color: #3D4D6A; border-color: #3D4D6A" onclick="location.href='/notice/write'">글쓰기</button>
             </div>
             <div class="clearfix">
-                <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
                 <ul class="pagination">
                   <% for(var j = 1; j<= Math.ceil(db_data.length / max_value); j++){ %>
                     <%if(j != n_num){%>
