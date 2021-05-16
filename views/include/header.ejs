@@ -59,8 +59,14 @@
         </ul>
       </nav><!-- .nav-menu -->
 
-      <a href="/auth/signIn" class="get-started-btn2 scrollto">로그인</a>
-      <a href="#about" class="get-started-btn scrollto">시작하기</a>
-
+      <% if(permission.user_id != undefined){%>
+        <a class="get-started-btn2 scrollto"><%= permission.user_name %>님 환영합니다.</a>
+        <a href="/auth/logout" class="get-started-btn2 scrollto">로그아웃</a>
+        <a href="#about" class="get-started-btn scrollto">시작하기</a>
+      <%}else{%>
+        <a href="/auth/signIn" class="get-started-btn2 scrollto">로그인</a>
+        <a href="#about" class="get-started-btn scrollto">시작하기</a>
+      <%}%>
+      
     </div>
   </header><!-- End Header -->
