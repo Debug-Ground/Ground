@@ -12,14 +12,17 @@
   "author": "",
   "dependencies": {
     "cookie-parser": "~1.4.4",
+    "date-utils": "^1.2.21",
     "dayjs": "^1.10.4",
     "debug": "~2.6.9",
     "dotenv": "^8.2.0",
     "ejs": "~2.6.1",
     "express": "^4.16.4",
+    "helmet": "^4.6.0",
     "http-errors": "^1.6.3",
     "httpolyglot": "^0.1.2",
     "jsonwebtoken": "^8.5.1",
+    "logger": "0.0.1",
     "mediasoup": "^3.6.16",
     "mediasoup-client": "^3.6.12",
     "morgan": "~1.9.1",
@@ -27,6 +30,8 @@
     "nodemon": "^2.0.7",
     "protoo-client": "^4.0.4",
     "protoo-server": "^4.0.4",
-    "socket.io": "^2.4.1"
+    "socket.io": "^2.4.1",
+    "winston": "^3.3.3",
+    "winston-daily-rotate-file": "^4.5.5"
   }
 }

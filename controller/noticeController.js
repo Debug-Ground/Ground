@@ -1,10 +1,16 @@
 var express = require('express');
 var noticeDao = require('../model/noticeDao');
+var jwtmiddle = require('../middleware/jwt')
 var dayjs =  require('dayjs')
 
 function notice(req, res, next) {
   noticeDao.getNotice().then((db_data) => {
-    res.render('notice', { db_data, n_num : req.params.num , max_value : 10, dayjs});
+    let token = req.cookies.user;
+    jwtmiddle.jwtCerti(token).then(
+        (permission)=>{
+            res.render(
+              res.render('notice', { db_data, n_num : req.params.num , max_value : 10, dayjs, permission}));
+        }).catch(err=>res.send("<script>alert('jwt err');</script>"));
   }).catch(err=>res.send("<script>alert('err');</script>"));
 }
 function nwrite(req, res, next) {

@@ -26,7 +26,7 @@
 <!--===============================================================================================-->
 </head>
 <body>
-	
+	<form method="POST" action="/auth/signIn"id="loginForm">
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('../login_assets/images/bg-01.jpg');">
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
@@ -43,7 +43,7 @@
 
 					<div class="wrap-input100 validate-input" data-validate="Password is required">
 						<span class="label-input100">PW</span>
-						<input class="input100" type="password" name="pass" placeholder="Type your password">
+						<input class="input100" type="password" name="userpass" placeholder="Type your password">
 						<span class="focus-input100" data-symbol="&#xf190;"></span>
 					</div>
 					
@@ -61,6 +61,7 @@
 							</button>
 						</div>
 					</div>
+					</form>
 
 					<div class="txt1 text-center p-t-45 p-b-20">
             			<a href="/auth/signUp" class="txt2" style="font-style: 22px;">
