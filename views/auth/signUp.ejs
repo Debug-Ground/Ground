@@ -20,29 +20,29 @@
             <!-- <img src="images/signup-bg.jpg" alt=""> -->
             <div class="container">
                 <div class="signup-content">
-                    <form method="POST" id="signup-form" class="signup-form">
+                    <form method="POST" action="/auth/signUp" id="signup-form" class="signup-form">
                         <h2 class="form-title">Ground Create account</h2>
                         <div class="form-group">
-                            <input type="email" class="form-input" name="email" id="email" placeholder="아이디"/>
+                            <input type="text" class="form-input" name="inputId" id="inputid" placeholder="아이디"/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-input" name="password" id="password" placeholder="비밀번호"/>
+                            <input type="text" class="form-input" name="inputPass" id="inputPass" placeholder="비밀번호"/>
                             <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
                         </div>
                         <div class="form-group">
                             <input type="password" class="form-input" name="re_password" id="re_password" placeholder="비밀번호 확인"/>
                         </div>
                         <div class="form-group">
-                          <input type="text" class="form-input" name="name" id="name" placeholder="성함"/>
+                          <input type="text" class="form-input" name="inputName" id="inputName" placeholder="성함"/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-input" name="company" id="company" placeholder="이메일"/>
-                          </div>
-                        <div class="form-group">
-                          <input type="tel" class="form-input" name="phone" id="phone" placeholder="전화번호"/>
+                          <input type="tel" class="form-input" name="inputPhone" id="inputPhone" placeholder="전화번호"/>
                         </div>
                         <div class="form-group">
-                          <input type="text" class="form-input" name="company" id="company" placeholder="소속"/>
+                            <input type="email" class="form-input" name="inputEmail" id="inputEmail" placeholder="이메일"/>
+                        </div>
+                        <div class="form-group">
+                          <input type="text" class="form-input" name="inputGroup" id="inputGroup" placeholder="소속"/>
                         </div>
                         <div class="form-group" style="margin-top: 40px;">
                             <input type="checkbox" name="agree-term" id="agree-term" class="agree-term"/>

@@ -1,3 +1,6 @@
-2021-05-17 16:45:37 [ERROR] - DB error [UserInfo]
- 	SELECT * FROM UserInfo where userId="1" && userPw="1"
- 	Error: connect ECONNREFUSED 127.0.0.1:3306
+2021-05-17 22:48:29 [ERROR] - DB error [Notice]
+ 	Insert into Notice set ntitle = '123', ncontent = '내용', nwriter = '관리자', ndate = 'undefined'
+ 	Error: ER_TRUNCATED_WRONG_VALUE: Incorrect datetime value: 'undefined' for column 'ndate' at row 1
+2021-05-17 22:49:24 [ERROR] - DB error [Notice]
+ 	Insert into Notice set ntitle = '123', ncontent = '내용', nwriter = '관리자', ndate = 'Mon, 17 May 2021 13:49:24 GMT'
+ 	Error: ER_TRUNCATED_WRONG_VALUE: Incorrect datetime value: 'Mon, 17 May 2021 13:49:24 GMT' for column 'ndate' at row 1
