@@ -3,7 +3,7 @@
 var jwt = require('jsonwebtoken');
 
 function jwtCreate(userData){
-  return new Promise(function (resolve, rejcet) {
+  return new Promise(function (resolve, reject) {
       jwt.sign({
         user_id: userData.user_id,
         user_name: userData.user_name
@@ -17,7 +17,7 @@ function jwtCreate(userData){
 }
 
 function jwtCerti(token){
-  return new Promise(function (resolve, rejcet) {
+  return new Promise(function (resolve, reject) {
       jwt.verify(token, process.env.JWT_SECRET, (err, decoded)=>{
         if(err){
           console.log("JWT was Expired!")

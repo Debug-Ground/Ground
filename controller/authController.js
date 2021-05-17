@@ -10,6 +10,21 @@ function signUp(req,res,next) {
 	res.render('auth/signUp');
 }
 
+function getSignUp(req,res,next) {
+  var parameters = {
+    "userId" : req.body.inputId,
+    "userPw" : req.body.inputPass,
+    "userName" : req.body.inputName,
+    "userEmail" : req.body.inputEmail,
+    "userPhone" : req.body.inputPhone,
+    "userGroup" : req.body.inputGroup
+  }
+
+	authDAO.signUp(parameters).then((db_data) => {
+    res.redirect("/auth/signIn")
+  }).catch(err=>res.send("<script>alert('err');</script>"));
+}
+ 
 function checkUser(req, res, next) {
   var special_pattern = /[` ~!@#$%^&*|\\\'\";:\/?]/gi;
   
@@ -50,18 +65,12 @@ function logOut(req, res, next) {
     res.redirect('/');
 }
 
-function revise_check(req, res, next) {
-  let token = req.cookies.user;
-  jwtmiddle.jwtCerti(token).then(
-      (permission)=>{
-          res.render('auth/revise_check', {permission});
-      }
-  ).catch(err=>res.send("<script>alert('jwt err');</script>"));    
-}
 module.exports = {
   signIn,
   signUp,
   checkUser,
-  logOut
+  logOut,
+  getSignUp
 }
+
 

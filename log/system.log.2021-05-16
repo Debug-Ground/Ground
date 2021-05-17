@@ -1,3 +1,0 @@
-2021-05-16 16:24:59 [ERROR] - DB error [UserInfo]
- 	SELECT * FROM UserInfo where user_id="1" && user_pw="1"
- 	Error: ER_BAD_FIELD_ERROR: Unknown column 'user_id' in 'where clause'

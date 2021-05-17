@@ -1,5 +1,4 @@
 var express = require('express');
-var index = require('../model/indexDao');
 var jwtmiddle = require('../middleware/jwt');
 
 function company(req, res, next) {

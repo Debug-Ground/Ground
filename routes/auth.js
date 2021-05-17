@@ -8,6 +8,7 @@ router.post('/signIn', authController.checkUser);
 
 // sign up
 router.get('/signUp', authController.signUp);
+router.post('/signUp', authController.getSignUp);
   
 // logout
 router.get('/logout', authController.logOut);
