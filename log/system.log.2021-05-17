@@ -1,0 +1,3 @@
+2021-05-17 16:45:37 [ERROR] - DB error [UserInfo]
+ 	SELECT * FROM UserInfo where userId="1" && userPw="1"
+ 	Error: connect ECONNREFUSED 127.0.0.1:3306
