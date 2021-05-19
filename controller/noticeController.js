@@ -28,13 +28,13 @@ function insertData(req, res, next) {
     (permission)=>{
   var parameters = {
     "ntitle" : req.body.title,
-    "ncontent" : "내용",
+    "ncontent" : req.body.summernote,
     "ndate" : new dayjs().format("YYYY-MM-DD HH-mm-ss"),
     "nwriter" : permission.user_name
   }
   noticeDao.insertNotice(parameters).then(
   (db_data) => {
-      console.log(parameters.nwriter)
+      console.log(parameters.ncontent)
       res.redirect("/notice/1")
     }).catch(err=>res.send("<script>alert('err');</script>"));
   }).catch(err=>res.send("<script>alert('jwt err');</script>"));
@@ -52,9 +52,24 @@ function ndetail(req, res, next) {
     }).catch(err=>res.send("<script>alert('err');</script>"));
 }
 
+function ndelete(req, res, next) {
+  var parameters = {
+    "nidx": req.body.nidx
+  }
+  noticeDao.deleteNotice(parameters).then((db_data) => {
+    let token = req.cookies.user;
+    jwtmiddle.jwtCerti(token).then(
+        (permission)=>{
+          res.redirect('/notice/1');
+        }
+    ).catch(err=>res.send("<script>alert('jwt err');</script>")); 
+  }).catch(err=>res.send("<script>alert('err');</script>")); 
+}
+
 module.exports = {
   notice,
   nwrite,
   ndetail,
+  ndelete,
   insertData
 }

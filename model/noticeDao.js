@@ -31,6 +31,24 @@ function getNotice() {
      });
    })
  };
+
+ function deleteNotice(parameters) {
+    return new Promise ((resolve, reject) => {
+        db.query(`Delete from Notice WHERE nid = '${parameters.nidx}'`, function(error ,db_data) {
+         if (error) {
+             logger.error(
+                 "DB error [Notice]"+
+                 "\n \t" + `Delete from Notice WHERE nid = '${parameters.nidx}'` +
+                 "\n \t" + error);
+             reject('DB ERR');
+             //throw error;
+         }
+         else {
+           resolve(db_data);
+        }
+      });
+    })
+  };
  
 
 function getNoticeDetail(parameter) {
@@ -48,5 +66,6 @@ function getNoticeDetail(parameter) {
 module.exports = {
     getNotice,
     getNoticeDetail,
+    deleteNotice,
     insertNotice
 }

@@ -77,9 +77,10 @@
 
 				<div class="mb-3" style="margin-top: 60px;">
 					<label for="content" style="font-weight: 20px; font-size: 25px;">내용</label>
-          <div id="summernote"></div>
+          <textarea id="summernote" name="summernote"></textarea>
+
           <script>
-            $('#summernote').summernote({
+            $('#summernote').summernote('code',{
               placeholder: '공지 할 내용을 적어주세요.',
               tabsize: 2,
               height: 350,
@@ -93,12 +94,12 @@
                 ['view', ['fullscreen', 'codeview', 'help']]
               ]
             });
-          </script>
-				</div>
-		
+            
+       </script>
 
+      </div>
 			<div style="text-align: right;">
-				<button type="submit" class="btn btn-outline-primary m-1" id="btnSave">저장</button>
+				<button type="button" class="btn btn-outline-primary m-1" id="btnSave">저장</button>
         <button type="button" class="btn btn-outline-danger m-1" id="btnCancel">취소</button>
 			</div>
     </form>
@@ -119,6 +120,7 @@
 
   <script src="/assets/js/main.js"></script>
   
+ 
 
   <% include include/footer2%>
 
