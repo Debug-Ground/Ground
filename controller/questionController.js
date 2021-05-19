@@ -13,6 +13,23 @@ function question(req, res, next) {
   }).catch(err=>res.send("<script>alert('err');</script>"));
 }
 
+function qinsertData(req, res, next) {
+  let token = req.cookies.user;
+  jwtmiddle.jwtCerti(token).then(
+    (permission)=>{
+  var parameters = {
+    "qtitle" : req.body.title,
+    "qcontent" : "문의사항 내용",
+    "qdate" : new dayjs().format("YYYY-MM-DD HH-mm-ss"),
+    "qwriter" : permission.user_name
+  }
+  questionDao.insertQuestion(parameters).then(
+  (db_data) => {
+      console.log(parameters.qwriter)
+      res.redirect("/question/1")
+    }).catch(err=>res.send("<script>alert('err');</script>"));
+  }).catch(err=>res.send("<script>alert('jwt err');</script>"));
+}
 function qwrite(req, res, next) {
   let token = req.cookies.user;
   jwtmiddle.jwtCerti(token).then(
@@ -30,15 +47,32 @@ function qdetail(req, res, next) {
     let token = req.cookies.user;
     jwtmiddle.jwtCerti(token).then(
       (permission)=>{
-        res.render('question_detail', {permission});
+        res.render('question_detail', {permission,db_data});
       }
     ).catch(err=>res.send("<script>alert('jwt err');</script>")); 
   }).catch(err=>res.send("<script>alert('err');</script>"));
 }
 
+function qdelete(req, res, next) {
+  var parameters = {
+    "qidx": req.body.qidx
+  }
+  questionDao.deleteQuestion(parameters).then((db_data) => {
+    let token = req.cookies.user;
+    jwtmiddle.jwtCerti(token).then(
+        (permission)=>{
+          res.redirect('/question/1')
+        }
+    ).catch(err=>res.send("<script>alert('jwt err');</script>")); 
+  }).catch(err=>res.send("<script>alert('err');</script>")); 
+}
+
+
 
 module.exports = {
     question,
     qwrite,
-    qdetail
+    qdelete,
+    qdetail,
+    qinsertData
 }

@@ -1,0 +1,42 @@
+2021-05-19 13:57:08 [ERROR] - DB error [Question]
+ 	Delete from Question WHERE qid = 'undefined'
+ 	Error: ER_TRUNCATED_WRONG_VALUE: Truncated incorrect DOUBLE value: 'undefined'
+2021-05-19 14:08:15 [ERROR] - DB error [Notice]
+ 	Delete from Notice WHERE nid = 'undefined'
+ 	Error: ER_TRUNCATED_WRONG_VALUE: Truncated incorrect DOUBLE value: 'undefined'
+2021-05-19 14:17:25 [ERROR] - DB error [Notice]
+ 	Delete from Notice WHERE nid = 'undefined'
+ 	Error: ER_TRUNCATED_WRONG_VALUE: Truncated incorrect DOUBLE value: 'undefined'
+2021-05-19 14:19:14 [ERROR] - DB error [Notice]
+ 	Delete from Notice WHERE nid = 'undefined'
+ 	Error: ER_TRUNCATED_WRONG_VALUE: Truncated incorrect DOUBLE value: 'undefined'
+2021-05-19 14:20:45 [ERROR] - DB error [Notice]
+ 	Delete from Notice WHERE nid = 'undefined'
+ 	Error: ER_TRUNCATED_WRONG_VALUE: Truncated incorrect DOUBLE value: 'undefined'
+2021-05-19 14:21:24 [ERROR] - DB error [Notice]
+ 	Delete from Notice WHERE nid = 'undefined'
+ 	Error: ER_TRUNCATED_WRONG_VALUE: Truncated incorrect DOUBLE value: 'undefined'
+2021-05-19 14:46:31 [ERROR] - DB error [Question]
+ 	Delete from Question WHERE qid = 'undefined'
+ 	Error: ER_TRUNCATED_WRONG_VALUE: Truncated incorrect DOUBLE value: 'undefined'
+2021-05-19 14:46:48 [ERROR] - DB error [Question]
+ 	Delete from Question WHERE qid = 'undefined'
+ 	Error: ER_TRUNCATED_WRONG_VALUE: Truncated incorrect DOUBLE value: 'undefined'
+2021-05-19 14:48:47 [ERROR] - DB error [Question]
+ 	Delete from Question WHERE qid = 'undefined'
+ 	Error: ER_TRUNCATED_WRONG_VALUE: Truncated incorrect DOUBLE value: 'undefined'
+2021-05-19 14:50:55 [ERROR] - DB error [Question]
+ 	Delete from Question WHERE qid = 'undefined'
+ 	Error: ER_TRUNCATED_WRONG_VALUE: Truncated incorrect DOUBLE value: 'undefined'
+2021-05-19 14:51:44 [ERROR] - DB error [Question]
+ 	Delete from Question WHERE qid = 'undefined'
+ 	Error: ER_TRUNCATED_WRONG_VALUE: Truncated incorrect DOUBLE value: 'undefined'
+2021-05-19 14:58:37 [ERROR] - DB error [Question]
+ 	Delete from Question WHERE qid = 'undefined'
+ 	Error: ER_TRUNCATED_WRONG_VALUE: Truncated incorrect DOUBLE value: 'undefined'
+2021-05-19 17:41:43 [ERROR] - DB error [Notice]
+ 	Insert into Notice set ntitle = '123', ncontent = '', nwriter = '관리자', ndate = '2021-05-19 17-41-07'
+ 	Error: read ETIMEDOUT
+2021-05-19 17:42:44 [ERROR] - DB error [Notice]
+ 	Insert into Notice set ntitle = '123', ncontent = '', nwriter = '관리자', ndate = '2021-05-19 17-42-44'
+ 	Error: Cannot enqueue Query after fatal error.
