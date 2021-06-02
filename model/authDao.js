@@ -42,8 +42,36 @@ function search_UserDetail(parameters) {
     })
 }
 
+function getFindId() {
+    return new Promise ((resolve, reject) => {
+        db.query(`select * from UserInfo`, function(err,db_data) {
+            if(err) {
+                reject(err);
+            }
+            else {
+                resolve(db_data);
+            }
+        });
+    })
+};
+
+function getFindPw() {
+    return new Promise ((resolve, reject) => {
+        db.query(`select * from UserInfo`, function(err,db_data) {
+            if(err) {
+                reject(err);
+            }
+            else {
+                resolve(db_data);
+            }
+        });
+    })
+};
+
 
 module.exports = {
     search_UserDetail,
-    signUp 
+    signUp,
+    getFindId,
+    getFindPw
 }
