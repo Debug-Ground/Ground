@@ -10,6 +10,10 @@ router.post('/signIn', authController.checkUser);
 router.get('/signUp', authController.signUp);
 router.post('/signUp', authController.getSignUp);
   
+// findid
+router.get('/findId',authController.findId)
+// findPw
+router.get('/findPw',authController.findPw)
 // logout
 router.get('/logout', authController.logOut);
 

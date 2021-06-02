@@ -59,6 +59,20 @@ function checkUser(req, res, next) {
       ).catch(err=>res.send("<script>alert('"+ err +"');history.go(-1);</script>"))
   }    
 }
+
+//findId
+function findId(req,res,next){
+  authDAO.getFindId().then((db_data) => {
+    res.render('auth/findId',{db_data})
+  }).catch(err=>res.send("<script>alert('jwt err');</script>"));
+}
+
+function findPw(req,res,next){
+  authDAO.getFindId().then((db_data) => {
+    res.render('auth/findPw',{db_data})
+  }).catch(err=>res.send("<script>alert('jwt err');</script>"));
+}
+
 function logOut(req, res, next) {
     let token = req.cookies.user;
     res.clearCookie('user');
@@ -70,7 +84,9 @@ module.exports = {
   signUp,
   checkUser,
   logOut,
-  getSignUp
+  getSignUp,
+  findId,
+  findPw
 }
 
 
