@@ -1,3 +1,0 @@
-2021-06-02 10:51:26 [ERROR] - DB error [Question]
- 	select * from Question
- 	Error: Cannot enqueue Query after fatal error.
