@@ -1,6 +1,16 @@
 var express = require('express');
 var jwtmiddle = require('../middleware/jwt');
 var authDAO = require('../model/authDao');
+const serviceAccount = require('../path/to/serviceAccountKey.json');
+var firebase = require("firebase/app");
+
+// Add the Firebase products that you want to use
+require("firebase/auth");
+require("firebase/firestore");
+require("firebase/analytics")
+
+
+
 
 function signIn(req, res, next) {
 	res.render('auth/signIn');
@@ -25,6 +35,7 @@ function getSignUp(req,res,next) {
   }).catch(err=>res.send("<script>alert('err');</script>"));
 }
  
+
 function checkUser(req, res, next) {
   var special_pattern = /[` ~!@#$%^&*|\\\'\";:\/?]/gi;
   
@@ -60,6 +71,7 @@ function checkUser(req, res, next) {
   }    
 }
 
+
 //findId
 function findId(req,res,next){
   authDAO.getFindId().then((db_data) => {
@@ -74,10 +86,11 @@ function findPw(req,res,next){
 }
 
 function logOut(req, res, next) {
-    let token = req.cookies.user;
-    res.clearCookie('user');
-    res.redirect('/');
+  firebase.auth().signOut().then(()=> {
+    res.redirect('/')
+  }).catch(err=>res.send("<script>alert('jwt err');</script>"));
 }
+
 
 module.exports = {
   signIn,

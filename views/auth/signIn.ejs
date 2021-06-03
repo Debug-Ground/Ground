@@ -24,6 +24,7 @@
 	<link rel="stylesheet" type="text/css" href="../login_assets/css/util.css">
 	<link rel="stylesheet" type="text/css" href="../login_assets/css/main.css">
 <!--===============================================================================================-->
+
 </head>
 <body>
 	<form method="POST" action="/auth/signIn"id="loginForm">
@@ -87,6 +88,9 @@
 							<i class="fa fa-google"></i>
 						</a>
 					</div>
+					<form name="form1" action="login_" method="POST">
+						<input type="button" id="liGoogleBtn" value="Google Login">
+					</form>
 					</div>
 				</form>
 			</div>
@@ -112,6 +116,11 @@
 	<script src="../login_assets/vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
 	<script src="../login_assets/js/main.js"></script>
+	  <!-- The core Firebase JS SDK is always required and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-app.js"></script>
+	<!-- TODO: Add SDKs for Firebase products that you want to use https://firebase.google.com/docs/web/setup#available-libraries -->
+	<script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-analytics.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-auth.js"></script>
 
 </body>
 </html>
@@ -130,4 +139,41 @@
             return false;
         }
     }
-</script>
+
+	// firebase 중요 설정 키값
+	const firebaseConfig = {
+		apiKey: "AIzaSyD8-ubMdZ2UaWRklxYrFoN1WXr1LIjNbgI",
+		authDomain: "ground-315511.firebaseapp.com",
+	};
+	// firebase 초기화
+	firebase.initializeApp(firebaseConfig);
+	//firebase.analytics();
+
+		var gmail = document.getElementById("liGoogleBtn");
+		gmail.addEventListener('click', e => {
+			var provider = new firebase.auth.GoogleAuthProvider();
+
+			firebase.auth().signInWithPopup(provider).then(function(result) {
+			var token = result.credential.accessToken;
+
+			var user = result.user;
+
+			console.log("Token : " + token + " user : " + user);
+			console.log("구글 로그인 완료!!!");
+			location.href = '/'
+			}).catch(function(err) {
+			console.log(err);
+			});
+			firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION).then(() => {
+				console.log('session success')
+				return firebase.auth().signInWithEmailAndPassword(email, password);
+			})
+			.catch((error) => {
+				// Handle Errors here.
+				var errorCode = error.code;
+				var errorMessage = error.message;
+			});
+		})
+
+		
+	</script>

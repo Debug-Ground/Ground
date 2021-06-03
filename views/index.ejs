@@ -268,6 +268,27 @@
 
   <% include include/footer %>
 
+	<script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-app.js"></script>
+	<!-- TODO: Add SDKs for Firebase products that you want to use https://firebase.google.com/docs/web/setup#available-libraries -->
+	<script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-analytics.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-auth.js"></script>
 </body>
+<script>
 
+  // firebase 중요 설정 키값
+	const firebaseConfig = {
+		apiKey: "AIzaSyD8-ubMdZ2UaWRklxYrFoN1WXr1LIjNbgI",
+		authDomain: "ground-315511.firebaseapp.com",
+	};
+	// firebase 초기화
+	firebase.initializeApp(firebaseConfig);
+
+    firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      console.log(user);
+    } else {
+      // No user is signed in.
+    }
+  });
+</script>
 </html>
