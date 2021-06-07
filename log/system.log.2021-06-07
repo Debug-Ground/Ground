@@ -1,9 +1,0 @@
-2021-06-07 16:47:32 [ERROR] - DB error [Notice]
- 	select * from Notice
- 	Error: connect ECONNREFUSED 127.0.0.1:3306
-2021-06-07 16:47:32 [ERROR] - DB error [Notice]
- 	select * from Notice
- 	Error: connect ECONNREFUSED 127.0.0.1:3306
-2021-06-07 16:47:47 [ERROR] - DB error [Question]
- 	select * from Question
- 	Error: Cannot enqueue Query after fatal error.
