@@ -10,6 +10,7 @@ router.post('/insertData', noticeController.insertData);
 router.post('/delete', noticeController.ndelete);
 // notice_detail
 router.get('/detail/:num', noticeController.ndetail);
+// notice_update
 
 // notice
 router.get('/:num', noticeController.notice);

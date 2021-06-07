@@ -52,30 +52,27 @@
         <div>
           <div class="entries">
             <article class="entry entry-single">
-
+              <form action="/notice/delete" method="post">
+          
                     <h2 class="entry-title">
-                        <a href="/blog-single.html">Ground Company 회사가 드디어 대기업으로 성장하였습니다!</a>
+                        <a href="/blog-single.html"><%= db_data[0].ntitle %></a>
                     </h2>
 
                     <div class="entry-footer clearfix"></div>
 
                     <div class="entry-meta" style="margin-top: 15px;">
                         <ul>
-                        <li class="d-flex align-items-center"><i class="icofont-user"></i> <a href="blog-single.html"><%= db_data[0].ntitle %></a></li>
+                        <li class="d-flex align-items-center"><i class="icofont-user"></i> <a href="blog-single.html"><%= db_data[0].nwriter %></a></li>
                         <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i> <a href="blog-single.html"><time datetime="2020-01-01"><%= dayjs(db_data[0].ndate).format('YY.MM.DD') %></time></a></li>
-                        <li class="d-flex align-items-center"><i class="icofont-comment"></i> <a href="blog-single.html"><%= db_data[0].nwriter %></a></li>
+                        <li class="d-flex align-items-center"><i class="icofont-comment"></i> <a href="blog-single.html"></a></li>
                         </ul>
                     </div>
 
                     <div class="entry-content">
-                        <p>
-                          <%= db_data[0].ncontent %>
-                        </p>
-
                         <blockquote>
                         <i class="icofont-quote-left quote-left"></i>
                         <p>
-                            민트 초코가 최고다!
+                          <%= db_data[0].ncontent %>
                         </p>
                         <i class="las la-quote-right quote-right"></i>
                         <i class="icofont-quote-right quote-right"></i>
@@ -110,11 +107,10 @@
         </form>
         <button type="button" class="btn btn-outline-dark m-1" id="btnList">목록</button-->
         <div class="text-end">
-          <form action="/notice/delete" method="post">
-            <button type="button" class="btn btn-outline-primary" id="btnSave">글 수정</button>
+            <button type="button" class="btn btn-outline-primary" id="btnSave" onclick="location.href='/notice/update'">글 수정</button>
             <button type="submit" class="btn btn-outline-danger" id="btnCancel">글 삭제</button>
             <input type="hidden" name="nidx" value="<%= db_data[0].nid %>">
-            <button type="button" class="btn btn-outline-dark" id="btnList">목록</button>
+            <button type="button" class="btn btn-outline-dark" id="btnList" onclick="location.href='/notice/1'">목록</button>
           </form>  
         </div>
       </div>
@@ -136,7 +132,6 @@
 
   <!-- Template Main JS File -->
   <script src="/assets/js/main.js"></script>
-  
 
   <% include include/footer2%>
 
