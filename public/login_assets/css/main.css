@@ -474,3 +474,25 @@ iframe {
     padding-right: 15px;
   }
 } 
+
+#glogin{
+  background-size: cover;
+  background-image: url('/login_assets/images/1123.png');
+  background-repeat: no-repeat;
+  width: 245px;
+  height: 58px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+#glogin:hover{
+  background-color: lightblue;
+}
+#klogin{
+  background-size: cover;
+  background-image: url('/login_assets/images/kakao_login.png');
+  background-repeat: no-repeat;
+  width: 240px;
+  height: 56px;
+  cursor: pointer;
+}

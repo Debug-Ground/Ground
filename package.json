@@ -13,6 +13,7 @@
     "dotenv": "^9.0.2",
     "ejs": "~2.6.1",
     "express": "~4.16.1",
+    "firebase": "^8.6.5",
     "helmet": "^4.6.0",
     "http-errors": "~1.6.3",
     "jsonwebtoken": "^8.5.1",
