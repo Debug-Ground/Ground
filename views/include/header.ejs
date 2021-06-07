@@ -83,12 +83,12 @@
         if (user) {
           document.getElementById("loginmenu").innerHTML = "로그아웃";
           document.getElementById("joinmenu").innerHTML = "반가워요! " + user.displayName + " 님";
-          console.log(user);
         } else {
           document.getElementById("loginmenu").innerHTML = "로그인";
           document.getElementById("loginmenu").href = "/auth/signIn";
         }
       });
+      
 
       function logout () {
         firebase.auth().signOut();

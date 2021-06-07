@@ -1,13 +1,8 @@
 var express = require('express');
-var jwtmiddle = require('../middleware/jwt');
+//var jwtmiddle = require('../middleware/jwt');
 var authDAO = require('../model/authDao');
 const serviceAccount = require('../path/to/serviceAccountKey.json');
-var firebase = require("firebase/app");
 
-// Add the Firebase products that you want to use
-require("firebase/auth");
-require("firebase/firestore");
-require("firebase/analytics")
 
 
 
@@ -35,7 +30,6 @@ function getSignUp(req,res,next) {
   }).catch(err=>res.send("<script>alert('err');</script>"));
 }
  
-
 function checkUser(req, res, next) {
   var special_pattern = /[` ~!@#$%^&*|\\\'\";:\/?]/gi;
   

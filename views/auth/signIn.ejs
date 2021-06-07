@@ -88,9 +88,12 @@
 							<i class="fa fa-google"></i>
 						</a>
 					</div>
+					<meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com"/>
+
 					<form name="form1" action="login_" method="POST">
 						<input type="button" id="liGoogleBtn" value="Google Login">
 					</form>
+					<div class="g-signin2" data-onsuccess="onSignIn"></div>
 					</div>
 				</form>
 			</div>
@@ -126,6 +129,8 @@
 </html>
 
 <script>
+	
+
 	function Glogin(){
         if($("#loginid").val() == ""){
             alert("아이디를 입력하지 않았습니다.");

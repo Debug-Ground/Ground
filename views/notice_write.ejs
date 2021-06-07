@@ -99,6 +99,7 @@
 
       </div>
 			<div style="text-align: right;">
+        <input type="hidden" id="writerx" name="writerx" value="">
 				<button type="button" class="btn btn-outline-primary m-1" id="btnSave">저장</button>
         <button type="button" class="btn btn-outline-danger m-1" id="btnCancel">취소</button>
 			</div>
@@ -123,5 +124,26 @@
  
 
   <% include include/footer2%>
-
+ 
+    <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-app.js"></script>
+      <!-- TODO: Add SDKs for Firebase products that you want to use https://firebase.google.com/docs/web/setup#available-libraries -->
+      <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-analytics.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-auth.js"></script>
+      <script>
+          
+      // firebase 중요 설정 키값
+      const firebaseConfig = {
+        apiKey: "AIzaSyD8-ubMdZ2UaWRklxYrFoN1WXr1LIjNbgI",
+        authDomain: "ground-315511.firebaseapp.com",
+      };
+      // firebase 초기화
+      firebase.initializeApp(firebaseConfig);
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+          document.getElementById('writerx').value = firebase.auth().currentUser.displayName
+        } else {
+          console.log('failed')
+        }
+      });
+  </script>
 </html>
