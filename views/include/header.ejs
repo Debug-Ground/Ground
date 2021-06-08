@@ -83,6 +83,7 @@
           document.getElementById("loginmenu").innerHTML = "로그아웃";
           document.getElementById("joinmenu").innerHTML = "반가워요! " + user.displayName + " 님";
         } else {
+          document.getElementById("joinmenu").className='d-none';
           document.getElementById("loginmenu").innerHTML = "로그인";
           document.getElementById("loginmenu").href = "/auth/signIn";
         }

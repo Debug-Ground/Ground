@@ -16,3 +16,18 @@
 2021-06-08 00:39:29 [ERROR] - DB error [Question]
  	select * from Question
  	Error: Cannot enqueue Query after fatal error.
+2021-06-08 11:19:20 [ERROR] - DB error [Notice]
+ 	select * from Notice
+ 	Error: connect ECONNREFUSED 127.0.0.1:3306
+2021-06-08 11:19:20 [ERROR] - DB error [Question]
+ 	select * from Question
+ 	Error: connect ECONNREFUSED 127.0.0.1:3306
+2021-06-08 11:19:51 [ERROR] - DB error [Notice]
+ 	select * from Notice
+ 	Error: Cannot enqueue Query after fatal error.
+2021-06-08 11:19:55 [ERROR] - DB error [Question]
+ 	select * from Question
+ 	Error: Cannot enqueue Query after fatal error.
+2021-06-08 12:00:50 [ERROR] - DB error [Notice]
+ 	select * from Notice
+ 	Error: connect ECONNREFUSED 127.0.0.1:3306
