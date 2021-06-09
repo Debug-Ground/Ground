@@ -11,7 +11,8 @@ router.post('/delete', noticeController.ndelete);
 // notice_detail
 router.get('/detail/:num', noticeController.ndetail);
 // notice_update
-
+router.get('/update/:num', noticeController.nupdate)
+router.post('/updateData', noticeController.updateData)
 // notice
 router.get('/:num', noticeController.notice);
 

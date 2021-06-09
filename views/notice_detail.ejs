@@ -107,7 +107,7 @@
         </form>
         <button type="button" class="btn btn-outline-dark m-1" id="btnList">목록</button-->
         <div class="text-end">
-            <button type="button" class="btn btn-outline-primary" id="btnSave" onclick="location.href='/notice/update'">글 수정</button>
+            <button type="button" class="btn btn-outline-primary" id="btnSave" onclick="location.href='/notice/update/<%= db_data[0].nid %>'">글 수정</button>
             <button type="submit" class="btn btn-outline-danger" id="btnCancel">글 삭제</button>
             <input type="hidden" name="nidx" value="<%= db_data[0].nid %>">
             <button type="button" class="btn btn-outline-dark" id="btnList" onclick="location.href='/notice/1'">목록</button>
