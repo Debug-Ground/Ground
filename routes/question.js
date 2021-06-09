@@ -15,6 +15,4 @@ router.get('/:num', questionController.question);
 //show QuestionDetail
 router.get('/detail/:num', questionController.qdetail)
 
-
-
 module.exports = router;

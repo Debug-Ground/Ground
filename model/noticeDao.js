@@ -36,6 +36,24 @@ function getNotice() {
    })
  };
 
+ function updateNotice(parameters) {
+    return new Promise ((resolve, reject) => {
+        db.query(`Update Notice set ntitle = '${parameters.ntitle}', ncontent = '${parameters.ncontent}', nwriter = '${parameters.nwriter}', ndate = '${parameters.ndate}' where nid ='${parameters.nid}'`, function(error ,db_data) {
+         if (error) {
+             logger.error(
+                 "DB error [Notice]"+
+                 "\n \t" + `Update Notice set ntitle = '${parameters.ntitle}', ncontent = '${parameters.ncontent}', nwriter = '${parameters.nwriter}', ndate = '${parameters.ndate}' where nid ='${parameters.nid}'` +
+                 "\n \t" + error);
+             reject('DB ERR');
+             //throw error;
+         }
+         else {
+           resolve(db_data);
+        }
+      });
+    })
+  };
+
  function deleteNotice(parameters) {
     return new Promise ((resolve, reject) => {
         db.query(`Delete from Notice WHERE nid = '${parameters.nidx}'`, function(error ,db_data) {
@@ -71,5 +89,6 @@ module.exports = {
     getNotice,
     getNoticeDetail,
     deleteNotice,
-    insertNotice
+    insertNotice,
+    updateNotice
 }

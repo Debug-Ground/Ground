@@ -16,6 +16,7 @@
 2021-06-08 00:39:29 [ERROR] - DB error [Question]
  	select * from Question
  	Error: Cannot enqueue Query after fatal error.
+<<<<<<< Updated upstream
 2021-06-08 11:19:20 [ERROR] - DB error [Notice]
  	select * from Notice
  	Error: connect ECONNREFUSED 127.0.0.1:3306
@@ -31,3 +32,14 @@
 2021-06-08 12:00:50 [ERROR] - DB error [Notice]
  	select * from Notice
  	Error: connect ECONNREFUSED 127.0.0.1:3306
+=======
+2021-06-08 10:52:30 [ERROR] - DB error [Question]
+ 	Insert into Question set qtitle = '12312321', qcontent = '<p><b><u style="background-color: rgb(255, 0, 0);"><font color="#ffff00">213231213312</font></u></b></p>', qwriter = '규환', qdate = '2021-06-08 10-52-30'
+ 	Error: ER_DATA_TOO_LONG: Data too long for column 'qcontent' at row 1
+2021-06-08 10:53:11 [ERROR] - DB error [Question]
+ 	Insert into Question set qtitle = '12312321', qcontent = '<p><b style="background-color: rgb(255, 255, 0);">ㅁㄴㅇㅁㄴㅇ</b></p>', qwriter = '규환', qdate = '2021-06-08 10-53-11'
+ 	Error: ER_DATA_TOO_LONG: Data too long for column 'qcontent' at row 1
+2021-06-08 10:53:21 [ERROR] - DB error [Question]
+ 	Insert into Question set qtitle = '12312321', qcontent = '<p><u style="background-color: rgb(255, 255, 0);">ㅁㄴ</u></p>', qwriter = '규환', qdate = '2021-06-08 10-53-21'
+ 	Error: ER_DATA_TOO_LONG: Data too long for column 'qcontent' at row 1
+>>>>>>> Stashed changes

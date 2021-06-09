@@ -84,7 +84,7 @@
                       continue;
                     }%>
                     <tr onclick ="location.href='/notice/detail/<%= data_value.nid %>'"style="text-align: center;">
-                        <td><%= data_value.nid %></td>
+                        <td><%= i+1 %></td>
                         <td><%= data_value.ntitle %></td>
                         <td><%= data_value.nwriter %></td>
                         <td><%= dayjs(data_value.ndate).format("YY.MM.DD") %></td>

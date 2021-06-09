@@ -11,22 +11,22 @@ require("firebase/analytics")
 
 function notice(req, res, next) {
   noticeDao.getNotice().then((db_data) => {
-    let token = req.cookies.user;
-    jwtmiddle.jwtCerti(token).then(
-        (permission)=>{
-            res.render('notice', { db_data, n_num : req.params.num , max_value : 10, dayjs, permission});
+           res.render('notice', { db_data, n_num : req.params.num , max_value : 10, dayjs});
         }).catch(err=>res.send("<script>alert('jwt err');</script>"));
-  }).catch(err=>res.send("<script>alert('err');</script>"));
 }
 
 function nwrite(req, res, next) {
-    let token = req.cookies.user;
-    jwtmiddle.jwtCerti(token).then(
-        (permission)=>{
-            res.render('notice_write', {permission});
-        }).catch(err=>res.send("<script>alert('jwt err');</script>"));
-  }
+  res.render('notice_write');
+}
 
+function nupdate(req, res, next) {
+  var parameter = {
+    "nid" : req.params.num
+  }
+  noticeDao.getNoticeDetail(parameter).then((db_data)=>{
+    res.render('notice_update',{db_data});
+  }).catch(err=>res.send("<script>alert('err');</script>"));
+}
 
 function insertData(req, res, next) {
   var parameters = {
@@ -40,6 +40,20 @@ function insertData(req, res, next) {
       res.redirect("/notice/1")
     }).catch(err=>res.send("<script>alert('err');</script>"));
   }
+  
+  function updateData(req,res, next) {
+    var parameters = {
+      "ntitle" : req.body.title,
+      "ncontent" : req.body.summernote,
+      "ndate" : new dayjs().format("YYYY-MM-DD HH-mm-ss"),
+      "nwriter" : req.body.writerx,
+      "nid" : req.body.nidx,
+    }
+    noticeDao.updateNotice(parameters).then((db_data) => {
+      res.redirect('/notice/1')
+    }).catch(err=>res.send("<script>alert('err');</script>"));
+  }
+
 
 function ndetail(req, res, next) {
   var parameters = {
@@ -56,12 +70,7 @@ function ndelete(req, res, next) {
     "nidx": req.body.nidx
   }
   noticeDao.deleteNotice(parameters).then((db_data) => {
-    let token = req.cookies.user;
-    jwtmiddle.jwtCerti(token).then(
-        (permission)=>{
-          res.redirect('/notice/1');
-        }
-    ).catch(err=>res.send("<script>alert('jwt err');</script>")); 
+    res.redirect('/notice/1');
   }).catch(err=>res.send("<script>alert('err');</script>")); 
 }
 
@@ -70,5 +79,7 @@ module.exports = {
   nwrite,
   ndetail,
   ndelete,
-  insertData
+  nupdate,
+  insertData,
+  updateData
 }
