@@ -69,10 +69,10 @@
 
 		<div class="container" role="main">
 
-			<form name="form" id="form" role="form" method="post" action="/question/qinsertData">
+			<form name="form" id="form" role="form" method="post" action="/question/updateData">
 				<div class="mb-3">
 					<label for="title" style="font-weight: 20px; font-size: 25px;">제목</label>
-					<input type="text" class="form-control" name="title" id="title" placeholder="제목을 입력해 주세요">
+					<input type="text" class="form-control" name="title" id="title" value="<%= db_data[0].qtitle%>"">
 				</div>
 
 				<div class="mb-3" style="margin-top: 60px;">
@@ -80,7 +80,7 @@
           <textarea id="summernote" name="summernote"></textarea>
           <script>
             $('#summernote').summernote({
-              placeholder: '공지 할 내용을 적어주세요.',
+              placeholder: '<%- db_data[0].qcontent %>',
               tabsize: 2,
               height: 350,
               toolbar: [
@@ -93,17 +93,17 @@
                 ['view', ['fullscreen', 'codeview', 'help']]
               ]
             });
-          </script>
-				</div>
-		
+            
+       </script>
 
+      </div>
 			<div style="text-align: right;">
         <input type="hidden" id="writerx" name="writerx" value=""/>
-				<button type="button" class="btn btn-outline-primary m-1" id="btnSave">저장</button>
-        <button type="button" class="btn btn-outline-danger m-1" id="btnCancel">취소</button>
+        <input type="hidden" id="qidx" name="qidx" value="<%= db_data[0].qid %>"/>
+		<button type="button" class="btn btn-outline-primary m-1" id="btnSave">저장</button>
+        <button type="button" class="btn btn-outline-danger m-1" id="btnCancel" onclick="location.href='/question/1'">취소</button>
 			</div>
     </form>
-
 		</div>
 	</article>
 </body>
@@ -121,10 +121,11 @@
 
   <script src="/assets/js/main.js"></script>
   
+ 
 
   <% include include/footer2%>
-
-  <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-app.js"></script>
+ 
+    <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-app.js"></script>
       <!-- TODO: Add SDKs for Firebase products that you want to use https://firebase.google.com/docs/web/setup#available-libraries -->
       <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-analytics.js"></script>
       <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-auth.js"></script>
@@ -146,5 +147,4 @@
         }
       });
       </script>
-
 </html>

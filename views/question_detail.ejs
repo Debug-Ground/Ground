@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Ground</title>
+  <title>Ground Question</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -102,7 +102,7 @@
             </div>
         </div>
         <div style="text-align: right;">
-              <button type="button" class="btn btn-outline-primary m-1" id="btnSave" onclick="location.href='/question/update'">글 수정</button>
+              <button type="button" class="btn btn-outline-primary m-1" id="btnSave" onclick="location.href='/question/update/<%=db_data[0].qid %>'">글 수정</button>
               <button type="submit" class="btn btn-outline-danger m-1" id="btnCancel">글 삭제</button>
               <input type="hidden" name="qidx" value="<%= db_data[0].qid %>">
               <button type="button" class="btn btn-outline-dark m-1" id="btnList" onclick="location.href='/question/1'">목록</button>

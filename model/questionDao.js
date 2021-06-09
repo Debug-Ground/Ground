@@ -36,6 +36,23 @@ function getQuestion() {
      });
    })
  };
+ function updateQuestion(parameters) {
+  return new Promise ((resolve, reject) => {
+      db.query(`Update Question set qtitle = '${parameters.qtitle}', qcontent = '${parameters.qcontent}', qwriter = '${parameters.qwriter}', qdate = '${parameters.qdate}' where qid ='${parameters.qidx}'`, function(error ,db_data) {
+       if (error) {
+           logger.error(
+               "DB error [Question]"+
+               "\n \t" + `Update Question set qtitle = '${parameters.qtitle}', qcontent = '${parameters.qcontent}', qwriter = '${parameters.qwriter}', qdate = '${parameters.qdate}' where qid ='${parameters.qidx}'` +
+               "\n \t" + error);
+           reject('DB ERR');
+           //throw error;
+       }
+       else {
+         resolve(db_data);
+      }
+    });
+  })
+};
 
  function insertQuestionAdmin(parameters) {
   return new Promise ((resolve, reject) => {
@@ -96,5 +113,6 @@ module.exports = {
     getQuestion,
     getQuestionDetail,
     insertQuestion,
-    deleteQuestion
+    deleteQuestion,
+    updateQuestion
 }

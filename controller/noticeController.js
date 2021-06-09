@@ -47,7 +47,7 @@ function insertData(req, res, next) {
       "ncontent" : req.body.summernote,
       "ndate" : new dayjs().format("YYYY-MM-DD HH-mm-ss"),
       "nwriter" : req.body.writerx,
-      "nid" : req.body.nidx,
+      "nid" : req.body.nidx
     }
     noticeDao.updateNotice(parameters).then((db_data) => {
       res.redirect('/notice/1')
