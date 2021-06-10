@@ -37,3 +37,6 @@
 2021-06-09 13:47:00 [ERROR] - DB error [Notice]
  	Update Notice set ntitle = '213123321', ncontent = '<p>321213321213213</p>', nwriter = '규환', ndate = '2021-06-09 13-47-00' where nid ='undefined'
  	Error: ER_TRUNCATED_WRONG_VALUE: Truncated incorrect DOUBLE value: 'undefined'
+2021-06-09 13:56:35 [ERROR] - DB error [Notice]
+ 	select * from Notice
+ 	Error: connect ECONNREFUSED 127.0.0.1:3306
