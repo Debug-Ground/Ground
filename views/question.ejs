@@ -85,7 +85,7 @@
                       continue;
                     }%>
                     <tr onclick ="location.href='/question/detail/<%= data_value.qid %>'" style="text-align: center;">
-                        <td><%= data_value.qid %></td>
+                        <td><%= db_data.length - i %></td>
                         <td><%= data_value.qtitle %></td>
                         <td><%= data_value.qwriter %></td>
                         <td><%= dayjs(data_value.qdate).format("YY.MM.DD") %></td>

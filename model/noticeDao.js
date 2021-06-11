@@ -3,7 +3,7 @@ var logger = require('../config/logger');
 
 function getNotice() {
     return new Promise ((resolve, reject) => {
-        db.query(`select * from Notice`, function(error,db_data) {
+        db.query(`select * from Notice order by ndate desc `, function(error,db_data) {
             if(error) {
               logger.error(
               "DB error [Notice]"+

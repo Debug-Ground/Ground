@@ -46,6 +46,24 @@ function qupdate(req, res, next) {
    res.render('question_update',{db_data});
   }).catch(err=>res.send("<script>alert('err');</script>"));
 }
+function qadmin(req, res, next) {
+  var parameters = {
+    "qid": req.params.num
+  }
+  questionDao.getQuestionDetail(parameters).then((db_data) => {
+    res.render('question_admin', {db_data,dayjs});
+  }).catch(err=>res.send("<script>alert('jwt err');</script>")); 
+}
+
+function updateAdminData(req,res, next) {
+  var parameters = {
+    "adminComment" : req.body.summernote,
+    "qid" : req.body.qidx
+  }
+  questionDao.updateQuestionAdmin(parameters).then((db_data) => {
+    res.redirect('/question/1')
+  }).catch(err=>res.send("<script>alert('err');</script>"));
+}
 
 function qdetail(req, res, next) {
   var parameters = {
@@ -75,5 +93,7 @@ module.exports = {
     qdetail,
     qinsertData,
     updateData,
-    qupdate
+    qupdate,
+    qadmin,
+    updateAdminData
 }

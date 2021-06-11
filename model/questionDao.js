@@ -3,7 +3,7 @@ var logger = require('../config/logger');
 
 function getQuestion() {
     return new Promise ((resolve, reject) => {
-        db.query(`select * from Question`, function(error,db_data) {
+        db.query(`select * from Question order by qdate desc`, function(error,db_data) {
             if (error) {
                 logger.error(
                     "DB error [Question]"+
@@ -54,13 +54,13 @@ function getQuestion() {
   })
 };
 
- function insertQuestionAdmin(parameters) {
+ function updateQuestionAdmin(parameters) {
   return new Promise ((resolve, reject) => {
-      db.query(`Insert into Question set qadmin = '${parameters.qadmin}', qadmin_comment = '${parameters.qadmin_comment} WHERE qid = '${parameters.qid}'`, function(error ,db_data) {
+      db.query(`Update Question set qadmin_comment = '${parameters.adminComment}' WHERE qid = '${parameters.qid}'`, function(error ,db_data) {
        if (error) {
            logger.error(
                "DB error [Question]"+
-               "\n \t" + `Insert into Question set qadmin = '${parameters.qadmin}', qadmin_comment = '${parameters.qadmin_comment} WHERE qid = '${parameters.qid}''`+
+               "\n \t" + `Update Question set qadmin_comment = '${parameters.adminComment}' WHERE qid = '${parameters.qid}''`+
                "\n \t" + error);
            reject('DB ERR');
            //throw error;
@@ -114,5 +114,6 @@ module.exports = {
     getQuestionDetail,
     insertQuestion,
     deleteQuestion,
-    updateQuestion
+    updateQuestion,
+    updateQuestionAdmin
 }
