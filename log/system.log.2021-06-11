@@ -1,0 +1,30 @@
+2021-06-11 15:51:15 [ERROR] - DB error [Question]
+ 	Update Question set qtitle = 'undefined', qcontent = 'undefined', qwriter = 'undefined', qdate = 'undefined' where qid ='undefined'
+ 	Error: ER_TRUNCATED_WRONG_VALUE: Truncated incorrect DOUBLE value: 'undefined'
+2021-06-11 15:52:46 [ERROR] - DB error [Question]
+ 	Insert into Question set qadmin_comment = 'undefined WHERE qid = '16''
+ 	Error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '16'' at line 1
+2021-06-11 15:53:16 [ERROR] - DB error [Question]
+ 	Insert into Question set qadmin_comment = 'undefined WHERE qid = '16''
+ 	Error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE qid = '16'' at line 1
+2021-06-11 15:53:43 [ERROR] - DB error [Question]
+ 	Insert into Question set qadmin_comment = 'undefined WHERE qid = '16''
+ 	Error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE qid = '16'' at line 1
+2021-06-11 15:54:06 [ERROR] - DB error [Question]
+ 	Insert into Question set qadmin_comment = 'undefined' WHERE qid = '16''
+ 	Error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE qid = '16'' at line 1
+2021-06-11 15:56:53 [ERROR] - DB error [Question]
+ 	Update Question set qadmin_comment = '<p><font color="#ff0000" style="background-color: rgb(255, 255, 255);">ㅁㄴㅇㄴㅇㅁ</font></p>' WHERE qid = '16''
+ 	Error: ER_DATA_TOO_LONG: Data too long for column 'qadmin_comment' at row 1
+2021-06-11 16:06:51 [ERROR] - DB error [Question]
+ 	Update Question set qadmin_comment = '' WHERE qid = 'undefined''
+ 	Error: ER_TRUNCATED_WRONG_VALUE: Truncated incorrect DOUBLE value: 'undefined'
+2021-06-11 16:07:01 [ERROR] - DB error [Question]
+ 	Update Question set qadmin_comment = '<p><b>aaaaA</b></p>' WHERE qid = 'undefined''
+ 	Error: ER_TRUNCATED_WRONG_VALUE: Truncated incorrect DOUBLE value: 'undefined'
+2021-06-11 16:12:13 [ERROR] - DB error [Question]
+ 	Update Question set qadmin_comment = '<p>asdsadsadsdasad</p>' WHERE qid = 'undefined''
+ 	Error: ER_TRUNCATED_WRONG_VALUE: Truncated incorrect DOUBLE value: 'undefined'
+2021-06-11 16:12:48 [ERROR] - DB error [Question]
+ 	Update Question set qadmin_comment = '<p>adsasdasd</p>' WHERE qid = 'undefined''
+ 	Error: ER_TRUNCATED_WRONG_VALUE: Truncated incorrect DOUBLE value: 'undefined'

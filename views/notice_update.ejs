@@ -72,7 +72,7 @@
 			<form name="form" id="form" role="form" method="post" action="/notice/updateData">
 				<div class="mb-3">
 					<label for="title" style="font-weight: 20px; font-size: 25px;">제목</label>
-					<input type="text" class="form-control" name="title" id="title" placeholder="제목을 입력해 주세요">
+					<input type="text" class="form-control" name="title" id="title" value="<%= db_data[0].ntitle %>">
 				</div>
 
 				<div class="mb-3" style="margin-top: 60px;">
