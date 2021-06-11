@@ -112,4 +112,7 @@ table.table td i {
     float: left;
     margin-top: 6px;
     font-size: 95%;
+}
+.ntitle{
+    cursor: pointer;
 }    
