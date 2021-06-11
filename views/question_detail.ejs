@@ -27,7 +27,6 @@
   <link href="/assets/css/style.css" rel="stylesheet">
   <link href="/../ndetail_assets/css/style.css" rel="stylesheet">
 
-
 </head>
 
 <body>
@@ -39,7 +38,7 @@
   <main id="main" style="margin-right: 140px;">
 
     <!-- ======= Blog Section ======= -->
-    <section id="blog" class="blog" style="margin-bottom: 150px; margin-top: 120px;">
+    <section id="blog" class="blog" style="margin-bottom: 150px; margin-top: 50px; margin-left: 70px;">
       <div class="container">
 
         <div class="row">
@@ -76,21 +75,22 @@
                         <i class="las la-quote-right quote-right"></i>
                         <i class="icofont-quote-right quote-right"></i>
                         </blockquote>
-                    </div>
-                        
+                      </div>
 
-                        <h3>관리자 코멘트</h3>
-                        <p>
-                          <%- db_data[0].qadmin_comment %>    
-                        </p>
-                        <img src="/assets/img/blog-inside-post.jpg" class="img-fluid" alt="">
+                        <h3 style="margin-bottom : 24px;">관리자 코멘트 </h3>
+                        <div class="qcomment">
+                          <div class="mt-4 mx-5">
+                            <%- db_data[0].qadmin_comment %>
+                          </div>
+                        </div>
 
                     </div>
                     <% if(db_data[0].qadmin_comment == null) { %>
                     <div class="entry-footer clearfix">
                         <div class="float-right">
                         <ul class="tags">
-                            <li><button type="button" class="btn btn-outline-primary m-1" id="btnSave" onclick="location.href='/question/adminComment/<%=db_data[0].qid %>'">코멘트 작성</button>
+                            <li><button type="button" class="btn btn-outline-primary m-1" id="btnSave" 
+                              onclick="location.href='/question/adminComment/<%=db_data[0].qid %>'">코멘트 작성</button>
                             </li>
                         </ul>
                         </div>
