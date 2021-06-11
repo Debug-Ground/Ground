@@ -9,10 +9,15 @@ router.post('/qinsertData',questionController.qinsertData);
 //delete Question
 router.post('/delete',questionController.qdelete);
 
-//show QuestionMain 
-router.get('/:num', questionController.question);
 
 //show QuestionDetail
 router.get('/detail/:num', questionController.qdetail)
+//update Question
+router.get('/update/:num',questionController.qupdate)
+router.post('/updateData', questionController.updateData)
+
+
+//show QuestionMain 
+router.get('/:num', questionController.question);
 
 module.exports = router;

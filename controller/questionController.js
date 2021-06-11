@@ -21,10 +21,31 @@ function qinsertData(req, res, next) {
       res.redirect("/question/1")
     }).catch(err=>res.send("<script>alert('err');</script>"));
 }
+function updateData(req,res, next) {
+  var parameters = {
+    "qtitle" : req.body.title,
+    "qcontent" : req.body.summernote,
+    "qdate" : new dayjs().format("YYYY-MM-DD HH-mm-ss"),
+    "qwriter" : req.body.writerx,
+    "qidx" : req.body.qidx
+  }
+  questionDao.updateQuestion(parameters).then((db_data) => {
+    res.redirect('/question/1')
+  }).catch(err=>res.send("<script>alert('err');</script>"));
+}
 
 function qwrite(req, res, next) {
         res.render('question_write');
+}
+
+function qupdate(req, res, next) {
+  var parameters = {
+    "qid" : req.params.num
   }
+  questionDao.getQuestionDetail(parameters).then((db_data)=>{
+   res.render('question_update',{db_data});
+  }).catch(err=>res.send("<script>alert('err');</script>"));
+}
 
 function qdetail(req, res, next) {
   var parameters = {
@@ -52,5 +73,7 @@ module.exports = {
     qwrite,
     qdelete,
     qdetail,
-    qinsertData
+    qinsertData,
+    updateData,
+    qupdate
 }
