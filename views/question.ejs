@@ -90,9 +90,9 @@
                         <td><%= data_value.qwriter %></td>
                         <td><%= dayjs(data_value.qdate).format("YY.MM.DD") %></td>
                         <% if(data_value.qadmin_comment == null) { %>
-                          <td>답변 미완료</td>
+                          <td style="color: red;">답변 미완료</td>
                         <% } else { %>
-                          <td>답변 완료</td>
+                          <td style="color: blue;">답변 완료</td>
                         <% } %>
                     </tr>
                     <% } %>
