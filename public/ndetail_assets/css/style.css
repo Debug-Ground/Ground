@@ -540,3 +540,7 @@
   font-size: 14px;
 }
 
+.qcomment{
+  border: 1px solid lightgray;
+  height: 240px;
+}

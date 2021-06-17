@@ -56,7 +56,7 @@
 
   <div class="container-xl" style="margin-bottom: 250px;">
     <div class="table-responsive">
-        <div class="table-wrapper">
+        <div class="table-wrapper me-4">
             <div class="table-title">
                 <div class="row">
                     <div class="col-sm-8"><h2><b>문의 사항</b></h2></div>
@@ -86,7 +86,7 @@
                     }%>
                     <tr onclick ="location.href='/question/detail/<%= data_value.qid %>'" style="text-align: center;">
                         <td><%= db_data.length - i %></td>
-                        <td><%= data_value.qtitle %></td>
+                        <td class="qntitle"><%= data_value.qtitle %></td>
                         <td><%= data_value.qwriter %></td>
                         <td><%= dayjs(data_value.qdate).format("YY.MM.DD") %></td>
                         <% if(data_value.qadmin_comment == null) { %>
