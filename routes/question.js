@@ -18,7 +18,9 @@ router.post('/updateData', questionController.updateData)
 
 //insert qadmin
 router.get('/adminComment/:num',questionController.qadmin)
+router.get('/adminCommentUpdate/:num',questionController.qadminUpdate)
 router.post('/updateAdminData', questionController.updateAdminData)
+
 
 //show QuestionMain 
 router.get('/:num', questionController.question);

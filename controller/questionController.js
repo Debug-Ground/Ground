@@ -5,7 +5,7 @@ var dayjs =  require('dayjs');
 function question(req, res, next) {
   questionDao.getQuestion().then((db_data) => {
         res.render('question', {db_data, q_num : req.params.num , max_value : 10, dayjs});
-      }).catch(err=>res.send("<script>alert('jwt err');</script>")); 
+      }).catch(err=>res.send("<script>alert('err');</script>")); 
   }
 
 function qinsertData(req, res, next) {
@@ -52,7 +52,16 @@ function qadmin(req, res, next) {
   }
   questionDao.getQuestionDetail(parameters).then((db_data) => {
     res.render('question_admin', {db_data,dayjs});
-  }).catch(err=>res.send("<script>alert('jwt err');</script>")); 
+  }).catch(err=>res.send("<script>alert('err');</script>")); 
+}
+
+function qadminUpdate(req, res, next) {
+  var parameters = {
+    "qid": req.params.num
+  }
+  questionDao.getQuestionDetail(parameters).then((db_data) => {
+    res.render('question_adminUpdate', {db_data,dayjs});
+  }).catch(err=>res.send("<script>alert('err');</script>")); 
 }
 
 function updateAdminData(req,res, next) {
@@ -72,7 +81,7 @@ function qdetail(req, res, next) {
   questionDao.getQuestionDetail(parameters).then((db_data) => {
         res.render('question_detail', {db_data,dayjs});
       }
-    ).catch(err=>res.send("<script>alert('jwt err');</script>")); 
+    ).catch(err=>res.send("<script>alert('err');</script>")); 
 }
 
 function qdelete(req, res, next) {
@@ -81,7 +90,7 @@ function qdelete(req, res, next) {
   }
   questionDao.deleteQuestion(parameters).then((db_data) => {
     res.redirect('/question/1')
-    }).catch(err=>res.send("<script>alert('jwt err');</script>")); 
+    }).catch(err=>res.send("<script>alert('err');</script>")); 
   }
 
 
@@ -95,5 +104,6 @@ module.exports = {
     updateData,
     qupdate,
     qadmin,
+    qadminUpdate,
     updateAdminData
 }

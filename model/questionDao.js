@@ -109,6 +109,7 @@ function getQuestionDetail(parameters) {
       });
   })
 };
+
 module.exports = {
     getQuestion,
     getQuestionDetail,
