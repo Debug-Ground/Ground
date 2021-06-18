@@ -1,11 +1,5 @@
 var express = require('express');
-//var jwtmiddle = require('../middleware/jwt');
 var authDAO = require('../model/authDao');
-const serviceAccount = require('../path/to/serviceAccountKey.json');
-
-
-
-
 
 function signIn(req, res, next) {
 	res.render('auth/signIn');
