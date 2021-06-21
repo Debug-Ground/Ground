@@ -337,6 +337,28 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+@media (max-width: 763px) {
+  #joinmenu{
+    display: none;
+  }
+  .get-started-btn {
+    margin-right: 20px;
+  }
+}
+
+@media (max-width: 575px) {
+  #joinmenu{
+    display: none;
+  }
+  .get-started-btn {
+    margin-left: 2px;
+    margin-right: 0px;
+  }
+  .get-started-btn2 {
+    margin-left: 2px;
+    margin-right: 50px;
+  }
+}
 /* Mobile Navigation */
 .mobile-nav-toggle {
   position: fixed;
