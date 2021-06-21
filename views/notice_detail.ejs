@@ -37,7 +37,26 @@
 
   <link href="/assets/css/style.css" rel="stylesheet">
   <link href="/ndetail_assets/css/style.css" rel="stylesheet">
-
+  <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-app.js"></script>
+  <!-- TODO: Add SDKs for Firebase products that you want to use https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-auth.js"></script>
+  <script>
+  // firebase 중요 설정 키값
+  const firebaseConfig1 = {
+    apiKey: "AIzaSyD8-ubMdZ2UaWRklxYrFoN1WXr1LIjNbgI",
+    authDomain: "ground-315511.firebaseapp.com",
+  };
+  // firebase 초기화
+  firebase.initializeApp(firebaseConfig1);
+  firebase.auth().onAuthStateChanged(function(user) {
+    if(user.displayName == "Ground Debug"){
+      
+                                                                                                                                                                 
+    }
+  })
+  console.log(ntitle)
+  </script>
 </head>
 
 <body>
@@ -55,16 +74,15 @@
               <form action="/notice/delete" method="post">
           
                     <h2 class="entry-title">
-                        <a href="/blog-single.html"><%= db_data[0].ntitle %></a>
+                        <%= db_data[0].ntitle %>
                     </h2>
 
                     <div class="entry-footer clearfix"></div>
 
                     <div class="entry-meta" style="margin-top: 15px;">
                         <ul>
-                        <li class="d-flex align-items-center"><i class="icofont-user"></i> <a href="blog-single.html"><%= db_data[0].nwriter %></a></li>
-                        <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i> <a href="blog-single.html"><time datetime="2020-01-01"><%= dayjs(db_data[0].ndate).format('YY.MM.DD') %></time></a></li>
-                        <li class="d-flex align-items-center"><i class="icofont-comment"></i> <a href="blog-single.html"></a></li>
+                          <li class="d-flex align-items-center"><i class="icofont-user"></i> <%= db_data[0].nwriter %></li>
+                          <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i> <time datetime="2020-01-01"><%= dayjs(db_data[0].ndate).format('YY.MM.DD') %></time></li>
                         </ul>
                     </div>
 
@@ -81,33 +99,16 @@
 
                     <div class="entry-footer clearfix">
                         <div class="float-left">
-                        <i class="icofont-folder"></i>
-                        <ul class="cats">
-                            <li><a href="#">Ground</a></li>
-                        </ul>
-
-                        <i class="icofont-tags"></i>
-                        <ul class="tags">
-                            <li><a href="#">Creative</a></li>
-                            <li><a href="#">Tips</a></li>
-                            <li><a href="#">Marketing</a></li>
-                        </ul>
                         </div>
                   </div>
               </article><!-- End blog entry -->
               
           </div>
         </div>
-        
-        <!--button type="button" class="btn btn-outline-primary m-1" id="btnSave">글 수정</button>
-        <form action="/notice/delete" method="post">
-          <button type="submit" class="btn btn-outline-danger m-1" id="btnCancel">글 삭제</button>
-          <input type="hidden" name="nidx" value="<%= db_data[0].nid %>">
-        </form>
-        <button type="button" class="btn btn-outline-dark m-1" id="btnList">목록</button-->
         <div class="text-end">
             <button type="button" class="btn btn-outline-primary" id="btnSave" onclick="location.href='/notice/update/<%= db_data[0].nid %>'">글 수정</button>
             <button type="submit" class="btn btn-outline-danger" id="btnCancel">글 삭제</button>
+            
             <input type="hidden" name="nidx" value="<%= db_data[0].nid %>">
             <button type="button" class="btn btn-outline-dark" id="btnList" onclick="location.href='/notice/1'">목록</button>
           </form>  
@@ -131,7 +132,7 @@
 
   <!-- Template Main JS File -->
   <script src="/assets/js/main.js"></script>
-
+  
   <% include include/footer2%>
 
 </html>
