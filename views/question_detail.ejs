@@ -25,8 +25,27 @@
   <link href="/../ndetail_assets/vendor/aos/aos.css" rel="stylesheet">
 
   <link href="/assets/css/style.css" rel="stylesheet">
-  <link href="/../ndetail_assets/css/style.css" rel="stylesheet">
-
+  <link href="/../ndetail_assets/css/style.css" rel="stylesheet">  
+  <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-auth.js"></script>
+  <script>
+  // firebase 중요 설정 키값
+  const firebaseConfig2 = {
+    apiKey: "AIzaSyD8-ubMdZ2UaWRklxYrFoN1WXr1LIjNbgI",
+    authDomain: "ground-315511.firebaseapp.com",
+  };
+  // firebase 초기화
+  firebase.initializeApp(firebaseConfig2);
+  firebase.auth().onAuthStateChanged(function(user) {
+    if(user.displayName == "Ground Debug"){
+      document.getElementById('comSave').classList.remove('d-none');  
+      document.getElementById('btnSave').classList.remove('d-none');                
+      document.getElementById('btnCancel').classList.remove('d-none');                                                                             
+    }
+  console.log(user.displayName);
+  })
+  </script>
 </head>
 
 <body>
@@ -89,7 +108,7 @@
                     <div class="entry-footer clearfix">
                         <div class="float-right">
                         <ul class="tags">
-                            <li><button type="button" class="btn btn-outline-primary m-1" id="btnSave" 
+                            <li><button type="button" class="btn btn-outline-primary m-1 d-none" id="btnSave" 
                               onclick="location.href='/question/adminComment/<%=db_data[0].qid %>'">코멘트 작성</button>
                             </li>
                         </ul>
@@ -99,7 +118,7 @@
                       <div class="entry-footer clearfix">
                         <div class="float-right">
                         <ul class="tags">
-                            <li><button type="button" class="btn btn-outline-primary m-1" id="btnSave" 
+                            <li><button type="button" class="btn btn-outline-primary m-1 d-none" id="comSave" 
                               onclick="location.href='/question/adminCommentUpdate/<%=db_data[0].qid %>'">코멘트 수정</button>
                             </li>
                         </ul>
@@ -110,8 +129,8 @@
             </div>
         </div>
         <div style="text-align: right;">
-              <button type="button" class="btn btn-outline-primary m-1" id="btnSave" onclick="location.href='/question/update/<%=db_data[0].qid %>'">글 수정</button>
-              <button type="submit" class="btn btn-outline-danger m-1" id="btnCancel">글 삭제</button>
+              <button type="button" class="btn btn-outline-primary m-1 d-none" id="btnSave" onclick="location.href='/question/update/<%=db_data[0].qid %>'">글 수정</button>
+              <button type="submit" class="btn btn-outline-danger m-1 d-none" id="btnCancel">글 삭제</button>
               <input type="hidden" name="qidx" value="<%= db_data[0].qid %>">
               <button type="button" class="btn btn-outline-dark m-1" id="btnList" onclick="location.href='/question/1'">목록</button>
             </form>
