@@ -51,9 +51,11 @@
   firebase.initializeApp(firebaseConfig1);
   firebase.auth().onAuthStateChanged(function(user) {
     if(user.displayName == "Ground Debug"){
-      
-                                                                                                                                                                 
+      document.getElementById('btnSave').classList.remove('d-none');                
+      document.getElementById('btnCancel').classList.remove('d-none');                                                                             
     }
+    
+  console.log(user.displayName);
   })
   console.log(ntitle)
   </script>
@@ -106,8 +108,8 @@
           </div>
         </div>
         <div class="text-end">
-            <button type="button" class="btn btn-outline-primary" id="btnSave" onclick="location.href='/notice/update/<%= db_data[0].nid %>'">글 수정</button>
-            <button type="submit" class="btn btn-outline-danger" id="btnCancel">글 삭제</button>
+            <button type="button" class="btn btn-outline-primary d-none" id="btnSave" onclick="location.href='/notice/update/<%= db_data[0].nid %>'">글 수정</button>
+            <button type="submit" class="btn btn-outline-danger d-none" id="btnCancel">글 삭제</button>
             
             <input type="hidden" name="nidx" value="<%= db_data[0].nid %>">
             <button type="button" class="btn btn-outline-dark" id="btnList" onclick="location.href='/notice/1'">목록</button>

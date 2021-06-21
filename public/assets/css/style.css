@@ -324,25 +324,16 @@ h1, h2, h3, h4, h5, h6 {
   color: #fff;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 840px) {
   #joinmenu{
-    display: none;
+    margin-left: 2px;
   }
   .get-started-btn {
-    display: none;
+    margin-left: 2px;
   }
   .get-started-btn2 {
-    display: none;
-  }
-}
-
-@media (max-width: 830px) {
-  .get-started-btn {
-    margin-left: 0px;
-  }
-  .get-started-btn2 {
-    margin-left: 0px;
-    margin-right: 28px;
+    margin-left: 2px;
+    margin-right: 25px;
   }
 }
 
