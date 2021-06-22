@@ -83,12 +83,36 @@
           document.getElementById("loginmenu").innerHTML = "로그아웃";
           document.getElementById("joinmenu").innerHTML = "반가워요! " + user.displayName + " 님";
         } else {
+          var gmail = document.getElementById("loginmenu");
+          gmail.addEventListener('click', e => {
+          var provider = new firebase.auth.GoogleAuthProvider();
+
+          firebase.auth().signInWithPopup(provider).then(function(result) {
+          var token = result.credential.accessToken;
+
+          var user = result.user;
+
+          console.log("Token : " + token + " user : " + user);
+          console.log("구글 로그인 완료!!!");
+          location.href = '/'
+          }).catch(function(err) {
+          console.log(err);
+          });
+          firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION).then(() => {
+            console.log('session success')
+            return firebase.auth().signInWithEmailAndPassword(email, password);
+          })
+          .catch((error) => {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+          });
+          })
+
           document.getElementById("joinmenu").className='d-none';
           document.getElementById("loginmenu").innerHTML = "로그인";
-          document.getElementById("loginmenu").href = "/auth/signIn";
         }
       });
-      
 
       function logout () {
         firebase.auth().signOut();
