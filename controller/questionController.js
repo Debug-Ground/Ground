@@ -3,7 +3,10 @@ var questionDao = require('../model/questionDao');
 var dayjs =  require('dayjs');
 
 function question(req, res, next) {
-  questionDao.getQuestion().then((db_data) => {
+  var parameter = {
+    "searchText" : req.query.searchText
+  }
+  questionDao.getQuestion(parameter).then((db_data) => {
         res.render('question', {db_data, q_num : req.params.num , max_value : 10, dayjs});
       }).catch(err=>res.send("<script>alert('err');</script>")); 
   }

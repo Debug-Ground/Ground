@@ -62,8 +62,10 @@
                     <div class="col-sm-8"><h2><b>문의 사항</b></h2></div>
                     <div class="col-sm-4">
                       <div class="search-box">
+                        <form name="form" id="form" role="form" method="get" action="/question/1">
                         <i class="material-icons">search</i>
-                        <input type="text" class="form-control" placeholder="Search&hellip;">
+                        <input onkeyup="enterkey()" type="text" class="form-control" id="searchText" name="searchText" placeholder="Search&hellip;">
+                      </form>  
                       </div>
                     </div>
                 </div>
@@ -136,6 +138,17 @@
   <script src="/assets/vendor/aos/aos.js"></script>
 
   <script src="/assets/js/main.js"></script>
+  <script>
+    function enterkey() {
+      if (window.event.keyCode == 13) {
+          search();
+      }
+    }
+
+    function search() {
+      document.getElementById('searchText').submit();
+    }
+  </script>
 
   <% include include/footer2%>
 

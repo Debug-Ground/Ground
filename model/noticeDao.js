@@ -1,22 +1,42 @@
 var db = require('../config/db');
 var logger = require('../config/logger');
 
-function getNotice() {
+function getNotice(parameter) {
     return new Promise ((resolve, reject) => {
-        db.query(`select * from Notice order by ndate desc `, function(error,db_data) {
+        if(parameter.searchText == undefined){
+          db.query(`select * from Notice order by ndate desc `, function(error,db_data) {
+              if(error) {
+                logger.error(
+                "DB error [Notice]"+
+                "\n \t" + `select * from Notice`+
+                "\n \t" + error);
+                  reject('DB ERR');
+              }
+              else {
+                  resolve(db_data);
+              }
+          });
+        }
+        else {
+          db.query(`select * from Notice where ntitle LIKE '%${parameter.searchText}%' 
+          or ncontent LIKE '%${parameter.searchText}%'  
+          or nwriter LIKE '%${parameter.searchText}%' order by ndate desc `, function(error,db_data) {
             if(error) {
               logger.error(
               "DB error [Notice]"+
-              "\n \t" + `select * from Notice`+
+              "\n \t" + `select * from Notice where ntitle LIKE '%${parameter.searchText}%' 
+              or ncontent LIKE '%${parameter.searchText}%'  
+              or nwriter LIKE '%${parameter.searchText}%' order by ndate desc `+
               "\n \t" + error);
                 reject('DB ERR');
             }
             else {
                 resolve(db_data);
             }
-        });
-    })
-};
+          });
+        }
+  })
+}
 
  function insertNotice(parameters) {
    return new Promise ((resolve, reject) => {

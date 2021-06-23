@@ -1,23 +1,46 @@
 var db = require('../config/db');
 var logger = require('../config/logger');
 
-function getQuestion() {
+function getQuestion(parameter) {
     return new Promise ((resolve, reject) => {
-        db.query(`select * from Question order by qdate desc`, function(error,db_data) {
-            if (error) {
+        if(parameter.searchText == undefined){
+          db.query(`select * from Question order by qdate desc `, function(error,db_data) {
+              if(error) {
                 logger.error(
-                    "DB error [Question]"+
-                    "\n \t" + `select * from Question` +
-                    "\n \t" + error);
+                "DB error [Question]"+
+                "\n \t" + `select * from Question order by qdate desc `+
+                "\n \t" + error);
+                  reject('DB ERR');
+              }
+              else {
+                  resolve(db_data);
+              }
+          });
+        }
+        else {
+          db.query(`select * from Question where qtitle LIKE '%${parameter.searchText}%' 
+          or qcontent LIKE '%${parameter.searchText}%'  
+          or qwriter LIKE '%${parameter.searchText}%'
+          or qadmin_comment LIKE '%${parameter.searchText}%'
+          order by qdate desc `, function(error,db_data) {
+            if(error) {
+              logger.error(
+              "DB error [Question]"+
+              "\n \t" + `select * from Question where qtitle LIKE '%${parameter.searchText}%' 
+              or qcontent LIKE '%${parameter.searchText}%'  
+              or qwriter LIKE '%${parameter.searchText}%'
+              or qadmin_comment LIKE '%${parameter.searchText}%'
+              order by qdate desc `+
+              "\n \t" + error);
                 reject('DB ERR');
-                //throw error;
             }
             else {
-              resolve(db_data);
-           }
-        });
-    })
-};
+                resolve(db_data);
+            }
+          });
+        }
+  })
+}
 
  function insertQuestion(parameters) {
    return new Promise ((resolve, reject) => {
