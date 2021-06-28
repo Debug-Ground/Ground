@@ -4,10 +4,8 @@ var noticeController = require('../controller/noticeController')
 
 /* GET home page. */
 
-
-
 router.get('/android', noticeController.androidNotice);
- 
+
 // -----------------------------------------------android notice
 
 // notice_write
