@@ -39,7 +39,9 @@
   firebase.initializeApp(firebaseConfig2);
   firebase.auth().onAuthStateChanged(function(user) {
     if(user.displayName == "Ground Debug"){
-      document.getElementById('comSave').classList.remove('d-none');  
+      document.getElementById('commentSave').classList.remove('d-none');  
+
+      document.getElementById('buttonSave').classList.remove('d-none');        
       document.getElementById('btnSave').classList.remove('d-none');                
       document.getElementById('btnCancel').classList.remove('d-none');                                                                             
     }
@@ -108,7 +110,7 @@
                     <div class="entry-footer clearfix">
                         <div class="float-right">
                         <ul class="tags">
-                            <li><button type="button" class="btn btn-outline-primary m-1 d-none" id="btnSave" 
+                            <li><button type="button" class="btn btn-outline-primary m-1 d-none" id="buttonSave" 
                               onclick="location.href='/question/adminComment/<%=db_data[0].qid %>'">코멘트 작성</button>
                             </li>
                         </ul>
@@ -118,7 +120,7 @@
                       <div class="entry-footer clearfix">
                         <div class="float-right">
                         <ul class="tags">
-                            <li><button type="button" class="btn btn-outline-primary m-1 d-none" id="comSave" 
+                            <li><button type="button" class="btn btn-outline-primary m-1 d-none" id="commentSave" 
                               onclick="location.href='/question/adminCommentUpdate/<%=db_data[0].qid %>'">코멘트 수정</button>
                             </li>
                         </ul>

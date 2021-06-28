@@ -5,7 +5,7 @@ const crypto = require('crypto');
 
 function manual(req, res, next) {
   const algorithm = 'aes-192-cbc';
-  const password = 'HUB_2021'
+  const password = 'ehreh871'
   const key = process.env.SecretKey;
   const iv = Buffer.alloc(16, 0);
   const cipher = crypto.createCipheriv(algorithm, key, iv);
