@@ -60,7 +60,7 @@
       </nav><!-- .nav-menu -->
 
         <a id="joinmenu"></a>
-        <a href="#about" class="get-started-btn scrollto">시작하기</a>
+        <a href="/group" class="get-started-btn scrollto">시작하기</a>
         <a id="loginmenu" class="get-started-btn2 scrollto" onclick="logout()"></a>
       
     </div>
@@ -81,7 +81,7 @@
       firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
           document.getElementById("loginmenu").innerHTML = "로그아웃";
-          document.getElementById("joinmenu").innerHTML = "반가워요! " + user.displayName + " 님";
+          document.getElementById("joinmenu").innerHTML = user.displayName + " 님";
         } else {
           var gmail = document.getElementById("loginmenu");
           gmail.addEventListener('click', e => {
