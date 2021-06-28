@@ -15,5 +15,4 @@ admin.initializeApp({config,
   credential: admin.credential.cert(serviceAccount)
 });
 const database = admin.firestore();
-// facebook url https://ground-315511.firebaseapp.com/__/auth/handler
 module.exports = database;

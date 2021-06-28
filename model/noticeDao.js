@@ -38,6 +38,22 @@ function getNotice(parameter) {
   })
 }
 
+function androidNotice(parameters) {
+  return new Promise ((resolve, reject) => {
+    db.query(`select * from Notice order by ndate desc `, function(error,db_data) {
+      if(error) {
+        logger.error(
+        "DB error [Notice]"+
+        "\n \t" + `select * from Notice`+
+        "\n \t" + error);
+          reject('DB ERR');
+      }
+      else {
+          resolve(db_data);
+      }
+  });
+  });
+}
  function insertNotice(parameters) {
    return new Promise ((resolve, reject) => {
        db.query(`Insert into Notice set ntitle = '${parameters.ntitle}', ncontent = '${parameters.ncontent}', nwriter = '${parameters.nwriter}', ndate = '${parameters.ndate}'`, function(error ,db_data) {
@@ -105,10 +121,12 @@ function getNoticeDetail(parameter) {
       });
   })
 };
+
 module.exports = {
     getNotice,
     getNoticeDetail,
     deleteNotice,
     insertNotice,
-    updateNotice
+    updateNotice,
+    androidNotice
 }

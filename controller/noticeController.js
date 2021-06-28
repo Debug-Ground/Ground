@@ -78,6 +78,18 @@ function ndelete(req, res, next) {
   }).catch(err=>res.send("<script>alert('err');</script>")); 
 }
 
+
+
+//-------------------android 
+
+
+function androidNotice(req, res, next) {
+  noticeDao.androidNotice().then((db_data) => {
+    res.json(db_data)  
+  }).catch(err=>res.send("<script>alert('err');</script>"));
+}
+
+
 module.exports = {
   notice,
   nwrite,
@@ -85,5 +97,6 @@ module.exports = {
   ndelete,
   nupdate,
   insertData,
-  updateData
+  updateData,
+  androidNotice
 }
