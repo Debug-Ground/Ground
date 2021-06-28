@@ -1,7 +1,7 @@
 var express = require('express');
 
 function Group(req, res, next) {
-    res.render('faq');
+    res.render('group');
 } 
 
 module.exports = {
