@@ -10,16 +10,9 @@ function Group(req, res, next) {
  
 
 function GroupDetail(req, res, next) {
-<<<<<<< HEAD
     res.render('group_detail');
 }
 
-module.exports = {
-    Group,
-    GroupDetail
-=======
-    res.render('faq');
-}
 function GroupNotice(req, res, next) {
     res.render('faq');
 }
@@ -31,5 +24,4 @@ module.exports = {
     GroupDetail,
     GroupNotice,
     GroupQuestion
->>>>>>> 45f18ce68b14093d4b46b1157335b414565489ee
 }
