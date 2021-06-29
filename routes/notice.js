@@ -6,6 +6,8 @@ var noticeController = require('../controller/noticeController')
 
 router.get('/android', noticeController.androidNotice);
 
+router.post('/androidResult',noticeController.androidResult);
+
 // -----------------------------------------------android notice
 
 // notice_write

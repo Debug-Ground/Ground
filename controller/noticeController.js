@@ -40,7 +40,7 @@ function insertData(req, res, next) {
     "nwriter" : req.body.writerx
   }
   noticeDao.insertNotice(parameters).then(
-  (db_data) => {
+    (db_data) => {
       res.redirect("/notice/1")
     }).catch(err=>res.send("<script>alert('err');</script>"));
   }
@@ -89,6 +89,23 @@ function androidNotice(req, res, next) {
   }).catch(err=>res.send("<script>alert('err');</script>"));
 }
 
+function androidResult(req, res, next) {
+  var parameters = {
+    "ntitle" : req.body.ntitle,
+    "ncontent" : req.body.ncontent,
+    "ndate" : new dayjs().format("YYYY-MM-DD HH-mm-ss"),
+    "nwriter" : req.body.nwriter
+  }
+  noticeDao.insertNotice(parameters).then((db_data) => {
+    console.log(parameters);
+    res.send('{"result":"ok"}')  
+  }).catch(err=>res.send("<script>alert('err');</script>"));
+  }
+     
+
+
+
+
 
 module.exports = {
   notice,
@@ -98,5 +115,6 @@ module.exports = {
   nupdate,
   insertData,
   updateData,
-  androidNotice
+  androidNotice,
+  androidResult
 }

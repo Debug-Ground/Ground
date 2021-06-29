@@ -1,8 +1,14 @@
 var express = require('express');
+var groupDAO = require('../model/groupDao');
+
 
 function Group(req, res, next) {
-    res.render('group');
-} 
+  groupDAO.getGroup().then((db_data) => {
+    res.render('group', {db_data})
+  }).catch(err=>res.send("<script>alert('err');</script>"));
+}
+ 
+
 function GroupDetail(req, res, next) {
     res.render('faq');
 }
