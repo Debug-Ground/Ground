@@ -60,7 +60,7 @@
       </nav><!-- .nav-menu -->
 
       <a class="get-started-btn2 scrollto" id="joinmenu" style="color: white;"></a>
-      <a href="#about" class="get-started-btn scrollto">시작하기</a>
+      <a href="#about" id="startbtn" class="get-started-btn scrollto">시작하기</a>
       <a id="loginmenu" class="get-started-btn2 scrollto" style="color: white;" onclick="logout()"></a>
 
     </div>
@@ -87,7 +87,7 @@
                   <a data-toggle="collapse" class="collapse" href="#accordion-list-1"><span>01</span> Ground 회사는 무엇을 하는 곳 인가요?<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
                   <div id="accordion-list-1" class="collapse show" data-parent=".accordion-list">
                     <p>
-                      Ground Company는 웹 영상 회의 프로그램을 개발하는 곳으로 AI를 활용하여 사람의 안면을 인식하여<br> 자동으로 출석을 할 수 있도록 합니다.
+                      Ground Company는 안전 장비 감시 프로그램을 개발하는 곳으로 AI를 활용하여 안전 장비를 인식하여<br> 공사 현장 출입시 자동적으로 확인 할 수 있도록 합니다.
                     </p>
                   </div>
                 </li>
@@ -291,8 +291,9 @@
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
         document.getElementById("loginmenu").innerHTML = "로그아웃";
-        document.getElementById("joinmenu").innerHTML = "반가워요! " + user.displayName + " 님";
+        document.getElementById("joinmenu").innerHTML = user.displayName + " 님";
       } else {
+        document.getElementById("startbtn").className='d-none';
         document.getElementById("joinmenu").className='d-none';
         document.getElementById("loginmenu").innerHTML = "로그인";
         document.getElementById("loginmenu").href = "/auth/signIn";
