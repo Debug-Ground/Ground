@@ -99,13 +99,8 @@ function androidResult(req, res, next) {
   noticeDao.insertNotice(parameters).then((db_data) => {
     console.log(parameters);
     res.send('{"result":"ok"}')  
-  }).catch(err=>res.send("<script>alert('err');</script>"));
+    }).catch(err=>res.send("<script>alert('err');</script>"));
   }
-     
-
-
-
-
 
 module.exports = {
   notice,

@@ -2,7 +2,7 @@ const admin = require('firebase-admin');
 var firebase = require('firebase')
 const serviceAccount = require('../path/to/serviceAccountKey.json');
 
-var config = {
+const config = {
 	apiKey: "AIzaSyD8-ubMdZ2UaWRklxYrFoN1WXr1LIjNbgI",
 	authDomain: "ground-315511.firebaseapp.com",
 	databaseURL: "https://ground-315511.firebaseio.com",
