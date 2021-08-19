@@ -56,9 +56,28 @@ function delete_Checklist(parameters) {
     })
 };
 
+function select_accident(parameters) {
+    return new Promise ((resolve, reject) => {
+        db.query(`SELECT * FROM Accident`, function(err,db_data) {
+            if (err) {
+                logger.error(
+                    "DB error [Accident]"+
+                    "\n \t" + `SELECT * FROM Accident`+
+                    "\n \t" + err);
+                reject('DB ERR');
+                //throw error;
+            }
+            else {
+                resolve(db_data);
+            }
+        });
+    })
+};
+
 
 module.exports = {
     select_Checklist,
     insert_Checklist,
-    delete_Checklist
+    delete_Checklist,
+    select_accident
 }
