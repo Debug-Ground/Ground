@@ -7,7 +7,14 @@ function dash_main(req, res, next) {
 
 function dash_checklist(req, res, next) { 
   dashDAO.select_Checklist().then((db_data)=> {
-    res.json(db_data);
+      var data = {
+          message : "응답상태 성공였습니다",
+          result : db_data
+      }
+      var jtest = JSON.stringify(data)
+      var jsonOb = JSON.parse(jtest)
+
+      res.json(jsonOb)
   })   
 }
 

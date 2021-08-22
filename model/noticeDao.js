@@ -38,9 +38,9 @@ function getNotice(parameter) {
   })
 }
 
-function androidNotice(parameters) {
+function androidNotice() {
   return new Promise ((resolve, reject) => {
-    db.query(`select * from Notice order by ndate desc `, function(error,db_data) {
+    db.query(`select * from Notice order by ndate desc limit 5`, function(error,db_data) {
       if(error) {
         logger.error(
         "DB error [Notice]"+

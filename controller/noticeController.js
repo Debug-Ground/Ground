@@ -85,7 +85,15 @@ function ndelete(req, res, next) {
 
 function androidNotice(req, res, next) {
   noticeDao.androidNotice().then((db_data) => {
-    res.json(db_data)  
+    var data = {
+      message : "응답상태 성공였습니다",
+      result : db_data
+    }
+    var jtest = JSON.stringify(data)
+    var jsonOb = JSON.parse(jtest)
+
+    console.log(jsonOb)
+    res.json(jsonOb)
   }).catch(err=>res.send("<script>alert('err');</script>"));
 }
 
