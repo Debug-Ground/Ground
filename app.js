@@ -4,8 +4,11 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
+var session = require("express-session");
 var helmet = require('helmet');
 var fs = require('fs');
+
+const passport = require('passport')
 
 var indexRouter = require('./routes/');
 var authRouter = require('./routes/auth');
@@ -16,6 +19,7 @@ var questionRouter = require('./routes/question');
 var manualRouter = require('./routes/manual');
 var groupRouter = require('./routes/group');
 var dashRouter = require('./routes/dash');
+
 var app = express();
 
 // view engine setup
@@ -27,6 +31,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(require('express-session')({
+  secret: 'keyboard cat',
+  resave: true,
+  saveUninitialized: true
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
