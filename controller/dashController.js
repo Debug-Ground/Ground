@@ -18,6 +18,25 @@ function dash_checklist(req, res, next) {
   })   
 }
 
+function dash_userchecklistUpdate(req, res, next) {
+    var parameters = {
+        "wid" : req.body.uid,
+        "wischeck": req.body.wischeck
+    }
+
+    var successData = {
+        message : "1"
+    }
+
+    var sendJsonData = JSON.parse(JSON.stringify(successData))
+
+    dashDAO.update_UserChecklist(parameters).then((db_data)=> {
+        console.log(db_data)
+        console.log("체크정보 업데이트");
+        res.json(sendJsonData)
+    })
+}
+
 function dash_checklistInsert(req, res, next) { 
   var parameters = {
     "cList" : "내용" //req.body.cList
@@ -81,5 +100,6 @@ module.exports = {
     dash_notice,
     dash_timecard,
     dash_work_chart,
-    dash_worker_chart
+    dash_worker_chart,
+    dash_userchecklistUpdate
 }

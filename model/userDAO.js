@@ -4,7 +4,7 @@ var logger = require('../config/logger');
 
 function insert_userInfo(parameters) {
     return new Promise(function (resolve, reject) {
-        db.query(`INSERT INTO Worker SET wid = '${parameters.wid}', wName = '${parameters.wName}', wEmail = '${parameters.wEmail}', wImage = '${parameters.wImage}', wToken ='${parameters.wToken}'`, function (error, db_data) {
+        db.query(`INSERT INTO Worker SET wid = '${parameters.wid}', wName = '${parameters.wName}', wRName = '${parameters.wRName}', wEmail = '${parameters.wEmail}', wImage = '${parameters.wImage}', wToken ='${parameters.wToken}'`, function (error, db_data) {
             if (error) {
                 logger.error(
                     "DB error [Worker]"+

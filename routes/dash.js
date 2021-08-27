@@ -9,6 +9,7 @@ router.get('/', dashController.dash_main);
 router.get('/checklist', dashController.dash_checklist);
 router.post('/insertCheck', dashController.dash_checklistInsert);
 router.delete('/deleteCheck',dashController.dash_checklistDelete);
+router.post('/updateUserCheck',dashController.dash_userchecklistUpdate);
 
 //accideent
 router.get('/accident', dashController.dash_accident);

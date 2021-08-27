@@ -21,7 +21,7 @@ var userController = require('../controller/userController')
     * callbackURL : 카카오 디벨로퍼에서 설정한 Redirect URI
 */
 passport.use('kakao', new KakaoStrategy({
-    clientID: 'a886c423931217944109d5f34f1f65c5',
+    clientID: '3d5a0b62ceb1d002077ad980748700d4',
     callbackURL: '/auth/kakao/callback',
 }, async (accessToken, refreshToken, profile, done) => {
     return done(null, profile._json);
@@ -45,8 +45,9 @@ router.get('/findUser',userController.findUser)
 
 
 //안드로이드
-
-router.post('/verificationUserInfo',userController.verificationUserInfo)
+router.post('/findBodyUserInfo',userController.findBodyUserInfo)
+router.post('/insertBodyUserInfo',userController.insertBodyUserInfo)
+router.post('/updateBodyUserInfo',userController.updateBodyUserInfo)
 
 router.get('/kakao', passport.authenticate('kakao'));
 

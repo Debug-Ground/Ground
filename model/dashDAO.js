@@ -19,6 +19,26 @@ function select_Checklist() {
     })
 };
 
+function update_UserChecklist(parameters) {
+    return new Promise ((resolve, reject) => {
+        db.query(`UPDATE Worker SET wIsCheck= '${parameters.wischeck}' where wid = '${parameters.wid}'`, function(err,db_data) {
+            if (err) {
+                logger.error(
+                    "DB error [CheckList]"+
+                    "\n \t" + `UPDATE Worker SET wIsCheck= '${parameters.wischeck}' where wid = '${parameters.wid}'`+
+                    "\n \t" + err);
+                reject('DB ERR');
+                //throw error;
+            }
+            else {
+                console.log("확인용/ "+ db_data)
+                resolve(db_data);
+            }
+        });
+    })
+};
+
+
 function insert_Checklist(parameters) {
     return new Promise ((resolve, reject) => {
         db.query(`INSERT INTO CheckList SET cList = '${parameters.cList}'`, function(err,db_data) {
@@ -79,5 +99,6 @@ module.exports = {
     select_Checklist,
     insert_Checklist,
     delete_Checklist,
-    select_accident
+    select_accident,
+    update_UserChecklist
 }
