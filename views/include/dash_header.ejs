@@ -7,27 +7,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Ground</title>
   <!-- plugins:css -->
-  <link rel="stylesheet" href="dash_assets/vendors/feather/feather.css">
-  <link rel="stylesheet" href="dash_assets/vendors/ti-icons/css/themify-icons.css">
-  <link rel="stylesheet" href="dash_assets/vendors/css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="/dash_assets/vendors/feather/feather.css">
+  <link rel="stylesheet" href="/dash_assets/vendors/ti-icons/css/themify-icons.css">
+  <link rel="stylesheet" href="/dash_assets/vendors/css/vendor.bundle.base.css">
   <!-- endinject -->
   <!-- Plugin css for this page -->
-  <link rel="stylesheet" href="dash_assets/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
-  <link rel="stylesheet" href="dash_assets/vendors/ti-icons/css/themify-icons.css">
-  <link rel="stylesheet" type="text/css" href="dash_assets/js/select.dataTables.min.css">
+  <link rel="stylesheet" href="/dash_assets/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+  <link rel="stylesheet" href="/dash_assets/vendors/ti-icons/css/themify-icons.css">
+  <link rel="stylesheet" type="text/css" href="/dash_assets/js/select.dataTables.min.css">
   <!-- End plugin css for this page -->
   <!-- inject:css -->
-  <link rel="stylesheet" href="dash_assets/css/vertical-layout-light/style.css">
+  <link rel="stylesheet" href="/dash_assets/css/vertical-layout-light/style.css">
   <!-- endinject -->
-  <link rel="shortcut icon" href="dash_assets/images/favicon.png" />
+  <link rel="shortcut icon" href="/dash_assets/images/favicon.png" />
+  <!-- bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
 </head>
 <body>
   <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <a class="navbar-brand brand-logo mr-5" href="index.html"><img src="dash_assets/images/logo2.svg" class="mr-2" alt="logo"/></a>
-        <a class="navbar-brand brand-logo-mini" href="index.html"><img src="dash_assets/images/logo-mini.svg" alt="logo"/></a>
+        <a class="navbar-brand brand-logo mr-5" href="/"><img src="/dash_assets/images/logo2.svg" class="mr-2" alt="logo"/></a>
+        <a class="navbar-brand brand-logo-mini" href="/"><img src="/dash_assets/images/logo-mini.svg" alt="logo"/></a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
         <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -96,7 +99,7 @@
           </li>
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-              <img src="dash_assets/images/faces/face28.jpg" alt="profile"/>
+              <img src="/dash_assets/images/faces/face28.jpg" alt="profile"/>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
               <a class="dropdown-item">
@@ -117,19 +120,16 @@
     </nav>
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
-      <!-- partial:partials/_settings-panel.html -->
-      <!-- partial -->
-      <!-- partial:partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="/dash">
               <i class="icon-grid menu-icon"></i>
               <span class="menu-title">메인 화면</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+            <a class="nav-link" href="/dash/notice">
               <i class="icon-layout menu-icon"></i>
               <span class="menu-title">공지사항</span>
             </a>
