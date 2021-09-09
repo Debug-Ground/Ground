@@ -1,19 +1,17 @@
-# Ground
+## **Developer** : **Tech Stack**
 
-<table>
-  <tr style = width="300px">
-    <th>제목</th>
-    <th>제목</th>
-    <th>제목</th>
-  </tr>
-  <tr>
-    <td>내용</td>
-    <td>내용</td>
-    <td>내용</td>
-  </tr>
-  <tr>
-    <td>내용</td>
-    <td>내용</td>
-    <td>내용</td>
-  </tr>
-</table>
+* [Deukhoi Kim](https://github.com/Deuk-Hoi) - Team Leader & Android
+* Minsu Kim : BackEnd & Android
+* Woosik Park : FrontEnd & AI
+* Junha Song : FrontEnd & AI
+* KyuHwan Lee : BackEnd
+
+
+## Part
+|**Developer**|**Tech Stack**|
+|:---:|:---:|
+|Deukhoi Kim|Team Leader & Android|
+|Minsu Kim|BackEnd & Android|
+|Woosik Park|FrontEnd & AI|
+|Junha Song|FrontEnd & AI|
+|KyuHwan Lee|BackEnd|
