@@ -7,7 +7,7 @@
 |Song Junha| FrontEnd & AI
 |Lee Kyuhwan|BackEnd 
 
-# 🔥 Getting Started
+# ⭐ Getting Started
 
 서버를 실행하는 방법입니다.
 순서대로 진행해야 정상적으로 작동합니다.
