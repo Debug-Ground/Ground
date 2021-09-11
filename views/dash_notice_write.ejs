@@ -1,0 +1,51 @@
+<% include ./include/dash_header %>
+<div class="main-panel">
+    <div class="content-wrapper">
+      <div class="row">
+        <div class="col-lg-12 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <h2 style="color:#4B49AC; margin:25px 0 10px 0;"><i class="mdi mdi-bullhorn"></i>&nbsp;공지사항 글쓰기</h2>
+              <p class="card-description" style="margin: 0 0 30px 20px;">
+                Ground 공지사항 작성해주세요.
+              </p>
+              <form class="forms-sample" style="margin: 50px 0 0 0;" action="/dash/noticeInsert" method="POST">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="Croplocation"  name = "nTitle" placeholder="제목" style="height: 50px; margin: 30px 0 0 0">
+                </div>
+
+                <textarea id="summernote" name="nContent"></textarea>
+
+                <script>
+                    $('#summernote').summernote({
+                        placeholder: '공지 할 내용을 적어주세요.',
+                        tabsize: 2,
+                        height: 450,
+                        toolbar: [
+                        ['style', ['style']],
+                        ['font', ['bold', 'underline', 'clear']],
+                        ['color', ['color']],
+                        ['para', ['ul', 'ol', 'paragraph']],
+                        ['table', ['table']],
+                        ['insert', ['link', 'picture', 'video']],
+                        ['view', ['fullscreen', 'codeview', 'help']]
+                        ]
+                    });
+                </script>
+                </div>
+                <div style="float: right; margin: 10px 0 25px 0">
+                    <button type="submit" class="btn btn-inverse-primary btn-fw"style="float: right; margin: 0 20px 0 15px;">
+                    <i class="mdi mdi-hospital"></i>                                                    
+                      &nbsp; 등록하기
+                    </button>
+                    <button type="button" class="btn btn-inverse-danger btn-fw"style="float: right; margin: 0 0 0 15px">
+                        <i class="mdi mdi-minus"></i>                                                    
+                        &nbsp; 취소하기
+                    </button>
+                  </div>
+            </form>
+            </div>
+          </div>
+        </div>
+        
+<% include ./include/dash_footer %>

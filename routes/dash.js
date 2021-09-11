@@ -16,9 +16,13 @@ router.get('/accident', dashController.dash_accident);
 router.get('/cctv',dashController.dash_cctv);
 router.get('/manpower',dashController.dash_manpower);
 router.get('/manpower_add',dashController.dash_manpower_add);
+router.get('/manpower_detail',dashController.dash_manpower_detail);
 router.get('/notice',dashController.dash_notice);
+router.get('/notice_write',dashController.dash_notice_write);
+router.get('/notice_detail',dashController.dash_notice_detail);
 router.get('/timecard',dashController.dash_timecard);
-router.get('/work_chart',dashController.dash_work_chart);
+router.get('/work_chart',dashController.dash_work);
+router.get('/work_chart_add',dashController.dash_work_add);
 router.get('/worker_chart',dashController.dash_worker_chart);
 
 module.exports = router;
