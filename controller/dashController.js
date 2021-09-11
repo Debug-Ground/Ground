@@ -72,16 +72,32 @@ function dash_manpower_add(req, res, next) {
     res.render('dash_manpower_add');  
 }
 
+function dash_manpower_detail(req, res, next) { 
+  res.render('dash_manpower_detail');  
+}
+
 function dash_notice(req, res, next) { 
     res.render('dash_notice');  
+}
+
+function dash_notice_write(req, res, next) { 
+  res.render('dash_notice_write');  
+}
+
+function dash_notice_detail(req, res, next) { 
+  res.render('dash_notice_detail');  
 }
 
 function dash_timecard(req, res, next) { 
     res.render('dash_timecard');  
 }
 
-function dash_work_chart(req, res, next) { 
-    res.render('dash_work_chart');  
+function dash_work(req, res, next) { 
+    res.render('dash_work');  
+}
+
+function dash_work_add(req, res, next) { 
+  res.render('dash_work_add');  
 }
 
 function dash_worker_chart(req, res, next) { 
@@ -97,9 +113,13 @@ module.exports = {
     dash_cctv,
     dash_manpower,
     dash_manpower_add,
+    dash_manpower_detail,
     dash_notice,
+    dash_notice_write,
+    dash_notice_detail,
     dash_timecard,
-    dash_work_chart,
+    dash_work,
+    dash_work_add,
     dash_worker_chart,
     dash_userchecklistUpdate
 }
