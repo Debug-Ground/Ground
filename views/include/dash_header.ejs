@@ -29,6 +29,10 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
 
+  <!-- bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+
 </head>
 <body>
   <div class="container-scroller">
@@ -129,28 +133,26 @@
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link" href="/dash">
+            <a class="nav-link" href="#" onclick="location.href='/dash';">
               <i class="icon-grid menu-icon"></i>
               <span class="menu-title">메인 화면</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/dash/notice">
+            <a class="nav-link" href="#" onclick="location.href='/dash/notice';">
               <i class="icon-layout menu-icon"></i>
               <span class="menu-title">공지사항</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
+            <a class="nav-link" data-toggle="collapse" href="#form-elements">
               <i class="icon-columns menu-icon"></i>
               <span class="menu-title">공사 현장</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="form-elements">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">CCTV [ 출입문 ]</a></li>
-                <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">CCTV [ 현장 외부 ]</a></li>
-                <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">CCTV [ 현장 내부 ]</a></li>
+                <li class="nav-item"><a class="nav-link" href="#" onclick="location.href='/dash/cctv';" >CCTV</a></li>
               </ul>
             </div>
           </li>
