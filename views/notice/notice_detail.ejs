@@ -37,32 +37,11 @@
 
   <link href="/assets/css/style.css" rel="stylesheet">
   <link href="/ndetail_assets/css/style.css" rel="stylesheet">
-  <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-app.js"></script>
-  <!-- TODO: Add SDKs for Firebase products that you want to use https://firebase.google.com/docs/web/setup#available-libraries -->
-  <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-analytics.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-auth.js"></script>
-  <script>
-  // firebase 중요 설정 키값
-  const firebaseConfig1 = {
-    apiKey: "AIzaSyD8-ubMdZ2UaWRklxYrFoN1WXr1LIjNbgI",
-    authDomain: "ground-315511.firebaseapp.com",
-  };
-  // firebase 초기화
-  firebase.initializeApp(firebaseConfig1);
-  firebase.auth().onAuthStateChanged(function(user) {
-    if(user.displayName == "Ground Debug"){
-      document.getElementById('btnSave').classList.remove('d-none');                
-      document.getElementById('btnCancel').classList.remove('d-none');                                                                             
-    }
-    
-  console.log(user.displayName);
-  })
-  </script>
 </head>
 
 <body>
 
-  <% include include/header2 %>
+  <% include ../include/header2 %>
 
   <main id="main" style="margin-right: 120px;">
 
@@ -134,6 +113,6 @@
   <!-- Template Main JS File -->
   <script src="/assets/js/main.js"></script>
   
-  <% include include/footer2%>
+  <% include ../include/footer2%>
 
 </html>

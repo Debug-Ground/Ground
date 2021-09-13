@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Ground</title>
+  <title>Ground Question</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -39,7 +39,7 @@
 
 <body>
 
-  <% include include/header2 %>
+  <% include ../include/header2 %>
 
   <script>
 
@@ -60,7 +60,7 @@
   <section id="contact" class="about" style="padding-bottom: 20px; margin-top: 100px;">
     <div class="container" data-aos="fade-up">
       <div class="section-title">
-        <h2>공지사항 글쓰기</h2>
+        <h2>문의사항 글쓰기</h2>
       </div>
     </div>
   </section>
@@ -69,10 +69,10 @@
 
 		<div class="container" role="main">
 
-			<form name="form" id="form" role="form" method="post" action="/notice/updateData">
+			<form name="form" id="form" role="form" method="post" action="/question/updateData">
 				<div class="mb-3">
 					<label for="title" style="font-weight: 20px; font-size: 25px;">제목</label>
-					<input type="text" class="form-control" name="title" id="title" value="<%= db_data[0].ntitle %>">
+					<input type="text" class="form-control" name="title" id="title" value="<%= db_data[0].qtitle%>"">
 				</div>
 
 				<div class="mb-3" style="margin-top: 60px;">
@@ -80,7 +80,7 @@
           <textarea id="summernote" name="summernote"></textarea>
           <script>
             $('#summernote').summernote({
-              placeholder: '<%- db_data[0].ncontent %>',
+              placeholder: '<%- db_data[0].qcontent %>',
               tabsize: 2,
               height: 350,
               toolbar: [
@@ -99,9 +99,9 @@
       </div>
 			<div style="text-align: right;">
         <input type="hidden" id="writerx" name="writerx" value=""/>
-        <input type="hidden" id="nidx" name="nidx" value="<%= db_data[0].nid %>"/>
+        <input type="hidden" id="qidx" name="qidx" value="<%= db_data[0].qid %>"/>
 		<button type="button" class="btn btn-outline-primary m-1" id="btnSave">저장</button>
-        <button type="button" class="btn btn-outline-danger m-1" id="btnCancel" onclick="location.href='/notice/1'">취소</button>
+        <button type="button" class="btn btn-outline-danger m-1" id="btnCancel" onclick="location.href='/question/1'">취소</button>
 			</div>
     </form>
 		</div>
@@ -123,28 +123,5 @@
   
  
 
-  <% include include/footer2%>
- 
-    <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-app.js"></script>
-      <!-- TODO: Add SDKs for Firebase products that you want to use https://firebase.google.com/docs/web/setup#available-libraries -->
-      <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-analytics.js"></script>
-      <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-auth.js"></script>
-      
-      <script>
-      // firebase 중요 설정 키값
-      const firebaseConfig1 = {
-        apiKey: "AIzaSyD8-ubMdZ2UaWRklxYrFoN1WXr1LIjNbgI",
-        authDomain: "ground-315511.firebaseapp.com",
-        storageBucket: "ground-315511.appspot.com"
-      };
-      // firebase 초기화
-      firebase.initializeApp(firebaseConfig1);
-      firebase.auth().onAuthStateChanged(function(user) {
-        if (user) {
-          document.getElementById('writerx').value = firebase.auth().currentUser.displayName
-        } else {
-          console.log('failed')
-        }
-      });
-      </script>
+  <% include ../include/footer2%>
 </html>

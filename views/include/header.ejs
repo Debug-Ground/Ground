@@ -58,10 +58,12 @@
 
         </ul>
       </nav><!-- .nav-menu -->
-
+      <% if (username == undefined) { %>
         <a id="joinmenu" href="/auth/kakao">LOGIN</a>
-        <a href="/dash" id="startbtn" class="get-started-btn scrollto">시작하기</a>
+      <% } else { %>
+        <a id="loginmenu" class="get-started-btn2 scrollto"><%= username %></a>
         <a id="loginmenu" class="get-started-btn2 scrollto" href="/auth/logout">LOGOUT</a>
-      
+        <a href="/dash" id="startbtn" class="get-started-btn scrollto">시작하기</a>
+      <% } %>
     </div>
   </header><!-- End Header -->

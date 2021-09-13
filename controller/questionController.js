@@ -7,7 +7,7 @@ function question(req, res, next) {
     "searchText" : req.query.searchText
   }
   questionDao.getQuestion(parameter).then((db_data) => {
-        res.render('question', {db_data, q_num : req.params.num , max_value : 10, dayjs});
+        res.render('question/question', {db_data, q_num : req.params.num , max_value : 10, dayjs});
       }).catch(err=>res.send("<script>alert('err');</script>")); 
   }
 
@@ -38,7 +38,7 @@ function updateData(req,res, next) {
 }
 
 function qwrite(req, res, next) {
-        res.render('question_write');
+  res.render('question/question_write');
 }
 
 function qupdate(req, res, next) {
@@ -46,7 +46,7 @@ function qupdate(req, res, next) {
     "qid" : req.params.num
   }
   questionDao.getQuestionDetail(parameters).then((db_data)=>{
-   res.render('question_update',{db_data});
+   res.render('question/question_update',{db_data});
   }).catch(err=>res.send("<script>alert('err');</script>"));
 }
 function qadmin(req, res, next) {
@@ -54,7 +54,7 @@ function qadmin(req, res, next) {
     "qid": req.params.num
   }
   questionDao.getQuestionDetail(parameters).then((db_data) => {
-    res.render('question_admin', {db_data,dayjs});
+    res.render('question/question_admin', {db_data,dayjs});
   }).catch(err=>res.send("<script>alert('err');</script>")); 
 }
 
@@ -63,7 +63,7 @@ function qadminUpdate(req, res, next) {
     "qid": req.params.num
   }
   questionDao.getQuestionDetail(parameters).then((db_data) => {
-    res.render('question_adminUpdate', {db_data,dayjs});
+    res.render('question/question_adminUpdate', {db_data,dayjs});
   }).catch(err=>res.send("<script>alert('err');</script>")); 
 }
 
@@ -82,7 +82,7 @@ function qdetail(req, res, next) {
     "qid": req.params.num
   }
   questionDao.getQuestionDetail(parameters).then((db_data) => {
-        res.render('question_detail', {db_data,dayjs});
+        res.render('question/question_detail', {db_data,dayjs});
       }
     ).catch(err=>res.send("<script>alert('err');</script>")); 
 }

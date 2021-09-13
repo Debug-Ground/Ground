@@ -39,7 +39,7 @@
 
 <body>
 
-  <% include include/header2 %>
+  <% include ../include/header2 %>
 
   <script>
 
@@ -122,28 +122,7 @@
   
  
 
-  <% include include/footer2%>
+  <% include ../include/footer2%>
  
-    <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-app.js"></script>
-      <!-- TODO: Add SDKs for Firebase products that you want to use https://firebase.google.com/docs/web/setup#available-libraries -->
-      <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-analytics.js"></script>
-      <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-auth.js"></script>
-      
-      <script>
-      // firebase 중요 설정 키값
-      const firebaseConfig1 = {
-        apiKey: "AIzaSyD8-ubMdZ2UaWRklxYrFoN1WXr1LIjNbgI",
-        authDomain: "ground-315511.firebaseapp.com",
-        storageBucket: "ground-315511.appspot.com"
-      };
-      // firebase 초기화
-      firebase.initializeApp(firebaseConfig1);
-      firebase.auth().onAuthStateChanged(function(user) {
-        if (user) {
-          document.getElementById('writerx').value = firebase.auth().currentUser.displayName
-        } else {
-          console.log('failed')
-        }
-      });
-      </script>
+    
 </html>
