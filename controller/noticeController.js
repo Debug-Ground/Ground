@@ -1,26 +1,19 @@
 var express = require('express');
 var noticeDao = require('../model/noticeDao');
 var dayjs =  require('dayjs');
-const { data } = require('../config/logger');
-var firebase = require("firebase/app");
-FirebaseAuth = require('firebaseauth');
-// Add the Firebase products that you want to use
-require("firebase/auth");
-require("firebase/firestore");
-require("firebase/analytics")
 
 function notice(req, res, next) {
   var parameter = {
     "searchText" : req.query.searchText
   }
   noticeDao.getNotice(parameter).then((db_data) => {
-    res.render('notice', { db_data, n_num : req.params.num , max_value : 10, dayjs});
+    res.render('notice/notice', { db_data, n_num : req.params.num , max_value : 10, dayjs});
   }).catch(err=>res.send("<script>alert('err');</script>"));
 }
 
 
 function nwrite(req, res, next) {
-  res.render('notice_write');
+  res.render('notice/notice_write');
 }
 
 function nupdate(req, res, next) {
@@ -28,7 +21,7 @@ function nupdate(req, res, next) {
     "nid" : req.params.num
   }
   noticeDao.getNoticeDetail(parameter).then((db_data)=>{
-    res.render('notice_update',{db_data});
+    res.render('notice/notice_update',{db_data});
   }).catch(err=>res.send("<script>alert('err');</script>"));
 }
 
@@ -64,7 +57,7 @@ function ndetail(req, res, next) {
     "nid" : req.params.num
    }
   noticeDao.getNoticeDetail(parameters).then((db_data) => {
-    res.render('notice_detail', { db_data, n_num : req.params.num , max_value : 10, dayjs});
+    res.render('notice/notice_detail', { db_data, n_num : req.params.num , max_value : 10, dayjs});
     }).catch(err=>res.send("<script>alert('err');</script>"));
   } 
 

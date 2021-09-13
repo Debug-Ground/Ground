@@ -38,7 +38,7 @@
 
 <body>
 
-  <% include include/header2 %>
+  <% include ../include/header2 %>
 
 <body>
 
@@ -86,7 +86,7 @@
                             <textarea id="summernote" name="summernote"></textarea>
                             <script>
                               $('#summernote').summernote({
-                                placeholder: '공지 할 내용을 적어주세요.',
+                                placeholder: '<%- db_data[0].qadmin_comment %>',
                                 tabsize: 2,
                                 height: 300,
                                 toolbar: [
@@ -138,6 +138,6 @@
   <script src="/assets/js/main.js"></script>
   
 
-  <% include include/footer2%>
+  <% include ../include/footer2%>
 
 </html>
