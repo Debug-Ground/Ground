@@ -1,12 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>CCTV</h1>
-</body>
-</html>
+<% include ../include/dash_header %>
+<div class="main-panel">
+    <div class="content-wrapper">
+      <div class="row">
+        <div class="col-lg-12 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <h2 style="color:#4B49AC; margin:25px 0 10px 0;"><i class="mdi mdi-camera"></i>&nbsp;CCTV</h2>
+              <p class="card-description" style="margin: 0 0 30px 20px;">
+                Ground CCTV를 확인 해보세요.
+              </p>
+              <div class="table-responsive">
+                <nav class="nav nav-pills" >
+                    <a class="nav-link active" href="#tabmenu1" data-toggle="tab" aria-current="page">출입문</a>
+                    <a class="nav-link" href="#tabmenu2" data-toggle="tab">현장 내부</a>
+                    <a class="nav-link" href="#tabmenu3" data-toggle="tab">현장 외부</a>
+                </nav>
+                <style>
+                    .nav-pills .nav-link.active {
+                        background-color: #4B49AC;
+                    }
+                </style>
+                <div class="tab-content">
+                    <div class="tab-pane fade in active" id="tabmenu1"><p>아무튼 출입문</p></div>
+                    <div class="tab-pane fade" id="tabmenu2"><p>아무튼 현장 내부</p></div>
+                    <div class="tab-pane fade" id="tabmenu3"><p>아무튼 현장 외부</p></div>
+                </div>
+             </div>
+            </div>
+          </div>
+        </div>
+<% include ../include/dash_footer %>
