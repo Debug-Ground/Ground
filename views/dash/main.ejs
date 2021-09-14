@@ -147,13 +147,13 @@
                                 <div class="table-responsive mb-3 mb-md-0 mt-3">
                                   <table class="table table-borderless report-table">
                                     <tr>
-                                      <td class="text-muted">감전</td>
+                                      <td class="text-muted"><%= acCount[0].culture %></td>
                                       <td class="w-100 px-0">
                                         <div class="progress progress-md mx-4">
-                                          <div class="progress-bar bg-primary" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                                          <div class="progress-bar bg-primary" role="progressbar" style="width: <%= acCount[0].count %>%" aria-valuenow="<%= acCount[0].count %>" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
                                       </td>
-                                      <td><h5 class="font-weight-bold mb-0">13</h5></td>
+                                      <td><h5 class="font-weight-bold mb-0"><%= acCount[0].count %></h5></td>
                                     </tr>
                                     <tr>
                                       <td class="text-muted">추락</td>

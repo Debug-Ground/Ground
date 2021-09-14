@@ -2,7 +2,10 @@ var express = require('express');
 var dashDAO = require('../model/dashDAO')
 
 function dash_main(req, res, next) {      
-  res.render('dash/main');
+  dashDAO.select_accidentCount().then((db_data)=> {
+    acCount = db_data
+    res.render('dash/main',{acCount});
+  })
 }
 
 function dash_checklist(req, res, next) { 
@@ -77,7 +80,9 @@ function dash_manpower_detail(req, res, next) {
 }
 
 function dash_notice(req, res, next) { 
-    res.render('dash/notice');  
+  dashDAO.select_anNotice().then((db_data)=> {
+    res.render('dash/notice',{db_data, an_num: req.params.num, max_value: 8});  
+  })
 }
 
 function dash_notice_write(req, res, next) { 
@@ -85,7 +90,12 @@ function dash_notice_write(req, res, next) {
 }
 
 function dash_notice_detail(req, res, next) { 
-  res.render('dash/notice_detail');  
+  var parameters = {
+    "anid": req.params.num
+  }
+  dashDAO.select_anNoticeDetail(parameters).then((db_data)=> {
+    res.render('dash/notice_detail',{db_data});
+  })
 }
 
 function dash_timecard(req, res, next) { 
