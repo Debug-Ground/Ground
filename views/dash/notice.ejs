@@ -18,48 +18,38 @@
                     <th class="col-md-1">날짜</th>
                   </thead>
                   <tbody>
-                    <tr>
+                    <% for(var i = (an_num - 1) * max_value; i < an_num * max_value; i++){ %>
+                      <% var data_value=db_data[i]; if(data_value===undefined){ continue; } %>
+                      <tr onclick="location.href='/dash/noticedetail/<%= data_value.anid %>'">
                         <td class="font-weight-bold">[ 공지사항 ]</td>
-                        <td>Ground 공지사항 입니다.</td>
-                        <td>운영자</td>
-                        <td>2021.09.11</td>
+                        <td><%= db_data[i].antitle %></td>
+                        <td><%= db_data[i].anwriter %></td>
+                        <td><%= db_data[i].andate %></td>
                     </tr>
-                    <tr>
-                        <td class="font-weight-bold">[ 공지사항 ]</td>
-                        <td>Ground 공지사항 입니다.</td>
-                        <td>운영자</td>
-                        <td>2021.09.11</td>
-                    </tr>
-                    <tr>
-                        <td class="font-weight-bold">[ 공지사항 ]</td>
-                        <td>Ground 공지사항 입니다.</td>
-                        <td>운영자</td>
-                        <td>2021.09.11</td>
-                    </tr>
-                    <tr>
-                        <td class="font-weight-bold">[ 공지사항 ]</td>
-                        <td>Ground 공지사항 입니다.</td>
-                        <td>운영자</td>
-                        <td>2021.09.11</td>
-                    </tr>
-                    <tr>
-                        <td class="font-weight-bold">[ 공지사항 ]</td>
-                        <td>Ground 공지사항 입니다.</td>
-                        <td>운영자</td>
-                        <td>2021.09.11</td>
-                    </tr>
+                    <% } %>
                   </tbody>
                 </table>
                 
-                <nav aria-label="Page navigation" style="margin: 35px 0 20px 0;">
-                    <ul class="pagination justify-content-center">
-                      <li class="page-item"><a class="page-link" href="#">이전</a></li>
-                      <li class="page-item"><a class="page-link" href="#">1</a></li>
-                      <li class="page-item"><a class="page-link" href="#">2</a></li>
-                      <li class="page-item"><a class="page-link" href="#">3</a></li>
-                      <li class="page-item"><a class="page-link" href="#">다음</a></li>
-                    </ul>
+                <nav>
+                  <ul class="pagination justify-content-center mt-5">
+                    <% if(an_num == 1) { %>
+                        <li class="page-item"><a id="prev" class="page-link" style="color: black; display:none;" href="/dash/notice/<%=Number(an_num)-1%>">">이전</a></li>
+                    <% } else if (an_num > 1) { %>
+                        <li class="page-item"><a id="prev" class="page-link" style="color: black; display:block;" href="/dash/notice/<%=Number(an_num)-1%>">이전</a></li>
+                    <% } %>
+                    <% for(var j = 1; j<= Math.ceil(db_data.length / max_value); j++){ %>
+                      <%if(j != an_num){%>
+                        <li class="page-item"><a class="page-link" style="color: black;" href="/dash/notice/<%= j %>"><%= j %></a>
+                      <%}else{%>
+                        <li class="page-item"><a class="page-link" style="color: black; background-color: #c8c8c8;" href="/dash/notice/<%= j %>"><%= j %></a>
+                      <%}%>
+                    <% } if(an_num == Math.ceil(db_data.length / max_value)) { %>
+                        <li class="page-item"><a id="next" class="page-link" style="color: black; display:none;" href="/dash/notice/<%=Number(an_num)+1%>">다음</a></li>
+                    <% } else if (an_num < Math.ceil(db_data.length / max_value)) { %>
+                        <li class="page-item"><a id="next" class="page-link" style="color: black; display:block;" href="/dash/notice/<%=Number(an_num)+1%>">다음</a></li>
+                    <% } %></ul>
                 </nav>
+
                 <button type="button" class="btn btn-primary btn-icon-text ms-2" style="float:right;" onclick="location.href='/dash/notice_write';">
                   <i class="mdi mdi-plus"></i>
                   등록하기
