@@ -60,23 +60,23 @@ function dash_checklistDelete(req, res, next) {
 
 function dash_accident(req, res, next) { 
   dashDAO.select_accident().then((db_data)=>{
-    res.render('dash/accident', { db_data : db_data});  
+    res.render('dash/accident', { username : req.session.wName, db_data : db_data});  
   })    
 }
 function dash_cctv(req, res, next) { 
-    res.render('dash/cctv');  
+    res.render('dash/cctv',{username : req.session.wName});  
 }
 
 function dash_manpower(req, res, next) { 
-  res.render('dash/manpower');  
+  res.render('dash/manpower',{username : req.session.wName});  
 }
 
 function dash_manpower_add(req, res, next) { 
-    res.render('dash/manpower_add');  
+    res.render('dash/manpower_add',{username : req.session.wName});  
 }
 
 function dash_manpower_detail(req, res, next) { 
-  res.render('dash/manpower_detail');  
+  res.render('dash/manpower_detail',{username : req.session.wName});  
 }
 
 function dash_notice(req, res, next) { 
@@ -86,7 +86,7 @@ function dash_notice(req, res, next) {
 }
 
 function dash_notice_write(req, res, next) { 
-  res.render('dash/notice_write');  
+  res.render('dash/notice_write',{username : req.session.wName});  
 }
 
 function dash_notice_detail(req, res, next) { 
@@ -99,19 +99,19 @@ function dash_notice_detail(req, res, next) {
 }
 
 function dash_timecard(req, res, next) { 
-    res.render('dash/timecard');  
+    res.render('dash/timecard',{username : req.session.wName});  
 }
 
 function dash_work(req, res, next) { 
-    res.render('dash/work');  
+    res.render('dash/work',{username : req.session.wName});  
 }
 
 function dash_work_add(req, res, next) { 
-  res.render('dash/work_add');  
+  res.render('dash/work_add',{username : req.session.wName});  
 }
 
 function dash_worker_chart(req, res, next) { 
-    res.render('dash/worker_chart');  
+    res.render('dash/worker_chart',{username : req.session.wName});  
 }
 
 module.exports = {
