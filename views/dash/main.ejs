@@ -445,5 +445,57 @@
           </div>
         </div>
         <!-- content-wrapper ends -->
+        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=20a7b309a310827233d1145c6526b7cf&libraries=services,clusterer,drawing">
+        <script>
+          $(document).ready(function (){
+            console.log("로딩다됨")
+            var geocoder = new kakao.maps.services.Geocoder();
+
+            function searchAddrFromCoords(coords, callback) {
+              // 좌표로 행정동 주소 정보를 요청합니다
+              geocoder.coord2RegionCode(coords.getLng(), coords.getLat(), callback);
+            }
+
+            function displayCenterInfo(result, status) {
+              if (status === kakao.maps.services.Status.OK) {
+                for(var i = 0; i < result.length; i++) {
+                  // 행정동의 region_type 값은 'H' 이므로
+                  if (result[i].region_type === 'H') {
+                    console.log( result[i].address_name)
+                    $("#locate").text(result[i].address_name);
+                    break;
+                  }
+                }
+              }
+            }
+
+            if (navigator.geolocation) {
+              navigator.geolocation.getCurrentPosition(
+                      function (location) {
+                        //succ - 유저가 허용버튼을 클릭하여 값을 가져올 수 있는 상태
+                        var lat = location.coords.latitude;
+                        var lon = location.coords.longitude;
+                        var latlng = new kakao.maps.LatLng(lat, lon)
+                        searchAddrFromCoords(latlng, displayCenterInfo);
+                        $.ajax({
+                          url: '/dash/getWayWeather',
+                          type: 'POST',
+                          data: {lat: lat, lon: lon,},
+                          success: function (data) {
+                            $("#temp").text(data.result.temp + " ℃");
+                            $("#rain").text(data.result.rain + " %");
+                            $("#windspeed").text(data.result.windspeed + " m/s");
+                          }
+                        });
+                      },
+                      function (error) {
+                        //fail - 유저가 차단버튼을 클릭하여 값을 가져올 수 없는 상태
+                      }
+              );
+            } else {
+              //fail - 애초에 GPS 정보를 사용할 수 없는 상태
+            }
+          })
+        </script>
 
         <% include ../include/dash_footer %>
