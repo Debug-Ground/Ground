@@ -5,56 +5,51 @@
         <div class="col-lg-12 grid-margin stretch-card">
           <div class="card">
             <div class="card-body">
-              <h2 style="color:#4B49AC; margin:25px 0 10px 0;"><i class="mdi mdi-account-multiple-plus"></i>&nbsp;공사 작업 추가</h2>
+              <h2 style="color:#4B49AC; margin:25px 0 10px 0;"><i class="mdi mdi-houzz"></i>&nbsp;공사 작업 추가</h2>
               <p class="card-description" style="margin: 0 0 30px 20px;">
                 새롭게 추가된 공사 작업을 입력해주세요.
               </p>
               <form class="forms-sample">
                 <div class="row">
                   <div class="form-group col">
-                    <label for="exampleInputName1">성함</label>
+                    <label for="exampleInputName1">관리자</label>
                     <input type="text" class="form-control" id="exampleInputName1" placeholder="ex) 홍길동">
                   </div>
                   <div class="form-group col">
-                    <label for="exampleSelectGender">성별</label>
-                      <select class="form-control" id="exampleSelectGender">
-                        <option>남자</option>
-                        <option>여자</option>
+                    <label for="exampleSelectRank">직급</label>
+                      <select class="form-control" id="exampleSelectRank">
+                        <option>총괄자</option>
+                        <option>팀장</option>
+                        <option>사원</option>
                       </select>
                   </div>
                 </div>
                 <div class="row">
                   <div class="form-group col">
-                    <label for="exampleInputEmail3">이메일</label>
-                    <input type="email" class="form-control" id="exampleInputEmail3" placeholder="ex) test@test.com">
+                    <label for="exampleInputWorkman3">작업 인원</label>
+                    <input type="text" class="form-control" id="exampleInputWorkman3" placeholder="ex) 20명">
                   </div>
                   <div class="form-group col">
-                    <label for="exampleInputPassword4">전화번호</label>
-                    <input type="password" class="form-control" id="exampleInputPhone4" placeholder="ex) 010-123-1234">
+                    <label for="exampleInputProcess4">작업 진행도</label>
+                    <input type="text" class="form-control" id="exampleInputPhone4" placeholder="ex) 72">
                   </div>
                 </div>
-                <div class="form-group">
-                  <label for="exampleSelectGender">고용형태</label>
-                    <select class="form-control" id="exampleSelectGender">
-                      <option>일용직</option>
-                      <option>정규직</option>
-                      <option>관리자</option>
-                    </select>
+                <div class="row">
+                  <div class="form-group col">
+                    <label for="exampleInputWorkStart5">공사 시작일</label>
+                    <input type="text" class="form-control" id="exampleInputWorkStart5" placeholder="ex) 20명">
+                  </div>
+                  <div class="form-group col">
+                    <label for="exampleInputWorkEnd6">공사 예정 완료일</label>
+                    <input type="text" class="form-control" id="exampleInputWorkEnd6" placeholder="ex) 72">
+                  </div>
                 </div>
+
                 <div class="form-group">
                     <label for="exampleInputCity1">주소</label>
-                    <input type="text" class="form-control" id="exampleInputCity1" placeholder="ex) 충청남도 아산시 배방읍">
+                    <input type="text" class="form-control" id="exampleInputCity1" placeholder="ex) 이거 빼고 카카오 맵 넣으삼">
                   </div>
-                <div class="form-group">
-                  <label>프로필</label>
-                  <input type="file" name="img[]" class="file-upload-default">
-                  <div class="input-group col-xs-12">
-                    <input type="text" class="form-control file-upload-info" disabled="" placeholder="증명 사진">
-                    <span class="input-group-append">
-                      <button class="file-upload-browse btn btn-primary" type="button">업로드</button>
-                    </span>
-                  </div>
-                </div>
+
                 <div class="form-group">
                   <label for="exampleTextarea1">메모</label>
                   <textarea class="form-control" id="exampleTextarea1" rows="4"></textarea>

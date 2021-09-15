@@ -1,12 +1,173 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <%= db_data[0].aDetail %>
-</body>
-</html>
+<% include ../include/dash_header %>
+<div class="main-panel">
+    <div class="content-wrapper">
+      <div class="row">
+        <div class="col-lg-12 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <h2 style="color:#4B49AC; margin:25px 0 10px 0;"><i class="mdi mdi-alert"></i>&nbsp;사고 관리</h2>
+              <p class="card-description" style="margin: 0 0 30px 20px;">
+                Ground에서 발생한 사고를 확인해주세요.
+              </p>
+              <div class="table-responsive pt-3">
+                <table class="table table-striped table-hover text-center">
+                  <thead>
+                    <tr>
+                      <th class="col-md-1">
+                        번호
+                      </th>
+                      <th class="col-md-3">
+                        사고 내용
+                      </th>
+                      <th class="col-md-1">
+                        사고 형태
+                      </th>
+                      <th class="col-md-1">
+                        사고 날짜
+                      </th>
+                      <th class="col-md-1">
+                        확인자
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        1
+                      </td>
+                      <td>
+                        101동 2층에서 낙사사고 발생!
+                      </td>
+                      <td>
+                        낙사
+                      </td>
+                      <td>
+                        2021.09.11
+                      </td>
+                      <td>
+                        송준하
+                      </td>
+                    </tr>
+                    <tr>
+                        <td>
+                          1
+                        </td>
+                        <td>
+                          101동 2층에서 낙사사고 발생!
+                        </td>
+                        <td>
+                          낙사
+                        </td>
+                        <td>
+                          2021.09.11
+                        </td>
+                        <td>
+                          송준하
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          1
+                        </td>
+                        <td>
+                          101동 2층에서 낙사사고 발생!
+                        </td>
+                        <td>
+                          낙사
+                        </td>
+                        <td>
+                          2021.09.11
+                        </td>
+                        <td>
+                          송준하
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          1
+                        </td>
+                        <td>
+                          101동 2층에서 낙사사고 발생!
+                        </td>
+                        <td>
+                          낙사
+                        </td>
+                        <td>
+                          2021.09.11
+                        </td>
+                        <td>
+                          송준하
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          1
+                        </td>
+                        <td>
+                          101동 2층에서 낙사사고 발생!
+                        </td>
+                        <td>
+                          낙사
+                        </td>
+                        <td>
+                          2021.09.11
+                        </td>
+                        <td>
+                          송준하
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          1
+                        </td>
+                        <td>
+                          101동 2층에서 낙사사고 발생!
+                        </td>
+                        <td>
+                          낙사
+                        </td>
+                        <td>
+                          2021.09.11
+                        </td>
+                        <td>
+                          송준하
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          1
+                        </td>
+                        <td>
+                          101동 2층에서 낙사사고 발생!
+                        </td>
+                        <td>
+                          낙사
+                        </td>
+                        <td>
+                          2021.09.11
+                        </td>
+                        <td>
+                          송준하
+                        </td>
+                      </tr>
+                  </tbody>
+                </table>
+                <nav aria-label="Page navigation" style="margin: 35px 0 20px 0;">
+                    <ul class="pagination justify-content-center">
+                      <li class="page-item"><a class="page-link" href="#">이전</a></li>
+                      <li class="page-item"><a class="page-link" href="#">1</a></li>
+                      <li class="page-item"><a class="page-link" href="#">2</a></li>
+                      <li class="page-item"><a class="page-link" href="#">3</a></li>
+                      <li class="page-item"><a class="page-link" href="#">다음</a></li>
+                    </ul>
+                </nav>
+                <button type="button" class="btn btn-primary btn-icon-text ms-2" style="float:right;" onclick="location.href='/dash/accident_add';">
+                  <i class="mdi mdi-plus"></i>
+                  등록하기
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+<% include ../include/dash_footer %>

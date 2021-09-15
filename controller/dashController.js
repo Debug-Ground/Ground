@@ -63,6 +63,19 @@ function dash_accident(req, res, next) {
     res.render('dash/accident', { username : req.session.wName, db_data : db_data});  
   })    
 }
+
+function dash_accident_add(req, res, next) { 
+  dashDAO.select_accident().then((db_data)=>{
+    res.render('dash/accident_add', { username : req.session.wName, db_data : db_data});  
+  })    
+}
+
+function dash_accident_detail(req, res, next) { 
+  dashDAO.select_accident().then((db_data)=>{
+    res.render('dash/accident_detail', { username : req.session.wName, db_data : db_data});  
+  })    
+}
+
 function dash_cctv(req, res, next) { 
     res.render('dash/cctv',{username : req.session.wName});  
 }
@@ -110,6 +123,10 @@ function dash_work_add(req, res, next) {
   res.render('dash/work_add',{username : req.session.wName});  
 }
 
+function dash_work_detail(req, res, next) { 
+  res.render('dash/work_detail',{username : req.session.wName});  
+}
+
 function dash_worker_chart(req, res, next) { 
     res.render('dash/worker_chart',{username : req.session.wName});  
 }
@@ -120,6 +137,8 @@ module.exports = {
     dash_checklistInsert,
     dash_checklistDelete,
     dash_accident,
+    dash_accident_add,
+    dash_accident_detail,
     dash_cctv,
     dash_manpower,
     dash_manpower_add,
@@ -130,6 +149,7 @@ module.exports = {
     dash_timecard,
     dash_work,
     dash_work_add,
+    dash_work_detail,
     dash_worker_chart,
     dash_userchecklistUpdate
 }

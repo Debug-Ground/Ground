@@ -13,6 +13,8 @@ router.post('/updateUserCheck',dashController.dash_userchecklistUpdate);
 
 //accideent
 router.get('/accident', dashController.dash_accident);
+router.get('/accident_add', dashController.dash_accident_add);
+router.get('/accident_detail', dashController.dash_accident_detail);
 router.get('/cctv',dashController.dash_cctv);
 router.get('/manpower',dashController.dash_manpower);
 router.get('/manpower_add',dashController.dash_manpower_add);
@@ -23,6 +25,7 @@ router.get('/noticeDetail/:num',dashController.dash_notice_detail);
 router.get('/timecard',dashController.dash_timecard);
 router.get('/work_chart',dashController.dash_work);
 router.get('/work_chart_add',dashController.dash_work_add);
+router.get('/work_chart_detail',dashController.dash_work_detail);
 router.get('/worker_chart',dashController.dash_worker_chart);
 
 module.exports = router;

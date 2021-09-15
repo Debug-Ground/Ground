@@ -1,0 +1,83 @@
+<% include ../include/dash_header %>
+<div class="main-panel">
+    <div class="content-wrapper">
+      <div class="row">
+        <div class="col-lg-12 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <h2 style="color:#4B49AC; margin:25px 0 10px 0;"><i class="mdi mdi-alert"></i>&nbsp;사고 관리</h2>
+              <p class="card-description" style="margin: 0 0 30px 20px;">
+                Ground에서 발생한 사고를 확인해주세요.
+              </p>
+              <form class="forms-sample">
+                <div class="row">
+                  <div class="form-group col">
+                    <label for="exampleInputName1">성함</label>
+                    <input type="text" class="form-control" id="exampleInputName1" placeholder="ex) 홍길동">
+                  </div>
+                  <div class="form-group col">
+                    <label for="exampleSelectGender">성별</label>
+                      <select class="form-control" id="exampleSelectGender">
+                        <option>남자</option>
+                        <option>여자</option>
+                      </select>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="form-group col">
+                    <label for="exampleInputEmail3">전화번호</label>
+                    <input type="email" class="form-control" id="exampleInputEmail3" placeholder="ex) test@test.com">
+                  </div>
+                  <div class="form-group col">
+                    <label for="exampleInputPassword4">보호자 전화번호</label>
+                    <input type="password" class="form-control" id="exampleInputPhone4" placeholder="ex) 010-123-1234">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="exampleSelectGender">사고형태</label>
+                    <select class="form-control" id="exampleSelectGender">
+                      <option>낙사</option>
+                      <option>화재</option>
+                      <option>감전</option>
+                      <option>폭발</option>
+                      <option>파열</option>
+                      <option>붕괴</option>
+
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputaccidentdetail1">사고내용</label>
+                    <input type="text" class="form-control" id="exampleInputCity1" placeholder="ex) 호서아파트 101동에서 낙사사고 발생!">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputCity1">주소</label>
+                    <input type="text" class="form-control" id="exampleInputCity1" placeholder="카카오 맵 넣어줘!">
+                </div>
+                <div class="form-group">
+                  <label>사고 사진</label>
+                  <input type="file" name="img[]" class="file-upload-default">
+                  <div class="input-group col-xs-12">
+                    <input type="text" class="form-control file-upload-info" disabled="" placeholder="사고 사진">
+                    <span class="input-group-append">
+                      <button class="file-upload-browse btn btn-primary" type="button">업로드</button>
+                    </span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="exampleTextarea1">메모</label>
+                  <textarea class="form-control" id="exampleTextarea1" rows="4"></textarea>
+                </div>
+                <button type="button" class="btn btn-inverse-primary btn-fw mr-2" style="float:right;">
+                    <i class="mdi mdi-plus"></i>
+                    등록하기
+                </button>
+                <button type="button" class="btn btn-inverse-danger btn-fw mr-2" style="float:right;">
+                    <i class="mdi mdi-minus"></i>
+                    취소하기
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+<% include ../include/dash_footer %>
