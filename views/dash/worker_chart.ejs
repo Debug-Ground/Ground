@@ -9,14 +9,29 @@
               <p class="card-description" style="margin: 0 0 30px 20px;">
                 Ground 공사 작업자 현황을 확인해 주세요.
               </p>
-              <div class="card">
-                <div class="card-body"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
-                  <h4 class="card-title">Line chart</h4>
-                  <canvas id="lineChart" width="792" height="396" style="display: block; width: 792px; height: 396px;" class="chartjs-render-monitor"></canvas>
+              <div class="row">
+                <div class="col-lg-8 grid-margin stretch-card">
+                  <div class="card">
+                    <div class="card-body"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+                      <h4 class="card-title"></h4>
+                      <canvas id="areaChart" width="356" height="178" style="display: block; width: 356px; height: 178px;" class="chartjs-render-monitor"></canvas>
+                    </div>
+                  </div>
                 </div>
+                <div class="col-lg-4 grid-margin stretch-card">
+                  <div class="card">
+                    <div class="card-body"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+                      <h4 class="card-title"></h4>
+                      <canvas id="doughnutChart" width="356" height="178" style="display: block; width: 356px; height: 178px;" class="chartjs-render-monitor"></canvas>
+                    </div>
+                  </div>
+                </div>
+
               </div>
             </div>
           </div>
         </div>
+
+
         
 <% include ../include/dash_footer %>
