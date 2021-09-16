@@ -47,16 +47,16 @@
                         </select>
                         <script>
                           $("#exampleSelectGender").change(function(){
-                            var position=$(".position").val();
-                            
+                            var position=$(".position").text();
+                            console.log(position)
                             $.ajax(
                               {
                                 type:"GET",
-                                url:"./ajax",
+                                url:"/dash/manpowerUpdate",
                                 data: position,
                                 dataType:"JSON",
                                 success:function(data){
-                                  console.log('complete');
+                                  console.log(position);
                                   alert('complete');
                                 },
                                 error:function(){

@@ -4,7 +4,11 @@ var dashDAO = require('../model/dashDAO')
 function dash_main(req, res, next) {      
   dashDAO.select_accidentCount().then((db_data)=> {
     acCount = db_data
-    res.render('dash/main',{acCount});
+    dashDAO.select_accidentDateCount().then((db_data)=>{
+      dateCount = db_data
+      console.log(dateCount)
+      res.render('dash/main',{acCount,dateCount});
+    })
   })
 }
 
@@ -92,6 +96,16 @@ function dash_manpower_detail(req, res, next) {
   res.render('dash/manpower_detail',{username : req.session.wName});  
 }
 
+function dash_manpower_update(req, res, next) { 
+  var parameters = {
+    "wPosition" : req.body.position 
+  }
+  console.log(parameters.wPosition)
+  dashDAO.update_manpower(parameters).then((db_data)=>{
+    res.send(db_data);  
+  })
+}
+
 function dash_notice(req, res, next) { 
   dashDAO.select_anNotice().then((db_data)=> {
     res.render('dash/notice',{db_data, an_num: req.params.num, max_value: 8});  
@@ -151,5 +165,6 @@ module.exports = {
     dash_work_add,
     dash_work_detail,
     dash_worker_chart,
-    dash_userchecklistUpdate
+    dash_userchecklistUpdate,
+    dash_manpower_update
 }

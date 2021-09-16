@@ -28,4 +28,6 @@ router.get('/work_chart_add',dashController.dash_work_add);
 router.get('/work_chart_detail',dashController.dash_work_detail);
 router.get('/worker_chart',dashController.dash_worker_chart);
 
+
+router.get('/manpowerUpdate', dashController.dash_manpower_update);
 module.exports = router;
