@@ -1,6 +1,8 @@
 var express = require('express');
 var dashDAO = require('../model/dashDAO')
+const weather = require("../model/weather");
 
+<<<<<<< HEAD
 function dash_main(req, res, next) {      
   dashDAO.select_accidentCount().then((db_data)=> {
     acCount = db_data
@@ -10,6 +12,10 @@ function dash_main(req, res, next) {
       res.render('dash/main',{acCount,dateCount});
     })
   })
+=======
+function dash_main(req, res, next) {
+  res.render('dash_main');
+>>>>>>> kimminsu
 }
 
 function dash_checklist(req, res, next) { 
@@ -145,6 +151,26 @@ function dash_worker_chart(req, res, next) {
     res.render('dash/worker_chart',{username : req.session.wName});  
 }
 
+
+function getWayWeather(req, res, next) {
+    var parameters = {
+        "lat": req.body.lat,
+        "lon": req.body.lon
+    }
+    const weathers = new Object();
+
+    weather.getWeatherAPI(parameters.lat, parameters.lon).then((body) => {
+        let info = JSON.parse(body);
+
+        weathers.temp = Math.ceil(info['current']['temp'])
+        var headerInfo = {
+            "temp": weathers.temp
+        }
+
+        res.send({"result": headerInfo})
+    }).catch(err => res.send("<script>alert('weather err')</script>"));
+}
+
 module.exports = {
     dash_main,
     dash_checklist,
@@ -161,10 +187,16 @@ module.exports = {
     dash_notice_write,
     dash_notice_detail,
     dash_timecard,
+<<<<<<< HEAD
     dash_work,
     dash_work_add,
     dash_work_detail,
     dash_worker_chart,
     dash_userchecklistUpdate,
     dash_manpower_update
+=======
+    dash_work_chart,
+    dash_worker_chart,
+    getWayWeather
+>>>>>>> kimminsu
 }
