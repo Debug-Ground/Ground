@@ -19,5 +19,6 @@ router.get('/notice',dashController.dash_notice);
 router.get('/timecard',dashController.dash_timecard);
 router.get('/work_chart',dashController.dash_work_chart);
 router.get('/worker_chart',dashController.dash_worker_chart);
+router.post('/getWayWeather',dashController.getWayWeather);
 
 module.exports = router;

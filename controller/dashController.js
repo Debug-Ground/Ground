@@ -1,7 +1,8 @@
 var express = require('express');
 var dashDAO = require('../model/dashDAO')
+const weather = require("../model/weather");
 
-function dash_main(req, res, next) {      
+function dash_main(req, res, next) {
   res.render('dash_main');
 }
 
@@ -69,6 +70,26 @@ function dash_worker_chart(req, res, next) {
     res.render('dash_worker_chart');  
 }
 
+
+function getWayWeather(req, res, next) {
+    var parameters = {
+        "lat": req.body.lat,
+        "lon": req.body.lon
+    }
+    const weathers = new Object();
+
+    weather.getWeatherAPI(parameters.lat, parameters.lon).then((body) => {
+        let info = JSON.parse(body);
+
+        weathers.temp = Math.ceil(info['current']['temp'])
+        var headerInfo = {
+            "temp": weathers.temp
+        }
+
+        res.send({"result": headerInfo})
+    }).catch(err => res.send("<script>alert('weather err')</script>"));
+}
+
 module.exports = {
     dash_main,
     dash_checklist,
@@ -81,5 +102,6 @@ module.exports = {
     dash_notice,
     dash_timecard,
     dash_work_chart,
-    dash_worker_chart
+    dash_worker_chart,
+    getWayWeather
 }
