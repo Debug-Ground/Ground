@@ -1,5 +1,6 @@
 var express = require('express');
 var dashDAO = require('../model/dashDAO')
+var dayjs = require('dayjs');
 const weather = require("../model/weather");
 
 function dash_main(req, res, next) {      
@@ -11,7 +12,11 @@ function dash_main(req, res, next) {
       dashDAO.select_accidentDateCountGraph().then((db_data)=> {
         graphCount = db_data
         console.log(graphCount)
-        res.render('dash/main',{acCount,dateCount, graphCount});
+        dashDAO.select_WorkerCountGraph().then((db_data)=> {
+         workCount = db_data
+         console.log(workCount)
+         res.render('dash/main',{acCount,dateCount, graphCount,workCount, dayjs});
+        })
       })
     })
   })

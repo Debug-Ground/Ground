@@ -195,6 +195,29 @@ function select_accidentDateCount() {
 };
 
 
+function select_WorkerCountGraph() {
+    return new Promise ((resolve, reject) => {
+        db.query(`SELECT DATE('wDate') AS date, COUNT(wDate) AS cnt FROM Worker WHERE wDate LIKE CONCAT('%',DATE_FORMAT(NOW(), '%Y-%m-%d'),'%') GROUP BY date
+                    UNION
+                  SELECT IF(DATE('wDate'),null,null) AS date, COUNT(wDate) AS cnt FROM Worker WHERE wdate IS NOT NULL GROUP BY date WITH ROLLUP ;`, function(err,db_data) {
+            if (err) {
+                logger.error(
+                    "DB error [Worker]"+
+                    "\n \t" + `SELECT DATE('wDate') AS date, COUNT(wDate) AS cnt FROM Worker WHERE wDate LIKE CONCAT('%',DATE_FORMAT(NOW(), '%Y-%m-%d'),'%') GROUP BY date
+                                UNION
+                               SELECT IF(DATE('wDate'),null,null) AS date, COUNT(wDate) AS cnt FROM Worker WHERE wdate IS NOT NULL GROUP BY date WITH ROLLUP ;`+
+                    "\n \t" + err);
+                reject('DB ERR');
+                //throw error;
+            }
+            else {
+                resolve(db_data);
+            }
+        });
+    })
+}
+
+
 
 
 module.exports = {
@@ -207,5 +230,6 @@ module.exports = {
     select_anNoticeDetail,
     select_accidentCount,
     select_accidentDateCount,
-    select_accidentDateCountGraph                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+    select_accidentDateCountGraph,
+    select_WorkerCountGraph                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
 }
