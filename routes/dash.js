@@ -27,6 +27,7 @@ router.get('/work_chart',dashController.dash_work);
 router.get('/work_chart_add',dashController.dash_work_add);
 router.get('/work_chart_detail',dashController.dash_work_detail);
 router.get('/worker_chart',dashController.dash_worker_chart);
+router.post('/getWayWeather',dashController.getWayWeather);
 
 
 router.get('/manpowerUpdate', dashController.dash_manpower_update);
