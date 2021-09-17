@@ -130,4 +130,6 @@ temp/
 
 log/
 
+cert
+
 # End of https://www.toptal.com/developers/gitignore/api/node
