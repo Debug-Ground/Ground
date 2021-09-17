@@ -147,15 +147,14 @@ function select_accidentCount() {
         });
     })
 };
-
 function select_accidentDateCount() {
     return new Promise ((resolve, reject) => {
-        db.query(`SELECT *   FROM(select DATE_FORMAT(aa.temp_date, '%Y-%m') date, COUNT(c.aDate) AS cnt FROM temp_date aa 
+        db.query(`SELECT * FROM(select DATE_FORMAT(aa.temp_date, '%Y-%m') date, COUNT(c.aDate) AS cnt FROM temp_date aa 
         LEFT JOIN Accident c ON (c.aDate = aa.temp_date) GROUP BY date) a WHERE date LIKE CONCAT('%',DATE_FORMAT(NOW(),'%Y'),'%')`, function(err,db_data) {
             if (err) {
                 logger.error(
                     "DB error [Accident]"+
-                    "\n \t" + `SELECT *   FROM(select DATE_FORMAT(aa.temp_date, '%Y-%m') date, COUNT(c.aDate) AS cnt FROM temp_date aa 
+                    "\n \t" + `SELECT *	FROM(select DATE_FORMAT(aa.temp_date, '%Y-%m') date, COUNT(c.aDate) AS cnt FROM temp_date aa 
                     LEFT JOIN Accident c ON (c.aDate = aa.temp_date) GROUP BY date) a WHERE date LIKE CONCAT('%',DATE_FORMAT(NOW(),'%Y'),'%')
                     '`+
                     "\n \t" + err);
@@ -169,27 +168,6 @@ function select_accidentDateCount() {
     })
 };
 
-function update_manpower(parameters) {
-    return new Promise ((resolve, reject) => {
-        db.query(`UPDATE Worker SET wDate = NOW() and wPosition = '${parameters.wPosition}'`, function(err,db_data) {
-            if (err) {
-                logger.error(
-                    "DB error [Accident]"+
-                    "\n \t" + ``+
-                    "\n \t" + err);
-                reject('DB ERR');
-                //throw error;
-            }
-            else {
-                resolve(db_data);
-            }
-        });
-    })
-};
-
-
-
-
 module.exports = {
     select_Checklist,
     insert_Checklist,
@@ -199,6 +177,5 @@ module.exports = {
     select_anNotice,
     select_anNoticeDetail,
     select_accidentCount,
-    select_accidentDateCount,
-    update_manpower
+    select_accidentDateCount                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
 }

@@ -2,7 +2,6 @@ var express = require('express');
 var dashDAO = require('../model/dashDAO')
 const weather = require("../model/weather");
 
-<<<<<<< HEAD
 function dash_main(req, res, next) {      
   dashDAO.select_accidentCount().then((db_data)=> {
     acCount = db_data
@@ -12,10 +11,6 @@ function dash_main(req, res, next) {
       res.render('dash/main',{acCount,dateCount});
     })
   })
-=======
-function dash_main(req, res, next) {
-  res.render('dash_main');
->>>>>>> kimminsu
 }
 
 function dash_checklist(req, res, next) { 
@@ -187,16 +182,12 @@ module.exports = {
     dash_notice_write,
     dash_notice_detail,
     dash_timecard,
-<<<<<<< HEAD
     dash_work,
     dash_work_add,
     dash_work_detail,
     dash_worker_chart,
     dash_userchecklistUpdate,
-    dash_manpower_update
-=======
-    dash_work_chart,
+    dash_manpower_update,
     dash_worker_chart,
     getWayWeather
->>>>>>> kimminsu
 }
