@@ -8,7 +8,11 @@ function dash_main(req, res, next) {
     dashDAO.select_accidentDateCount().then((db_data)=>{
       dateCount = db_data
       console.log(dateCount)
-      res.render('dash/main',{acCount,dateCount});
+      dashDAO.select_accidentDateCountGraph().then((db_data)=> {
+        graphCount = db_data
+        console.log(graphCount)
+        res.render('dash/main',{acCount,dateCount, graphCount});
+      })
     })
   })
 }
