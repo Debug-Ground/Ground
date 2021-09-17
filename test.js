@@ -41,39 +41,39 @@
                 </div>
             </div>
             <div class="col-md-6 grid-margin transparent">
-                <div class="row">
-                    <div class="col-md-6 mb-4 stretch-card transparent">
-                        <div class="card card-tale">
-                            <div class="card-body">
-                                <p class="mb-4">오늘의 작업자</p>
-                                <p class="fs-30 mb-2">4006</p>
-                            </div>
-                        </div>
+              <div class="row">
+                <div class="col-md-6 mb-4 stretch-card transparent">
+                  <div class="card card-tale">
+                    <div class="card-body">
+                      <p class="mb-4">오늘의 작업자</p>
+                      <p class="fs-30 mb-2">4006</p>
                     </div>
-                    <div class="col-md-6 mb-4 stretch-card transparent">
-                        <div class="card card-dark-blue">
-                            <div class="card-body">
-                                <p class="mb-4">전체 작업자</p>
-                                <p class="fs-30 mb-2"><%= workCount[1].cnt %></p>
-                            </div>
-                        </div>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-4 stretch-card transparent">
+                  <div class="card card-dark-blue">
+                    <div class="card-body">
+                      <p class="mb-4">전체 작업자</p>
+                      <p class="fs-30 mb-2"><%= workCount[1].cnt %></p>
                     </div>
-                    <div class="col-md-6 mb-4 mb-lg-0 stretch-card transparent">
-                        <div class="card card-light-blue">
-                            <div class="card-body">
-                                <p class="mb-4">신입 작업자</p>
-                                <p class="fs-30 mb-2"><%= workCount[0].cnt %></p>
-                            </div>
-                        </div>
+                </div>
+              </div>
+                <div class="col-md-6 mb-4 mb-lg-0 stretch-card transparent">
+                  <div class="card card-light-blue">
+                    <div class="card-body">
+                      <p class="mb-4">신입 작업자</p>
+                      <p class="fs-30 mb-2"><%= workCount[0].cnt %></p>
                     </div>
-                    <div class="col-md-6 stretch-card transparent">
-                        <div class="card card-light-danger">
-                            <div class="card-body">
-                                <p class="mb-4">금일 사고 발생 건수</p>
-                                <p class="fs-30 mb-2"><%= dateCount[2].cnt %></p>
-                            </div>
-                        </div>
+                  </div>
+                </div>
+                <div class="col-md-6 stretch-card transparent">
+                  <div class="card card-light-danger">
+                    <div class="card-body">
+                      <p class="mb-4">금일 사고 발생 건수</p>
+                      <p class="fs-30 mb-2"><%= dateCount[2].cnt %></p>
                     </div>
+                </div>
+              </div>
                 </div>
             </div>
         </div>
@@ -117,48 +117,48 @@
         </div>
         <div class="row">
             <div class="col-md-12 grid-margin stretch-card">
-                <div class="card position-relative">
-                    <div class="card-body">
-                        <div id="detailedReports" class="carousel slide detailed-report-carousel position-static pt-2" data-ride="carousel">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <div class="row">
-                                        <div class="col-md-12 col-xl-3 d-flex flex-column justify-content-start">
-                                            <div class="ml-xl-4 mt-3">
-                                                <p class="card-title">작업별 사고 현황</p>
-                                                <h1 class="text-primary"><%= acCount[acCount.length-1].count %></h1>
-                                                <h3 class="font-weight-500 mb-xl-4 text-primary">총 사고 건수</h3>
-                                                <p class="mb-2 mb-xl-0">1. 작업 별 안전 사고 체크 리스트 확인<br>2. 현장 팀장에게 사고 사례 전파</p>
-                                            </div>  
+              <div class="card position-relative">
+                <div class="card-body">
+                  <div id="detailedReports" class="carousel slide detailed-report-carousel position-static pt-2" data-ride="carousel">
+                    <div class="carousel-inner">
+                      <div class="carousel-item active">
+                        <div class="row">
+                          <div class="col-md-12 col-xl-3 d-flex flex-column justify-content-start">
+                            <div class="ml-xl-4 mt-3">
+                            <p class="card-title">작업별 사고 현황</p>
+                              <h1 class="text-primary"><%= acCount[acCount.length-1].count %></h1>
+                              <h3 class="font-weight-500 mb-xl-4 text-primary">총 사고 건수</h3>
+                              <p class="mb-2 mb-xl-0">1. 작업 별 안전 사고 체크 리스트 확인<br>2. 현장 팀장에게 사고 사례 전파</p>
+                            </div>  
+                        </div>
+                          <div class="col-md-12 col-xl-9">
+                            <div class="row">
+                              <div class="col-md-11 border-right">
+                                <div class="table-responsive mb-3 mb-md-0 mt-3">
+                                  <table class="table table-borderless report-table">
+                                    <% for(var i = 0; i< acCount.length-1; i++) { %>
+                                    <tr>
+                                      <td class="text-muted"><%= acCount[i].kind %></td>
+                                      <td class="w-100 px-0">
+                                        <div class="progress progress-md mx-4">
+                                          <div class="progress-bar bg-primary" role="progressbar" style="width: <%= ((acCount[i].count)/(acCount[acCount.length-1].count))*100 %>%" aria-valuenow="<%= acCount[i].count %>" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
-                                        <div class="col-md-12 col-xl-9">
-                                            <div class="row">
-                                                <div class="col-md-11 border-right">
-                                                    <div class="table-responsive mb-3 mb-md-0 mt-3">
-                                                        <table class="table table-borderless report-table">
-                                                        <% for(var i = 0; i< acCount.length-1; i++) { %>
-                                                            <tr>
-                                                                <td class="text-muted"><%= acCount[i].kind %></td>
-                                                                <td class="w-100 px-0">
-                                                                    <div class="progress progress-md mx-4">
-                                                                        <div class="progress-bar bg-primary" role="progressbar" style="width: <%= ((acCount[i].count)/(acCount[acCount.length-1].count))*100 %>%" aria-valuenow="<%= acCount[i].count %>" aria-valuemin="0" aria-valuemax="100"></div>
-                                                                    </div>
-                                                                </td>
-                                                                <td><h5 class="font-weight-bold mb-0"><%= acCount[i].count %></h5></td>
-                                                            </tr>
-                                                        <% } %>
-                                                        </table>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                      </td>
+                                      <td><h5 class="font-weight-bold mb-0"><%= acCount[i].count %></h5></td>
+                                    </tr>
+                                    <% } %>
+                                  </table>
                                 </div>
+                              </div>
                             </div>
+                         </div>
+                        </div>
+                        </div>
                         </div>
                     </div>
                 </div>
-            </div>
+             </div>
+             </div>
         </div>
         <div class="row">
             <div class="col-md-7 grid-margin stretch-card">
@@ -459,55 +459,55 @@
 </div>
 </div>
     
-<!-- content-wrapper ends -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=df47683e736734b08db254f6a2be01f9&libraries=services,clusterer,drawing"></script>
-<script>
-    $(document).ready(function () {
-        var geocoder = new kakao.maps.services.Geocoder();
+    <!-- content-wrapper ends -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=df47683e736734b08db254f6a2be01f9&libraries=services,clusterer,drawing"></script>
+    <script>
+        $(document).ready(function () {
+            var geocoder = new kakao.maps.services.Geocoder();
 
-        function searchAddrFromCoords(coords, callback) {
-            geocoder.coord2RegionCode(coords.getLng(), coords.getLat(), callback);
-        }
+            function searchAddrFromCoords(coords, callback) {
+                geocoder.coord2RegionCode(coords.getLng(), coords.getLat(), callback);
+            }
 
-        function displayCenterInfo(result, status) {
-            if (status === kakao.maps.services.Status.OK) {
-                for (var i = 0; i < result.length; i++) {
-                    if (result[i].region_type === 'H') {
-                        console.log("현재위치: " + result[i].address_name)
-                        $("#locateName").text(result[i].address_name);
-                        break;
+            function displayCenterInfo(result, status) {
+                if (status === kakao.maps.services.Status.OK) {
+                    for (var i = 0; i < result.length; i++) {
+                        if (result[i].region_type === 'H') {
+                            console.log("현재위치: " + result[i].address_name)
+                            $("#locateName").text(result[i].address_name);
+                            break;
+                        }
                     }
                 }
             }
-        }
 
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(
-                function (location) {
-                    var lat = location.coords.latitude;
-                    var lon = location.coords.longitude;
-                    var latlng = new kakao.maps.LatLng(lat, lon)
-                    searchAddrFromCoords(latlng, displayCenterInfo);
-                    $.ajax({
-                        url: '/dash/getWayWeather',
-                        type: 'POST',
-                        data: {lat: lat, lon: lon,},
-                        success: function (data) {
-                        $("#temp").text(data.result.temp + " ℃");
-                        $("#rain").text(data.result.rain + " %");
-                        $("#windspeed").text(data.result.windspeed + " m/s");
-                        }
-                    });
-                    },
-                    function (error) {
-                    //fail - 유저가 차단버튼을 클릭하여 값을 가져올 수 없는 상태
-                    }
-            );
-        } else {
-            //fail - 애초에 GPS 정보를 사용할 수 없는 상태
-        }
-    })
-</script>
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    function (location) {
+                        var lat = location.coords.latitude;
+                        var lon = location.coords.longitude;
+                        var latlng = new kakao.maps.LatLng(lat, lon)
+                        searchAddrFromCoords(latlng, displayCenterInfo);
+                        $.ajax({
+                          url: '/dash/getWayWeather',
+                          type: 'POST',
+                          data: {lat: lat, lon: lon,},
+                          success: function (data) {
+                            $("#temp").text(data.result.temp + " ℃");
+                            $("#rain").text(data.result.rain + " %");
+                            $("#windspeed").text(data.result.windspeed + " m/s");
+                          }
+                        });
+                      },
+                      function (error) {
+                        //fail - 유저가 차단버튼을 클릭하여 값을 가져올 수 없는 상태
+                      }
+              );
+            } else {
+              //fail - 애초에 GPS 정보를 사용할 수 없는 상태
+            }
+          })
+        </script>
 
-<% include ../include/dash_footer %>
+        <% include ../include/dash_footer %>
