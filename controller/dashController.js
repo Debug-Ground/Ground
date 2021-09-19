@@ -6,6 +6,7 @@ const weather = require("../model/weather");
 function dash_main(req, res, next) {      
   dashDAO.select_accidentCount().then((db_data)=> {
     acCount = db_data
+    console.log(acCount)
     dashDAO.select_accidentDateCount().then((db_data)=>{
       dateCount = db_data
       console.log(dateCount)
@@ -15,7 +16,11 @@ function dash_main(req, res, next) {
         dashDAO.select_WorkerCountGraph().then((db_data)=> {
          workCount = db_data
          console.log(workCount)
-         res.render('dash/main',{acCount,dateCount, graphCount,workCount, dayjs});
+         dashDAO.select_WorkerStickGraph().then((db_data)=>{
+           stickCount = db_data
+           console.log(stickCount)
+          res.render('dash/main',{acCount,dateCount, graphCount,workCount,stickCount, dayjs});
+         })
         })
       })
     })

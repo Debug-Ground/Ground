@@ -135,7 +135,9 @@
                 },
                 {
                   label: '신입 작업자 수',
-                  data: [400, 340, 550, 480, 170, 480, 230, 470, 210, 340, 550, 326],
+                  data: [<% for(var i = 0; i < stickCount.length; i++){ %>
+                    '<%= stickCount[i].cnt %>',
+                    <% } %>],
                   backgroundColor: '#4B49AC'
                 }
               ]
