@@ -170,19 +170,21 @@ function select_accidentDateCountGraph() {
 
 function select_accidentDateCount() {
     return new Promise ((resolve, reject) => {
-        db.query(`SELECT YEAR('aDate') AS 'date', COUNT(*) AS cnt FROM Accident WHERE aDate LIKE CONCAT('%',DATE_FORMAT(NOW(), '%Y'),'%') GROUP BY 'date'
-                    UNION
-                  SELECT MONTH('aDate') AS 'date', COUNT(*) AS cnt FROM Accident WHERE aDate LIKE CONCAT('%',DATE_FORMAT(NOW(), '%Y-%m'),'%') GROUP BY 'date'
-                    UNION
-                  SELECT DATE('aDate') AS 'date', COUNT(aDate) AS cnt FROM Accident WHERE aDate LIKE CONCAT('%',DATE_FORMAT(NOW(), '%Y-%m-%d'),'%') GROUP BY 'date'`, function(err,db_data) {
-            if (err) {
-                logger.error(
-                    "DB error [Accident]"+
-                    "\n \t" + `SELECT YEAR('aDate') AS 'date', COUNT(*) AS cnt FROM Accident WHERE aDate LIKE CONCAT('%',DATE_FORMAT(NOW(), '%Y'),'%') GROUP BY 'Date'
+        db.query(`SELECT YEAR('aDate') AS 'date', COUNT(*) AS cnt FROM Accident WHERE aDate LIKE CONCAT('%',DATE_FORMAT(NOW(), '%Y'),'%') GROUP BY 'Date'
                     UNION
                   SELECT MONTH('aDate') AS 'date', COUNT(*) AS cnt FROM Accident WHERE aDate LIKE CONCAT('%',DATE_FORMAT(NOW(), '%Y-%m'),'%') GROUP BY 'Date'
                     UNION
-                  SELECT DATE('aDate') AS 'date', COUNT(aDate) AS cnt FROM Accident WHERE aDate LIKE CONCAT('%',DATE_FORMAT(NOW(), '%Y-%m-%d'),'%') GROUP BY 'Date'`+
+                  SELECT * FROM (SELECT DATE_FORMAT(aa.temp_date, '%Y-%m-%d') date, COUNT(w.wDate) AS cnt FROM temp_date aa
+                  LEFT JOIN Worker w ON (w.wDate = aa.temp_date) GROUP BY date) a WHERE date LIKE CONCAT('%', DATE_FORMAT(NOW(),'%Y-%m-%d'),'%') GROUP BY date`, function(err,db_data) {
+                if (err) {
+                logger.error(
+                    "DB error [Accident]"+
+                    "\n \t" + `SELECT YEAR('aDate') AS 'date', COUNT(*) AS cnt FROM Accident WHERE aDate LIKE CONCAT('%',DATE_FORMAT(NOW(), '%Y'),'%') GROUP BY 'Date'
+                                    UNION
+                                SELECT MONTH('aDate') AS 'date', COUNT(*) AS cnt FROM Accident WHERE aDate LIKE CONCAT('%',DATE_FORMAT(NOW(), '%Y-%m'),'%') GROUP BY 'Date'
+                                    UNION
+                                SELECT * FROM (SELECT DATE_FORMAT(aa.temp_date, '%Y-%m-%d') date, COUNT(w.wDate) AS cnt FROM temp_date aa
+                                LEFT JOIN Worker w ON (w.wDate = aa.temp_date) GROUP BY date) a WHERE date LIKE CONCAT('%', DATE_FORMAT(NOW(),'%Y-%m-%d'),'%') GROUP BY date`+
                     "\n \t" + err);
                 reject('DB ERR');
                 //throw error;
@@ -197,15 +199,38 @@ function select_accidentDateCount() {
 
 function select_WorkerCountGraph() {
     return new Promise ((resolve, reject) => {
-        db.query(`SELECT DATE('wDate') AS date, COUNT(wDate) AS cnt FROM Worker WHERE wDate LIKE CONCAT('%',DATE_FORMAT(NOW(), '%Y-%m-%d'),'%') GROUP BY date
+        db.query(`SELECT * FROM (SELECT DATE_FORMAT(aa.temp_date, '%Y-%m-%d') date, COUNT(w.wDate) AS cnt FROM temp_date aa
+                  LEFT JOIN Worker w ON (w.wDate = aa.temp_date) GROUP BY date) a WHERE date LIKE CONCAT('%', DATE_FORMAT(NOW(),'%Y-%m-%d'),'%') GROUP BY date
                     UNION
                   SELECT IF(DATE('wDate'),null,null) AS date, COUNT(wDate) AS cnt FROM Worker WHERE wdate IS NOT NULL GROUP BY date WITH ROLLUP ;`, function(err,db_data) {
             if (err) {
                 logger.error(
                     "DB error [Worker]"+
-                    "\n \t" + `SELECT DATE('wDate') AS date, COUNT(wDate) AS cnt FROM Worker WHERE wDate LIKE CONCAT('%',DATE_FORMAT(NOW(), '%Y-%m-%d'),'%') GROUP BY date
+                    "\n \t" + `SELECT * FROM (SELECT DATE_FORMAT(aa.temp_date, '%Y-%m-%d') date, COUNT(w.wDate) AS cnt FROM temp_date aa
+                                LEFT JOIN Worker w ON (w.wDate = aa.temp_date) GROUP BY date) a WHERE date LIKE CONCAT('%', DATE_FORMAT(NOW(),'%Y-%m-%d'),'%') GROUP BY date
                                 UNION
-                               SELECT IF(DATE('wDate'),null,null) AS date, COUNT(wDate) AS cnt FROM Worker WHERE wdate IS NOT NULL GROUP BY date WITH ROLLUP ;`+
+                                SELECT IF(DATE('wDate'),null,null) AS date, COUNT(wDate) AS cnt FROM Worker WHERE wdate IS NOT NULL GROUP BY date WITH ROLLUP ;`+
+                    "\n \t" + err);
+                reject('DB ERR');
+                //throw error;
+            }
+            else {
+                resolve(db_data);
+            }
+        });
+    })
+}
+
+function select_WorkerStickGraph() {
+    return new Promise ((resolve, reject) => {
+        db.query(`SELECT * FROM(select DATE_FORMAT(aa.temp_date, '%Y-%m') date, COUNT(w.wDate) AS cnt FROM temp_date aa 
+        LEFT JOIN Worker w ON (w.wDate = aa.temp_date) GROUP BY date) a WHERE date LIKE CONCAT('%',DATE_FORMAT(NOW(),'%Y'),'%') GROUP BY date  
+        `, function(err,db_data) {
+            if (err) {
+                logger.error(
+                    "DB error [Worker]"+
+                    "\n \t" + `SELECT * FROM(select DATE_FORMAT(aa.temp_date, '%Y-%m') date, COUNT(w.wDate) AS cnt FROM temp_date aa 
+                    LEFT JOIN Worker w ON (w.wDate = aa.temp_date) GROUP BY date) a WHERE date LIKE CONCAT('%',DATE_FORMAT(NOW(),'%Y'),'%') GROUP BY date`+
                     "\n \t" + err);
                 reject('DB ERR');
                 //throw error;
@@ -231,5 +256,6 @@ module.exports = {
     select_accidentCount,
     select_accidentDateCount,
     select_accidentDateCountGraph,
-    select_WorkerCountGraph                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+    select_WorkerCountGraph,
+    select_WorkerStickGraph                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
 }
