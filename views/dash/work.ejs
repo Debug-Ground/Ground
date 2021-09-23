@@ -16,8 +16,11 @@
                       <th class="col-md-1">
                         번호
                       </th>
-                      <th class="col-md-3">
+                      <th class="col-md-1">
                         작업명
+                      </th>
+                      <th class="col-md-1">
+                        작업 장소
                       </th>
                       <th class="col-md-4">
                         공사 진행도
@@ -28,167 +31,40 @@
                       <th class="col-md-1"> 
                         공사 완료일
                       </th>
-                      <th class="col-md-2">
+                      <th class="col-md-1">
                         관리자
                       </th>
                     </tr>
                   </thead>
                   <tbody>
+                    <% for(var i = 0; i < db_data.length; i++) { %>
                     <tr>
                       <td class="py-1">
-                        1
+                        <%= db_data[i].wsid %>
                       </td>
                       <td>
-                        호서아파트 101동
+                        <%= db_data[i].wsName %>
+                      </td>
+                      <td>
+                        <%= db_data[i].wsLocation %>
                       </td>
                       <td>
                         <div class="progress">
-                          <div class="progress-bar bg-primary" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                          <div class="progress-bar bg-primary" role="progressbar" style="width: <%= db_data[i].percent %>%" aria-valuenow="<%= db_data[i].percent %>" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                       </td>
                       <td>
-                        2021.09.11
+                        <%= db_data[i].wsStartDate %>
                       </td>
                       <td>
-                        2021.09.21
+                        <%= db_data[i].wsEndDate %>
                       </td>
                       <td>
-                        송준하
+                        <%= db_data[i].wsManager %>
                       </td>
                     </tr>
-                    <tr>
-                      <td class="py-1">
-                        1
-                      </td>
-                      <td>
-                        호서아파트 101동
-                      </td>
-                      <td>
-                        <div class="progress">
-                          <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                      </td>
-                      <td>
-                        2021.09.11
-                      </td>
-                      <td>
-                        2021.09.21
-                      </td>
-                      <td>
-                        송준하
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="py-1">
-                        1
-                      </td>
-                      <td>
-                        호서아파트 101동
-                      </td>
-                      <td>
-                        <div class="progress">
-                          <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                      </td>
-                      <td>
-                        2021.09.11
-                      </td>
-                      <td>
-                        2021.09.21
-                      </td>
-                      <td>
-                        송준하
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="py-1">
-                        1
-                      </td>
-                      <td>
-                        호서아파트 101동
-                      </td>
-                      <td>
-                        <div class="progress">
-                          <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                      </td>
-                      <td>
-                        2021.09.11
-                      </td>
-                      <td>
-                        2021.09.21
-                      </td>
-                      <td>
-                        송준하
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="py-1">
-                        1
-                      </td>
-                      <td>
-                        호서아파트 101동
-                      </td>
-                      <td>
-                        <div class="progress">
-                          <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                      </td>
-                      <td>
-                        2021.09.11
-                      </td>
-                      <td>
-                        2021.09.21
-                      </td>
-                      <td>
-                        송준하
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="py-1">
-                        1
-                      </td>
-                      <td>
-                        호서아파트 101동
-                      </td>
-                      <td>
-                        <div class="progress">
-                          <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                      </td>
-                      <td>
-                        2021.09.11
-                      </td>
-                      <td>
-                        2021.09.21
-                      </td>
-                      <td>
-                        송준하
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="py-1">
-                        1
-                      </td>
-                      <td>
-                        호서아파트 101동
-                      </td>
-                      <td>
-                        <div class="progress">
-                          <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                      </td>
-                      <td>
-                        2021.09.11
-                      </td>
-                      <td>
-                        2021.09.21
-                      </td>
-                      <td>
-                        송준하
-                      </td>
-                    </tr>
-                  </tbody>
+                    <% } %>
+                    </tbody>
                 </table>
                 <nav aria-label="Page navigation" style="margin: 35px 0 20px 0;">
                     <ul class="pagination justify-content-center">
@@ -209,5 +85,6 @@
             </div>
           </div>
         </div>
-        
+
 <% include ../include/dash_footer %>
+        

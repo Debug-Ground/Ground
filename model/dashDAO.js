@@ -260,6 +260,25 @@ function select_WorkerStickGraph() {
     })
 }
 
+function select_WorkStatus() {
+    return new Promise ((resolve, reject) => {
+        db.query(`SELECT wsid, wsName, wsLocation, ROUND(((TIMESTAMPDIFF(DAY, wsStartDate, NOW()))/(TIMESTAMPDIFF(DAY, wsStartDate, wsEndDate))) * 100) AS percent, wsStartDate, wsEndDate, wsManager FROM WorkStatus`, function(err,db_data) {
+            if (err) {
+                logger.error(
+                    "DB error [Worker]"+
+                    "\n \t" + `SELECT wsid, wsName, wsLocation, wsStartDate, wsEndDate, wsManager FROM WorkStatus`+
+                    "\n \t" + err);
+                reject('DB ERR');
+                //throw error;
+            }
+            else {
+                resolve(db_data);
+            }
+        });
+    })
+}
+
+
 
 
 
@@ -277,5 +296,6 @@ module.exports = {
     select_accidentDateCount,
     select_accidentDateCountGraph,
     select_WorkerCountGraph,
-    select_WorkerStickGraph                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+    select_WorkerStickGraph,
+    select_WorkStatus                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
 }
