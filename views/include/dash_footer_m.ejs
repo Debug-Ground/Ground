@@ -1,0 +1,261 @@
+        <!-- partial:partials/_footer.html -->
+        <footer class="footer">
+            <div class="d-sm-flex justify-content-center justify-content-sm-between">
+              <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021.  Premium Bootstrap admin template from BootstrapDash. All rights reserved.</span>
+              <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with Ground Team</span>
+            </div>
+          </footer>
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+  
+    <!-- plugins:js -->
+    <script src="/dash_assets/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="/dash_assets/vendors/chart.js/Chart.min.js"></script>
+    <script src="/dash_assets/vendors/datatables.net/jquery.dataTables.js"></script>
+    <script src="/dash_assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+    <script src="/dash_assets/js/dataTables.select.min.js"></script>
+  
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="/dash_assets/js/off-canvas.js"></script>
+    <script src="/dash_assets/js/hoverable-collapse.js"></script>
+    <script src="/dash_assets/js/template.js"></script>
+    <script src="/dash_assets/js/settings.js"></script>
+    <script src="/dash_assets/js/todolist.js"></script>
+    <script src="/dash_assets/js/chart.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page-->
+    <script src="/dash_assets/js/dashboard.js"></script>
+    <script src="/dash_assets/js/Chart.roundedBarCharts.js"></script>
+    <!-- End custom js for this page-->
+
+    <script>
+        //메인 대시 보드 - 월별 현장 사고 관리 그래프
+        if ($("#order-chart").length) {
+          var areaData = {
+            labels: ["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월"],
+            datasets: [
+              {
+                data: [<% for(var i = 0; i < graphCount.length; i++){ %>
+                    '<%= graphCount[i].cnt %>',
+                    <% } %>],
+                borderColor: [
+                  '#4747A1'
+                ],
+                borderWidth: 2,
+                fill: false,
+                label: "Orders"
+              },
+              
+            ]
+          };
+          var areaOptions = {
+            responsive: true,
+            maintainAspectRatio: true,
+            plugins: {
+              filler: {
+                propagate: false
+              }
+            },
+            scales: {
+              xAxes: [{
+                display: true,
+                ticks: {
+                  display: true,
+                  padding: 10,
+                  fontColor:"#6C7383"
+                },
+                gridLines: {
+                  display: false,
+                  drawBorder: false,
+                  color: 'transparent',
+                  zeroLineColor: '#eeeeee'
+                }
+              }],
+              yAxes: [{
+                display: true,
+                ticks: {
+                  display: true,
+                  autoSkip: false,
+                  maxRotation: 0,
+                  stepSize: 10,
+                  min: 0,
+                  max: 100,
+                  padding: 18,
+                  fontColor:"#6C7383"
+                },
+                gridLines: {
+                  display: true,
+                  color:"#f2f2f2",
+                  drawBorder: false
+                }
+              }]
+            },
+            legend: {
+              display: false
+            },
+            tooltips: {
+              enabled: true
+            },
+            elements: {
+              line: {
+                tension: .35
+              },
+              point: {
+                radius: 0
+              }
+            }
+          }
+          var revenueChartCanvas = $("#order-chart").get(0).getContext("2d");
+          var revenueChart = new Chart(revenueChartCanvas, {
+            type: 'line',
+            data: areaData,
+            options: areaOptions
+          });
+        }
+
+        // 메인 대시 보드 - 공사 작업자 현황 그래프
+        if ($("#sales-chart").length) {
+          var SalesChartCanvas = $("#sales-chart").get(0).getContext("2d");
+          var SalesChart = new Chart(SalesChartCanvas, {
+            type: 'bar',
+            data: {
+              labels: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
+              datasets: [{
+                  label: '총 작업자 수',
+                  data: [480, 230, 470, 210, 330, 400, 340, 550, 480, 170, 340, 550,],
+                  backgroundColor: '#98BDFF'
+                },
+                {
+                  label: '신입 작업자 수',
+                  data: [<% for(var i = 0; i < stickCount.length; i++){ %>
+                    '<%= stickCount[i].cnt %>',
+                    <% } %>],
+                  backgroundColor: '#4B49AC'
+                }
+              ]
+            },
+            options: {
+              cornerRadius: 5,
+              responsive: true,
+              maintainAspectRatio: true,
+              layout: {
+                padding: {
+                  left: 0,
+                  right: 0,
+                  top: 20,
+                  bottom: 0
+                }
+              },
+              scales: {
+                yAxes: [{
+                  display: true,
+                  gridLines: {
+                    display: true,
+                    drawBorder: false,
+                    color: "#F2F2F2"
+                  },
+                  ticks: {
+                    display: true,
+                    min: 0,
+                    max: 600,
+                    callback: function(value, index, values) {
+                      return  value;
+                    },
+                    autoSkip: true,
+                    maxTicksLimit: 10,
+                    fontColor:"#6C7383"
+                  }
+                }],
+                xAxes: [{
+                  stacked: false,
+                  ticks: {
+                    beginAtZero: true,
+                    fontColor: "#6C7383"
+                  },
+                  gridLines: {
+                    color: "rgba(0, 0, 0, 0)",
+                    display: false
+                  },
+                  barPercentage: 1
+                }]
+              },
+              legend: {
+                display: false
+              },
+              elements: {
+                point: {
+                  radius: 0
+                }
+              }
+            },
+          });
+          document.getElementById('sales-legend').innerHTML = SalesChart.generateLegend();
+        }
+
+        var areaData = {
+        labels: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월","10월","11월","12월",],
+        datasets: [{
+          label: '2021년도 전체 작업자',
+          data: [12, 19, 3, 5, 2, 3,3,15,14,3,16,17],
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(255, 159, 64, 0.2)'
+          ],
+          borderColor: [
+            'rgba(255,99,132,1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)'
+          ],
+          borderWidth: 1,
+          fill: true, // 3: no fill
+        }]
+      };
+
+      var doughnutPieData = {
+      datasets: [{
+        data: [30, 40, 30],
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.5)',
+          'rgba(54, 162, 235, 0.5)',
+          'rgba(255, 206, 86, 0.5)',
+          'rgba(75, 192, 192, 0.5)',
+          'rgba(153, 102, 255, 0.5)',
+          'rgba(255, 159, 64, 0.5)'
+        ],
+        borderColor: [
+          'rgba(255,99,132,1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)'
+        ],
+      }],
+
+      // These labels appear in the legend and in the tooltips when hovering different arcs
+      labels: [
+        '관리자',
+        '정규직',
+        '일용직',
+      ]
+    };
+    </script>
+
+  </body>
+  
+  </html>
