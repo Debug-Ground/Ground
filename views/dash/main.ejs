@@ -236,51 +236,17 @@
                         <h4 class="card-title">작업자 체크 리스트</h4>
                         <div class="list-wrapper pt-2">
                             <ul class="d-flex flex-column-reverse todo-list todo-list-custom">
-                                <li>
+                                <% for ( var i = 0 ; i < checkData.length; i++) { %>
+                                  <li>
                                     <div class="form-check form-check-flat">
                                         <label class="form-check-label">
                                             <input class="checkbox" type="checkbox">
-                                            안전모 착용
+                                            <%= checkData[i].cList %>
                                         </label>
                                     </div>
                                     <i class="remove ti-close"></i>
                                 </li>
-                                <li class="completed">
-                                    <div class="form-check form-check-flat">
-                                        <label class="form-check-label">
-                                            <input class="checkbox" type="checkbox" checked>
-                                            안전 벨트 착용
-                                        </label>
-                                    </div>
-                                    <i class="remove ti-close"></i>
-                                </li>
-                                <li>
-                                    <div class="form-check form-check-flat">
-                                        <label class="form-check-label">
-                                            <input class="checkbox" type="checkbox">
-                                            안전화 착용
-                                        </label>
-                                    </div>
-                                    <i class="remove ti-close"></i>
-                                </li>
-                                <li class="completed">
-                                    <div class="form-check form-check-flat">
-                                        <label class="form-check-label">
-                                            <input class="checkbox" type="checkbox" checked>
-                                            안전 고리 소지 여부
-                                        </label>
-                                    </div>
-                                    <i class="remove ti-close"></i>
-                                </li>
-                                <li>
-                                    <div class="form-check form-check-flat">
-                                        <label class="form-check-label">
-                                            <input class="checkbox" type="checkbox">
-                                            작업 장갑 소지 여부
-                                        </label>
-                                    </div>
-                                    <i class="remove ti-close"></i>
-                                </li>
+                                <% } %>
                             </ul>
                         </div>
                         <div class="add-items d-flex mb-0 mt-2">

@@ -21,6 +21,7 @@ router.get('/manpower_add',dashController.dash_manpower_add);
 router.get('/manpower_detail',dashController.dash_manpower_detail);
 router.get('/notice/:num',dashController.dash_notice);
 router.get('/noticeWrite',dashController.dash_notice_write);
+router.post('/noticeInsert',dashController.dash_notice_insert);
 router.get('/noticeDetail/:num',dashController.dash_notice_detail);
 router.get('/timecard',dashController.dash_timecard);
 router.get('/work_chart',dashController.dash_work);
