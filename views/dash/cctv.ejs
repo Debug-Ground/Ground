@@ -28,47 +28,60 @@
                     <div class="tab-pane fade in active" id="tabmenu1">
                       1
                     </div>
+
                     <div class="tab-pane fade" id="tabmenu2">
-                      <div align="center" class="camera">
-                        <img src="/dash_assets/images/a.png" 
-                         width="800px" height="600px">
-                        <img src="/dash_assets/images/cctv.jpg" class="cctv" 
-                         width="760px" height="365px">
-                      </div>
-                      <style>
-                        .camera{
-                          position: relative;
+                      <div id="video-grid"></div>
+                      <script>
+                        function exit_room() {
+                            window.close();
                         }
-                        .cctv{
-                          position: absolute;
-                          top: 20px;
-                          left: 175px;
-                          z-index:2;
-                        }
-                      </style>
+                      </script>
                     </div>
+                    
                     <div class="tab-pane fade" id="tabmenu3">
-                      <div align="center" class="camera">
-                        <img src="/dash_assets/images/c.png" 
-                         class="q" width="800px" height="600px">
-                        <img src="/dash_assets/images/cctv.jpg" 
-                         class="w" width="600px" height="500px">
-                      </div>
-                      <style>
-                        .camera{
-                          position: relative;
-                        }
-                        .w{
-                          position: absolute;
-                          top: 50px;
-                          left: 250px;
-                          z-index:2;
-                        }
-                      </style>
                     </div>
                 </div>
              </div>
             </div>
           </div>
         </div>
-<% include ../include/dash_footer %>
+
+                <!-- partial:partials/_footer.html -->
+                <footer class="footer">
+                  <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                    <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021.  Premium Bootstrap admin template from BootstrapDash. All rights reserved.</span>
+                    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with Ground Team</span>
+                  </div>
+                </footer>
+                <!-- partial -->
+              </div>
+              <!-- main-panel ends -->
+            </div>
+            <!-- page-body-wrapper ends -->
+          </div>
+          <!-- container-scroller -->
+        
+          <!-- plugins:js -->
+          <script src="/dash_assets/vendors/js/vendor.bundle.base.js"></script>
+          <!-- endinject -->
+          <!-- Plugin js for this page -->
+          <script src="/dash_assets/vendors/chart.js/Chart.min.js"></script>
+          <script src="/dash_assets/vendors/datatables.net/jquery.dataTables.js"></script>
+          <script src="/dash_assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+          <script src="/dash_assets/js/dataTables.select.min.js"></script>
+        
+          <!-- End plugin js for this page -->
+          <!-- inject:js -->
+          <script src="/dash_assets/js/off-canvas.js"></script>
+          <script src="/dash_assets/js/hoverable-collapse.js"></script>
+          <script src="/dash_assets/js/template.js"></script>
+          <script src="/dash_assets/js/settings.js"></script>
+          <script src="/dash_assets/js/todolist.js"></script>
+          <script src="/dash_assets/js/chart.js"></script>
+          <!-- endinject -->
+          <!-- Custom js for this page-->
+          <script src="/dash_assets/js/dashboard.js"></script>
+          <script src="/dash_assets/js/Chart.roundedBarCharts.js"></script>
+          <!-- End custom js for this page-->
+        </body>
+        </html>      

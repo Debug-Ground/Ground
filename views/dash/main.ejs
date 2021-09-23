@@ -250,9 +250,43 @@
                             </ul>
                         </div>
                         <div class="add-items d-flex mb-0 mt-2">
-                            <input type="text" class="form-control todo-list-input" placeholder="작업자 체크 리스트 추가">
+                            <input type="text" id="listinput" class="form-control todo-list-input" placeholder="작업자 체크 리스트 추가">
                             <button class="add btn btn-icon text-primary todo-list-add-btn bg-transparent"><i class="icon-circle-plus"></i></button>
                         </div>
+                        <script>
+                            $(".add").click(function(){
+                                $.ajax({
+                                    url:"",
+                                    type:"POST",
+                                    data:{
+                                        "listinput" : $("#listinput").val()
+                                    },
+                                    dataType:"json",
+                                    success:function(){
+                                        addlist(checkHuman);
+                                    },
+                                    error:function(err){
+                                        console.log(err)
+                                    }
+                                })
+                            })
+
+                            function addlist(checkHuman){
+                                $newList = $("<li></li>")
+                                $("#hello").append($newList)
+
+                                for (let check of checkHuman){
+                                    let $wow=$("<div class='form-check form-check-flat'>"+
+                                        "<label class='form-check-label'>"+
+                                        "<input class='checkbox' type='checkbox'>"+ check.listinput +
+                                        "</label>" + "</div>" + "<i class='remove ti-close'>"+"</i>"
+                                    );
+                                    $newList.append($wow);
+                                }
+                            }
+
+                            
+                        </script>
                     </div>
                 </div>
             </div>
