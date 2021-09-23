@@ -161,7 +161,7 @@ function dash_timecard(req, res, next) {
 function dash_work(req, res, next) { 
   dashDAO.select_WorkStatus().then((db_data)=>{
     console.log(db_data)
-    res.render('dash/work',{db_data, username : req.session.wName});  
+    res.render('dash/work',{db_data, ws_num:req.params.num, max_value:7,username : req.session.wName});  
   })
 }
 
