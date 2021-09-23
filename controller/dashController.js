@@ -159,7 +159,10 @@ function dash_timecard(req, res, next) {
 }
 
 function dash_work(req, res, next) { 
-    res.render('dash/work',{username : req.session.wName});  
+  dashDAO.select_WorkStatus().then((db_data)=>{
+    console.log(db_data)
+    res.render('dash/work',{db_data, username : req.session.wName});  
+  })
 }
 
 function dash_work_add(req, res, next) { 
