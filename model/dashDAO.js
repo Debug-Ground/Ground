@@ -130,6 +130,24 @@ function select_anNoticeDetail(parameters) {
     })
 };
 
+function insert_anNotice(parameters) {
+    return new Promise ((resolve, reject) => {
+        db.query(`INSERT INTO AdminNotice SET antitle= '${parameters.antitle}', ancontent= '${parameters.ancontent}' , anwriter = '운영자' , andate = NOW()`, function(err,db_data) {
+            if (err) {
+                logger.error(
+                    "DB error [AdminNotice]"+
+                    "\n \t" + `SELECT * FROM AdminNotice anid= '${parameters.anid}'`+
+                    "\n \t" + err);
+                reject('DB ERR');
+                //throw error;
+            }
+            else {
+                resolve(db_data);
+            }
+        });
+    })
+};
+
 function select_accidentCount() {
     return new Promise ((resolve, reject) => {
         db.query(`SELECT if(aKind IS NULL, "total", aKind) AS kind, COUNT(aKind) AS count FROM Accident GROUP BY aKind WITH ROLLUP`, function(err,db_data) {
@@ -245,6 +263,7 @@ function select_WorkerStickGraph() {
 
 
 
+
 module.exports = {
     select_Checklist,
     insert_Checklist,
@@ -252,6 +271,7 @@ module.exports = {
     select_accident,
     update_UserChecklist,
     select_anNotice,
+    insert_anNotice,
     select_anNoticeDetail,
     select_accidentCount,
     select_accidentDateCount,

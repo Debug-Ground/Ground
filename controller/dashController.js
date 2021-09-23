@@ -19,7 +19,11 @@ function dash_main(req, res, next) {
          dashDAO.select_WorkerStickGraph().then((db_data)=>{
            stickCount = db_data
            console.log(stickCount)
-          res.render('dash/main',{acCount,dateCount, graphCount,workCount,stickCount, dayjs});
+           dashDAO.select_Checklist().then((db_data)=> {
+             checkData = db_data
+             console.log(checkData)
+            res.render('dash/main',{acCount,dateCount, graphCount,workCount,stickCount,checkData,dayjs});
+           })
          })
         })
       })
@@ -131,12 +135,22 @@ function dash_notice_write(req, res, next) {
   res.render('dash/notice_write',{username : req.session.wName});  
 }
 
+function dash_notice_insert(req, res, next) { 
+  var parameters = {
+    "antitle": req.body.nTitle,
+    "ancontent": req.body.nContent
+  }
+  dashDAO.insert_anNotice(parameters).then((db_data)=> {
+    res.redirect('/dash/notice/1')
+  })
+}
+
 function dash_notice_detail(req, res, next) { 
   var parameters = {
     "anid": req.params.num
   }
   dashDAO.select_anNoticeDetail(parameters).then((db_data)=> {
-    res.render('dash/notice_detail',{db_data});
+    res.render('dash/notice_detail',{db_data, username : req.session.wName});
   })
 }
 
@@ -194,6 +208,7 @@ module.exports = {
     dash_manpower_detail,
     dash_notice,
     dash_notice_write,
+    dash_notice_insert,
     dash_notice_detail,
     dash_timecard,
     dash_work,
