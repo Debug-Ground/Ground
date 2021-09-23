@@ -37,43 +37,54 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <% for(var i = 0; i < db_data.length; i++) { %>
-                    <tr>
+                    <% for(var i = (ws_num - 1) * max_value; i < ws_num * max_value; i++){ %>
+                      <% var data_value=db_data[i]; if(data_value===undefined){ continue; } %>
+                      <tr onclick="location.href='/dash/work_chart/<%= data_value.wsid %>'">  
                       <td class="py-1">
-                        <%= db_data[i].wsid %>
+                        <%= data_value.wsid %>
                       </td>
                       <td>
-                        <%= db_data[i].wsName %>
+                        <%= data_value.wsName %>
                       </td>
                       <td>
-                        <%= db_data[i].wsLocation %>
+                        <%= data_value.wsLocation %>
                       </td>
                       <td>
                         <div class="progress">
-                          <div class="progress-bar bg-primary" role="progressbar" style="width: <%= db_data[i].percent %>%" aria-valuenow="<%= db_data[i].percent %>" aria-valuemin="0" aria-valuemax="100"></div>
+                          <div class="progress-bar bg-primary" role="progressbar" style="width: <%=data_value.percent %>%" aria-valuenow="<%= data_value.percent %>" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                       </td>
                       <td>
-                        <%= db_data[i].wsStartDate %>
+                        <%= data_value.wsStartDate %>
                       </td>
                       <td>
-                        <%= db_data[i].wsEndDate %>
+                        <%= data_value.wsEndDate %>
                       </td>
                       <td>
-                        <%= db_data[i].wsManager %>
+                        <%= data_value.wsManager %>
                       </td>
                     </tr>
                     <% } %>
                     </tbody>
                 </table>
-                <nav aria-label="Page navigation" style="margin: 35px 0 20px 0;">
-                    <ul class="pagination justify-content-center">
-                      <li class="page-item"><a class="page-link" href="#">이전</a></li>
-                      <li class="page-item"><a class="page-link" href="#">1</a></li>
-                      <li class="page-item"><a class="page-link" href="#">2</a></li>
-                      <li class="page-item"><a class="page-link" href="#">3</a></li>
-                      <li class="page-item"><a class="page-link" href="#">다음</a></li>
-                    </ul>
+                <nav>
+                  <ul class="pagination justify-content-center mt-5">
+                    <% if(ws_num == 1) { %>
+                        <li class="page-item"><a id="prev" class="page-link" style="color: black; display:none;" href="/dash/work_chart/<%=Number(ws_num)-1%>">">이전</a></li>
+                    <% } else if (ws_num > 1) { %>
+                        <li class="page-item"><a id="prev" class="page-link" style="color: black; display:block;" href="/dash/work_chart/<%=Number(ws_num)-1%>">이전</a></li>
+                    <% } %>
+                    <% for(var j = 1; j<= Math.ceil(db_data.length / max_value); j++){ %>
+                      <%if(j != ws_num){%>
+                        <li class="page-item"><a class="page-link" style="color: black;" href="/dash/work_chart/<%= j %>"><%= j %></a>
+                      <%}else{%>
+                        <li class="page-item"><a class="page-link" style="color: black; background-color: #c8c8c8;" href="/dash/work_chart/<%= j %>"><%= j %></a>
+                      <%}%>
+                    <% } if(ws_num == Math.ceil(db_data.length / max_value)) { %>
+                        <li class="page-item"><a id="next" class="page-link" style="color: black; display:none;" href="/dash/work_chart/<%=Number(ws_num)+1%>">다음</a></li>
+                    <% } else if (ws_num < Math.ceil(db_data.length / max_value)) { %>
+                        <li class="page-item"><a id="next" class="page-link" style="color: black; display:block;" href="/dash/work_chart/<%=Number(ws_num)+1%>">다음</a></li>
+                    <% } %></ul>
                 </nav>
                 <div style="float: right; margin: 10px 0 25px 0">
                     <button type="submit" class="btn btn-inverse-primary btn-fw" style="float: right; margin: 0 20px 0 15px;" onclick="location.href='/dash/work_chart_add';">

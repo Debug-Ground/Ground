@@ -24,7 +24,7 @@ router.get('/noticeWrite',dashController.dash_notice_write);
 router.post('/noticeInsert',dashController.dash_notice_insert);
 router.get('/noticeDetail/:num',dashController.dash_notice_detail);
 router.get('/timecard',dashController.dash_timecard);
-router.get('/work_chart',dashController.dash_work);
+router.get('/work_chart/:num',dashController.dash_work);
 router.get('/work_chart_add',dashController.dash_work_add);
 router.get('/work_chart_detail',dashController.dash_work_detail);
 router.get('/worker_chart',dashController.dash_worker_chart);
