@@ -178,7 +178,11 @@ function dash_work_detail(req, res, next) {
 }
 
 function dash_worker_chart(req, res, next) { 
-    res.render('dash/worker_chart',{username : req.session.wName});  
+  res.render('dash/worker_chart',{username : req.session.wName});  
+}
+
+function dash_test(req, res, next) { 
+  res.render('dash/test',{username : req.session.wName});  
 }
 
 
@@ -225,5 +229,6 @@ module.exports = {
     dash_userchecklistUpdate,
     dash_manpower_update,
     dash_worker_chart,
+    dash_test,
     getWayWeather
 }
