@@ -175,55 +175,15 @@
                                 </tr>
                                 </thead>
                                 <tbody>
+                                <% for ( var i = 0; i  < workStatus.length; i++) { %>
                                 <tr>
-                                    <td>아파트 계단 난간 설치</td>
-                                    <td>21. 08. 21</td>
+                                    <td><%= workStatus[i].wsName %></td>
+                                    <td><%= dayjs(workStatus[i].wsEndDate).format('YY. MM. DD') %></td>
                                     <td class="font-weight-medium">
-                                        <div class="badge badge-success">완료</div>
+                                        <div class="badge badge-success"><%= workStatus[i].sStatus %></div>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>아파트 조명 설치</td>
-                                    <td>21. 12. 25</td>
-                                    <td class="font-weight-medium">
-                                        <div class="badge badge-success">완료</div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>아파트 놀이터 설치</td>
-                                    <td>21. 04. 21</td>
-                                    <td class="font-weight-medium">
-                                        <div class="badge badge-warning">진행중</div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>아파트 페인트 작업</td>
-                                    <td>21. 02. 11</td>
-                                    <td class="font-weight-medium">
-                                        <div class="badge badge-warning">진행중</div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>아파트 편의 시설 설치</td>
-                                    <td>21. 04. 21</td>
-                                    <td class="font-weight-medium">
-                                        <div class="badge badge-danger">취소</div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>아파트 조경</td>
-                                    <td>21. 07. 01</td>
-                                    <td class="font-weight-medium">
-                                        <div class="badge badge-warning">진행중</div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>아파트 조명 설치</td>
-                                    <td>21. 05. 24</td>
-                                    <td class="font-weight-medium">
-                                        <div class="badge badge-success">완성</div>
-                                    </td>
-                                </tr>
+                                <% } %>
                                 </tbody>
                             </table>
                         </div>
