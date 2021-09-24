@@ -204,9 +204,10 @@ function dash_test_send(req, res, next) {
                   'kakaoid': parameters.wid,
       })
       console.log(jdata)
+      process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
       var options = {
                   method: 'POST',
-                  hostname: "tamjiat.hopto.org",
+                  hostname: "grounda.hopto.org",
                   port:5000,
                   path:"/test",
                   agent: false,
@@ -222,8 +223,7 @@ function dash_test_send(req, res, next) {
       var req = https.request(options, (res) => {
               res.setEncoding('utf-8');
               res.on('data', (d) => {
-                  var resu = JSON.parse(d)
-                console.log(resu['result']);
+                console.log(d);
               });
       });
       req.on('error', (e) => {
