@@ -178,7 +178,13 @@ function dash_work_add(req, res, next) {
 }
 
 function dash_work_detail(req, res, next) { 
-  res.render('dash/work_detail',{username : req.session.wName});  
+  var parameters = {
+    "wsid": req.params.num
+  }
+  dashDAO.select_WorkStatusDetail(parameters).then((db_data)=> {
+    console.log(db_data)
+    res.render('dash/work_detail',{db_data,username : req.session.wName});  
+  })
 }
 
 function dash_worker_chart(req, res, next) { 
@@ -248,6 +254,34 @@ function getWayWeather(req, res, next) {
     }).catch(err => res.send("<script>alert('weather err')</script>"));
 }
 
+
+
+function dash_insert_list(req, res, next) { 
+  var parameters = {
+    "cList":req.body.listinput
+  }
+  dashDAO.insert_mainChecklist(parameters).then((db_data)=>{
+    dashDAO.select_mainChecklist().then((db_data)=>{
+      listData = db_data
+        res.send(listData)
+    })
+  })
+}
+
+
+function dash_delete_list(req, res, next) { 
+  var parameters = {
+    "cList":req.body.listinput
+  }
+  dashDAO.delete_mainChecklist(parameters).then((db_data)=>{
+    dashDAO.select_mainChecklist().then((db_data)=>{
+      listData = db_data
+        res.send(listData)
+    })
+  })
+}
+
+
 module.exports = {
     dash_main,
     dash_checklist,
@@ -274,5 +308,7 @@ module.exports = {
     dash_worker_chart,
     dash_test,
     getWayWeather,
-    dash_test_send
+    dash_test_send,
+    dash_insert_list,
+    dash_delete_list
 }

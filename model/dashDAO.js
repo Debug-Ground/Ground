@@ -278,6 +278,43 @@ function select_WorkStatus() {
         })
     }
 
+function select_WorkStatus() {
+    return new Promise ((resolve, reject) => {
+        db.query(`SELECT wsid, wsName, wsLocation, ROUND(((TIMESTAMPDIFF(DAY, wsStartDate, NOW()))/(TIMESTAMPDIFF(DAY, wsStartDate, wsEndDate))) * 100) AS percent, wsStartDate, wsEndDate, wsManager FROM WorkStatus`, function(err,db_data) {
+            if (err) {
+                logger.error(
+                    "DB error [Worker]"+
+                    "\n \t" + `SELECT wsid, wsName, wsLocation, wsStartDate, wsEndDate, wsManager FROM WorkStatus`+
+                    "\n \t" + err);
+                    reject('DB ERR');
+                    //throw error;
+            }
+            else {
+                resolve(db_data);
+            }
+        });
+    })
+}
+
+function select_WorkStatusDetail(parameters) {
+    return new Promise ((resolve, reject) => {
+        db.query(`SELECT * , ROUND(((TIMESTAMPDIFF(DAY, wsStartDate, NOW()))/(TIMESTAMPDIFF(DAY, wsStartDate, wsEndDate))) * 100) AS percent FROM WorkStatus WHERE wsid = '${parameters.wsid}'`, function(err,db_data) {
+            if (err) {
+                logger.error(
+                    "DB error [Worker]"+
+                    "\n \t" + `SELECT wsid, wsName, wsLocation, wsStartDate, wsEndDate, wsManager FROM WorkStatus`+
+                    "\n \t" + err);
+                    reject('DB ERR');
+                    //throw error;
+            }
+            else {
+                resolve(db_data);
+            }
+        });
+    })
+}
+
+
 function select_WorkerStatus() {
     return new Promise ((resolve, reject) => {
         db.query(`SELECT wsName, wsEndDate, sStatus FROM WorkStatus LIMIT 7;`, function(err,db_data) {
@@ -295,6 +332,59 @@ function select_WorkerStatus() {
         });
     })
 }
+
+function insert_mainChecklist(parameters) {
+    return new Promise ((resolve, reject) => {
+        db.query(`Insert Into CheckList SET cList='${parameters.cList}'`, function(err,db_data) {
+            if (err) {
+                logger.error(
+                    "DB error [CheckList]"+
+                    "\n \t" + `Insert Into CheckList SET cList='${parameters.cList}'`+
+                    "\n \t" + err);
+                reject('DB ERR');
+                //throw error;
+            }
+            else {
+                resolve(db_data);
+            }
+        });
+    })
+};
+function select_mainChecklist() {
+    return new Promise ((resolve, reject) => {
+        db.query(`SELECT cList FROM CheckList`, function(err,db_data) {
+            if (err) {
+                logger.error(
+                    "DB error [CheckList]"+
+                    "\n \t" + `SELECT cList FROM CheckList`+
+                    "\n \t" + err);
+                reject('DB ERR');
+                //throw error;
+            }
+            else {
+                resolve(db_data);
+            }
+        });
+    })
+};
+
+function delete_mainChecklist(parameters) {
+    return new Promise ((resolve, reject) => {
+        db.query(`Delete FROM CheckList WHERE cList = '${parameters.cList}'`, function(err,db_data) {
+            if (err) {
+                logger.error(
+                    "DB error [CheckList]"+
+                    "\n \t" + `Delete FROM CheckList WHERE cList = '${parameters.cList}'`+
+                    "\n \t" + err);
+                reject('DB ERR');
+                //throw error;
+            }
+            else {
+                resolve(db_data);
+            }
+        });
+    })
+};
 
 
 
@@ -315,6 +405,10 @@ module.exports = {
     select_accidentDateCountGraph,
     select_WorkerCountGraph,
     select_WorkerStickGraph,
-    select_WorkStatus,              
-    select_WorkerStatus                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+    select_WorkStatus, 
+    select_WorkStatusDetail,             
+    select_WorkerStatus,
+    insert_mainChecklist,
+    select_mainChecklist,
+    delete_mainChecklist                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
 }

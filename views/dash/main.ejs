@@ -216,14 +216,15 @@
                         <script>
                             $(".add").click(function(){
                                 $.ajax({
-                                    url:"",
+                                    url:"/dash/insertmaincheck",
                                     type:"POST",
                                     data:{
                                         "listinput" : $("#listinput").val()
                                     },
                                     dataType:"json",
                                     success:function(){
-                                        addlist(checkHuman);
+                                        // addlist(checkHuman);
+                                        // cosnole.log()
                                     },
                                     error:function(err){
                                         console.log(err)
@@ -231,19 +232,19 @@
                                 })
                             })
 
-                            function addlist(checkHuman){
-                                $newList = $("<li></li>")
-                                $("#hello").append($newList)
+                            // function addlist(checkHuman){
+                            //     $newList = $("<li></li>")
+                            //     $("#hello").append($newList)
 
-                                for (let check of checkHuman){
-                                    let $wow=$("<div class='form-check form-check-flat'>"+
-                                        "<label class='form-check-label'>"+
-                                        "<input class='checkbox' type='checkbox'>"+ check.listinput +
-                                        "</label>" + "</div>" + "<i class='remove ti-close'>"+"</i>"
-                                    );
-                                    $newList.append($wow);
-                                }
-                            }
+                            //     for (let check of checkHuman){
+                            //         let $wow=$("<div class='form-check form-check-flat'>"+
+                            //             "<label class='form-check-label'>"+
+                            //             "<input class='checkbox' type='checkbox'>"+ check.listinput +
+                            //             "</label>" + "</div>" + "<i class='remove ti-close'>"+"</i>"
+                            //         );
+                            //         $newList.append($wow);
+                            //     }
+                            // }
 
                             
                         </script>

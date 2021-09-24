@@ -26,12 +26,11 @@ router.get('/noticeDetail/:num',dashController.dash_notice_detail);
 router.get('/timecard',dashController.dash_timecard);
 router.get('/work_chart/:num',dashController.dash_work);
 router.get('/work_chart_add',dashController.dash_work_add);
-router.get('/work_chart_detail',dashController.dash_work_detail);
+router.get('/work_chart_detail/:num',dashController.dash_work_detail);
 router.get('/worker_chart',dashController.dash_worker_chart);
 router.post('/getWayWeather',dashController.getWayWeather);
 router.get('/test',dashController.dash_test);
 router.post('/test',dashController.dash_test_send);
-
-
+router.post('/insertmaincheck',dashController.dash_insert_list);
 router.get('/manpowerUpdate', dashController.dash_manpower_update);
 module.exports = router;
