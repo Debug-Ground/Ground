@@ -22,8 +22,12 @@ function dash_main(req, res, next) {
            dashDAO.select_Checklist().then((db_data)=> {
              checkData = db_data
              console.log(checkData)
-            res.render('dash/main',{acCount,dateCount, graphCount,workCount,stickCount,checkData,dayjs});
-           })
+             dashDAO.select_WorkerStatus().then((db_data)=> {
+              workStatus = db_data
+              console.log(db_data)
+              res.render('dash/main',{acCount,dateCount, graphCount,workCount,stickCount,workStatus, dayjs});
+              })
+            })
          })
         })
       })

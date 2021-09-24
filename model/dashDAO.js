@@ -268,6 +268,24 @@ function select_WorkStatus() {
                     "DB error [Worker]"+
                     "\n \t" + `SELECT wsid, wsName, wsLocation, wsStartDate, wsEndDate, wsManager FROM WorkStatus`+
                     "\n \t" + err);
+                    reject('DB ERR');
+                    //throw error;
+                }
+                else {
+                    resolve(db_data);
+                }
+            });
+        })
+    }
+
+function select_WorkerStatus() {
+    return new Promise ((resolve, reject) => {
+        db.query(`SELECT wsName, wsEndDate, sStatus FROM WorkStatus LIMIT 7;`, function(err,db_data) {
+            if (err) {
+                logger.error(
+                    "DB error [WorkStatus]"+
+                    "\n \t" + `SELECT wsName, wsEndDate, sStatus FROM WorkStatus LIMIT 7;`+
+                    "\n \t" + err);
                 reject('DB ERR');
                 //throw error;
             }
@@ -297,5 +315,6 @@ module.exports = {
     select_accidentDateCountGraph,
     select_WorkerCountGraph,
     select_WorkerStickGraph,
-    select_WorkStatus                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+    select_WorkStatus,              
+    select_WorkerStatus                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
 }
