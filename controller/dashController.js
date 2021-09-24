@@ -2,6 +2,10 @@ var express = require('express');
 var dashDAO = require('../model/dashDAO')
 var dayjs = require('dayjs');
 const weather = require("../model/weather");
+const request = require("request");
+const https = require("https");
+const fs = require("fs");
+const querystring = require('querystring');
 
 function dash_main(req, res, next) {      
   dashDAO.select_accidentCount().then((db_data)=> {
@@ -185,6 +189,45 @@ function dash_test(req, res, next) {
   res.render('dash/test',{username : req.session.wName});  
 }
 
+function dash_test_send(req, res, next) {
+  parameters = {
+      "wid": req.session.wid,
+  }
+  console.log(parameters.wid)
+      var jdata = querystring.stringify({
+                  'kakaoid': parameters.wid,
+      })
+      console.log(jdata)
+      var options = {
+                  method: 'POST',
+                  hostname: "tamjiat.hopto.org",
+                  port:5000,
+                  path:"/test",
+                  agent: false,
+                  headers : {
+                      'Content-Type':'application/x-www-form-urlencoded',
+                      'Content-Length': Buffer.byteLength(jdata)   
+                  },
+                   rejectUnhauthorized : false,
+                   requestCert: true,
+                   strictSSL: false,
+                   json:true
+          }
+      var req = https.request(options, (res) => {
+              res.setEncoding('utf-8');
+              res.on('data', (d) => {
+                  var resu = JSON.parse(d)
+                console.log(resu['result']);
+              });
+      });
+      req.on('error', (e) => {
+          console.error(e);
+        });
+      req.write(jdata)
+      req.end();
+      res.redirect('/dash/test')
+}
+
 
 function getWayWeather(req, res, next) {
     var parameters = {
@@ -230,5 +273,6 @@ module.exports = {
     dash_manpower_update,
     dash_worker_chart,
     dash_test,
-    getWayWeather
+    getWayWeather,
+    dash_test_send
 }
