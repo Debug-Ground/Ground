@@ -12,7 +12,7 @@ const fs = require('fs');
 /**
  * Get port from environment and store in Express.
  */
- var port = normalizePort(process.env.PORT || '80');
+ var port = normalizePort(process.env.PORT || '8443');
  app.set('port', port);
  
  /**
@@ -20,8 +20,8 @@ const fs = require('fs');
   */
  
  var server =https.createServer({
-   key: fs.readFileSync('./cert/private.key',"utf-8"),
-   cert: fs.readFileSync('./cert/private.crt',"utf-8"),
+   key: fs.readFileSync('/home/developer/Ground/cert/private.key',"utf-8"),
+   cert: fs.readFileSync('/home/developer/Ground/cert/private.crt',"utf-8"),
  },app);
 
 /**

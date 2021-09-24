@@ -1,5 +1,5 @@
 var express = require('express');
-var groupDAO = require('../model/groupDao');
+var groupDAO = require('/home/developer/Ground/model/groupDAO.js');
 
 
 function Group(req, res, next) {
