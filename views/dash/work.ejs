@@ -39,7 +39,7 @@
                   <tbody>
                     <% for(var i = (ws_num - 1) * max_value; i < ws_num * max_value; i++){ %>
                       <% var data_value=db_data[i]; if(data_value===undefined){ continue; } %>
-                      <tr onclick="location.href='/dash/work_chart/<%= data_value.wsid %>'">  
+                      <tr onclick="location.href='/dash/work_chart_detail/<%= data_value.wsid %>'">  
                       <td class="py-1">
                         <%= data_value.wsid %>
                       </td>
