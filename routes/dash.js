@@ -30,6 +30,7 @@ router.get('/work_chart_detail',dashController.dash_work_detail);
 router.get('/worker_chart',dashController.dash_worker_chart);
 router.post('/getWayWeather',dashController.getWayWeather);
 router.get('/test',dashController.dash_test);
+router.post('/test',dashController.dash_test_send);
 
 
 router.get('/manpowerUpdate', dashController.dash_manpower_update);
