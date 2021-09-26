@@ -114,16 +114,22 @@ function dash_cctv(req, res, next) {
 function dash_manpower(req, res, next) { 
   dashDAO.select_manpower().then((db_data)=> {
     console.log(db_data)
-    res.render('dash/manpower',{db_data,username : req.session.wName});  
+    res.render('dash/manpower',{db_data,m_num:req.params.num, max_value:7,username : req.session.wName});  
   })
 }
 
-function dash_manpower_add(req, res, next) { 
-  res.render('dash/manpower_add',{db_data,username : req.session.wName});  
+function dash_manpower_add(req, res, next) {
+  res.render('dash/manpower_add',{username : req.session.wName});  
 }
 
-function dash_manpower_detail(req, res, next) { 
-  res.render('dash/manpower_detail',{username : req.session.wName});  
+function dash_manpower_detail(req, res, next) {
+  var parameters = {
+    "wid": req.params.num
+  }
+  dashDAO.select_manpowercheck(parameters).then((db_data)=> {
+  console.log(db_data)
+  res.render('dash/manpower_detail',{db_data, username : req.session.wName});  
+  })
 }
 
 function dash_manpower_update(req, res, next) { 

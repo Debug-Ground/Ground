@@ -21,7 +21,7 @@
                     <div class="card" style="box-shadow: 2px 2px 2px 2px gray;">
                       <div class="card-body">
                         <p style="font-weight: bold; font-size: 22px; margin: 10px 0 20px 0;"><i class="mdi mdi-star-outline" style="color: gold"></i>&nbsp;성함</p>
-                        <p style="font-size: 18px; color: gray; margin: 0 0 0 15px;">송준하</p>
+                        <p style="font-size: 18px; color: gray; margin: 0 0 0 15px;"><%= db_data[0].wName %></p>
                       </div>
                     </div>
                 </div>
@@ -29,7 +29,12 @@
                     <div class="card" style="box-shadow: 2px 2px 2px 2px gray;">
                       <div class="card-body">
                         <p style="font-weight: bold; font-size: 22px; margin: 10px 0 20px 0;"><i class="mdi mdi-star-outline" style="color: gold"></i>&nbsp;고용형태</p>
-                        <p style="font-size: 18px; color: gray; margin: 0 0 0 15px;">관리자</p>
+                        <p style="font-size: 18px; color: gray; margin: 0 0 0 15px;">
+                          <% if (db_data[0].wMemo == null) { %> 
+                            없어요
+                          <% } else { %>
+                            <%= db_data[0].wRegular %></p>
+                          <% } %>
                       </div>
                     </div>
                 </div>
@@ -43,25 +48,37 @@
                           E-mail
                         </p>
                         <p class="mb-4">
-                          johndoe@examplemeail.com
+                          <%= db_data[0].wEmail %>
                         </p>
                         <p class="font-weight-bold">
                           전화번호
                         </p>
                         <p class="mb-4">
-                          010-1234-1234
+                          <% if (db_data[0].wMemo == null) { %> 
+                            없어요
+                          <% } else { %>
+                            <%= db_data[0].wPhone %>
+                          <% } %>
                         </p>
                         <p class="font-weight-bold">
                             주소
                         </p>
                         <p class="mb-4">
-                            충청남도 아산시 배방읍 호서대학교
+                          <% if (db_data[0].wMemo == null) { %> 
+                            없어요
+                          <% } else { %>
+                            <%= db_data[0].wAddress %>
+                          <% } %>
                         </p>
                         <p class="font-weight-bold">
                             특이사항
                         </p>
                         <p class="mb-4">
-                            안녕하세요.
+                          <% if (db_data[0].wMemo == null) { %> 
+                            없어요
+                          <% } else { %>
+                            <%= db_data[0].wMemo %>
+                          <% } %>
                         </p>
                       </address>
                   </div>
