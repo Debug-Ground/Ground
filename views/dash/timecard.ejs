@@ -14,7 +14,7 @@
                   <thead>
                     <tr>
                       <th class="col-md-1 text-center">
-                        
+                        번호
                       </th>
                       <th class="col-md-2">
                         성함
@@ -35,7 +35,7 @@
                       <% var data_value=db_data[i]; if(data_value===undefined){ continue; } %>
                       <tr onclick="location.href='/dash/timecard/<%= data_value.wid %>'">  
                       <td class="py-1 text-center">
-                        <img src="<%= data_value.wImage %>" alt="image">
+                        <%= i+1 %>
                       </td>
                       <td>
                         <%= data_value.wName %>

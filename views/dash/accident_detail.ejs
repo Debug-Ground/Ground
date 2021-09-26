@@ -3,98 +3,100 @@
     <div class="content-wrapper">
       <div class="row">
         <div class="col-lg-12 grid-margin stretch-card">
-          <div class="card">
-            <div class="card-body">
-              <h2 style="color:#4B49AC; margin:25px 0 10px 0;"><i class="mdi mdi-alert"></i>&nbsp;사고 관리</h2>
-              <p class="card-description" style="margin: 0 0 30px 20px;">
-                Ground의 사고 현장을 관리해보세요.
-              </p>
-              <div class="row" style="margin: 50px 0 0 0;">
-                <div class="col-md-4 grid-margin ">
-                    <div class="card" style="box-shadow: 7px 11px 22px 3px rgba(163, 174, 184, 0.3);">
-                    <div class="card-body">
-                        <p style="font-weight: bold; font-size: 18px; margin: 10px 0 20px 0;"><i class="mdi mdi-check" style="color: #4B49AC"></i>&nbsp;성함</p>
-                        <address style="font-size: 35px; color: gray; margin: 0 0 0 20px;">
-                            <p class="font-weight-bold" style="font-size: 16px;">
-                                <%=db_data[0].aPeople %>
-                            </p>
-                        </address>
-                    </div>
-                    </div>
-                </div>
-                <div class="col-md-4 grid-margin ">
-                    <div class="card" style="box-shadow: 7px 11px 22px 3px rgba(163, 174, 184, 0.3);">
-                    <div class="card-body">
-                        <p style="font-weight: bold; font-size: 18px; margin: 10px 0 20px 0;"><i class="mdi mdi-check" style="color: #4B49AC"></i>&nbsp;성별</p>
-                        <address style="font-size: 35px; color: gray; margin: 0 0 0 20px;">
-                            <p class="font-weight-bold" style="font-size: 16px;">
-                                <%=db_data[0].aGender %>
-                            </p>
-                        </address>
-                    </div>
-                    </div>
-                </div>
-                <div class="col-md-4 grid-margin ">
-                    <div class="card" style="box-shadow: 7px 11px 22px 3px rgba(163, 174, 184, 0.3);">
-                    <div class="card-body">
-                        <p style="font-weight: bold; font-size: 18px; margin: 10px 0 20px 0;"><i class="mdi mdi-check" style="color: #4B49AC"></i>&nbsp;사고형태</p>
-                        <address style="font-size: 35px; color: gray; margin: 0 0 0 20px;">
-                            <p class="font-weight-bold" style="font-size: 16px;">
-                                <%=db_data[0].aKind %>
-                            </p>
-                        </address>
-                    </div>
-                    </div>
-                </div>
+            <div class="card">
+              <div class="card-body">
+                <h2 style="color:#4B49AC; margin:25px 0 10px 0;"><i class="mdi mdi-alert"></i>&nbsp;사고관리</h2>
+                <p class="card-description" style="margin: 0 0 30px 20px;">
+                  Ground의 사고 현장을 관리해보세요.
+                </p>
+              <div class="col-md-12 grid-margin ">
               </div>
-                <div class="col-md-12 grid-margin ">
-                    <div class="card" style="box-shadow: 7px 11px 22px 3px rgba(163, 174, 184, 0.3);">
-                    <div class="card-body">
-                        <p style="font-weight: bold; font-size: 18px; margin: 10px 0 20px 0;"><i class="mdi mdi-check" style="color: #4B49AC"></i>&nbsp;사고현장</p>
-                        <div style="text-align: center;">
-                            <img src="<%=db_data[0].aImage %>" height="30%" width="30%" alt="No Image"/>
+                <div class="row" style="margin: 50px 0 0 0;">
+                  <div class="col-md-4 grid-margin ">
+                      <div class="card" style="box-shadow: 1px 1px 22px 3px rgba(163, 174, 184, 0.18);">
+                      <div class="card-body">
+                          <p style="font-weight: bold; font-size: 18px; margin: 0 0 20px 0;"><i class="mdi mdi-account-check" style="color: #4B49AC"></i>&nbsp;성함</p>
+                          <address style="font-size: 15px; color: gray; margin: 0 0 0 30px;">
+                              <p class="font-weight-bold" style="font-size: 15px;">
+                                <%=db_data[0].aPeople %>
+                              </p>
+                          </address>
+                      </div>
+                      </div>
+                  </div>
+                  <div class="col-md-4 grid-margin ">
+                      <div class="card" style="box-shadow: 1px 1px 22px 3px rgba(163, 174, 184, 0.18);">
+                      <div class="card-body">
+                          <p style="font-weight: bold; font-size: 18px; margin: 0 0 20px 0;"><i class="mdi mdi-gender-male-female" style="color: #4B49AC"></i>&nbsp;성별</p>
+                          <address style="font-size: 15px; color: gray; margin: 0 0 0 30px;">
+                              <p class="font-weight-bold" style="font-size: 15px;">
+                                <%=db_data[0].aGender %>
+                              </p>
+                          </address>
+                      </div>
+                      </div>
+                  </div>
+                  <div class="col-md-4 grid-margin ">
+                      <div class="card" style="box-shadow: 1px 1px 22px 3px rgba(163, 174, 184, 0.18);">
+                      <div class="card-body">
+                          <p style="font-weight: bold; font-size: 18px; margin: 0 0 20px 0;"><i class="mdi mdi-nutrition" style="color: #4B49AC"></i>&nbsp;사고형태</p>
+                          <address style="font-size: 15px; color: gray; margin: 0 0 0 30px;">
+                              <p class="font-weight-bold" style="font-size: 15px;">
+                                <%=db_data[0].aKind %>
+                              </p>
+                          </address>
+                      </div>
+                      </div>
+                  </div>
+                </div>
+                  <div class="col-md-12 grid-margin ">
+                      <div class="card" style="box-shadow: 1px 1px 22px 3px rgba(163, 174, 184, 0.18);">
+                        <div class="card-body">
+                            <p style="font-weight: bold; font-size: 18px; margin: 0 0 20px 0;"><i class="mdi mdi-camera-iris" style="color: #4B49AC"></i>&nbsp;사고 현장</p>
+                            <div style="text-align: center;">
+                                <img src="<%=db_data[0].aImage %>" height="30%" width="30%" alt="No Image"/>
+                            </div>
                         </div>
-                    </div>
-                    </div>
-                </div>
-                <div class="col-md-12 grid-margin ">
-                    <div class="card" style="box-shadow: 7px 14px 22px 3px rgba(163, 174, 184, 0.3);">
-                    <div class="card-body">
-                        <p style="font-weight: bold; font-size: 18px; margin: 10px 0 20px 0;"><i class="mdi mdi-check" style="color: #4B49AC"></i>&nbsp;사고장소</p>
-                        <%=db_data[0].aLocation %>
-                    </div>
-                    </div>
-                </div>
-                <div class="col-md-12 grid-margin ">
-                    <div class="card" style="box-shadow: 7px 14px 22px 3px rgba(163, 174, 184, 0.3);">
-                    <div class="card-body">
-                        <p style="font-weight: bold; font-size: 18px; margin: 10px 0 20px 0;"><i class="mdi mdi-check" style="color: #4B49AC"></i>&nbsp;인적사항</p>
-                        <address style="font-size: 40px; color: gray; margin: 0 0 20px 20px;">
-                            <p class="font-weight-bold">
-                                전화번호
-                            </p>
-                            <p class="mb-4">
-                                <%=db_data[0].aPhone %>
-                            </p>
-                            <p class="font-weight-bold">
-                                보호자 전화번호
-                            </p>
-                            <p class="mb-4">
-                                <%=db_data[0].aGuardian %>
-                            </p>
-                            <p class="font-weight-bold">
-                                메모
-                            </p>
-                            <p class="mb-4">
-                                <%=db_data[0].aMemo %>
-                            </p>
-                        </address>
-                    </div>
-                    </div>
-                </div>
+                      </div>
+                  </div>
+                  <div class="col-md-12 grid-margin ">
+                      <div class="card" style="box-shadow: 1px 1px 22px 3px rgba(163, 174, 184, 0.18);">
+                        <div class="card-body">
+                            <p style="font-weight: bold; font-size: 18px; margin: 10px 0 20px 0;"><i class="mdi mdi-map-marker-radius" style="color: #4B49AC"></i>&nbsp;사고 장소</p>
+                            <%=db_data[0].aLocation %>
+                        </div>
+                      </div>
+                  </div>
+                  <div class="col-md-12 grid-margin ">
+                      <div class="card" style="box-shadow: 1px 1px 18px 3px rgba(163, 174, 184, 0.18);">
+                      <div class="card-body">
+                            <p style="font-weight: bold; font-size: 18px; margin: 10px 0 20px 0;"><i class="mdi mdi-tooltip-text" style="color: #4B49AC"></i>&nbsp;인적사항</p>
+                            <ul class="list-arrow">
+                                <li>전화번호 : <%=db_data[0].aPhone %></li>
+                                <li>보호자 전화번호 : <%=db_data[0].aGuardian %></li>
+                            </ul>
+                            <p style="font-size: 14px; font-weight: bold;">메모</p>
+                            <blockquote class="blockquote blockquote-primary">
+                                <p><%=db_data[0].aMemo %></p>
+                            </blockquote>
+                      </div>
+                      </div>
+                  </div>
+                  <button type="submit" class="btn btn-inverse-success btn-fw" style="float: right; margin: 0 20px 0 10px;" onclick="location.href='/dash/accident/1';">
+                      <i class="mdi mdi-check"></i>                                                    
+                        &nbsp; 확인
+                  </button>
+                  <button type="submit" class="btn btn-inverse-info btn-fw" style="float: right; margin: 0 0 0 15px;" onclick="location.href='';">
+                      <i class="mdi mdi-flattr"></i>                                                    
+                        &nbsp; 수정
+                  </button>
+                  <button type="submit" class="btn btn-inverse-danger btn-fw" style="float: right; margin: 0 0 0 15px;" onclick="location.href='';">
+                      <i class="mdi mdi-close"></i>                                                    
+                        &nbsp; 삭제
+                  </button>
+              </div>
             </div>
           </div>
-        </div>
 
         
 <% include ../include/dash_footer %>
