@@ -16,7 +16,7 @@
                         <p style="font-weight: bold; font-size: 18px; margin: 10px 0 20px 0;"><i class="mdi mdi-check" style="color: #4B49AC"></i>&nbsp;성함</p>
                         <address style="font-size: 35px; color: gray; margin: 0 0 0 20px;">
                             <p class="font-weight-bold" style="font-size: 16px;">
-                                홍길동
+                                <%=db_data[0].aPeople %>
                             </p>
                         </address>
                     </div>
@@ -28,7 +28,7 @@
                         <p style="font-weight: bold; font-size: 18px; margin: 10px 0 20px 0;"><i class="mdi mdi-check" style="color: #4B49AC"></i>&nbsp;성별</p>
                         <address style="font-size: 35px; color: gray; margin: 0 0 0 20px;">
                             <p class="font-weight-bold" style="font-size: 16px;">
-                                남자
+                                <%=db_data[0].aGender %>
                             </p>
                         </address>
                     </div>
@@ -40,7 +40,7 @@
                         <p style="font-weight: bold; font-size: 18px; margin: 10px 0 20px 0;"><i class="mdi mdi-check" style="color: #4B49AC"></i>&nbsp;사고형태</p>
                         <address style="font-size: 35px; color: gray; margin: 0 0 0 20px;">
                             <p class="font-weight-bold" style="font-size: 16px;">
-                                낙사
+                                <%=db_data[0].aKind %>
                             </p>
                         </address>
                     </div>
@@ -52,7 +52,7 @@
                     <div class="card-body">
                         <p style="font-weight: bold; font-size: 18px; margin: 10px 0 20px 0;"><i class="mdi mdi-check" style="color: #4B49AC"></i>&nbsp;사고현장</p>
                         <div style="text-align: center;">
-                            <img src="/dash_assets/images/faces/face1.jpg" height="30%" width="30%" alt="No Image"/>
+                            <img src="<%=db_data[0].aImage %>" height="30%" width="30%" alt="No Image"/>
                         </div>
                     </div>
                     </div>
@@ -61,7 +61,7 @@
                     <div class="card" style="box-shadow: 7px 14px 22px 3px rgba(163, 174, 184, 0.3);">
                     <div class="card-body">
                         <p style="font-weight: bold; font-size: 18px; margin: 10px 0 20px 0;"><i class="mdi mdi-check" style="color: #4B49AC"></i>&nbsp;사고장소</p>
-                        
+                        <%=db_data[0].aLocation %>
                     </div>
                     </div>
                 </div>
@@ -74,19 +74,19 @@
                                 전화번호
                             </p>
                             <p class="mb-4">
-                                010-1234-1234
+                                <%=db_data[0].aPhone %>
                             </p>
                             <p class="font-weight-bold">
                                 보호자 전화번호
                             </p>
                             <p class="mb-4">
-                                010-1234-1235
+                                <%=db_data[0].aGuardian %>
                             </p>
                             <p class="font-weight-bold">
                                 메모
                             </p>
                             <p class="mb-4">
-                                2층 높이여서 다행히 발목만 삐긋함.
+                                <%=db_data[0].aMemo %>
                             </p>
                         </address>
                     </div>

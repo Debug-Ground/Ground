@@ -12,9 +12,9 @@ router.delete('/deleteCheck',dashController.dash_checklistDelete);
 router.post('/updateUserCheck',dashController.dash_userchecklistUpdate);
 
 //accideent
-router.get('/accident', dashController.dash_accident);
+router.get('/accident/:num', dashController.dash_accident);
 router.get('/accident_add', dashController.dash_accident_add);
-router.get('/accident_detail', dashController.dash_accident_detail);
+router.get('/accident_detail/:num', dashController.dash_accident_detail);
 //cctv
 router.get('/cctv',dashController.dash_cctv);
 //manpower

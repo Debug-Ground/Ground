@@ -25,141 +25,46 @@
                       <th class="col-md-1">
                         사고 날짜
                       </th>
-                      <th class="col-md-1">
-                        확인자
-                      </th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>
-                        1
+                    <% for(var i = (a_num - 1) * max_value; i < a_num * max_value; i++){ %>
+                      <% var data_value=db_data[i]; if(data_value===undefined){ continue; } %>
+                      <tr onclick="location.href='/dash/accident_detail/<%= data_value.aid %>'">  
+                       <td>
+                       <%= data_value.aid %>
                       </td>
                       <td>
-                        101동 2층에서 낙사사고 발생!
+                        <%= data_value.aDetail %>
                       </td>
                       <td>
-                        낙사
+                        <%= data_value.aKind %>
                       </td>
                       <td>
-                        2021.09.11
-                      </td>
-                      <td>
-                        송준하
+                        <%= data_value.aDate %>
                       </td>
                     </tr>
-                    <tr>
-                        <td>
-                          1
-                        </td>
-                        <td>
-                          101동 2층에서 낙사사고 발생!
-                        </td>
-                        <td>
-                          낙사
-                        </td>
-                        <td>
-                          2021.09.11
-                        </td>
-                        <td>
-                          송준하
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          1
-                        </td>
-                        <td>
-                          101동 2층에서 낙사사고 발생!
-                        </td>
-                        <td>
-                          낙사
-                        </td>
-                        <td>
-                          2021.09.11
-                        </td>
-                        <td>
-                          송준하
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          1
-                        </td>
-                        <td>
-                          101동 2층에서 낙사사고 발생!
-                        </td>
-                        <td>
-                          낙사
-                        </td>
-                        <td>
-                          2021.09.11
-                        </td>
-                        <td>
-                          송준하
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          1
-                        </td>
-                        <td>
-                          101동 2층에서 낙사사고 발생!
-                        </td>
-                        <td>
-                          낙사
-                        </td>
-                        <td>
-                          2021.09.11
-                        </td>
-                        <td>
-                          송준하
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          1
-                        </td>
-                        <td>
-                          101동 2층에서 낙사사고 발생!
-                        </td>
-                        <td>
-                          낙사
-                        </td>
-                        <td>
-                          2021.09.11
-                        </td>
-                        <td>
-                          송준하
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          1
-                        </td>
-                        <td>
-                          101동 2층에서 낙사사고 발생!
-                        </td>
-                        <td>
-                          낙사
-                        </td>
-                        <td>
-                          2021.09.11
-                        </td>
-                        <td>
-                          송준하
-                        </td>
-                      </tr>
+                    <% } %>
                   </tbody>
                 </table>
-                <nav aria-label="Page navigation" style="margin: 35px 0 20px 0;">
-                    <ul class="pagination justify-content-center">
-                      <li class="page-item"><a class="page-link" href="#">이전</a></li>
-                      <li class="page-item"><a class="page-link" href="#">1</a></li>
-                      <li class="page-item"><a class="page-link" href="#">2</a></li>
-                      <li class="page-item"><a class="page-link" href="#">3</a></li>
-                      <li class="page-item"><a class="page-link" href="#">다음</a></li>
-                    </ul>
+                <nav>
+                  <ul class="pagination justify-content-center mt-5">
+                    <% if(a_num == 1) { %>
+                        <li class="page-item"><a id="prev" class="page-link" style="color: black; display:none;" href="/dash/accident/<%=Number(a_num)-1%>">">이전</a></li>
+                    <% } else if (a_num > 1) { %>
+                        <li class="page-item"><a id="prev" class="page-link" style="color: black; display:block;" href="/dash/accident/<%=Number(a_num)-1%>">이전</a></li>
+                    <% } %>
+                    <% for(var j = 1; j<= Math.ceil(db_data.length / max_value); j++){ %>
+                      <%if(j != a_num){%>
+                        <li class="page-item"><a class="page-link" style="color: black;" href="/dash/accident/<%= j %>"><%= j %></a>
+                      <%}else{%>
+                        <li class="page-item"><a class="page-link" style="color: black; background-color: #c8c8c8;" href="/dash/accident/<%= j %>"><%= j %></a>
+                      <%}%>
+                    <% } if(a_num == Math.ceil(db_data.length / max_value)) { %>
+                        <li class="page-item"><a id="next" class="page-link" style="color: black; display:none;" href="/dash/accident/<%=Number(a_num)+1%>">다음</a></li>
+                    <% } else if (a_num < Math.ceil(db_data.length / max_value)) { %>
+                        <li class="page-item"><a id="next" class="page-link" style="color: black; display:block;" href="/dash/accident/<%=Number(a_num)+1%>">다음</a></li>
+                    <% } %></ul>
                 </nav>
                 <button type="button" class="btn btn-primary btn-icon-text ms-2" style="float:right;" onclick="location.href='/dash/accident_add';">
                   <i class="mdi mdi-plus"></i>
