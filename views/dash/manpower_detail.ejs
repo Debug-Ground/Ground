@@ -26,18 +26,18 @@
                             <ul class="list-arrow font-weight-bold" style="font-size: 14px;">
                                 <li>성함 : <%= db_data[0].wName %></li>
                                 <li>고용형태 : <% if (db_data[0].wMemo == null) { %> 
-                                  없음.
+                                  수정 필요!
                                 <% } else { %>
                                   <%= db_data[0].wRegular %></p>
                                 <% } %></li>
                                 <li>E-mail : <%= db_data[0].wEmail %></li>
                                 <li>전화번호 : <% if (db_data[0].wMemo == null) { %> 
-                                  없음.
+                                  수정 필요!
                                 <% } else { %>
                                   <%= db_data[0].wPhone %>
                                 <% } %></li>
                                 <li>주소 : <% if (db_data[0].wMemo == null) { %> 
-                                  없음.
+                                  수정 필요!
                                 <% } else { %>
                                   <%= db_data[0].wAddress %>
                                 <% } %></li>
@@ -45,7 +45,7 @@
                             <p style="font-size: 14px; font-weight: bold;">특이사항</p>
                             <blockquote class="blockquote blockquote-primary">
                                 <p><% if (db_data[0].wMemo == null) { %> 
-                                  없음.
+                                  수정 필요!
                                 <% } else { %>
                                   <%= db_data[0].wMemo %>
                                 <% } %></p>
