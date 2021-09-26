@@ -20,8 +20,8 @@ const fs = require('fs');
   */
  
  var server =https.createServer({
-   key: fs.readFileSync('/home/developer/Ground/cert/private.key',"utf-8"),
-   cert: fs.readFileSync('/home/developer/Ground/cert/private.crt',"utf-8"),
+   key: fs.readFileSync('cert/private.key',"utf-8"),
+   cert: fs.readFileSync('cert/private.crt',"utf-8"),
  },app);
 
 /**
