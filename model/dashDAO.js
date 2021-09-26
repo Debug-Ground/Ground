@@ -386,9 +386,42 @@ function delete_mainChecklist(parameters) {
     })
 };
 
+function select_manpower() {
+    return new Promise ((resolve, reject) => {
+        db.query(`SELECT wid, wName, wRegular, wDate FROM Worker`, function(err,db_data) {
+            if (err) {
+                logger.error(
+                    "DB error [CheckList]"+
+                    "\n \t" + `SELECT cList FROM CheckList`+
+                    "\n \t" + err);
+                reject('DB ERR');
+                //throw error;
+            }
+            else {
+                resolve(db_data);
+            }
+        });
+    })
+};
 
-
-
+function select_timecard() {
+    return new Promise ((resolve, reject) => {
+        db.query(`SELECT wid, wImage ,wName ,wRegular, wAttendanceDate, wEquipment FROM Worker`, function(err,db_data) {
+            if (err) {
+                logger.error(
+                    "DB error [Worker]"+
+                    "\n \t" + `select wIamge ,wName ,wRegular, wAttendanceDate, wEquipment from worker
+                    `+
+                    "\n \t" + err);
+                reject('DB ERR');
+                //throw error;
+            }
+            else {
+                resolve(db_data);
+            }
+        });
+    })
+};
 
 
 module.exports = {
@@ -410,5 +443,7 @@ module.exports = {
     select_WorkerStatus,
     insert_mainChecklist,
     select_mainChecklist,
-    delete_mainChecklist                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+    delete_mainChecklist,
+    select_manpower,
+    select_timecard                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
 }

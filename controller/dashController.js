@@ -112,11 +112,14 @@ function dash_cctv(req, res, next) {
 }
 
 function dash_manpower(req, res, next) { 
-  res.render('dash/manpower',{username : req.session.wName});  
+  dashDAO.select_manpower().then((db_data)=> {
+    console.log(db_data)
+    res.render('dash/manpower',{db_data,username : req.session.wName});  
+  })
 }
 
 function dash_manpower_add(req, res, next) { 
-    res.render('dash/manpower_add',{username : req.session.wName});  
+  res.render('dash/manpower_add',{db_data,username : req.session.wName});  
 }
 
 function dash_manpower_detail(req, res, next) { 
@@ -163,7 +166,10 @@ function dash_notice_detail(req, res, next) {
 }
 
 function dash_timecard(req, res, next) { 
-    res.render('dash/timecard',{username : req.session.wName});  
+  dashDAO.select_timecard().then((db_data)=> {
+    console.log(db_data)
+    res.render('dash/timecard',{db_data, t_num:req.params.num, max_value:7,username : req.session.wName});
+  })
 }
 
 function dash_work(req, res, next) { 
@@ -280,6 +286,7 @@ function dash_delete_list(req, res, next) {
     })
   })
 }
+
 
 
 module.exports = {
