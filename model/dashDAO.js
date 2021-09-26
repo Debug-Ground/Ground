@@ -93,6 +93,23 @@ function select_accident() {
         });
     })
 };
+function select_accidentDetail(parameters) {
+    return new Promise ((resolve, reject) => {
+        db.query(`SELECT * FROM Accident WHERE aid = '${parameters.aid}'`, function(err,db_data) {
+            if (err) {
+                logger.error(
+                    "DB error [Accident]"+
+                    "\n \t" + `SELECT * FROM Accident WHERE aid = '${parameters.aid}'`+
+                    "\n \t" + err);
+                reject('DB ERR');
+                //throw error;
+            }
+            else {
+                resolve(db_data);
+            }
+        });
+    })
+};
 
 function select_anNotice() {
     return new Promise ((resolve, reject) => {
@@ -447,6 +464,7 @@ module.exports = {
     insert_Checklist,
     delete_Checklist,
     select_accident,
+    select_accidentDetail,
     update_UserChecklist,
     select_anNotice,
     insert_anNotice,

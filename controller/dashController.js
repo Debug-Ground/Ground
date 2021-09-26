@@ -91,7 +91,8 @@ function dash_checklistDelete(req, res, next) {
 
 function dash_accident(req, res, next) { 
   dashDAO.select_accident().then((db_data)=>{
-    res.render('dash/accident', { username : req.session.wName, db_data : db_data});  
+    console.log(db_data)
+    res.render('dash/accident', { username : req.session.wName, db_data : db_data, a_num:req.params.num, max_value:7});  
   })    
 }
 
@@ -101,8 +102,12 @@ function dash_accident_add(req, res, next) {
   })    
 }
 
-function dash_accident_detail(req, res, next) { 
-  dashDAO.select_accident().then((db_data)=>{
+function dash_accident_detail(req, res, next) {
+  var parameters = {
+    "aid" : req.params.num
+  } 
+  dashDAO.select_accidentDetail(parameters).then((db_data)=>{
+    console.log(db_data)
     res.render('dash/accident_detail', { username : req.session.wName, db_data : db_data});  
   })    
 }
