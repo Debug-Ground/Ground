@@ -31,162 +31,47 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
+                    <% for(var i = (m_num - 1) * max_value; i < m_num * max_value; i++){ %>
+                      <% var data_value=db_data[i]; if(data_value===undefined){ continue; } %>
+                      <tr onclick="location.href='/dash/manpower_detail/<%= data_value.wid %>'">  
                       <td>
-                        1
+                        <%= i+1 %>
                       </td>
                       <td>
-                        홍길동
+                        <%= data_value.wName %>
                       </td>
                       <td>
-                        <select class="form-control" id="exampleSelectGender">
-                          <option selected>선택하세요</option>
-                          <option class="position" value="1">일용직</option>
-                          <option class="position" value="2">정규직</option>
-                          <option class="position" value="3">관리자</option>
-                        </select>
-                        <script>
-                          $("#exampleSelectGender").change(function(){
-                            var position=$(".position").val();
-                            
-                            $.ajax(
-                              {
-                                type:"GET",
-                                url:"./ajax",
-                                data: position,
-                                dataType:"JSON",
-                                success:function(data){
-                                  console.log('complete');
-                                  alert('complete');
-                                },
-                                error:function(){
-                                  console.log('error');
-                                  alert('error');
-                                }
-                              }
-                            )
-                          });
-                        </script>
+                        <%= data_value.wRegular %>
                       </td>
                       <td>
-                        2021.09.11
+                        <%= data_value.wDate %>
                       </td>
                       <td>
-                        송준하
+                        관리자
                       </td>
+                      <% } %>
                     </tr>
-                    <tr>
-                        <td>
-                          2
-                        </td>
-                        <td>
-                          홍길동
-                        </td>
-                        <td>
-                          일용직
-                        </td>
-                        <td>
-                          2021.09.11
-                        </td>
-                        <td>
-                          송준하
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          3
-                        </td>
-                        <td>
-                          홍길동
-                        </td>
-                        <td>
-                          일용직
-                        </td>
-                        <td>
-                          2021.09.11
-                        </td>
-                        <td>
-                          송준하
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          4
-                        </td>
-                        <td>
-                          홍길동
-                        </td>
-                        <td>
-                          일용직
-                        </td>
-                        <td>
-                          2021.09.11
-                        </td>
-                        <td>
-                          송준하
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          5
-                        </td>
-                        <td>
-                          홍길동
-                        </td>
-                        <td>
-                          일용직
-                        </td>
-                        <td>
-                          2021.09.11
-                        </td>
-                        <td>
-                          송준하
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          6
-                        </td>
-                        <td>
-                          홍길동
-                        </td>
-                        <td>
-                          일용직
-                        </td>
-                        <td>
-                          2021.09.11
-                        </td>
-                        <td>
-                          송준하
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          7
-                        </td>
-                        <td>
-                          홍길동
-                        </td>
-                        <td>
-                          일용직
-                        </td>
-                        <td>
-                          2021.09.11
-                        </td>
-                        <td>
-                          송준하
-                        </td>
-                      </tr>
                   </tbody>
                 </table>
-                <nav aria-label="Page navigation" style="margin: 35px 0 20px 0;">
-                    <ul class="pagination justify-content-center">
-                      <li class="page-item"><a class="page-link" href="#">이전</a></li>
-                      <li class="page-item"><a class="page-link" href="#">1</a></li>
-                      <li class="page-item"><a class="page-link" href="#">2</a></li>
-                      <li class="page-item"><a class="page-link" href="#">3</a></li>
-                      <li class="page-item"><a class="page-link" href="#">다음</a></li>
-                    </ul>
+                <nav>
+                  <ul class="pagination justify-content-center mt-5">
+                    <% if(m_num == 1) { %>
+                        <li class="page-item"><a id="prev" class="page-link" style="color: black; display:none;" href="/dash/manpower/<%=Number(m_num)-1%>">">이전</a></li>
+                    <% } else if (m_num > 1) { %>
+                        <li class="page-item"><a id="prev" class="page-link" style="color: black; display:block;" href="/dash/manpower/<%=Number(m_num)-1%>">이전</a></li>
+                    <% } %>
+                    <% for(var j = 1; j<= Math.ceil(db_data.length / max_value); j++){ %>
+                      <%if(j != m_num){%>
+                        <li class="page-item"><a class="page-link" style="color: black;" href="/dash/manpower/<%= j %>"><%= j %></a>
+                      <%}else{%>
+                        <li class="page-item"><a class="page-link" style="color: black; background-color: #c8c8c8;" href="/dash/manpower/<%= j %>"><%= j %></a>
+                      <%}%>
+                    <% } if(m_num == Math.ceil(db_data.length / max_value)) { %>
+                        <li class="page-item"><a id="next" class="page-link" style="color: black; display:none;" href="/dash/manpower/<%=Number(m_num)+1%>">다음</a></li>
+                    <% } else if (m_num < Math.ceil(db_data.length / max_value)) { %>
+                        <li class="page-item"><a id="next" class="page-link" style="color: black; display:block;" href="/dash/manpower/<%=Number(m_num)+1%>">다음</a></li>
+                    <% } %>
+                  </ul>
                 </nav>
                 <button type="button" class="btn btn-primary btn-icon-text ms-2" style="float:right;" onclick="location.href='/dash/manpower_add';">
                   <i class="mdi mdi-plus"></i>

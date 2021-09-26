@@ -18,9 +18,9 @@ router.get('/accident_detail', dashController.dash_accident_detail);
 //cctv
 router.get('/cctv',dashController.dash_cctv);
 //manpower
-router.get('/manpower',dashController.dash_manpower);
+router.get('/manpower/:num',dashController.dash_manpower);
 router.get('/manpower_add',dashController.dash_manpower_add);
-router.get('/manpower_detail',dashController.dash_manpower_detail);
+router.get('/manpower_detail/:num',dashController.dash_manpower_detail);
 
 //notice
 router.get('/notice/:num',dashController.dash_notice);

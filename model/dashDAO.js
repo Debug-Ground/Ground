@@ -404,6 +404,24 @@ function select_manpower() {
     })
 };
 
+function select_manpowercheck(parameters) {
+    return new Promise ((resolve, reject) => {
+        db.query(`SELECT wName,wEmail,wPhone,wRegular,wAddress,wMemo FROM Worker WHERE wid = '${parameters.wid}'`, function(err,db_data) {
+            if (err) {
+                logger.error(
+                    "DB error [Worker]"+
+                    "\n \t" + `SELECT wName FROM Worker`+
+                    "\n \t" + err);
+                reject('DB ERR');
+                //throw error;
+            }
+            else {
+                resolve(db_data);
+            }
+        });
+    })
+};
+
 function select_timecard() {
     return new Promise ((resolve, reject) => {
         db.query(`SELECT wid, wImage ,wName ,wRegular, wAttendanceDate, wEquipment FROM Worker`, function(err,db_data) {
@@ -445,5 +463,6 @@ module.exports = {
     select_mainChecklist,
     delete_mainChecklist,
     select_manpower,
+    select_manpowercheck,
     select_timecard                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
 }
