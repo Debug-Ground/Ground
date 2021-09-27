@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var dashController = require('../controller/dashController')
-
+const upload = require('../middleware/multer');
 /* GET home page. */
 router.get('/', dashController.dash_main);
 
@@ -14,6 +14,7 @@ router.post('/updateUserCheck',dashController.dash_userchecklistUpdate);
 //accideent
 router.get('/accident/:num', dashController.dash_accident);
 router.get('/accident_add', dashController.dash_accident_add);
+router.post('/accident_insert', upload.single('file'),dashController.dash_accident_insert)
 router.get('/accident_detail/:num', dashController.dash_accident_detail);
 //cctv
 router.get('/cctv',dashController.dash_cctv);
@@ -32,7 +33,9 @@ router.get('/timecard/:num',dashController.dash_timecard);
 //workchart
 router.get('/work_chart/:num',dashController.dash_work);
 router.get('/work_chart_add',dashController.dash_work_add);
+router.post('/work_insert',dashController.dash_work_insert);
 router.get('/work_chart_detail/:num',dashController.dash_work_detail);
+//
 router.get('/worker_chart',dashController.dash_worker_chart);
 
 router.post('/getWayWeather',dashController.getWayWeather);

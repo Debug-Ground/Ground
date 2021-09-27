@@ -16,16 +16,16 @@
                         <p class="card-description" style="margin: 0 0 30px 20px;">
                             Ground에서 발생한 사고를 확인해주세요.
                         </p>
-                        <form class="forms-sample">
+                        <form class="forms-sample" action="/dash/accident_insert" method="POST" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="form-group col">
                                     <label for="exampleInputName1">성함</label>
-                                    <input type="text" class="form-control" id="exampleInputName1"
+                                    <input type="text" class="form-control" id="exampleInputName1" name="aPeople"
                                            placeholder="ex) 홍길동">
                                 </div>
                                 <div class="form-group col">
                                     <label for="exampleSelectGender">성별</label>
-                                    <select class="form-control" id="exampleSelectGender">
+                                    <select class="form-control" id="exampleSelectGender" name="aGender">
                                         <option>남자</option>
                                         <option>여자</option>
                                     </select>
@@ -34,18 +34,18 @@
                             <div class="row">
                                 <div class="form-group col">
                                     <label for="exampleInputEmail3">전화번호</label>
-                                    <input type="email" class="form-control" id="exampleInputEmail3"
+                                    <input type="text" class="form-control" id="exampleInputEmail3" name="aPhone"
                                            placeholder="ex) test@test.com">
                                 </div>
                                 <div class="form-group col">
                                     <label for="exampleInputPassword4">보호자 전화번호</label>
-                                    <input type="password" class="form-control" id="exampleInputPhone4"
+                                    <input type="text" class="form-control" id="exampleInputPhone4" name="aGuardian"
                                            placeholder="ex) 010-123-1234">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="exampleSelectGender">사고형태</label>
-                                <select class="form-control" id="exampleSelectGender">
+                                <select class="form-control" id="exampleSelectGender" name="aKind">
                                     <option>낙사</option>
                                     <option>화재</option>
                                     <option>감전</option>
@@ -57,13 +57,13 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputaccidentdetail1">사고내용</label>
-                                <input type="text" class="form-control" id="exampleInputCity1"
+                                <input type="text" class="form-control" id="exampleInputCity1" name="aDetail"
                                        placeholder="ex) 호서아파트 101동에서 낙사사고 발생!">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputCity1">주소</label>
                                 <div class="map_wrap">
-                                  <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
+                                  <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;" name="aLocation"></div>
                                     <div class="hAddr">
                                         <span class="title">지도중심기준 행정동 주소정보</span>
                                         <span id="centerAddr"></span>
@@ -72,7 +72,7 @@
                             </div>
                             <div class="form-group">
                                 <label>사고 사진</label>
-                                <input type="file" name="img[]" class="file-upload-default">
+                                <input type="file" name="file" class="file-upload-default">
                                 <div class="input-group col-xs-12">
                                     <input type="text" class="form-control file-upload-info" disabled=""
                                            placeholder="사고 사진">
@@ -83,9 +83,9 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleTextarea1">메모</label>
-                                <textarea class="form-control" id="exampleTextarea1" rows="4"></textarea>
+                                <textarea class="form-control" id="exampleTextarea1" rows="4" name="aMemo"></textarea>
                             </div>
-                            <button type="button" class="btn btn-inverse-primary btn-fw mr-2" style="float:right;">
+                            <button type="submit" class="btn btn-inverse-primary btn-fw mr-2" style="float:right;">
                                 <i class="mdi mdi-plus"></i>
                                 등록하기
                             </button>

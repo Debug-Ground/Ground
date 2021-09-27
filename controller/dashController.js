@@ -102,6 +102,24 @@ function dash_accident_add(req, res, next) {
   })    
 }
 
+function dash_accident_insert(req, res, next) { 
+  var parameters = {
+    "aPeople":req.body.aPeople,
+    "aGender":req.body.aGender,
+    "aPhone":req.body.aPhone,
+    "aGuardian":req.body.aGuardian,
+    "aKind":req.body.aKind,
+    "aDetail":req.body.aDetail,
+    "aLocation":req.body.aLocation,
+    "aImage":req.file.filename,
+    "aMemo":req.body.aMemo
+  }
+  console.log(parameters)
+  dashDAO.insert_accident(parameters).then((db_data)=>{
+    res.send("<script>alert('success')</script>")
+  })    
+}
+
 function dash_accident_detail(req, res, next) {
   var parameters = {
     "aid" : req.params.num
@@ -192,6 +210,22 @@ function dash_work(req, res, next) {
 
 function dash_work_add(req, res, next) { 
   res.render('dash/work_add',{username : req.session.wName});  
+}
+
+function dash_work_insert(req, res, next) { 
+  var parameters = {
+    "wsManager":req.body.wsManager,
+    "wsManagerRank":req.body.wsManagerRank,
+    "wsWorkerNum":req.body.wsWorkerNum,
+    "wsName":req.body.wsName,
+    "wsStartDate":req.body.wsManager,
+    "wsEndDate":req.body.wsEndDate,
+    "wsLocation":req.body.wsLocation,
+    "wsMemo":req.body.wsMemo,
+  }
+  dashDAO.insert_WorkStatus(parameters).then((db_data)=> {
+    res.send("<script>alert('success')</script>")
+  })
 }
 
 function dash_work_detail(req, res, next) { 
@@ -299,7 +333,6 @@ function dash_delete_list(req, res, next) {
 }
 
 
-
 module.exports = {
     dash_main,
     dash_checklist,
@@ -307,6 +340,7 @@ module.exports = {
     dash_checklistDelete,
     dash_accident,
     dash_accident_add,
+    dash_accident_insert,
     dash_accident_detail,
     dash_cctv,
     dash_manpower,
@@ -319,6 +353,7 @@ module.exports = {
     dash_timecard,
     dash_work,
     dash_work_add,
+    dash_work_insert,
     dash_work_detail,
     dash_worker_chart,
     dash_userchecklistUpdate,

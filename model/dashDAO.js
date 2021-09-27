@@ -93,6 +93,41 @@ function select_accident() {
         });
     })
 };
+
+function insert_accident(parameters) {
+    return new Promise ((resolve, reject) => {
+        db.query(`INSERT INTO Accident SET aPeople = '${parameters.aPeople}',
+            aGender = '${parameters.aGender}',
+            aPhone = '${parameters.aPhone}',
+            aGuardian = '${parameters.aGuardian}',
+            aKind = '${parameters.aKind}',
+            aDetail = '${parameters.aDetail}',
+            aLocation = '${parameters.aLocation}',
+            aImage = '${parameters.aImage}',
+            aMemo = '${parameters.aMemo}'`, function(err,db_data) {
+            if (err) {
+                logger.error(
+                    "DB error [Accident]"+
+                    "\n \t" + `INSERT INTO Accident SET aPeople = '${parameters.aPeople}',
+                    aGender = '${parameters.aGender}',
+                    aPhone = '${parameters.aPhone}',
+                    aGuardian = '${parameters.aGuardian}',
+                    aKind = '${parameters.aKind}',
+                    aDetail = '${parameters.aDetail}',
+                    aLocation = '${parameters.aLocation}',
+                    aImage = '${parameters.aImage}',
+                    aMemo = '${parameters.aMemo}'`+
+                    "\n \t" + err);
+                reject('DB ERR');
+                //throw error;
+            }
+            else {
+                resolve(db_data);
+            }
+        });
+    })
+};
+
 function select_accidentDetail(parameters) {
     return new Promise ((resolve, reject) => {
         db.query(`SELECT * FROM Accident WHERE aid = '${parameters.aid}'`, function(err,db_data) {
@@ -295,23 +330,6 @@ function select_WorkStatus() {
         })
     }
 
-function select_WorkStatus() {
-    return new Promise ((resolve, reject) => {
-        db.query(`SELECT wsid, wsName, wsLocation, ROUND(((TIMESTAMPDIFF(DAY, wsStartDate, NOW()))/(TIMESTAMPDIFF(DAY, wsStartDate, wsEndDate))) * 100) AS percent, wsStartDate, wsEndDate, wsManager FROM WorkStatus`, function(err,db_data) {
-            if (err) {
-                logger.error(
-                    "DB error [Worker]"+
-                    "\n \t" + `SELECT wsid, wsName, wsLocation, wsStartDate, wsEndDate, wsManager FROM WorkStatus`+
-                    "\n \t" + err);
-                    reject('DB ERR');
-                    //throw error;
-            }
-            else {
-                resolve(db_data);
-            }
-        });
-    })
-}
 
 function select_WorkStatusDetail(parameters) {
     return new Promise ((resolve, reject) => {
@@ -331,6 +349,38 @@ function select_WorkStatusDetail(parameters) {
     })
 }
 
+function insert_WorkStatus(parameters) {
+    return new Promise ((resolve, reject) => {
+        db.query(`INSERT INTO WorkStatus SET wsManager = '${parameters.wsManager}',
+            wsManagerRank = '${parameters.wsManagerRank}',
+            wsWorkerNum = '${parameters.wsWorkerNum}',
+            wsName = '${parameters.wsName}',
+            wsStartDate = '${parameters.wsStartDate}',
+            wsEndDate = '${parameters.wsEndDate}',
+            wsLocation = '${parameters.wsLocation}',
+            wsMemo = '${parameters.wsMemo}'
+             `, function(err,db_data) {
+            if (err) {
+                logger.error(
+                    "DB error [Worker]"+
+                    "\n \t" + `INSERT INTO WorkStatus SET wsManager = '${parameters.wsManager}',
+                    wsManagerRank = '${parameters.wsManagerRank}',
+                    wsWorkerNum = '${parameters.wsWorkerNum}',
+                    wsName = '${parameters.wsName}',
+                    wsStartDate = '${parameters.wsStartDate}',
+                    wsEndDate = '${parameters.wsEndDate}',
+                    wsLocation = '${parameters.wsLocation}',
+                    wsMemo = '${parameters.wsMemo}'`+
+                    "\n \t" + err);
+                    reject('DB ERR');
+                    //throw error;
+            }
+            else {
+                resolve(db_data);
+            }
+        });
+    })
+}
 
 function select_WorkerStatus() {
     return new Promise ((resolve, reject) => {
@@ -464,6 +514,7 @@ module.exports = {
     insert_Checklist,
     delete_Checklist,
     select_accident,
+    insert_accident,
     select_accidentDetail,
     update_UserChecklist,
     select_anNotice,
@@ -474,7 +525,8 @@ module.exports = {
     select_accidentDateCountGraph,
     select_WorkerCountGraph,
     select_WorkerStickGraph,
-    select_WorkStatus, 
+    select_WorkStatus,
+    insert_WorkStatus, 
     select_WorkStatusDetail,             
     select_WorkerStatus,
     insert_mainChecklist,
