@@ -233,7 +233,7 @@
                             
                             $("#removebtn").click(function(){
                                 $.ajax({
-                                    url:"",
+                                    url:"/dash/deletemaincheck",
                                     type:"POST",
                                     data:{
                                         "checkboxinput" : $(".checkbox").val()

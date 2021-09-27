@@ -15,12 +15,15 @@ router.post('/updateUserCheck',dashController.dash_userchecklistUpdate);
 router.get('/accident/:num', dashController.dash_accident);
 router.get('/accident_add', dashController.dash_accident_add);
 router.post('/accident_insert', upload.single('file'),dashController.dash_accident_insert)
+router.get('/accident_update/:num',dashController.dash_accident_update)
+router.post('/accident_update',dashController.dash_accident_updatedata)
 router.get('/accident_detail/:num', dashController.dash_accident_detail);
 //cctv
 router.get('/cctv',dashController.dash_cctv);
 //manpower
 router.get('/manpower/:num',dashController.dash_manpower);
-router.get('/manpower_add',dashController.dash_manpower_add);
+router.get('/manpower_update/:num',dashController.dash_manpower_update);
+router.post('/manpower_update',dashController.dash_manpower_updatedata)
 router.get('/manpower_detail/:num',dashController.dash_manpower_detail);
 
 //notice
@@ -33,6 +36,8 @@ router.get('/timecard/:num',dashController.dash_timecard);
 //workchart
 router.get('/work_chart/:num',dashController.dash_work);
 router.get('/work_chart_add',dashController.dash_work_add);
+router.get('/work_chart_update',dashController.dash_work_update);
+router.post('/work_update',dashController.dash_work_updatedata);
 router.post('/work_insert',dashController.dash_work_insert);
 router.get('/work_chart_detail/:num',dashController.dash_work_detail);
 //
@@ -44,5 +49,7 @@ router.get('/test',dashController.dash_test);
 router.post('/test',dashController.dash_test_send);
 
 router.post('/insertmaincheck',dashController.dash_insert_list);
+router.post('/deletemaincheck',dashController.dash_delete_list);
+
 router.get('/manpowerUpdate', dashController.dash_manpower_update);
 module.exports = router;
