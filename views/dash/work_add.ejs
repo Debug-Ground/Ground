@@ -17,16 +17,16 @@
                         <p class="card-description" style="margin: 0 0 30px 20px;">
                             새롭게 추가된 공사 작업을 입력해주세요.
                         </p>
-                        <form class="forms-sample">
+                        <form class="forms-sample" action="/dash/work_insert" method="POST">
                             <div class="row">
                                 <div class="form-group col">
                                     <label for="exampleInputName1">관리자</label>
-                                    <input type="text" class="form-control" id="exampleInputName1"
+                                    <input type="text" class="form-control" id="exampleInputName1" name="wsManager"
                                            placeholder="ex) 홍길동">
                                 </div>
                                 <div class="form-group col">
                                     <label for="exampleSelectRank">직급</label>
-                                    <select class="form-control" id="exampleSelectRank">
+                                    <select class="form-control" id="exampleSelectRank" name="wsManagerRank">
                                         <option>총괄자</option>
                                         <option>팀장</option>
                                         <option>사원</option>
@@ -36,7 +36,7 @@
                             <div class="row">
                                 <div class="form-group col">
                                     <label for="exampleInputWorkman3">작업 인원</label>
-                                    <input type="text" class="form-control" id="exampleInputWorkman3"
+                                    <input type="text" class="form-control" id="exampleInputWorkman3" name="wsWorkerNum"
                                            placeholder="ex) 20명">
                                 </div>
                                 <div class="form-group col">
@@ -47,18 +47,18 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputWorking">작업명</label>
-                                <input type="text" class="form-control" id="exampleInputWorking"
+                                <input type="text" class="form-control" id="exampleInputWorking" name="wsName"
                                        placeholder="ex) 아파트 난간 공사">
                             </div>
                             <div class="row">
                                 <div class="form-group col">
                                     <label for="exampleInputWorkStart5">공사 시작일</label>
-                                    <input type="text" class="form-control" id="exampleInputWorkStart5"
+                                    <input type="text" class="form-control" id="exampleInputWorkStart5" name="wsStartDate"
                                            placeholder="ex) 20명">
                                 </div>
                                 <div class="form-group col">
                                     <label for="exampleInputWorkEnd6">공사 예정 완료일</label>
-                                    <input type="text" class="form-control" id="exampleInputWorkEnd6"
+                                    <input type="text" class="form-control" id="exampleInputWorkEnd6" name="wsEndDate"
                                            placeholder="ex) 72">
                                 </div>
                             </div>
@@ -66,7 +66,7 @@
                             <div class="form-group">
                                 <label for="exampleInputCity1">주소</label>
                                 <div class="map_wrap">
-                                  <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
+                                  <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;" name="wsLocation"></div>
                                     <div class="hAddr">
                                         <span class="title">지도중심기준 행정동 주소정보</span>
                                         <span id="centerAddr"></span>
@@ -76,9 +76,9 @@
 
                             <div class="form-group">
                                 <label for="exampleTextarea1">메모</label>
-                                <textarea class="form-control" id="exampleTextarea1" rows="4"></textarea>
+                                <textarea class="form-control" id="exampleTextarea1" name="wsMemo" rows="4"></textarea>
                             </div>
-                            <button type="button" class="btn btn-inverse-primary btn-fw mr-2" style="float:right;" >
+                            <button type="submit" class="btn btn-inverse-primary btn-fw mr-2" style="float:right;" >
                                 <i class="mdi mdi-plus"></i>
                                 등록하기
                             </button>

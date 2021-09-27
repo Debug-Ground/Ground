@@ -194,6 +194,22 @@ function dash_work_add(req, res, next) {
   res.render('dash/work_add',{username : req.session.wName});  
 }
 
+function dash_work_insert(req, res, next) { 
+  var parameters = {
+    "wsManager":req.body.wsManager,
+    "wsManagerRank":req.body.wsManagerRank,
+    "wsWorkerNum":req.body.wsWorkerNum,
+    "wsName":req.body.wsName,
+    "wsStartDate":req.body.wsManager,
+    "wsEndDate":req.body.wsEndDate,
+    "wsLocation":req.body.wsLocation,
+    "wsMemo":req.body.wsMemo,
+  }
+  dashDAO.insert_WorkStatus(parameters).then((db_data)=> {
+    res.send("<script>alert('success')</script>")
+  })
+}
+
 function dash_work_detail(req, res, next) { 
   var parameters = {
     "wsid": req.params.num
@@ -299,7 +315,6 @@ function dash_delete_list(req, res, next) {
 }
 
 
-
 module.exports = {
     dash_main,
     dash_checklist,
@@ -319,6 +334,7 @@ module.exports = {
     dash_timecard,
     dash_work,
     dash_work_add,
+    dash_work_insert,
     dash_work_detail,
     dash_worker_chart,
     dash_userchecklistUpdate,
