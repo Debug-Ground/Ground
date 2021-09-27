@@ -41,38 +41,7 @@
                         <%= data_value.wName %>
                       </td>
                       <td>
-<<<<<<< Updated upstream
                         <%= data_value.wRegular %>
-=======
-                        <select class="form-control" id="exampleSelectGender">
-                          <option selected>선택하세요</option>
-                          <option class="position" value="1">일용직</option>
-                          <option class="position" value="2">정규직</option>
-                          <option class="position" value="3">관리자</option>
-                        </select>
-                        <script>
-                          $("#exampleSelectGender").change(function(){
-                            var position=$(".position").val();
-                            
-                            $.ajax(
-                              {
-                                type:"GET",
-                                url:"./ajax",
-                                data: position,
-                                dataType:"JSON",
-                                success:function(data){
-                                  console.log('complete');
-                                  alert('complete');
-                                },
-                                error:function(){
-                                  console.log('error');
-                                  alert('error');
-                                }
-                              }
-                            )
-                          });
-                        </script>
->>>>>>> Stashed changes
                       </td>
                       <td>
                         <%= data_value.wDate %>
