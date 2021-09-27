@@ -102,6 +102,24 @@ function dash_accident_add(req, res, next) {
   })    
 }
 
+function dash_accident_insert(req, res, next) { 
+  var parameters = {
+    "aPeople":req.body.aPeople,
+    "aGender":req.body.aGender,
+    "aPhone":req.body.aPhone,
+    "aGuardian":req.body.aGuardian,
+    "aKind":req.body.aKind,
+    "aDetail":req.body.aDetail,
+    "aLocation":req.body.aLocation,
+    "aImage":req.file.filename,
+    "aMemo":req.body.aMemo
+  }
+  console.log(parameters)
+  dashDAO.insert_accident(parameters).then((db_data)=>{
+    res.send("<script>alert('success')</script>")
+  })    
+}
+
 function dash_accident_detail(req, res, next) {
   var parameters = {
     "aid" : req.params.num
@@ -322,6 +340,7 @@ module.exports = {
     dash_checklistDelete,
     dash_accident,
     dash_accident_add,
+    dash_accident_insert,
     dash_accident_detail,
     dash_cctv,
     dash_manpower,
