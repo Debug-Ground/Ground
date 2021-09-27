@@ -21,6 +21,7 @@
     <script src="/dash_assets/vendors/datatables.net/jquery.dataTables.js"></script>
     <script src="/dash_assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
     <script src="/dash_assets/js/dataTables.select.min.js"></script>
+    <script src="/dash_assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
   
     <!-- End plugin js for this page -->
     <!-- inject:js -->
@@ -92,6 +93,13 @@
         '일용직',
       ]
     };
+    </script>
+    <script>
+      $(function(){
+        $("#datepicker").datepicker(); // yyyy-mm-dd 형식으로 date타입 포멧
+        $("#datepicker2").datepicker(); // yyyy-mm-dd 형식으로 date타입 포멧
+      
+      });
     </script>
 
   </body>
