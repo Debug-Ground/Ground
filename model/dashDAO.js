@@ -540,7 +540,7 @@ function select_manpower() {
 
 function select_manpowercheck(parameters) {
     return new Promise ((resolve, reject) => {
-        db.query(`SELECT wName,wEmail,wPhone,wRegular,wAddress,wMemo FROM Worker WHERE wid = '${parameters.wid}'`, function(err,db_data) {
+        db.query(`SELECT wName,wGender,wEmail,wPhone,wRegular,wAddress,wMemo FROM Worker WHERE wid = '${parameters.wid}'`, function(err,db_data) {
             if (err) {
                 logger.error(
                     "DB error [Worker]"+

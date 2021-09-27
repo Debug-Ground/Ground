@@ -169,6 +169,9 @@ function dash_manpower(req, res, next) {
 }
 
 function dash_manpower_update(req, res, next) {
+  var parameters ={
+    "wid":req.params.num
+  }
   dashDAO.select_manpowercheck(parameters).then((db_data)=> {
   console.log(db_data)
   res.render('dash/manpower_update',{db_data, username : req.session.wName});  

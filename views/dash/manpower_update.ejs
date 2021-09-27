@@ -5,19 +5,19 @@
         <div class="col-lg-12 grid-margin stretch-card">
           <div class="card">
             <div class="card-body">
-              <h2 style="color:#4B49AC; margin:25px 0 10px 0;"><i class="mdi mdi-account-multiple-plus"></i>&nbsp;작업자 추가</h2>
+              <h2 style="color:#4B49AC; margin:25px 0 10px 0;"><i class="mdi mdi-account-multiple-plus"></i>&nbsp;작업자 수정</h2>
               <p class="card-description" style="margin: 0 0 30px 20px;">
-                Ground의 중요 인력을 추가해보세요!
+                새롭게 바뀐 내용을 수정해주세요!
               </p>
               <form class="forms-sample">
                 <div class="row">
                   <div class="form-group col">
                     <label for="exampleInputName1">성함</label>
-                    <input type="text" class="form-control" id="exampleInputName1" placeholder="ex) 홍길동">
+                    <input type="text" class="form-control" id="exampleInputName1" placeholder="" name="wName" value="<%= db_data[0].wName %>">
                   </div>
                   <div class="form-group col">
                     <label for="exampleSelectGender">성별</label>
-                      <select class="form-control" id="exampleSelectGender">
+                      <select class="form-control" id="exampleSelectGender" name="wGender" value="<%= db_data[0].wGender %>">
                         <option>남자</option>
                         <option>여자</option>
                       </select>
@@ -26,16 +26,16 @@
                 <div class="row">
                   <div class="form-group col">
                     <label for="exampleInputEmail3">이메일</label>
-                    <input type="email" class="form-control" id="exampleInputEmail3" placeholder="ex) test@test.com">
+                    <input type="email" class="form-control" id="exampleInputEmail3" placeholder="ex) test@test.com" name="wEmail" value="<%= db_data[0].wEmail %>">
                   </div>
                   <div class="form-group col">
                     <label for="exampleInputPassword4">전화번호</label>
-                    <input type="password" class="form-control" id="exampleInputPhone4" placeholder="ex) 010-123-1234">
+                    <input type="password" class="form-control" id="exampleInputPhone4" placeholder="전화번호 입력이 필요합니다." name="wPhone" value="<%= db_data[0].wPhone %>">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="exampleSelectGender">고용형태</label>
-                    <select class="form-control" id="exampleSelectGender">
+                    <select class="form-control" id="exampleSelectGender" name="wRegular">
                       <option>일용직</option>
                       <option>정규직</option>
                       <option>관리자</option>
@@ -43,25 +43,15 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleInputCity1">주소</label>
-                    <input type="text" class="form-control" id="exampleInputCity1" placeholder="ex) 충청남도 아산시 배방읍">
+                    <input type="text" class="form-control" id="exampleInputCity1" name="wAddress" placeholder="주소 입력이 필요합니다." value="<%= db_data[0].wAddress %>">
                   </div>
-                <div class="form-group">
-                  <label>프로필</label>
-                  <input type="file" name="img[]" class="file-upload-default">
-                  <div class="input-group col-xs-12">
-                    <input type="text" class="form-control file-upload-info" disabled="" placeholder="증명 사진">
-                    <span class="input-group-append">
-                      <button class="file-upload-browse btn btn-primary" type="button">업로드</button>
-                    </span>
-                  </div>
-                </div>
                 <div class="form-group">
                   <label for="exampleTextarea1">메모</label>
-                  <textarea class="form-control" id="exampleTextarea1" rows="4"></textarea>
+                  <textarea class="form-control" id="exampleTextarea1" rows="4" name="wMemo" placeholder="메모 입력이 필요합니다." value="<%= db_data[0].wMemo %>"></textarea>
                 </div>
                 <button type="button" class="btn btn-inverse-primary btn-fw mr-2" style="float:right;">
                     <i class="mdi mdi-plus"></i>
-                    등록하기
+                    수정 완료
                 </button>
                 <button type="button" class="btn btn-inverse-danger btn-fw mr-2" style="float:right;">
                     <i class="mdi mdi-minus"></i>
