@@ -128,6 +128,40 @@ function insert_accident(parameters) {
     })
 };
 
+function update_accident(parameters) {
+    return new Promise ((resolve, reject) => {
+        db.query(`UPDATE Accident SET aPeople = '${parameters.aPeople}',
+            aGender = '${parameters.aGender}',
+            aPhone = '${parameters.aPhone}',
+            aGuardian = '${parameters.aGuardian}',
+            aKind = '${parameters.aKind}',
+            aDetail = '${parameters.aDetail}',
+            aLocation = '${parameters.aLocation}',
+            aImage = '${parameters.aImage}',
+            aMemo = '${parameters.aMemo}' WHERE aid = '${parameters.aid}''`, function(err,db_data) {
+            if (err) {
+                logger.error(
+                    "DB error [Accident]"+
+                    "\n \t" + `INSERT INTO Accident SET aPeople = '${parameters.aPeople}',
+                    aGender = '${parameters.aGender}',
+                    aPhone = '${parameters.aPhone}',
+                    aGuardian = '${parameters.aGuardian}',
+                    aKind = '${parameters.aKind}',
+                    aDetail = '${parameters.aDetail}',
+                    aLocation = '${parameters.aLocation}',
+                    aImage = '${parameters.aImage}',
+                    aMemo = '${parameters.aMemo}'`+
+                    "\n \t" + err);
+                reject('DB ERR');
+                //throw error;
+            }
+            else {
+                resolve(db_data);
+            }
+        });
+    })
+};
+
 function select_accidentDetail(parameters) {
     return new Promise ((resolve, reject) => {
         db.query(`SELECT * FROM Accident WHERE aid = '${parameters.aid}'`, function(err,db_data) {
@@ -382,6 +416,39 @@ function insert_WorkStatus(parameters) {
     })
 }
 
+function update_WorkStatus(parameters) {
+    return new Promise ((resolve, reject) => {
+        db.query(`UPDATE WorkStatus SET wsManager = '${parameters.wsManager}',
+            wsManagerRank = '${parameters.wsManagerRank}',
+            wsWorkerNum = '${parameters.wsWorkerNum}',
+            wsName = '${parameters.wsName}',
+            wsStartDate = '${parameters.wsStartDate}',
+            wsEndDate = '${parameters.wsEndDate}',
+            wsLocation = '${parameters.wsLocation}',
+            wsMemo = '${parameters.wsMemo}' WHERE wsid = '${parameters.wsid}'
+             `, function(err,db_data) {
+            if (err) {
+                logger.error(
+                    "DB error [Worker]"+
+                    "\n \t" + `INSERT INTO WorkStatus SET wsManager = '${parameters.wsManager}',
+                    wsManagerRank = '${parameters.wsManagerRank}',
+                    wsWorkerNum = '${parameters.wsWorkerNum}',
+                    wsName = '${parameters.wsName}',
+                    wsStartDate = '${parameters.wsStartDate}',
+                    wsEndDate = '${parameters.wsEndDate}',
+                    wsLocation = '${parameters.wsLocation}',
+                    wsMemo = '${parameters.wsMemo}'`+
+                    "\n \t" + err);
+                    reject('DB ERR');
+                    //throw error;
+            }
+            else {
+                resolve(db_data);
+            }
+        });
+    })
+}
+
 function select_WorkerStatus() {
     return new Promise ((resolve, reject) => {
         db.query(`SELECT wsName, wsEndDate, sStatus FROM WorkStatus LIMIT 7;`, function(err,db_data) {
@@ -488,7 +555,33 @@ function select_manpowercheck(parameters) {
         });
     })
 };
-
+function update_manpower(parameters) {
+    return new Promise ((resolve, reject) => {
+        db.query(`UPDATE Worker SET wName = '${parameters.wName}',
+        wRegular = '${parameters.wRegular}',
+        wEmail = '${parameters.wEmail}',
+        wPhone = '${parameters.wPhone}',
+        wAddress = '${parameters.wAddress}',
+        wMemo = '${parameters.wMemo}' WHERE wid = '${parameters.wid}'`, function(err,db_data) {
+            if (err) {
+                logger.error(
+                    "DB error [Worker]"+
+                    "\n \t" + `UPDATE Worker SET wName = '${parameters.wName}',
+                    wRegular = '${parameters.wRegular}',
+                    wEmail = '${parameters.wEmail}',
+                    wPhone = '${parameters.wPhone}',
+                    wAddress = '${parameters.wAddress}',
+                    wMemo = '${parameters.wMemo}' WHERE wid = '${parameters.wid}'`+
+                    "\n \t" + err);
+                reject('DB ERR');
+                //throw error;
+            }
+            else {
+                resolve(db_data);
+            }
+        });
+    })
+};
 function select_timecard() {
     return new Promise ((resolve, reject) => {
         db.query(`SELECT wid, wImage ,wName ,wRegular, wAttendanceDate, wEquipment FROM Worker`, function(err,db_data) {
@@ -515,6 +608,7 @@ module.exports = {
     delete_Checklist,
     select_accident,
     insert_accident,
+    update_accident,
     select_accidentDetail,
     update_UserChecklist,
     select_anNotice,
@@ -526,7 +620,8 @@ module.exports = {
     select_WorkerCountGraph,
     select_WorkerStickGraph,
     select_WorkStatus,
-    insert_WorkStatus, 
+    insert_WorkStatus,
+    update_WorkStatus, 
     select_WorkStatusDetail,             
     select_WorkerStatus,
     insert_mainChecklist,
@@ -534,5 +629,6 @@ module.exports = {
     delete_mainChecklist,
     select_manpower,
     select_manpowercheck,
+    update_manpower,
     select_timecard                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
 }

@@ -116,8 +116,35 @@ function dash_accident_insert(req, res, next) {
   }
   console.log(parameters)
   dashDAO.insert_accident(parameters).then((db_data)=>{
-    res.send("<script>alert('success')</script>")
+    res.redirect('/dash/accident/1')
   })    
+}
+function dash_accident_update(req,res,next){
+  var parameters = {
+    "aid" : req.params.num,
+  }  
+  dashDAO.select_accidentDetail(parameters).then((db_data)=>{
+    res.render('dash/accident_update',{ username : req.session.wName,db_data})
+  })  
+}
+
+
+function dash_accident_updatedata(req,res,next){
+  var parameters = {
+    "aid" : req.params.num,
+    "aPeople":req.body.aPeople,
+    "aGender":req.body.aGender,
+    "aPhone":req.body.aPhone,
+    "aGuardian":req.body.aGuardian,
+    "aKind":req.body.aKind,
+    "aDetail":req.body.aDetail,
+    "aLocation":req.body.aLocation,
+    "aImage":req.file.filename,
+    "aMemo":req.body.aMemo
+  }
+  dashDAO.update_accident(parameters).then((db_data)=>{
+    res.redirect('/dash/accident/1')
+  })  
 }
 
 function dash_accident_detail(req, res, next) {
@@ -141,8 +168,11 @@ function dash_manpower(req, res, next) {
   })
 }
 
-function dash_manpower_add(req, res, next) {
-  res.render('dash/manpower_add',{username : req.session.wName});  
+function dash_manpower_update(req, res, next) {
+  dashDAO.select_manpowercheck(parameters).then((db_data)=> {
+  console.log(db_data)
+  res.render('dash/manpower_update',{db_data, username : req.session.wName});  
+  })
 }
 
 function dash_manpower_detail(req, res, next) {
@@ -155,13 +185,18 @@ function dash_manpower_detail(req, res, next) {
   })
 }
 
-function dash_manpower_update(req, res, next) { 
+function dash_manpower_updatedata(req, res, next) { 
   var parameters = {
-    "wPosition" : req.body.position 
+    "wid":req.params.num,
+    "wName":req.body.wName,
+    "wRegular":req.body.wRegular,
+    "wEmail":req.body.wEmail,
+    "wPhone":req.body.wPhone,
+    "wAddress":req.body.wAddress,
+    "wMemo":req.body.wMemo
   }
-  console.log(parameters.wPosition)
-  dashDAO.update_manpower(parameters).then((db_data)=>{
-    res.send(db_data);  
+  dashDAO.update_manpower(parameters).then((db_data)=> {
+    res.redirect('/dash/manpower/1')
   })
 }
 
@@ -224,9 +259,37 @@ function dash_work_insert(req, res, next) {
     "wsMemo":req.body.wsMemo,
   }
   dashDAO.insert_WorkStatus(parameters).then((db_data)=> {
-    res.send("<script>alert('success')</script>")
+    res.redirect('/dash/work_chart/1')
   })
 }
+
+function dash_work_update(req, res, next) { 
+  var parameters = {
+    "wsid": req.params.num
+  }
+  dashDAO.select_WorkStatusDetail(parameters).then((db_data)=> {
+    console.log(db_data)
+    res.render('dash/work_update',{db_data,username : req.session.wName});  
+  })
+}
+
+function dash_work_updatedata(req, res, next) { 
+  var parameters = {
+    "wsid":req.params.num,
+    "wsManager":req.body.wsManager,
+    "wsManagerRank":req.body.wsManagerRank,
+    "wsWorkerNum":req.body.wsWorkerNum,
+    "wsName":req.body.wsName,
+    "wsStartDate":req.body.wsManager,
+    "wsEndDate":req.body.wsEndDate,
+    "wsLocation":req.body.wsLocation,
+    "wsMemo":req.body.wsMemo,
+  }
+  dashDAO.update_WorkStatus(parameters).then((db_data)=> {
+    res.redirect('/dash/work_chart/1')
+  })
+}
+
 
 function dash_work_detail(req, res, next) { 
   var parameters = {
@@ -312,23 +375,16 @@ function dash_insert_list(req, res, next) {
     "cList":req.body.listinput
   }
   dashDAO.insert_mainChecklist(parameters).then((db_data)=>{
-    dashDAO.select_mainChecklist().then((db_data)=>{
-      listData = db_data
-        res.send(listData)
-    })
   })
 }
 
 
 function dash_delete_list(req, res, next) { 
   var parameters = {
-    "cList":req.body.listinput
+    "cList":req.body.checkboxinput
   }
+  console.log(parameters)
   dashDAO.delete_mainChecklist(parameters).then((db_data)=>{
-    dashDAO.select_mainChecklist().then((db_data)=>{
-      listData = db_data
-        res.send(listData)
-    })
   })
 }
 
@@ -341,11 +397,14 @@ module.exports = {
     dash_accident,
     dash_accident_add,
     dash_accident_insert,
+    dash_accident_update,
+    dash_accident_updatedata,
     dash_accident_detail,
     dash_cctv,
     dash_manpower,
-    dash_manpower_add,
+    dash_manpower_update,
     dash_manpower_detail,
+    dash_manpower_updatedata,
     dash_notice,
     dash_notice_write,
     dash_notice_insert,
@@ -354,10 +413,11 @@ module.exports = {
     dash_work,
     dash_work_add,
     dash_work_insert,
+    dash_work_update,
+    dash_work_updatedata,
     dash_work_detail,
     dash_worker_chart,
     dash_userchecklistUpdate,
-    dash_manpower_update,
     dash_worker_chart,
     dash_test,
     getWayWeather,
