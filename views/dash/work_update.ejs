@@ -1,0 +1,182 @@
+<% include ../include/dash_header %>
+<style>
+  .map_wrap {position:relative;width:100%;height:350px;}
+  .title {font-weight:bold;display:block;}
+  .hAddr {position:absolute;left:10px;top:10px;border-radius: 2px;background:#fff;background:rgba(255,255,255,0.8);z-index:1;padding:5px;}
+  #centerAddr {display:block;margin-top:2px;font-weight: normal;}
+  .bAddr {padding:5px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
+</style>
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 style="color:#4B49AC; margin:25px 0 10px 0;"><i class="mdi mdi-houzz"></i>&nbsp;공사 작업 추가
+                        </h2>
+                        <p class="card-description" style="margin: 0 0 30px 20px;">
+                            새롭게 추가된 공사 작업을 입력해주세요.
+                        </p>
+                        <form class="forms-sample" action="/dash/work_insert" method="POST">
+                            <div class="row">
+                                <div class="form-group col">
+                                    <label for="exampleInputName1">관리자</label>
+                                    <input type="text" class="form-control" id="exampleInputName1" name="wsManager" placeholder="ex) 홍길동" value="<%= db_data[0].wsManager %>">
+                                </div>
+                                <div class="form-group col">
+                                    <label for="exampleSelectRank">직급</label>
+                                    <select class="form-control" id="exampleSelectRank" name="wsManagerRank" value="<%= db_data[0].wsManagerRank %>">
+                                        <option>총괄자</option>
+                                        <option>팀장</option>
+                                        <option>사원</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col">
+                                    <label for="exampleInputWorkman3">작업 인원</label>
+                                    <input type="text" class="form-control" id="exampleInputWorkman3" name="wsWorkerNum" placeholder="ex) 20명" value="<%= db_data[0].wsWorkerNum %>">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputWorking">작업명</label>
+                                <input type="text" class="form-control" id="exampleInputWorking" name="wsName" placeholder="ex) 아파트 난간 공사" value="<%= db_data[0].wsName %>">
+                            </div>
+                            <div class="row">
+                                <div class="form-group col">
+                                    <label for="exampleInputWorkStart5">공사 시작일</label>
+                                    <input type="text" class="form-control" id="datepicker" name="wsStartDate" placeholder="ex) 2021-08-01" value="<%= db_data[0].wsStartDate %>">
+                                </div>
+                                <div class="form-group col">
+                                    <label for="exampleInputWorkEnd6">공사 완료일</label>
+                                    <input type="text" class="form-control" id="datepicker2" name="wsEndDate" placeholder="ex) 2021-08-01" value="<%= db_data[0].wsEndDate %>">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputCity1">주소</label>
+                                <div class="map_wrap">
+                                  <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;" name="wsLocation" value="<%= db_data[0].wsLocation %>"></div>
+                                    <div class="hAddr">
+                                        <span class="title">지도중심기준 행정동 주소정보</span>
+                                        <span id="centerAddr"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleTextarea1">메모</label>
+                                <textarea class="form-control" id="exampleTextarea1" name="wsMemo" rows="4" value="<%= db_data[0].wsMemo %>"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-inverse-primary btn-fw mr-2" style="float:right;" >
+                                <i class="mdi mdi-plus"></i>
+                                등록하기
+                            </button>
+                            <button type="button" class="btn btn-inverse-danger btn-fw mr-2" style="float:right;"onclick="location.href='/dash/work_chart/1';">
+                                <i class="mdi mdi-minus"></i>
+                                취소하기
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+          <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=df47683e736734b08db254f6a2be01f9&libraries=services,clusterer,drawing"></script>
+            <script>
+                /*
+                * lat lng를 등록할 때 같이 보내야함*/
+                var send_lat = 0;
+                var send_lng = 0;
+
+                $(document).ready(function () {
+                    console.log("로딩다됨")
+                    if (navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(
+                            function (location) {
+                                //succ - 유저가 허용버튼을 클릭하여 값을 가져올 수 있는 상태
+                                var lat = location.coords.latitude;
+                                var lon = location.coords.longitude;
+
+                                console.log("lat" + lat);
+                                console.log("lot" + lon);
+
+                                var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+                                var options = { //지도를 생성할 때 필요한 기본 옵션
+                                    center: new kakao.maps.LatLng(lat, lon), //지도의 중심좌표.
+                                    level: 1 //지도의 레벨(확대, 축소 정도)
+                                };
+
+                                var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+
+                                var geocoder = new kakao.maps.services.Geocoder(); // 주소-좌표 변환 객체 생성성
+
+                                var marker = new kakao.maps.Marker(),
+                                    infowindow = new kakao.maps.InfoWindow({zindex: 1});
+
+                                searchAddrFromCoords(map.getCenter(), displayCenterInfo);
+
+                                kakao.maps.event.addListener(map, 'click', function (mouseEvent) {
+                                    searchDetailAddrFromCoords(mouseEvent.latLng, function (result, status) {
+                                        if (status === kakao.maps.services.Status.OK) {
+                                            var detailAddr = !!result[0].road_address ? '<div>도로명주소 : ' + result[0].road_address.address_name + '</div>' : '';
+                                            detailAddr += '<div>지번 주소 : ' + result[0].address.address_name + '</div>';
+
+                                            var content = '<div class="bAddr">' +
+                                                '<span class="title">법정동 주소정보</span>' +
+                                                detailAddr +
+                                                '</div>';
+
+                                            // 마커를 클릭한 위치에 표시합니다
+                                            marker.setPosition(mouseEvent.latLng);
+                                            send_lat = mouseEvent.latLng.getLat()
+                                            send_lng = mouseEvent.latLng.getLng()
+                                            console.log("클릭한 위치" + send_lat);
+                                            console.log("클릭한 위치" + send_lng);
+                                            marker.setMap(map);
+
+                                            // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
+                                            infowindow.setContent(content);
+                                            infowindow.open(map, marker);
+                                        }
+                                    })
+                                });
+
+                                // 중심 좌표나 확대 수준이 변경됐을 때 지도 중심 좌표에 대한 주소 정보를 표시하도록 이벤트를 등록합니다
+                                kakao.maps.event.addListener(map, 'idle', function () {
+                                    searchAddrFromCoords(map.getCenter(), displayCenterInfo);
+                                });
+
+                                function searchAddrFromCoords(coords, callback) {
+                                    // 좌표로 행정동 주소 정보를 요청합니다
+                                    geocoder.coord2RegionCode(coords.getLng(), coords.getLat(), callback);
+                                }
+
+                                function searchDetailAddrFromCoords(coords, callback) {
+                                    // 좌표로 법정동 상세 주소 정보를 요청합니다
+                                    geocoder.coord2Address(coords.getLng(), coords.getLat(), callback);
+                                }
+
+                                // 지도 좌측상단에 지도 중심좌표에 대한 주소정보를 표출하는 함수입니다
+                                function displayCenterInfo(result, status) {
+                                    if (status === kakao.maps.services.Status.OK) {
+                                        var infoDiv = document.getElementById('centerAddr');
+
+                                        for (var i = 0; i < result.length; i++) {
+                                            // 행정동의 region_type 값은 'H' 이므로
+                                            if (result[i].region_type === 'H') {
+                                                infoDiv.innerHTML = result[i].address_name;
+                                                break;
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            function (error) {
+                                //fail - 유저가 차단버튼을 클릭하여 값을 가져올 수 없는 상태
+                            }
+                        );
+                    } else {
+                        //fail - 애초에 GPS 정보를 사용할 수 없는 상태
+                    }
+                })
+
+            </script>
+<% include ../include/dash_footer %>
