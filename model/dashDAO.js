@@ -331,6 +331,38 @@ function select_WorkStatusDetail(parameters) {
     })
 }
 
+function insert_WorkStatus(parameters) {
+    return new Promise ((resolve, reject) => {
+        db.query(`INSERT INTO WorkStatus SET wsManager = '${parameters.wsManager}',
+            wsManagerRank = '${parameters.wsManagerRank}',
+            wsWorkerNum = '${parameters.wsWorkerNum}',
+            wsName = '${parameters.wsName}',
+            wsStartDate = '${parameters.wsStartDate}',
+            wsEndDate = '${parameters.wsEndDate}',
+            wsLocation = '${parameters.wsLocation}',
+            wsMemo = '${parameters.wsMemo}'
+             `, function(err,db_data) {
+            if (err) {
+                logger.error(
+                    "DB error [Worker]"+
+                    "\n \t" + `INSERT INTO WorkStatus SET wsManager = '${parameters.wsManager}',
+                    wsManagerRank = '${parameters.wsManagerRank}',
+                    wsWorkerNum = '${parameters.wsWorkerNum}',
+                    wsName = '${parameters.wsName}',
+                    wsStartDate = '${parameters.wsStartDate}',
+                    wsEndDate = '${parameters.wsEndDate}',
+                    wsLocation = '${parameters.wsLocation}',
+                    wsMemo = '${parameters.wsMemo}'`+
+                    "\n \t" + err);
+                    reject('DB ERR');
+                    //throw error;
+            }
+            else {
+                resolve(db_data);
+            }
+        });
+    })
+}
 
 function select_WorkerStatus() {
     return new Promise ((resolve, reject) => {
@@ -474,7 +506,8 @@ module.exports = {
     select_accidentDateCountGraph,
     select_WorkerCountGraph,
     select_WorkerStickGraph,
-    select_WorkStatus, 
+    select_WorkStatus,
+    insert_WorkStatus, 
     select_WorkStatusDetail,             
     select_WorkerStatus,
     insert_mainChecklist,
