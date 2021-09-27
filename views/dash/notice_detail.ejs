@@ -21,16 +21,20 @@
                 <blockquote class="blockquote" style="margin : 80px 0 0 0; height: 500px;">
                   <p class="mb-0"><%-db_data[0].ancontent %></p>
                 </blockquote>
-              
-                <div style="float: right; margin: 10px 0 25px 0">
-                    <button type="submit" class="btn btn-inverse-primary btn-fw"style="float: right; margin: 0 20px 0 15px;">
-                    <i class="mdi mdi-hospital"></i>                                                    
-                      &nbsp; 등록하기
-                    </button>
-                    <button type="button" class="btn btn-inverse-danger btn-fw"style="float: right; margin: 0 0 0 15px">
-                        <i class="mdi mdi-minus"></i>                                                    
-                        &nbsp; 취소하기
-                    </button>
+              </form>
+                <div style="float: right; margin: 10px 0 5px 0">
+                  <button type="submit" class="btn btn-inverse-success btn-fw" style="float: right; margin: 0 0 0 10px;" onclick="location.href='/dash/notice/1';">
+                    <i class="mdi mdi-check"></i>                                                    
+                      &nbsp; 확인
+                  </button>
+                  <button type="submit" class="btn btn-inverse-info btn-fw" style="float: right; margin: 0 0 0 15px;" onclick="location.href='';">
+                      <i class="mdi mdi-flattr"></i>                                                    
+                        &nbsp; 수정
+                  </button>
+                  <button type="submit" class="btn btn-inverse-danger btn-fw" style="float: right; margin: 0 0 0 15px;" onclick="location.href='';">
+                      <i class="mdi mdi-close"></i>                                                    
+                        &nbsp; 삭제
+                  </button>
                   </div>
             </div>
           </div>

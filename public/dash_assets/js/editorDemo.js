@@ -116,7 +116,7 @@
 
     $('#meeting_start').editable({
       format: 'yyyy-mm-dd hh:ii',
-      viewformat: 'dd/mm/yyyy hh:ii',
+      viewformat: 'yyyy/mm/dd hh:ii',
       validate: function(v) {
         if (v && v.getDate() === 10) return 'Day cant be 10!';
       },
