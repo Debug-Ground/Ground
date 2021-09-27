@@ -32,7 +32,9 @@ router.get('/timecard/:num',dashController.dash_timecard);
 //workchart
 router.get('/work_chart/:num',dashController.dash_work);
 router.get('/work_chart_add',dashController.dash_work_add);
+router.post('/work_insert',dashController.dash_work_insert);
 router.get('/work_chart_detail/:num',dashController.dash_work_detail);
+//
 router.get('/worker_chart',dashController.dash_worker_chart);
 
 router.post('/getWayWeather',dashController.getWayWeather);
