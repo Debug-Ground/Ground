@@ -200,11 +200,11 @@
                                   <li>
                                     <div class="form-check form-check-flat">
                                         <label class="form-check-label">
-                                            <input class="checkbox" type="checkbox">
+                                            <input class="checkbox" type="checkbox" data-list="<%= checkData[i].cList %>">
                                             <%= checkData[i].cList %>
                                         </label>
                                     </div>
-                                    <i class="remove ti-close"></i>
+                                    <i id="removebtn" class="remove ti-close"></i>
                                 </li>
                                 <% } %>
                             </ul>
@@ -223,30 +223,30 @@
                                     },
                                     dataType:"json",
                                     success:function(){
-                                        // addlist(checkHuman);
-                                        // cosnole.log()
+                                        console.log('success');
                                     },
                                     error:function(err){
                                         console.log(err)
                                     }
                                 })
                             })
-
-                            // function addlist(checkHuman){
-                            //     $newList = $("<li></li>")
-                            //     $("#hello").append($newList)
-
-                            //     for (let check of checkHuman){
-                            //         let $wow=$("<div class='form-check form-check-flat'>"+
-                            //             "<label class='form-check-label'>"+
-                            //             "<input class='checkbox' type='checkbox'>"+ check.listinput +
-                            //             "</label>" + "</div>" + "<i class='remove ti-close'>"+"</i>"
-                            //         );
-                            //         $newList.append($wow);
-                            //     }
-                            // }
-
                             
+                            $("#removebtn").click(function(){
+                                $.ajax({
+                                    url:"",
+                                    type:"POST",
+                                    data:{
+                                        "checkboxinput" : $(".checkbox").val()
+                                    },
+                                    dataType:"json",
+                                    success:function(){
+                                        console.log('delete');
+                                    },
+                                    error:function(err){
+                                        console.log(err)
+                                    }
+                                })
+                            })
                         </script>
                     </div>
                 </div>

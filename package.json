@@ -33,8 +33,11 @@
     "passport": "^0.4.1",
     "passport-kakao": "^1.0.1",
     "pbkdf2-password": "^1.2.1",
+<<<<<<< Updated upstream
     "querystring": "^0.2.1",
     "socket.io": "^4.2.0",
+=======
+>>>>>>> Stashed changes
     "webrtc": "^1.14.1",
     "winston": "^3.3.3",
     "winston-daily-rotate-file": "^4.5.5"
