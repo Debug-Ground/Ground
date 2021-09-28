@@ -17,7 +17,7 @@
                         <p class="card-description" style="margin: 0 0 30px 20px;">
                             새롭게 추가된 공사 작업을 입력해주세요.
                         </p>
-                        <form class="forms-sample" action="/dash/work_insert" method="POST">
+                        <form class="forms-sample" action="/dash/work_update" method="POST">
                             <div class="row">
                                 <div class="form-group col">
                                     <label for="exampleInputName1">관리자</label>
@@ -61,7 +61,7 @@
                                     </div>
                                 </div>
                             </div>
-
+                            <input type="hidden" name="wsidx" value="<%= db_data[0].wsid%>">
                             <div class="form-group">
                                 <label for="exampleTextarea1">메모</label>
                                 <textarea class="form-control" id="exampleTextarea1" name="wsMemo" rows="4" value="<%= db_data[0].wsMemo %>"></textarea>
