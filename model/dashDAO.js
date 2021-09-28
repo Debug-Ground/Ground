@@ -692,6 +692,43 @@ function select_mainAttendance() {
         });
     })
 };
+// 안드로이드 보내주는 부분
+function select_Attendance(parameters) {
+    return new Promise ((resolve, reject) => {
+        db.query(`SELECT * FROM Attendance WHERE wid = '${parameters.wid}'`, function(err,db_data) {
+            if (err) {
+                logger.error(
+                    "DB error [Attendance]"+
+                    "\n \t" + `SELECT * FROM Attendance WHERE wid = '${parameters.wid}'`+
+                    "\n \t" + err);
+                reject('DB ERR');
+                //throw error;
+            }
+            else {
+                resolve(db_data);
+            }
+        });
+    })
+};
+
+//안드로이드에서 값 받는것
+function insert_Attendance(parameters) {
+    return new Promise ((resolve, reject) => {
+        db.query(`INSERT INTO Attendance SET wid = '${parameters.wid}' , atDate = '${parameters.atDate}'`, function(err,db_data) {
+            if (err) {
+                logger.error(
+                    "DB error [Attendance]"+
+                    "\n \t" + `INSERT INTO Attendance SET wid = '${parameters.wid}' , atDate = '${parameters.atDate}'`+
+                    "\n \t" + err);
+                reject('DB ERR');
+                //throw error;
+            }
+            else {
+                resolve(db_data);
+            }
+        });
+    })
+};
 
 
 
@@ -728,5 +765,7 @@ module.exports = {
     select_regularCount,
     select_mainWorker,
     select_mainAttendance,
-    select_TodayWorker                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+    select_TodayWorker,
+    select_Attendance,
+    insert_Attendance                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
 }
