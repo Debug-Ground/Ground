@@ -138,11 +138,11 @@ function update_accident(parameters) {
             aDetail = '${parameters.aDetail}',
             aLocation = '${parameters.aLocation}',
             aImage = '${parameters.aImage}',
-            aMemo = '${parameters.aMemo}' WHERE aid = '${parameters.aid}''`, function(err,db_data) {
+            aMemo = '${parameters.aMemo}' WHERE aid = '${parameters.aid}'`, function(err,db_data) {
             if (err) {
                 logger.error(
                     "DB error [Accident]"+
-                    "\n \t" + `INSERT INTO Accident SET aPeople = '${parameters.aPeople}',
+                    "\n \t" + `UPDATE Accident SET aPeople = '${parameters.aPeople}',
                     aGender = '${parameters.aGender}',
                     aPhone = '${parameters.aPhone}',
                     aGuardian = '${parameters.aGuardian}',
@@ -150,7 +150,7 @@ function update_accident(parameters) {
                     aDetail = '${parameters.aDetail}',
                     aLocation = '${parameters.aLocation}',
                     aImage = '${parameters.aImage}',
-                    aMemo = '${parameters.aMemo}'`+
+                    aMemo = '${parameters.aMemo}' WHERE aid = '${parameters.aid}'`+
                     "\n \t" + err);
                 reject('DB ERR');
                 //throw error;
