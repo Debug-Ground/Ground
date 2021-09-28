@@ -430,14 +430,14 @@ function update_WorkStatus(parameters) {
             if (err) {
                 logger.error(
                     "DB error [Worker]"+
-                    "\n \t" + `INSERT INTO WorkStatus SET wsManager = '${parameters.wsManager}',
+                    "\n \t" + `UPDATE WorkStatus SET wsManager = '${parameters.wsManager}',
                     wsManagerRank = '${parameters.wsManagerRank}',
                     wsWorkerNum = '${parameters.wsWorkerNum}',
                     wsName = '${parameters.wsName}',
                     wsStartDate = '${parameters.wsStartDate}',
                     wsEndDate = '${parameters.wsEndDate}',
                     wsLocation = '${parameters.wsLocation}',
-                    wsMemo = '${parameters.wsMemo}'`+
+                    wsMemo = '${parameters.wsMemo}' WHERE wsid = '${parameters.wsid}'`+
                     "\n \t" + err);
                     reject('DB ERR');
                     //throw error;
@@ -540,7 +540,7 @@ function select_manpower() {
 
 function select_manpowercheck(parameters) {
     return new Promise ((resolve, reject) => {
-        db.query(`SELECT wName,wGender,wEmail,wPhone,wRegular,wAddress,wMemo FROM Worker WHERE wid = '${parameters.wid}'`, function(err,db_data) {
+        db.query(`SELECT wid,wName,wGender,wEmail,wPhone,wRegular,wAddress,wMemo FROM Worker WHERE wid = '${parameters.wid}'`, function(err,db_data) {
             if (err) {
                 logger.error(
                     "DB error [Worker]"+
@@ -559,6 +559,7 @@ function update_manpower(parameters) {
     return new Promise ((resolve, reject) => {
         db.query(`UPDATE Worker SET wName = '${parameters.wName}',
         wRegular = '${parameters.wRegular}',
+        wGender = '${parameters.wGender}',
         wEmail = '${parameters.wEmail}',
         wPhone = '${parameters.wPhone}',
         wAddress = '${parameters.wAddress}',
@@ -568,6 +569,7 @@ function update_manpower(parameters) {
                     "DB error [Worker]"+
                     "\n \t" + `UPDATE Worker SET wName = '${parameters.wName}',
                     wRegular = '${parameters.wRegular}',
+                    wGender = '${parameters.wGender}',
                     wEmail = '${parameters.wEmail}',
                     wPhone = '${parameters.wPhone}',
                     wAddress = '${parameters.wAddress}',
