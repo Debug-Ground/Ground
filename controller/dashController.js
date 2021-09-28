@@ -188,7 +188,7 @@ function dash_manpower_detail(req, res, next) {
 
 function dash_manpower_updatedata(req, res, next) { 
   var parameters = {
-    "wid":req.params.num,
+    "wid":req.body.widx,
     "wName":req.body.wName,
     "wRegular":req.body.wRegular,
     "wEmail":req.body.wEmail,
@@ -276,12 +276,12 @@ function dash_work_update(req, res, next) {
 
 function dash_work_updatedata(req, res, next) { 
   var parameters = {
-    "wsid":req.params.num,
+    "wsid":req.body.wsidx,
     "wsManager":req.body.wsManager,
     "wsManagerRank":req.body.wsManagerRank,
     "wsWorkerNum":req.body.wsWorkerNum,
     "wsName":req.body.wsName,
-    "wsStartDate":req.body.wsManager,
+    "wsStartDate":req.body.wsStartDate,
     "wsEndDate":req.body.wsEndDate,
     "wsLocation":req.body.wsLocation,
     "wsMemo":req.body.wsMemo,

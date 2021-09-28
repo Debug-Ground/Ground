@@ -9,7 +9,7 @@
               <p class="card-description" style="margin: 0 0 30px 20px;">
                 새롭게 바뀐 내용을 수정해주세요!
               </p>
-              <form class="forms-sample">
+              <form class="forms-sample" action="/dash/manpower_update" method="POST">
                 <div class="row">
                   <div class="form-group col">
                     <label for="exampleInputName1">성함</label>
@@ -30,7 +30,7 @@
                   </div>
                   <div class="form-group col">
                     <label for="exampleInputPassword4">전화번호</label>
-                    <input type="password" class="form-control" id="exampleInputPhone4" placeholder="전화번호 입력이 필요합니다." name="wPhone" value="<%= db_data[0].wPhone %>">
+                    <input type="text" class="form-control" id="exampleInputPhone4" placeholder="전화번호 입력이 필요합니다." name="wPhone" value="<%= db_data[0].wPhone %>">
                   </div>
                 </div>
                 <div class="form-group">
@@ -41,6 +41,7 @@
                       <option>관리자</option>
                     </select>
                 </div>
+                <input type="hidden" name="widx" value="<%= db_data[0].wid %>">
                 <div class="form-group">
                     <label for="exampleInputCity1">주소</label>
                     <input type="text" class="form-control" id="exampleInputCity1" name="wAddress" placeholder="주소 입력이 필요합니다." value="<%= db_data[0].wAddress %>">
@@ -49,7 +50,7 @@
                   <label for="exampleTextarea1">메모</label>
                   <textarea class="form-control" id="exampleTextarea1" rows="4" name="wMemo" placeholder="메모 입력이 필요합니다." value="<%= db_data[0].wMemo %>"></textarea>
                 </div>
-                <button type="button" class="btn btn-inverse-primary btn-fw mr-2" style="float:right;">
+                <button type="submit" class="btn btn-inverse-primary btn-fw mr-2" style="float:right;">
                     <i class="mdi mdi-plus"></i>
                     수정 완료
                 </button>
