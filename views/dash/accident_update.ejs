@@ -16,7 +16,7 @@
                         <p class="card-description" style="margin: 0 0 30px 20px;">
                             Ground에서 발생한 사고를 확인해주세요.
                         </p>
-                        <form class="forms-sample" action="/dash/accident_insert" method="POST" enctype="multipart/form-data">
+                        <form class="forms-sample" action="/dash/accident_update" method="POST">
                             <div class="row">
                                 <div class="form-group col">
                                     <label for="exampleInputName1">성함</label>
@@ -70,6 +70,7 @@
                                 <label for="exampleTextarea1">메모</label>
                                 <textarea class="form-control" id="exampleTextarea1" rows="4"  placeholder="ex) 메모 입력이 필요합니다." name="aMemo" value="<%= db_data[0].aMemo %>"></textarea>
                             </div>
+                            <input type="hidden" name="aidx" value="<%= db_data[0].aid %>">
                             <button type="submit" class="btn btn-inverse-primary btn-fw mr-2" style="float:right;">
                                 <i class="mdi mdi-plus"></i>
                                 등록하기

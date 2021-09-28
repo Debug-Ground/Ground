@@ -91,7 +91,6 @@ function dash_checklistDelete(req, res, next) {
 
 function dash_accident(req, res, next) { 
   dashDAO.select_accident().then((db_data)=>{
-    console.log(db_data)
     res.render('dash/accident', { username : req.session.wName, db_data : db_data, a_num:req.params.num, max_value:7});  
   })    
 }
@@ -114,7 +113,6 @@ function dash_accident_insert(req, res, next) {
     "aImage":req.file.filename,
     "aMemo":req.body.aMemo
   }
-  console.log(parameters)
   dashDAO.insert_accident(parameters).then((db_data)=>{
     res.redirect('/dash/accident/1')
   })    
@@ -131,7 +129,7 @@ function dash_accident_update(req,res,next){
 
 function dash_accident_updatedata(req,res,next){
   var parameters = {
-    "aid" : req.params.num,
+    "aid" : req.body.aidx,
     "aPeople":req.body.aPeople,
     "aGender":req.body.aGender,
     "aPhone":req.body.aPhone,
@@ -141,6 +139,7 @@ function dash_accident_updatedata(req,res,next){
     "aLocation":req.body.aLocation,
     "aMemo":req.body.aMemo
   }
+  console.log(parameters)
   dashDAO.update_accident(parameters).then((db_data)=>{
     res.redirect('/dash/accident/1')
   })  
@@ -255,7 +254,7 @@ function dash_work_insert(req, res, next) {
     "wsManagerRank":req.body.wsManagerRank,
     "wsWorkerNum":req.body.wsWorkerNum,
     "wsName":req.body.wsName,
-    "wsStartDate":req.body.wsManager,
+    "wsStartDate":req.body.wsStartDate,
     "wsEndDate":req.body.wsEndDate,
     "wsLocation":req.body.wsLocation,
     "wsMemo":req.body.wsMemo,
