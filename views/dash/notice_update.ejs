@@ -9,16 +9,16 @@
               <p class="card-description" style="margin: 0 0 30px 20px;">
                 Ground 공지사항 작성해주세요.
               </p>
-              <form class="forms-sample" style="margin: 50px 0 0 0;" action="/dash/noticeInsert" method="POST">
+              <form class="forms-sample" style="margin: 50px 0 0 0;" action="/dash/noticeUpdate" method="POST">
                 <div class="form-group">
-                    <input type="text" class="form-control" id="Croplocation"  name = "nTitle" placeholder="제목" style="height: 50px; margin: 30px 0 0 0" value="<%= db_data[0].ntitle %>">
+                    <input type="text" class="form-control" id= "antitle" name = "antitle" placeholder="제목" style="height: 50px; margin: 30px 0 0 0" value="<%= db_data[0].antitle %>">
                 </div>
 
-                <textarea id="summernote" name="nContent" value="<%= db_data[0].nContent %>"></textarea>
+                <textarea id="summernote" name="ancontent"></textarea>
 
                 <script>
                     $('#summernote').summernote({
-                        placeholder: '공지 할 내용을 적어주세요.',
+                        placeholder: '<%= db_data[0].ancontent %>',
                         tabsize: 2,
                         height: 450,
                         toolbar: [
@@ -33,6 +33,7 @@
                     });
                 </script>
                 </div>
+                <input type="hidden" name="anidx" value="<%= db_data[0].anid %>">
                 <div style="float: right; margin: 10px 0 25px 0">
                     <button type="submit" class="btn btn-inverse-primary btn-fw"style="float: right; margin: 0 20px 0 15px;">
                     <i class="mdi mdi-hospital"></i>                                                    

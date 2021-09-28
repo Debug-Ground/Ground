@@ -30,6 +30,8 @@ router.get('/manpower_detail/:num',dashController.dash_manpower_detail);
 router.get('/notice/:num',dashController.dash_notice);
 router.get('/noticeWrite',dashController.dash_notice_write);
 router.post('/noticeInsert',dashController.dash_notice_insert);
+router.get('/notice_update/:num',dashController.dash_notice_update);
+router.post('/noticeUpdate',dashController.dash_notice_updatedata);
 router.get('/noticeDetail/:num',dashController.dash_notice_detail);
 //timecare
 router.get('/timecard/:num',dashController.dash_timecard);
