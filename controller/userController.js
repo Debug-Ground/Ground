@@ -6,8 +6,7 @@ function signUp(req, res, next) {
         "wid": req.session.wid,
         "wName" : req.session.wName,
         "wImage" : req.session.wImage,
-        "wEmail": req.session.wEmail,
-        "wToken" : "0"
+        "wEmail": req.session.wEmail
     }
 
     userDAO.insert_userInfo(parameters).then(function (db_data){
@@ -24,8 +23,7 @@ function updateUser(req, res, next) {
         "wid": req.session.wid,
         "wName" : req.session.wName,
         "wImage" : req.session.wImage,
-        "wEmail": req.session.wEmail,
-        "wToken" : "0"
+        "wEmail": req.session.wEmail
     }
 
     userDAO.update_userInfo(parameters).then(function (db_data){
@@ -59,8 +57,7 @@ function insertBodyUserInfo(req, res, next) {
         "wName" : req.body.unickname, // 입력받음 이름
         "wRName" : req.body.realname, // 카카오 이름
         "wImage" : req.body.uthumbnailImageUrl,
-        "wEmail": req.body.uemail,
-        "wToken" : "0"
+        "wEmail": req.body.uemail
     }
 
     var successData = {
@@ -79,8 +76,7 @@ function updateBodyUserInfo(req, res, next){
     var parameters = {
         "wName" : req.body.unickname,
         "wImage" : req.body.uthumbnailImageUrl,
-        "wEmail": req.body.uemail,
-        "wToken" : "0"
+        "wEmail": req.body.uemail
     }
 
     var successData = {
@@ -132,8 +128,7 @@ function verificationUserInfo(req, res, next) {
         "wid": req.body.uid,
         "wName" : req.body.unickname,
         "wImage" : req.body.uthumbnailImageUrl,
-        "wEmail": req.body.uemail,
-        "wToken" : "0"
+        "wEmail": req.body.uemail
     }
 
     var successData = {

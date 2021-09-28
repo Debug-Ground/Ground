@@ -4,11 +4,11 @@ var logger = require('../config/logger');
 
 function insert_userInfo(parameters) {
     return new Promise(function (resolve, reject) {
-        db.query(`INSERT INTO Worker SET wid = '${parameters.wid}', wName = '${parameters.wName}', wRName = '${parameters.wRName}', wEmail = '${parameters.wEmail}', wImage = '${parameters.wImage}', wToken ='${parameters.wToken}', wDate=NOW()`, function (error, db_data) {
+        db.query(`INSERT INTO Worker SET wid = '${parameters.wid}', wName = '${parameters.wName}', wRName = '${parameters.wRName}', wEmail = '${parameters.wEmail}', wImage = '${parameters.wImage}',  wDate=NOW()`, function (error, db_data) {
             if (error) {
                 logger.error(
                     "DB error [Worker]"+
-                    "\n \t" + `INSERT INTO Worker SET wid = '${parameters.wid}', wName = '${parameters.wName}', wEmail = '${parameters.wEmail}', wImage = '${parameters.wImage}', wToken ='${parameters.wToken}'` +
+                    "\n \t" + `INSERT INTO Worker SET wid = '${parameters.wid}', wName = '${parameters.wName}', wEmail = '${parameters.wEmail}', wImage = '${parameters.wImage}' ,  wDate=NOW()` +
                     "\n \t" + error);
                 reject('DB ERR');
                 //throw error;
@@ -40,11 +40,11 @@ function select_userFind(parameters) {
 
 function update_userInfo(parameters) {
     return new Promise(function (resolve, reject) {
-        db.query(`UPDATE Worker SET wid = '${parameters.wid}', wName = '${parameters.wName}', wEmail = '${parameters.wEmail}', wImage = '${parameters.wImage}', wToken='${parameters.wToken}' where wid = '${parameters.wid}' `, function (error, db_data) {
+        db.query(`UPDATE Worker SET wid = '${parameters.wid}', wName = '${parameters.wName}', wEmail = '${parameters.wEmail}', wImage = '${parameters.wImage}' where wid = '${parameters.wid}' `, function (error, db_data) {
             if (error) {
                 logger.error(
                     "DB error [Worker]"+
-                    "\n \t" + `UPDATE Worker SET wid = '${parameters.wid}', wName = '${parameters.wName}', wEmail = '${parameters.wEmail}', wImage = '${parameters.wImage}', wToken='${parameters.wToken}' where wid = '${parameters.wid}'` +
+                    "\n \t" + `UPDATE Worker SET wid = '${parameters.wid}', wName = '${parameters.wName}', wEmail = '${parameters.wEmail}', wImage = '${parameters.wImage}' where wid = '${parameters.wid}'` +
                     "\n \t" + error);
                 reject('DB ERR');
                 //throw error;
