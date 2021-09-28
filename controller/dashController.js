@@ -139,7 +139,6 @@ function dash_accident_updatedata(req,res,next){
     "aKind":req.body.aKind,
     "aDetail":req.body.aDetail,
     "aLocation":req.body.aLocation,
-    "aImage":req.file.filename,
     "aMemo":req.body.aMemo
   }
   dashDAO.update_accident(parameters).then((db_data)=>{
