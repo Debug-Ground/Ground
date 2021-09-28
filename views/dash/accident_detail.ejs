@@ -54,7 +54,7 @@
                         <div class="card-body">
                             <p style="font-weight: bold; font-size: 18px; margin: 0 0 20px 0;"><i class="mdi mdi-camera-iris" style="color: #4B49AC"></i>&nbsp;사고 현장</p>
                             <div style="text-align: center;">
-                                <img src="upload/<%=db_data[0].aImage %>" height="30%" width="30%" alt="No Image"/>
+                                <img src="/upload/<%=db_data[0].aImage %>" height="30%" width="30%" alt="No Image"/>
                             </div>
                         </div>
                       </div>
@@ -86,7 +86,7 @@
                       <i class="mdi mdi-check"></i>                                                    
                         &nbsp; 확인
                   </button>
-                  <button type="submit" class="btn btn-inverse-info btn-fw" style="float: right; margin: 0 0 0 15px;" onclick="location.href='/dash/accident_update/<%= db_data[0].aid%>';">
+                  <button type="button" class="btn btn-inverse-info btn-fw" style="float: right; margin: 0 0 0 15px;" onclick="location.href='/dash/accident_update/<%=db_data[0].aid %>';">
                       <i class="mdi mdi-flattr"></i>                                                    
                         &nbsp; 수정
                   </button>
