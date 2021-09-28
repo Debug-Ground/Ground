@@ -29,9 +29,20 @@ function dash_main(req, res, next) {
              dashDAO.select_WorkerStatus().then((db_data)=> {
               workStatus = db_data
               console.log(db_data)
-              res.render('dash/main',{acCount,dateCount, graphCount,workCount,stickCount,workStatus, dayjs});
+              dashDAO.select_mainWorker().then((db_data)=> {
+                mainWorker = db_data
+                console.log(mainWorker)
+                dashDAO.select_mainAttendance().then((db_data)=>{
+                  mainAt = db_data
+                  console.log(mainAt)
+                  dashDAO.select_TodayWorker().then((db_data)=> {
+                    TodayWk = db_data
+                    res.render('dash/main',{acCount,dateCount, graphCount,workCount,stickCount,workStatus, mainWorker, TodayWk,mainAt,dayjs});
+                  })
+                })
               })
             })
+          })
          })
         })
       })
