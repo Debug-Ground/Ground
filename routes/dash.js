@@ -51,5 +51,4 @@ router.post('/test',dashController.dash_test_send);
 router.post('/insertmaincheck',dashController.dash_insert_list);
 router.post('/deletemaincheck',dashController.dash_delete_list);
 
-router.get('/manpowerUpdate', dashController.dash_manpower_update);
 module.exports = router;
