@@ -46,7 +46,7 @@
                         <div class="card card-tale">
                             <div class="card-body">
                                 <p class="mb-4">오늘의 작업자</p>
-                                <p class="fs-30 mb-2">4006</p>
+                                <p class="fs-30 mb-2"><%= TodayWk[0].cnt %></p>
                             </div>
                         </div>
                     </div>
@@ -267,21 +267,13 @@
                                 </tr>
                                 </thead>
                                 <tbody>
+                                <% for(var i = 0; i < mainWorker.length; i++ ) { %>
                                 <tr>
-                                    <td class="pl-0">권순영</td>
+                                    <td class="pl-0"><%= mainWorker[i].wName %></td>
                                     <td><p class="mb-0"><span class="font-weight-bold mr-2">연구</span></p></td>
-                                    <td class="text-muted">정규직</td>
+                                    <td class="text-muted"><%= mainWorker[i].wRegular %></td>
                                 </tr>
-                                <tr>
-                                    <td class="pl-0">박우식</td>
-                                    <td><p class="mb-0"><span class="font-weight-bold mr-2">노예</span></p></td>
-                                    <td class="text-muted">무기한</td>
-                                </tr>
-                                <tr>
-                                    <td class="pl-0">고준혁</td>
-                                    <td><p class="mb-0"><span class="font-weight-bold mr-2">디자인</span></p></td>
-                                    <td class="text-muted">정규직</td>
-                                </tr>
+                                <% } %>
                                 </tbody>
                             </table>
                         </div>
@@ -294,56 +286,18 @@
                     <div class="card-body">
                         <p class="card-title">작업자 출근부</p>
                         <ul class="icon-data-list">
+                            <% for (var i = 0; i< mainAt.length; i++) { %>
                             <li>
                                 <div class="d-flex">
-                                    <img src="../dash_assets/images/faces/face1.jpg" alt="user">
+                                    <img src="<%=mainAt[i].wImage %>" alt="user">
                                     <div>
-                                        <p class="text-info mb-1">김득회</p>
-                                        <p class="mb-0">외부 답사 인원</p>
-                                        <small>9:30 am</small>
+                                        <p class="text-info mb-1"><%=mainAt[i].wName %></p>
+                                        <p class="mb-0"><%=mainAt[i].wRegular %></p>
+                                        <small><%= dayjs(mainAt[i].atDate).format('HH:mm  A') %></small>
                                     </div>
                                 </div>
                             </li>
-                            <li>
-                                <div class="d-flex">
-                                    <img src="../dash_assets/images/faces/face2.jpg" alt="user">
-                                    <div>
-                                        <p class="text-info mb-1">김민수</p>
-                                        <p class="mb-0">사원</p>
-                                        <small>10:30 am</small>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="d-flex">
-                                    <img src="../dash_assets/images/faces/face3.jpg" alt="user">
-                                    <div>
-                                        <p class="text-info mb-1">송준하</p>
-                                        <p class="mb-0">사원</p>
-                                        <small>11:30 am</small>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="d-flex">
-                                    <img src="../dash_assets/images/faces/face4.jpg" alt="user">
-                                    <div>
-                                        <p class="text-info mb-1">이규환</p>
-                                        <p class="mb-0">사원</p>
-                                        <small>8:50 am</small>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="d-flex">
-                                    <img src="../dash_assets/images/faces/face5.jpg" alt="user">
-                                    <div>
-                                        <p class="text-info mb-1">정승원</p>
-                                        <p class="mb-0">사원</p>
-                                        <small>9:00 am</small>
-                                    </div>
-                                </div>
-                            </li>
+                            <% } %>
                         </ul>
                     </div>
                 </div>

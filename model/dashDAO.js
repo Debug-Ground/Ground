@@ -301,6 +301,23 @@ function select_accidentDateCount() {
     })
 };
 
+function select_TodayWorker() {
+    return new Promise ((resolve, reject) => {
+        db.query(`SELECT COUNT(atid) AS cnt FROM ( SELECT atid FROM Attendance WHERE atDate LIKE CONCAT('%', DATE_FORMAT(NOW(),'%Y-%m-%d'),'%') GROUP BY atid) A`, function(err,db_data) {
+            if (err) {
+                logger.error(
+                    "DB error [Attendance]"+
+                    "\n \t" + `SELECT COUNT(atid) AS cnt FROM ( SELECT atid FROM Attendance WHERE atDate LIKE CONCAT('%', DATE_FORMAT(NOW(),'%Y-%m-%d'),'%') GROUP BY atid) A`+
+                    "\n \t" + err);
+                reject('DB ERR');
+                //throw error;
+            }
+            else {
+                resolve(db_data);
+            }
+        });
+    })
+}
 
 function select_WorkerCountGraph() {
     return new Promise ((resolve, reject) => {
@@ -624,6 +641,41 @@ function select_regularCount() {
         });
     })
 };
+function select_mainWorker() {
+    return new Promise ((resolve, reject) => {
+        db.query(`SELECT wName, wRegular FROM Worker WHERE wDate LIKE CONCAT('%', DATE_FORMAT(NOW(),'%Y-%m-%d'),'%') `, function(err,db_data) {
+            if (err) {
+                logger.error(
+                    "DB error [Worker]"+
+                    "\n \t" + `SELECT wName, wRegular FROM Worker WHERE wDate LIKE CONCAT('%', DATE_FORMAT(NOW(),'%Y-%m-%d'),'%')`+
+                    "\n \t" + err);
+                reject('DB ERR');
+                //throw error;
+            }
+            else {
+                resolve(db_data);
+            }
+        });
+    })
+};
+function select_mainAttendance() {
+    return new Promise ((resolve, reject) => {
+        db.query(`SELECT w.wName, w.wRegular, a.atDate, w.wImage FROM Attendance a JOIN Worker w ON a.wid = w.wid ORDER BY a.atDate DESC LIMIT 5`, function(err,db_data) {
+            if (err) {
+                logger.error(
+                    "DB error [Worker]"+
+                    "\n \t" + `SELECT wRegular,COUNT(wRegular) AS count FROM Worker GROUP BY wRegular`+
+                    "\n \t" + err);
+                reject('DB ERR');
+                //throw error;
+            }
+            else {
+                resolve(db_data);
+            }
+        });
+    })
+};
+
 
 
 module.exports = {
@@ -655,5 +707,8 @@ module.exports = {
     select_manpowercheck,
     update_manpower,
     select_timecard,
-    select_regularCount                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+    select_regularCount,
+    select_mainWorker,
+    select_mainAttendance,
+    select_TodayWorker                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
 }
