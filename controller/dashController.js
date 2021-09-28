@@ -205,8 +205,10 @@ function dash_manpower_updatedata(req, res, next) {
     "wEmail":req.body.wEmail,
     "wPhone":req.body.wPhone,
     "wAddress":req.body.wAddress,
+    "wImage" : req.file.filename,
     "wMemo":req.body.wMemo
   }
+  console.log(req.file.filename)
   dashDAO.update_manpower(parameters).then((db_data)=> {
     res.redirect('/dash/manpower/1')
   })

@@ -64,7 +64,7 @@
                                     </div>
                                 </div>
                             </div>
-
+                            <input type="hidden" id="wsLocation" name="wsLocation" value="">
                             <div class="form-group">
                                 <label for="exampleTextarea1">메모</label>
                                 <textarea class="form-control" id="exampleTextarea1" name="wsMemo" rows="4"></textarea>
@@ -133,6 +133,7 @@
                                             send_lng = mouseEvent.latLng.getLng()
                                             console.log("클릭한 위치" + send_lat);
                                             console.log("클릭한 위치" + send_lng);
+                                            $("#wsLocation").val(result[0].address.address_name);
                                             marker.setMap(map);
 
                                             // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
