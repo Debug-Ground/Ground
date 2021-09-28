@@ -53,4 +53,10 @@ router.post('/test',dashController.dash_test_send);
 router.post('/insertmaincheck',dashController.dash_insert_list);
 router.post('/deletemaincheck',dashController.dash_delete_list);
 
+
+//app
+router.post('/selectAt',dashController.dash_App_At);
+router.post('/reqAt',dashController.dash_reqApp_At);
+
+
 module.exports = router;

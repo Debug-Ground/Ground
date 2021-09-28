@@ -427,6 +427,27 @@ function dash_delete_list(req, res, next) {
   })
 }
 
+function dash_App_At(req, res, next) { 
+  var parameters = {
+    "wid":req.body.wid
+  }
+  console.log(parameters)
+  dashDAO.select_Attendance(parameters).then((db_data)=>{
+    res.send(db_data)
+  })
+}
+
+function dash_reqApp_At(req, res, next) { 
+  var parameters = {
+    "wid":req.body.wid,
+    "atDate":req.body.atDate
+  }
+  console.log(parameters)
+  dashDAO.insert_Attendance(parameters).then((db_data)=>{
+    res.send(db_data)
+  })
+}
+
 
 module.exports = {
     dash_main,
@@ -464,5 +485,7 @@ module.exports = {
     getWayWeather,
     dash_test_send,
     dash_insert_list,
-    dash_delete_list
+    dash_delete_list,
+    dash_App_At,
+    dash_reqApp_At,
 }
