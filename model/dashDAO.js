@@ -100,6 +100,7 @@ function insert_accident(parameters) {
             aGender = '${parameters.aGender}',
             aPhone = '${parameters.aPhone}',
             aGuardian = '${parameters.aGuardian}',
+            aDate = NOW(),
             aKind = '${parameters.aKind}',
             aDetail = '${parameters.aDetail}',
             aLocation = '${parameters.aLocation}',
@@ -327,14 +328,18 @@ function select_WorkerCountGraph() {
 
 function select_WorkerStickGraph() {
     return new Promise ((resolve, reject) => {
-        db.query(`SELECT * FROM(select DATE_FORMAT(aa.temp_date, '%Y-%m') date, COUNT(w.wDate) AS cnt FROM temp_date aa 
-        LEFT JOIN Worker w ON (w.wDate = aa.temp_date) GROUP BY date) a WHERE date LIKE CONCAT('%',DATE_FORMAT(NOW(),'%Y'),'%') GROUP BY date  
-        `, function(err,db_data) {
+        db.query(`SELECT a.adate,a.cnt, @va := @va + a.cnt as cum1 FROM (
+            SELECT * FROM( SELECT DATE_FORMAT(aa.temp_date, '%Y-%m') adate, COUNT(w.wDate) AS cnt FROM temp_date aa 
+            LEFT JOIN Worker w ON (w.wDate = aa.temp_date) GROUP BY adate) a WHERE adate LIKE CONCAT('%',DATE_FORMAT(NOW(),'%Y'),'%') GROUP BY adate ) a,
+            (SELECT @va := 0) b`, function(err,db_data) {
             if (err) {
                 logger.error(
                     "DB error [Worker]"+
-                    "\n \t" + `SELECT * FROM(select DATE_FORMAT(aa.temp_date, '%Y-%m') date, COUNT(w.wDate) AS cnt FROM temp_date aa 
-                    LEFT JOIN Worker w ON (w.wDate = aa.temp_date) GROUP BY date) a WHERE date LIKE CONCAT('%',DATE_FORMAT(NOW(),'%Y'),'%') GROUP BY date`+
+                    "\n \t" + `
+                        SELECT a.adate,a.cnt, @va := @va + a.cnt as cum1 FROM (
+                        SELECT * FROM( SELECT DATE_FORMAT(aa.temp_date, '%Y-%m') adate, COUNT(w.wDate) AS cnt FROM temp_date aa 
+                        LEFT JOIN Worker w ON (w.wDate = aa.temp_date) GROUP BY adate) a WHERE adate LIKE CONCAT('%',DATE_FORMAT(NOW(),'%Y'),'%') GROUP BY adate ) a,
+                        (SELECT @va := 0) b`+
                     "\n \t" + err);
                 reject('DB ERR');
                 //throw error;
@@ -602,6 +607,23 @@ function select_timecard() {
         });
     })
 };
+function select_regularCount() {
+    return new Promise ((resolve, reject) => {
+        db.query(`SELECT wRegular,COUNT(wRegular) AS count FROM Worker GROUP BY wRegular`, function(err,db_data) {
+            if (err) {
+                logger.error(
+                    "DB error [Worker]"+
+                    "\n \t" + `SELECT wRegular,COUNT(wRegular) AS count FROM Worker GROUP BY wRegular`+
+                    "\n \t" + err);
+                reject('DB ERR');
+                //throw error;
+            }
+            else {
+                resolve(db_data);
+            }
+        });
+    })
+};
 
 
 module.exports = {
@@ -632,5 +654,6 @@ module.exports = {
     select_manpower,
     select_manpowercheck,
     update_manpower,
-    select_timecard                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+    select_timecard,
+    select_regularCount                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
 }

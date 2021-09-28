@@ -54,7 +54,7 @@
                             <div class="form-group">
                                 <label for="exampleInputCity1">주소</label>
                                 <div class="map_wrap">
-                                  <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;" name="wsLocation" value="<%= db_data[0].wsLocation %>"></div>
+                                  <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
                                     <div class="hAddr">
                                         <span class="title">지도중심기준 행정동 주소정보</span>
                                         <span id="centerAddr"></span>
@@ -74,6 +74,8 @@
                                 <i class="mdi mdi-minus"></i>
                                 취소하기
                             </button>
+
+                            <input type="hidden" id="wsLocation" name="wsLocation" value="">
                         </form>
                     </div>
                 </div>
@@ -128,8 +130,10 @@
                                             marker.setPosition(mouseEvent.latLng);
                                             send_lat = mouseEvent.latLng.getLat()
                                             send_lng = mouseEvent.latLng.getLng()
+                                            $("#wsLocation").val(result[0].address.address_name);
                                             console.log("클릭한 위치" + send_lat);
                                             console.log("클릭한 위치" + send_lng);
+                                            console.log(result[0].address.address_name)
                                             marker.setMap(map);
 
                                             // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다

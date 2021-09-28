@@ -130,7 +130,9 @@
               labels: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
               datasets: [{
                   label: '총 작업자 수',
-                  data: [480, 230, 470, 210, 330, 400, 340, 550, 480, 170, 340, 550,],
+                  data: [<% for(var i = 0; i < stickCount.length; i++){ %>
+                    '<%= stickCount[i].cum1 %>',
+                    <% } %>],
                   backgroundColor: '#98BDFF'
                 },
                 {
@@ -165,7 +167,7 @@
                   ticks: {
                     display: true,
                     min: 0,
-                    max: 600,
+                    max: 10,
                     callback: function(value, index, values) {
                       return  value;
                     },

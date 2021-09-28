@@ -302,8 +302,14 @@ function dash_work_detail(req, res, next) {
   })
 }
 
-function dash_worker_chart(req, res, next) { 
-  res.render('dash/worker_chart',{username : req.session.wName});  
+function dash_worker_chart(req, res, next) {
+  dashDAO.select_WorkerStickGraph().then((db_data)=>{
+    StickData = db_data
+    dashDAO.select_regularCount().then((db_data)=> {
+      RegularData = db_data
+      res.render('dash/worker_chart',{StickData, RegularData,username : req.session.wName});    
+    })
+  })
 }
 
 function dash_test(req, res, next) { 
