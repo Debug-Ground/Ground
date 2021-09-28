@@ -44,7 +44,9 @@
         labels: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월","10월","11월","12월",],
         datasets: [{
           label: '2021년도 전체 작업자',
-          data: [12, 19, 3, 5, 2, 3,3,15,14,3,16,17],
+          data: [<% for(var i = 0; i < StickData.length; i++){ %>
+                    '<%= StickData[i].cum1 %>',
+                    <% } %>],
           backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
             'rgba(54, 162, 235, 0.2)',
@@ -68,7 +70,9 @@
       
       var doughnutPieData = {
       datasets: [{
-        data: [30, 40, 30],
+        data: [<% for(var i = 0; i < RegularData.length; i++){ %>
+              '<%= RegularData[i].count %>',
+              <% } %>],
         backgroundColor: [
           'rgba(255, 99, 132, 0.5)',
           'rgba(54, 162, 235, 0.5)',

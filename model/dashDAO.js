@@ -234,6 +234,23 @@ function insert_anNotice(parameters) {
         });
     })
 };
+function update_anNotice(parameters) {
+    return new Promise ((resolve, reject) => {
+        db.query(`UPDATE AdminNotice SET antitle= '${parameters.antitle}', ancontent= '${parameters.ancontent}' , anwriter = '운영자' , andate = NOW() WHERE anid = '${parameters.anid}' `, function(err,db_data) {
+            if (err) {
+                logger.error(
+                    "DB error [AdminNotice]"+
+                    "\n \t" + `UPDATE AdminNotice SET antitle= '${parameters.antitle}', ancontent= '${parameters.ancontent}' , anwriter = '운영자' , andate = NOW()`+
+                    "\n \t" + err);
+                reject('DB ERR');
+                //throw error;
+            }
+            else {
+                resolve(db_data);
+            }
+        });
+    })
+};
 
 function select_accidentCount() {
     return new Promise ((resolve, reject) => {
@@ -689,6 +706,7 @@ module.exports = {
     update_UserChecklist,
     select_anNotice,
     insert_anNotice,
+    update_anNotice,
     select_anNoticeDetail,
     select_accidentCount,
     select_accidentDateCount,

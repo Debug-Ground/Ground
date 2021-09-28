@@ -232,6 +232,27 @@ function dash_notice_insert(req, res, next) {
   })
 }
 
+function dash_notice_update(req, res, next) { 
+  var parameters = {
+    "anid": req.params.num
+  }
+  dashDAO.select_anNoticeDetail(parameters).then((db_data)=> {
+    console.log(db_data)
+    res.render('dash/notice_update',{db_data, username : req.session.wName});
+  })
+}
+
+function dash_notice_updatedata(req, res, next) { 
+  var parameters = {
+    "anid":req.body.anidx,
+    "antitle": req.body.antitle,
+    "ancontent": req.body.ancontent
+  }
+  dashDAO.update_anNotice(parameters).then((db_data)=> {
+    res.redirect('/dash/notice/1')
+  })
+}
+
 function dash_notice_detail(req, res, next) { 
   var parameters = {
     "anid": req.params.num
@@ -426,6 +447,8 @@ module.exports = {
     dash_notice,
     dash_notice_write,
     dash_notice_insert,
+    dash_notice_updatedata,
+    dash_notice_update,
     dash_notice_detail,
     dash_timecard,
     dash_work,
