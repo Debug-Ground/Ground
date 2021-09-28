@@ -71,6 +71,7 @@
                                 <textarea class="form-control" id="exampleTextarea1" rows="4"  placeholder="ex) 메모 입력이 필요합니다." name="aMemo" value="<%= db_data[0].aMemo %>"></textarea>
                             </div>
                             <input type="hidden" name="aidx" value="<%= db_data[0].aid %>">
+                            <input type="hidden" id="aLocation" name="aLocation" value="">
                             <button type="submit" class="btn btn-inverse-primary btn-fw mr-2" style="float:right;">
                                 <i class="mdi mdi-plus"></i>
                                 등록하기
@@ -136,7 +137,7 @@
                                             console.log("클릭한 위치" + send_lat);
                                             console.log("클릭한 위치" + send_lng);
                                             marker.setMap(map);
-
+                                            $("#aLocation").val(result[0].address.address_name);    
                                             // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
                                             infowindow.setContent(content);
                                             infowindow.open(map, marker);

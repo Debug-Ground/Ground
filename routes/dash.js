@@ -23,7 +23,7 @@ router.get('/cctv',dashController.dash_cctv);
 //manpower
 router.get('/manpower/:num',dashController.dash_manpower);
 router.get('/manpower_update/:num',dashController.dash_manpower_update);
-router.post('/manpower_update',dashController.dash_manpower_updatedata)
+router.post('/manpower_update',upload.single('file'),dashController.dash_manpower_updatedata)
 router.get('/manpower_detail/:num',dashController.dash_manpower_detail);
 
 //notice
