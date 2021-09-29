@@ -274,7 +274,7 @@ function dash_Appnotice_detail(req, res, next) {
     var jsonOb = JSON.parse(jtest)
 
     console.log(jsonOb)
-    res.json(jsonOb)
+    res.send(jsonOb)
   })
 }
 
