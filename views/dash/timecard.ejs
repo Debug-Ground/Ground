@@ -33,7 +33,6 @@
                   <tbody>
                     <% for(var i = (t_num - 1) * max_value; i < t_num * max_value; i++){ %>
                       <% var data_value=db_data[i]; if(data_value===undefined){ continue; } %>
-                      <tr onclick="location.href='/dash/timecard/<%= data_value.wid %>'">  
                       <td class="py-1 text-center">
                         <%= i+1 %>
                       </td>
@@ -44,7 +43,7 @@
                         <%= data_value.wRegular %>
                       </td>
                       <td>
-                        <%= data_value.wAttendanceDate %>
+                        <%= data_value.atDate%>
                       </td>
                       <td>
                         <%= data_value.wEquipment %>

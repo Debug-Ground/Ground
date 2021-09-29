@@ -264,6 +264,20 @@ function dash_notice_detail(req, res, next) {
   })
 }
 
+function dash_Appnotice_detail(req, res, next) { 
+  dashDAO.select_AppanNoticeDetail().then((db_data)=> {
+    var data = {
+      message : "응답상태 성공였습니다",
+      result : db_data
+    }
+    var jtest = JSON.stringify(data)
+    var jsonOb = JSON.parse(jtest)
+
+    console.log(jsonOb)
+    res.json(jsonOb)
+  })
+}
+
 function dash_timecard(req, res, next) { 
   dashDAO.select_timecard().then((db_data)=> {
     console.log(db_data)
@@ -429,26 +443,48 @@ function dash_delete_list(req, res, next) {
   })
 }
 
-function dash_App_At(req, res, next) { 
-  var parameters = {
-    "wid":req.body.wid
-  }
-  console.log(parameters)
-  dashDAO.select_Attendance(parameters).then((db_data)=>{
-    res.send(db_data)
-  })
-}
-
 function dash_reqApp_At(req, res, next) { 
   var parameters = {
     "wid":req.body.wid,
     "atDate":req.body.atDate
   }
+  var jdata = querystring.stringify({
+    'kakaoid': parameters.wid,
+    'atDate': parameters.atDate,
+  })
+  console.log(jdata)
+  process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+  var options = {
+      method: 'POST',
+      hostname: "grounda.hopto.org",
+      port:5000,
+      path:"/test",
+      agent: false,
+      headers : {
+          'Content-Type':'application/x-www-form-urlencoded',
+          'Content-Length': Buffer.byteLength(jdata)   
+      },
+      rejectUnhauthorized : false,
+      requestCert: true,
+      strictSSL: false,
+      json:true
+  }
+  var req = https.request(options, (res) => {
+  res.setEncoding('utf-8');
+  res.on('data', (d) => {
+    console.log(d);
+  });
+  });
+  req.on('error', (e) => {
+  console.error(e);
+  });
+  req.write(jdata)
+  req.end();
   console.log(parameters)
   dashDAO.insert_Attendance(parameters).then((db_data)=>{
-    res.send(db_data)
+      res.send(jdata)
   })
-}
+  }
 
 
 module.exports = {
@@ -473,6 +509,7 @@ module.exports = {
     dash_notice_updatedata,
     dash_notice_update,
     dash_notice_detail,
+    dash_Appnotice_detail,
     dash_timecard,
     dash_work,
     dash_work_add,
@@ -488,6 +525,5 @@ module.exports = {
     dash_test_send,
     dash_insert_list,
     dash_delete_list,
-    dash_App_At,
     dash_reqApp_At,
 }
