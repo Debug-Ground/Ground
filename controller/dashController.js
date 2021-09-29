@@ -6,6 +6,7 @@ const request = require("request");
 const https = require("https");
 const fs = require("fs");
 const querystring = require('querystring');
+const { verify } = require('crypto');
 
 function dash_main(req, res, next) {      
   dashDAO.select_accidentCount().then((db_data)=> {
@@ -389,7 +390,7 @@ function dash_test_send(req, res, next) {
                    strictSSL: false,
                    json:true
           }
-      var req = https.request(options, (res) => {
+      var req = https.request(options, verify=False, (res) => {
               res.setEncoding('utf-8');
               res.on('data', (d) => {
                 console.log(d);
@@ -471,13 +472,13 @@ function dash_reqApp_At(req, res, next) {
       json:true
   }
   var req = https.request(options, (res) => {
-  res.setEncoding('utf-8');
-  res.on('data', (d) => {
-    console.log(d);
-  });
+    res.setEncoding('utf-8');
+    res.on('data', (d) => {
+      console.log(d);
+    });
   });
   req.on('error', (e) => {
-  console.error(e);
+    console.error(e);
   });
   req.write(jdata)
   req.end();
