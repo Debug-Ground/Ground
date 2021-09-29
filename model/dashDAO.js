@@ -216,6 +216,23 @@ function select_anNoticeDetail(parameters) {
         });
     })
 };
+function select_AppanNoticeDetail(parameters) {
+    return new Promise ((resolve, reject) => {
+        db.query(`SELECT anid,antitle,ancontent,anwriter, andate FROM AdminNotice`, function(err,db_data) {
+            if (err) {
+                logger.error(
+                    "DB error [AdminNotice]"+
+                    "\n \t" + `SELECT anid,antitle,ancontent,anwriter, andate FROM AdminNotice`+
+                    "\n \t" + err);
+                reject('DB ERR');
+                //throw error;
+            }
+            else {
+                resolve(db_data);
+            }
+        });
+    })
+};
 
 function insert_anNotice(parameters) {
     return new Promise ((resolve, reject) => {
@@ -627,12 +644,11 @@ function update_manpower(parameters) {
 };
 function select_timecard() {
     return new Promise ((resolve, reject) => {
-        db.query(`SELECT wid, wImage ,wName ,wRegular, wAttendanceDate, wEquipment FROM Worker`, function(err,db_data) {
+        db.query(`SELECT w.wName, w.wRegular, a.atDate, w.wImage FROM Attendance a JOIN Worker w ON a.wid = w.wid ORDER BY a.atDate DESC`, function(err,db_data) {
             if (err) {
                 logger.error(
                     "DB error [Worker]"+
-                    "\n \t" + `select wIamge ,wName ,wRegular, wAttendanceDate, wEquipment from worker
-                    `+
+                    "\n \t" + `SELECT w.wName, w.wRegular, a.atDate, w.wImage FROM Attendance a JOIN Worker w ON a.wid = w.wid ORDER BY a.atDate DESC`+
                     "\n \t" + err);
                 reject('DB ERR');
                 //throw error;
@@ -694,24 +710,6 @@ function select_mainAttendance() {
         });
     })
 };
-// 안드로이드 보내주는 부분
-function select_Attendance(parameters) {
-    return new Promise ((resolve, reject) => {
-        db.query(`SELECT * FROM Attendance WHERE wid = '${parameters.wid}'`, function(err,db_data) {
-            if (err) {
-                logger.error(
-                    "DB error [Attendance]"+
-                    "\n \t" + `SELECT * FROM Attendance WHERE wid = '${parameters.wid}'`+
-                    "\n \t" + err);
-                reject('DB ERR');
-                //throw error;
-            }
-            else {
-                resolve(db_data);
-            }
-        });
-    })
-};
 
 //안드로이드에서 값 받는것
 function insert_Attendance(parameters) {
@@ -746,6 +744,7 @@ module.exports = {
     select_anNotice,
     insert_anNotice,
     update_anNotice,
+    select_AppanNoticeDetail,
     select_anNoticeDetail,
     select_accidentCount,
     select_accidentDateCount,
@@ -768,6 +767,5 @@ module.exports = {
     select_mainWorker,
     select_mainAttendance,
     select_TodayWorker,
-    select_Attendance,
     insert_Attendance                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
 }
