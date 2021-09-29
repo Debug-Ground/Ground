@@ -1,5 +1,28 @@
-<% include ../include/dash_header %>
-    
+
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+ 
+    <script>
+ 
+            $('#postMethod').click(function() {
+               var post = 'POST METHOD CALL';
+ 
+ 
+                //Ajax POST Method TEST
+                $.ajax({
+                    url: '/manual/guide',
+                      dataType: 'json',
+                      type: 'POST',
+                      data: {data:post},
+                      success: function(result) {
+                          if (result) {
+                             $('#post_output').html(result.result);
+                             console.log(result);
+                          }
+                      }
+                  });
+            });
+         
+    </script>
     <div class="container-scroller">
         <div class="container-fluid page-body-wrapper full-page-wrapper">
             <div class="content-wrapper d-flex align-items-center text-center error-page bg-success">
@@ -8,6 +31,7 @@
                         <div class="row align-items-center d-flex flex-row">
                             <div class="col-lg-6 text-lg-right pr-lg-4">
                                 <h1 class="display-1 mb-0">통과</h1>
+                                
                             </div>
                         </div>
                         <div class="row mt-5">
@@ -15,6 +39,13 @@
                                 <p class="text-white font-weight-medium text-center">Ground Company
                                 </p>
                             </div>
+                            <div style="border: 3px solid gray; width: 180px;">
+                                <h2>POST</h2>
+                                <button id='postMethod'>POST</button>
+                                <p id ='post_output'>
+                                   psot           
+                                </p>      
+                             </div>
                         </div>
                     </div>
                 </div>
@@ -24,4 +55,27 @@
         <!-- page-body-wrapper ends -->
     </div>
 
-    <% include ../include/dash_footer %>
+
+
+    <script>
+ 
+        $('#postMethod').click(function() {
+           var post = 'POST METHOD CALL';
+
+
+            //Ajax POST Method TEST
+            $.ajax({
+                url: '/manual/guide',
+                  dataType: 'json',
+                  type: 'POST',
+                  data: {data:post},
+                  success: function(result) {
+                      if (result) {
+                         $('#post_output').html(result.result);
+                         console.log(result);
+                      }
+                  }
+              });
+        });
+     
+</script>

@@ -55,7 +55,7 @@ function insertBodyUserInfo(req, res, next) {
     var parameters = {
         "wid": req.body.uid,
         "wName" : req.body.unickname, // 입력받음 이름
-        "wRName" : req.body.realname, // 카카오 이름
+        //"wRName" : req.body.realname, // 카카오 이름
         "wImage" : req.body.uthumbnailImageUrl,
         "wEmail": req.body.uemail
     }
