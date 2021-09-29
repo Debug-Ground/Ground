@@ -443,6 +443,7 @@ function dash_delete_list(req, res, next) {
   })
 }
 
+
 function dash_reqApp_At(req, res, next) { 
   var parameters = {
     "wid":req.body.wid,
@@ -482,9 +483,16 @@ function dash_reqApp_At(req, res, next) {
   req.end();
   console.log(parameters)
   dashDAO.insert_Attendance(parameters).then((db_data)=>{
-      res.send(jdata)
-  })
-  }
+    var data = {
+      message : "응답상태 성공였습니다",
+      result : db_data
+    }
+    var jtest = JSON.stringify(data)
+    var jsonOb = JSON.parse(jtest)
+  
+    res.json(jsonOb)
+   })
+}
 
 
 module.exports = {
