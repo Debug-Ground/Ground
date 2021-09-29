@@ -216,7 +216,7 @@ function select_anNoticeDetail(parameters) {
         });
     })
 };
-function select_AppanNoticeDetail(parameters) {
+function select_AppanNoticeDetail() {
     return new Promise ((resolve, reject) => {
         db.query(`SELECT anid,antitle,ancontent,anwriter, andate FROM AdminNotice`, function(err,db_data) {
             if (err) {
