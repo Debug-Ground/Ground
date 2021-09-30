@@ -9,6 +9,7 @@
               <p class="card-description" style="margin: 0 0 30px 20px;">
                 Ground의 공사 작업 현황을 확인하세요.
               </p>
+              <form action="/dash/work_chart_delete" method="POST">
             <div class="col-md-12 grid-margin ">
                 <div class="card" style="box-shadow: 1px 1px 22px 3px rgba(163, 174, 184, 0.18);" heigh="100px">
                 <div class="card-body">
@@ -94,18 +95,20 @@
                     </div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-inverse-success btn-fw" style="float: right; margin: 0 20px 0 10px;" onclick="location.href='/dash/work_chart/1';">
+                <input type="hidden" name="wsidx" value="<%= db_data[0].wsid %>">
+                <button type="button" class="btn btn-inverse-success btn-fw" style="float: right; margin: 0 20px 0 10px;" onclick="location.href='/dash/work_chart/1';">
                     <i class="mdi mdi-check"></i>                                                    
                       &nbsp; 확인
                 </button>
-                <button type="submit" class="btn btn-inverse-info btn-fw" style="float: right; margin: 0 0 0 15px;" onclick="location.href='/dash/work_chart_update/<%=db_data[0].wsid%>';">
+                <button type="button" class="btn btn-inverse-info btn-fw" style="float: right; margin: 0 0 0 15px;" onclick="location.href='/dash/work_chart_update/<%=db_data[0].wsid%>';">
                     <i class="mdi mdi-flattr"></i>                                                    
                       &nbsp; 수정
                 </button>
-                <button type="submit" class="btn btn-inverse-danger btn-fw" style="float: right; margin: 0 0 0 15px;" onclick="location.href='';">
+                <button type="submit" class="btn btn-inverse-danger btn-fw" style="float: right; margin: 0 0 0 15px;">
                     <i class="mdi mdi-close"></i>                                                    
                       &nbsp; 삭제
                 </button>
+            </form>
             </div>
           </div>
         </div>

@@ -537,6 +537,23 @@ function update_WorkStatus(parameters) {
         });
     })
 }
+function delete_WorkStatus(parameters) {
+    return new Promise ((resolve, reject) => {
+        db.query(`DELETE FROM WorkStatus WHERE wsid = '${parameters.wsid}'`, function(err,db_data) {
+            if (err) {
+                logger.error(
+                    "DB error [Worker]"+
+                    "\n \t" + `DELETE FROM WorkStatus WHERE wsid = '${parameters.wsid}'`+
+                    "\n \t" + err);
+                    reject('DB ERR');
+                    //throw error;
+            }
+            else {
+                resolve(db_data);
+            }
+        });
+    })
+}
 
 function select_WorkerStatus() {
     return new Promise ((resolve, reject) => {
@@ -675,6 +692,23 @@ function update_manpower(parameters) {
         });
     })
 };
+function delete_manpower(parameters) {
+    return new Promise ((resolve, reject) => {
+        db.query(`DELETE FROM Worker WHERE wid = '${parameters.wid}'`, function(err,db_data) {
+            if (err) {
+                logger.error(
+                    "DB error [Worker]"+
+                    "\n \t" + `DELETE FROM Worker WHERE wid = '${parameters.wid}'`+
+                    "\n \t" + err);
+                reject('DB ERR');
+                //throw error;
+            }
+            else {
+                resolve(db_data);
+            }
+        });
+    })
+};
 function select_timecard() {
     return new Promise ((resolve, reject) => {
         db.query(`SELECT w.wName, w.wRegular, a.atDate, w.wImage FROM Attendance a JOIN Worker w ON a.wid = w.wid ORDER BY a.atDate DESC`, function(err,db_data) {
@@ -789,6 +823,7 @@ module.exports = {
     select_WorkStatus,
     insert_WorkStatus,
     update_WorkStatus, 
+    delete_WorkStatus,
     select_WorkStatusDetail,             
     select_WorkerStatus,
     insert_mainChecklist,
@@ -797,6 +832,7 @@ module.exports = {
     select_manpower,
     select_manpowercheck,
     update_manpower,
+    delete_manpower,
     select_timecard,
     select_regularCount,
     select_mainWorker,
