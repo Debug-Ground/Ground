@@ -11,6 +11,7 @@
                 </p>
               <div class="col-md-12 grid-margin ">
               </div>
+              <form action="/dash/accident_delete" method="POST">
                 <div class="row" style="margin: 50px 0 0 0;">
                   <div class="col-md-3 grid-margin ">
                       <div class="card" style="box-shadow: 1px 1px 22px 3px rgba(163, 174, 184, 0.18);">
@@ -106,7 +107,8 @@
                       </div>
                       </div>
                   </div>
-                  <button type="submit" class="btn btn-inverse-success btn-fw" style="float: right; margin: 0 20px 0 10px;" onclick="location.href='/dash/accident/1';">
+                  <input type="hidden" name="aidx" value = "<%= db_data[0].aid %>">
+                  <button type="button" class="btn btn-inverse-success btn-fw" style="float: right; margin: 0 20px 0 10px;" onclick="location.href='/dash/accident/1';">
                       <i class="mdi mdi-check"></i>                                                    
                         &nbsp; 확인
                   </button>
@@ -114,10 +116,11 @@
                       <i class="mdi mdi-flattr"></i>                                                    
                         &nbsp; 수정
                   </button>
-                  <button type="submit" class="btn btn-inverse-danger btn-fw" style="float: right; margin: 0 0 0 15px;" onclick="location.href='';">
+                  <button type="submit" class="btn btn-inverse-danger btn-fw" style="float: right; margin: 0 0 0 15px;">
                       <i class="mdi mdi-close"></i>                                                    
                         &nbsp; 삭제
                   </button>
+                </form>
               </div>
             </div>
           </div>

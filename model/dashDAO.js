@@ -78,11 +78,11 @@ function delete_Checklist(parameters) {
 
 function select_accident() {
     return new Promise ((resolve, reject) => {
-        db.query(`SELECT * FROM Accident`, function(err,db_data) {
+        db.query(`SELECT * FROM Accident ORDER BY aDate DESC`, function(err,db_data) {
             if (err) {
                 logger.error(
                     "DB error [Accident]"+
-                    "\n \t" + `SELECT * FROM Accident`+
+                    "\n \t" + `SELECT * FROM Accident ORDER aDate BY DESC`+
                     "\n \t" + err);
                 reject('DB ERR');
                 //throw error;
@@ -180,14 +180,31 @@ function select_accidentDetail(parameters) {
         });
     })
 };
+function delete_accident(parameters) {
+    return new Promise ((resolve, reject) => {
+        db.query(`DELETE FROM Accident WHERE aid = '${parameters.aid}'`, function(err,db_data) {
+            if (err) {
+                logger.error(
+                    "DB error [Accident]"+
+                    "\n \t" + `DELETE FROM Accident WHERE aid = '${parameters.aid}'`+
+                    "\n \t" + err);
+                reject('DB ERR');
+                //throw error;
+            }
+            else {
+                resolve(db_data);
+            }
+        });
+    })
+};
 
 function select_anNotice() {
     return new Promise ((resolve, reject) => {
-        db.query(`SELECT * FROM AdminNotice`, function(err,db_data) {
+        db.query(`SELECT * FROM AdminNotice ORDER BY anDate DESC`, function(err,db_data) {
             if (err) {
                 logger.error(
                     "DB error [AdminNotice]"+
-                    "\n \t" + `SELECT * FROM AdminNotice`+
+                    "\n \t" + `SELECT * FROM AdminNotice ORDER BY andate DESC`+
                     "\n \t" + err);
                 reject('DB ERR');
                 //throw error;
@@ -233,7 +250,23 @@ function select_AppanNoticeDetail() {
         });
     })
 };
-
+function delete_anNotice(parameters) {
+    return new Promise ((resolve, reject) => {
+        db.query(`DELETE FROM AdminNotice WHERE anid= '${parameters.anid}'`, function(err,db_data) {
+            if (err) {
+                logger.error(
+                    "DB error [AdminNotice]"+
+                    "\n \t" + `DELETE FROM AdminNotice WHERE anid= '${parameters.anid}'`+
+                    "\n \t" + err);
+                reject('DB ERR');
+                //throw error;
+            }
+            else {
+                resolve(db_data);
+            }
+        });
+    })
+};
 function insert_anNotice(parameters) {
     return new Promise ((resolve, reject) => {
         db.query(`INSERT INTO AdminNotice SET antitle= '${parameters.antitle}', ancontent= '${parameters.ancontent}' , anwriter = '운영자' , andate = NOW()`, function(err,db_data) {
@@ -404,11 +437,11 @@ function select_WorkerStickGraph() {
 
 function select_WorkStatus() {
     return new Promise ((resolve, reject) => {
-        db.query(`SELECT wsid, wsName, wsLocation, ROUND(((TIMESTAMPDIFF(DAY, wsStartDate, NOW()))/(TIMESTAMPDIFF(DAY, wsStartDate, wsEndDate))) * 100) AS percent, wsStartDate, wsEndDate, wsManager FROM WorkStatus`, function(err,db_data) {
+        db.query(`SELECT wsid, wsName, wsLocation, ROUND(((TIMESTAMPDIFF(DAY, wsStartDate, NOW()))/(TIMESTAMPDIFF(DAY, wsStartDate, wsEndDate))) * 100) AS percent, wsStartDate, wsEndDate, wsManager FROM WorkStatus ORDER BY wsStartDate DESC`, function(err,db_data) {
             if (err) {
                 logger.error(
                     "DB error [Worker]"+
-                    "\n \t" + `SELECT wsid, wsName, wsLocation, wsStartDate, wsEndDate, wsManager FROM WorkStatus`+
+                    "\n \t" + `SELECT wsid, wsName, wsLocation, ROUND(((TIMESTAMPDIFF(DAY, wsStartDate, NOW()))/(TIMESTAMPDIFF(DAY, wsStartDate, wsEndDate))) * 100) AS percent, wsStartDate, wsEndDate, wsManager FROM WorkStatus ORDER BY wsStartDate DESC`+
                     "\n \t" + err);
                     reject('DB ERR');
                     //throw error;
@@ -507,11 +540,11 @@ function update_WorkStatus(parameters) {
 
 function select_WorkerStatus() {
     return new Promise ((resolve, reject) => {
-        db.query(`SELECT wsName, wsEndDate, sStatus FROM WorkStatus LIMIT 7;`, function(err,db_data) {
+        db.query(`SELECT wsName, wsEndDate, sStatus FROM WorkStatus ORDER BY wsStartDate DESC LIMIT 7;`, function(err,db_data) {
             if (err) {
                 logger.error(
                     "DB error [WorkStatus]"+
-                    "\n \t" + `SELECT wsName, wsEndDate, sStatus FROM WorkStatus LIMIT 7;`+
+                    "\n \t" + `SELECT wsName, wsEndDate, sStatus FROM WorkStatus ORDER BY wsStartDate DESC LIMIT 7;`+
                     "\n \t" + err);
                 reject('DB ERR');
                 //throw error;
@@ -578,11 +611,11 @@ function delete_mainChecklist(parameters) {
 
 function select_manpower() {
     return new Promise ((resolve, reject) => {
-        db.query(`SELECT wid, wName, wRegular, wDate FROM Worker`, function(err,db_data) {
+        db.query(`SELECT wid, wName, wRegular, wDate FROM Worker ORDER BY wDate DESC`, function(err,db_data) {
             if (err) {
                 logger.error(
-                    "DB error [CheckList]"+
-                    "\n \t" + `SELECT cList FROM CheckList`+
+                    "DB error [Worker]"+
+                    "\n \t" + `SELECT wid, wName, wRegular, wDate FROM Worker ORDER BY wDate DESC`+
                     "\n \t" + err);
                 reject('DB ERR');
                 //throw error;
@@ -739,11 +772,13 @@ module.exports = {
     select_accident,
     insert_accident,
     update_accident,
+    delete_accident,
     select_accidentDetail,
     update_UserChecklist,
     select_anNotice,
     insert_anNotice,
     update_anNotice,
+    delete_anNotice,
     select_AppanNoticeDetail,
     select_anNoticeDetail,
     select_accidentCount,

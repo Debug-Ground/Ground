@@ -18,6 +18,7 @@ router.post('/accident_insert', upload.single('file'),dashController.dash_accide
 router.get('/accident_update/:num',dashController.dash_accident_update)
 router.post('/accident_update',dashController.dash_accident_updatedata)
 router.get('/accident_detail/:num', dashController.dash_accident_detail);
+router.post('/accident_delete', dashController.dash_accident_delete);
 //cctv
 router.get('/cctv',dashController.dash_cctv);
 //manpower
@@ -33,6 +34,7 @@ router.post('/noticeInsert',dashController.dash_notice_insert);
 router.get('/notice_update/:num',dashController.dash_notice_update);
 router.post('/noticeUpdate',dashController.dash_notice_updatedata);
 router.get('/noticeDetail/:num',dashController.dash_notice_detail);
+router.post('/noticeDelete',dashController.dash_notice_delete);
 
 //android notice
 router.get('/AppnoticeDetail',dashController.dash_Appnotice_detail);
