@@ -12,27 +12,20 @@ function getGuide(req, res, next) {
 function postGuide(req, res, next) {
   var fdata =  Object.keys(req.body)[0]
   if (fdata == "fail") {
-    var equi = "fail"
-    res.render('guid',{username : req.session.wName, fdata, test : equi})
+    console.log(fdata);
+    res.send({result:fdata});
   }
   else if (fdata == "success")
   {
-    var equi =  "success"
-    res.render('guid',{username : req.session.wName, fdata, test : equi})
+    console.log(fdata);
+    res.send({result:fdata});
   }
-  else {
-    var equi = "ing"
-    res.render('guid',{username : req.session.wName, fdata, test : equi})
+  else if (fdata == "guiding"){
+    console.log(fdata);
+    res.send({result:fdata});
   }
 
-  console.log(Object.keys(req.body)[0])
 
-    var data = req.body.data;
-    console.log('POST Parameter = ' + data);
-    var result = ' Succese';
-    console.log(result);
-    res.send({result:result});
-  
 }
 
 
