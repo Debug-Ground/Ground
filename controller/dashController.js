@@ -11,31 +11,22 @@ const { verify } = require('crypto');
 function dash_main(req, res, next) {      
   dashDAO.select_accidentCount().then((db_data)=> {
     acCount = db_data
-    console.log(acCount)
     dashDAO.select_accidentDateCount().then((db_data)=>{
       dateCount = db_data
-      console.log(dateCount)
       dashDAO.select_accidentDateCountGraph().then((db_data)=> {
         graphCount = db_data
-        console.log(graphCount)
         dashDAO.select_WorkerCountGraph().then((db_data)=> {
          workCount = db_data
-         console.log(workCount)
          dashDAO.select_WorkerStickGraph().then((db_data)=>{
            stickCount = db_data
-           console.log(stickCount)
            dashDAO.select_Checklist().then((db_data)=> {
              checkData = db_data
-             console.log(checkData)
              dashDAO.select_WorkerStatus().then((db_data)=> {
               workStatus = db_data
-              console.log(db_data)
               dashDAO.select_mainWorker().then((db_data)=> {
                 mainWorker = db_data
-                console.log(mainWorker)
                 dashDAO.select_mainAttendance().then((db_data)=>{
                   mainAt = db_data
-                  console.log(mainAt)
                   dashDAO.select_TodayWorker().then((db_data)=> {
                     TodayWk = db_data
                     res.render('dash/main',{acCount,dateCount, graphCount,workCount,stickCount,workStatus, mainWorker, TodayWk,mainAt,dayjs});
@@ -166,6 +157,14 @@ function dash_accident_detail(req, res, next) {
     res.render('dash/accident_detail', { username : req.session.wName, db_data : db_data});  
   })    
 }
+function dash_accident_delete(req, res, next) {
+  var parameters = {
+    "aid" : req.body.aidx
+  } 
+  dashDAO.delete_accident(parameters).then((db_data)=>{
+    res.redirect('/dash/accident/1')
+  })    
+}
 
 function dash_cctv(req, res, next) { 
     res.render('dash/cctv',{username : req.session.wName});  
@@ -262,6 +261,15 @@ function dash_notice_detail(req, res, next) {
   }
   dashDAO.select_anNoticeDetail(parameters).then((db_data)=> {
     res.render('dash/notice_detail',{db_data, username : req.session.wName});
+  })
+}
+
+function dash_notice_delete(req, res, next) { 
+  var parameters = {
+    "anid": req.body.anidx
+  }
+  dashDAO.delete_anNotice(parameters).then((db_data)=> {
+    res.redirect('/dash/notice/1')
   })
 }
 
@@ -507,6 +515,7 @@ module.exports = {
     dash_accident_update,
     dash_accident_updatedata,
     dash_accident_detail,
+    dash_accident_delete,
     dash_cctv,
     dash_manpower,
     dash_manpower_update,
@@ -518,6 +527,7 @@ module.exports = {
     dash_notice_updatedata,
     dash_notice_update,
     dash_notice_detail,
+    dash_notice_delete,
     dash_Appnotice_detail,
     dash_timecard,
     dash_work,

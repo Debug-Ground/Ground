@@ -41,7 +41,7 @@
                       <% var data_value=db_data[i]; if(data_value===undefined){ continue; } %>
                       <tr onclick="location.href='/dash/work_chart_detail/<%= data_value.wsid %>'">  
                       <td class="py-1">
-                        <%= data_value.wsid %>
+                        <%= db_data.length - i %>
                       </td>
                       <td>
                         <%= data_value.wsName %>

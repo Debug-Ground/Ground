@@ -35,7 +35,7 @@
                       <% var data_value=db_data[i]; if(data_value===undefined){ continue; } %>
                       <tr onclick="location.href='/dash/accident_detail/<%= data_value.aid %>'">  
                        <td>
-                       <%= data_value.aid %>
+                       <%= db_data.length - i %>
                       </td>
                       <td>
                         <%= data_value.aPeople %>

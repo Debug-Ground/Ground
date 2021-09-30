@@ -17,25 +17,26 @@
                   <%=db_data[0].andate %>
                   &emsp;<i class="mdi mdi-account"></i><%=db_data[0].anwriter %>
                 </p>
-  
+                 <input type="hidden" name="anidx" value="<%= db_data[0].anid %>" >
                 <blockquote class="blockquote" style="margin : 80px 0 0 0; height: 500px;">
                   <p class="mb-0"><%-db_data[0].ancontent %></p>
                 </blockquote>
-              </form>
+           
                 <div style="float: right; margin: 10px 0 5px 0">
-                  <button type="submit" class="btn btn-inverse-success btn-fw" style="float: right; margin: 0 0 0 10px;" onclick="location.href='/dash/notice/1';">
+                  <button type="button" class="btn btn-inverse-success btn-fw" style="float: right; margin: 0 0 0 10px;" onclick="location.href='/dash/notice/1';">
                     <i class="mdi mdi-check"></i>                                                    
                       &nbsp; 확인
                   </button>
-                  <button type="submit" class="btn btn-inverse-info btn-fw" style="float: right; margin: 0 0 0 15px;" onclick="location.href='/dash/notice_update/<%=db_data[0].anid %>';">
+                  <button type="button" class="btn btn-inverse-info btn-fw" style="float: right; margin: 0 0 0 15px;" onclick="location.href='/dash/notice_update/<%=db_data[0].anid %>';">
                       <i class="mdi mdi-flattr"></i>                                                    
                         &nbsp; 수정
                   </button>
-                  <button type="submit" class="btn btn-inverse-danger btn-fw" style="float: right; margin: 0 0 0 15px;" onclick="location.href='';">
+                  <button type="submit" class="btn btn-inverse-danger btn-fw" style="float: right; margin: 0 0 0 15px;">
                       <i class="mdi mdi-close"></i>                                                    
                         &nbsp; 삭제
                   </button>
                   </div>
+                </form>
             </div>
           </div>
         </div>
