@@ -1,81 +1,115 @@
 
-    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
- 
-    <script>
- 
-            $('#postMethod').click(function() {
+<html lang="en">
+
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Ground</title>
+        <!-- plugins:css -->
+        <link rel="stylesheet" href="/dash_assets/vendors/feather/feather.css"">
+        <link rel="stylesheet" href="/dash_assets/vendors/ti-icons/css/themify-icons.css">
+        <link rel="stylesheet" href="/dash_assets/vendors/css/vendor.bundle.base.css">
+        <!-- endinject -->
+        <!-- Plugin css for this page -->
+        <!-- End plugin css for this page -->
+        <!-- inject:css -->
+        <link rel="stylesheet" href="/dash_assets/css/vertical-layout-light/style.css">
+        <!-- endinject -->
+        <link rel="shortcut icon" href="/dash_assets/images/favicon.png">
+        <script>
+            
+
+            $('#postMethod').change(function( e ) {
                var post = 'POST METHOD CALL';
- 
  
                 //Ajax POST Method TEST
                 $.ajax({
-                    url: '/manual/guide',
+                    url: '/api/post',
                       dataType: 'json',
                       type: 'POST',
                       data: {data:post},
                       success: function(result) {
-                          if (result) {
-                             $('#post_output').html(result.result);
-                             console.log(result);
-                          }
+                          result = JSON.parse( result )
+
+                         if( result.code == "fail") {
+                            $('#post_output').html(result.result);    
+                        }
                       }
                   });
             });
-         
-    </script>
-    <div class="container-scroller">
-        <div class="container-fluid page-body-wrapper full-page-wrapper">
-            <div class="content-wrapper d-flex align-items-center text-center error-page bg-success">
-                <div class="row flex-grow">
-                    <div class="col-lg-7 mx-auto text-white">
-                        <div class="row align-items-center d-flex flex-row">
-                            <div class="col-lg-6 text-lg-right pr-lg-4">
-                                <h1 class="display-1 mb-0">통과</h1>
-                                
+        </script>
+    </head>
+
+    <body>
+        <div class="container-scroller" ID="guid_pass">
+            <div class="container-fluid page-body-wrapper full-page-wrapper">
+                <div class="content-wrapper d-flex align-items-center text-center error-page bg-success">
+                    <div class="row flex-grow">
+                        <div class="col-lg-9 mx-auto text-white">
+                            <div>
+                                <div class="text-center">
+                                    <p style="font-size: 500px; font-weight: bold;">PASS</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row mt-5">
-                            <div class="col-12 mt-xl-2">
-                                <p class="text-white font-weight-medium text-center">Ground Company
-                                </p>
-                            </div>
-                            <div style="border: 3px solid gray; width: 180px;">
-                                <h2>POST</h2>
-                                <button id='postMethod'>POST</button>
-                                <p id ='post_output'>
-                                   psot           
-                                </p>      
-                             </div>
+                            
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- content-wrapper ends -->
         </div>
-        <!-- page-body-wrapper ends -->
-    </div>
-
-
-
-    <script>
- 
-        $('#postMethod').click(function() {
-           var post = 'POST METHOD CALL';
-
-
-            //Ajax POST Method TEST
-            $.ajax({
-                url: '/manual/guide',
-                  dataType: 'json',
-                  type: 'POST',
-                  data: {data:post},
-                  success: function(result) {
-                      if (result) {
-                         $('#post_output').html(result.result);
-                         console.log(result);
-                      }
-                  }
-              });
-        });
+        <div class="container-scroller" ID="guid_pass">
+            <div class="container-fluid page-body-wrapper full-page-wrapper">
+                <div class="content-wrapper d-flex align-items-center text-center error-page bg-danger">
+                    <div class="row flex-grow">
+                        <div class="col-lg-9 mx-auto text-white">
+                            <div>
+                                <div class="text-center">
+                                    <p style="font-size: 500px; font-weight: bold; margin-top: 200px;">FAIL</p>
+                                    <p style="font-size: 70px; font-weight: bold; margin-top: 350px;">- 헬멧 착용 바랍니다. -</p>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-scroller" ID="guid_pass">
+            <div class="container-fluid page-body-wrapper full-page-wrapper">
+                <div class="content-wrapper d-flex align-items-center text-center error-page" style="background-color: gray;">
+                    <div class="row flex-grow">
+                        <div class="col-lg-9 mx-auto text-white">
+                            <div>
+                                <div class="text-center">
+                                    <p style="font-size: 350px; font-weight: bold;">진행중</p>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-scroller" ID="guid_pass">
+            <div style="border: 3px solid gray; width: 180px;">
+                <h2>POST</h2>
+                <button id='postMethod'>POST</button>
+                <p id ='post_output'>
+                   psot
+                </p>
      
-</script>
+             </div>
+        </div>
+
+        <script src="/dash_assets/vendors/js/vendor.bundle.base.js"></script>
+        <script src="/dash_assets/js/off-canvas.js"></script>
+        <script src="/dash_assets/js/hoverable-collapse.js"></script>
+        <script src="/dash_assets/js/template.js"></script>
+        <script src="/dash_assets/js/settings.js"></script>
+        <script src="/dash_assets/js/todolist.js"></script>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
+    </body>
+
+</html>
