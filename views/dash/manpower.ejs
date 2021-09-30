@@ -35,7 +35,7 @@
                       <% var data_value=db_data[i]; if(data_value===undefined){ continue; } %>
                       <tr onclick="location.href='/dash/manpower_detail/<%= data_value.wid %>'">  
                       <td>
-                        <%= i+1 %>
+                        <%= db_data.length - i %>
                       </td>
                       <td>
                         <%= data_value.wName %>
