@@ -54,8 +54,7 @@ function findUser(req, res, next) {
 function insertBodyUserInfo(req, res, next) {
     var parameters = {
         "wid": req.body.uid,
-        "wName" : req.body.unickname, // 입력받음 이름
-        //"wRName" : req.body.realname, // 카카오 이름
+        "wName" : req.body.realname, // 카카오 이름
         "wImage" : req.body.uthumbnailImageUrl,
         "wEmail": req.body.uemail
     }
@@ -64,12 +63,31 @@ function insertBodyUserInfo(req, res, next) {
         message : "1"
     }
 
+    console.log("name: " + req.body.realname)
+
     var sendJsonData = JSON.parse(JSON.stringify(successData))
 
     userDAO.insert_userInfo(parameters).then(function (db_data){
         console.log(db_data)
         res.json(sendJsonData)
     }).catch(err=>res.send("<script>alert('err')</script>"));
+}
+
+function selectRegularDate(req, res, next){
+    var parameters = {
+        "wid": req.body.wid
+    }
+    userDAO.select_RegularDate(parameters).then(function(db_data){
+        var data = {
+            message : "응답상태 성공였습니다",
+            result : db_data
+          }
+          var jtest = JSON.stringify(data)
+          var jsonOb = JSON.parse(jtest)
+    
+          res.send(jsonOb)
+    }).catch(err=>res.send("<script>alert('err')</script>"));
+
 }
 
 function updateBodyUserInfo(req, res, next){
@@ -172,4 +190,5 @@ module.exports = {
     findBodyUserInfo,
     insertBodyUserInfo,
     updateBodyUserInfo,
+    selectRegularDate
 }

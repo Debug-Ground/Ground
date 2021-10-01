@@ -1,30 +1,41 @@
+const { config } = require('dotenv');
 var express = require('express');
 
 function manual(req, res, next) {
   res.render('manual',{username : req.session.wName})
 }
 
-function getGuide(req, res, next) {
-  var equi = "success"
-  res.render('guid',{username : req.session.wName, test : equi})
+function getGuideFail(req, res, next) {
+  var fdata =  req.query.data
+  
+  
+    res.render('guid_fail',{"test":fdata,username : req.session.wName})
+  
+}
+
+function getGuideSuccess(req, res, next) {
+  var fdata =  req.query.data
+  
+  res.cookie('fdata', fdata)
+    res.render('guid_success',{"test":fdata,username : req.session.wName})
+  
+}
+
+function getGuideTesting(req, res, next) {
+  var fdata =  req.query.data
+  res.cookie('fdata', fdata)
+    res.render('guid_testing',{ "test":fdata, username : req.session.wName})
+  
 }
 
 function postGuide(req, res, next) {
-  var fdata =  Object.keys(req.body)[0]
-  if (fdata == "fail") {
-    console.log(fdata);
-    res.send({result:fdata});
-  }
-  else if (fdata == "success")
-  {
-    console.log(fdata);
-    res.send({result:fdata});
-  }
-  else if (fdata == "guiding"){
-    console.log(fdata);
-    res.send({result:fdata});
-  }
+  var data =  Object.keys(req.body)[0]
+  console.log(data)
 
+  if(data == "fail")
+  {
+    res.send({result:'fail'});
+  }
 
 }
 
@@ -33,6 +44,8 @@ function postGuide(req, res, next) {
 
 module.exports = {
   manual,
-  getGuide,
+  getGuideFail,
+  getGuideSuccess,
+  getGuideTesting,
   postGuide
 }
