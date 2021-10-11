@@ -120,6 +120,7 @@ function dash_accident_insert(req, res, next) {
     res.redirect('/dash/accident/1')
   })    
 }
+
 function dash_accident_update(req,res,next){
   var parameters = {
     "aid" : req.params.num,
