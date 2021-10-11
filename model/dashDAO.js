@@ -138,7 +138,6 @@ function update_accident(parameters) {
             aKind = '${parameters.aKind}',
             aDetail = '${parameters.aDetail}',
             aLocation = '${parameters.aLocation}',
-            aImage = '${parameters.aImage}',
             aMemo = '${parameters.aMemo}' WHERE aid = '${parameters.aid}'`, function(err,db_data) {
             if (err) {
                 logger.error(
@@ -150,7 +149,6 @@ function update_accident(parameters) {
                     aKind = '${parameters.aKind}',
                     aDetail = '${parameters.aDetail}',
                     aLocation = '${parameters.aLocation}',
-                    aImage = '${parameters.aImage}',
                     aMemo = '${parameters.aMemo}' WHERE aid = '${parameters.aid}'`+
                     "\n \t" + err);
                 reject('DB ERR');

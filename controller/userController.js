@@ -1,6 +1,6 @@
 var express = require('express');
 var userDAO = require('../model/userDAO');
-
+ 
 function signUp(req, res, next) {
     var parameters = {
         "wid": req.session.wid,
