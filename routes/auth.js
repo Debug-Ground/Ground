@@ -48,6 +48,8 @@ router.get('/findUser',userController.findUser)
 router.post('/findBodyUserInfo',userController.findBodyUserInfo)
 router.post('/insertBodyUserInfo',userController.insertBodyUserInfo)
 router.post('/updateBodyUserInfo',userController.updateBodyUserInfo)
+router.post('/reqRD',userController.selectRegularDate)
+
 
 router.get('/kakao', passport.authenticate('kakao'));
 
