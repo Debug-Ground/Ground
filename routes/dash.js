@@ -26,6 +26,7 @@ router.get('/manpower/:num',dashController.dash_manpower);
 router.get('/manpower_update/:num',dashController.dash_manpower_update);
 router.post('/manpower_update',upload.single('file'),dashController.dash_manpower_updatedata)
 router.get('/manpower_detail/:num',dashController.dash_manpower_detail);
+router.post('/manpower_delete', dashController.dash_manpower_delete);
 
 //notice
 router.get('/notice/:num',dashController.dash_notice);
@@ -47,6 +48,7 @@ router.get('/work_chart_update/:num',dashController.dash_work_update);
 router.post('/work_update',dashController.dash_work_updatedata);
 router.post('/work_insert',dashController.dash_work_insert);
 router.get('/work_chart_detail/:num',dashController.dash_work_detail);
+router.post('/work_chart_delete',dashController.dash_work_delete)
 //
 router.get('/worker_chart',dashController.dash_worker_chart);
 

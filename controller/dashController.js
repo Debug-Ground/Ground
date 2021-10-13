@@ -120,6 +120,7 @@ function dash_accident_insert(req, res, next) {
     res.redirect('/dash/accident/1')
   })    
 }
+
 function dash_accident_update(req,res,next){
   var parameters = {
     "aid" : req.params.num,
@@ -196,7 +197,14 @@ function dash_manpower_detail(req, res, next) {
   res.render('dash/manpower_detail',{db_data, username : req.session.wName});  
   })
 }
-
+function dash_manpower_delete(req, res, next) {
+  var parameters = {
+    "wid": req.body.widx
+  }
+  dashDAO.delete_manpower(parameters).then((db_data)=> {
+  res.redirect('/dash/manpower/1')
+  })
+}
 function dash_manpower_updatedata(req, res, next) { 
   var parameters = {
     "wid":req.body.widx,
@@ -356,6 +364,16 @@ function dash_work_detail(req, res, next) {
   dashDAO.select_WorkStatusDetail(parameters).then((db_data)=> {
     console.log(db_data)
     res.render('dash/work_detail',{db_data,username : req.session.wName});  
+  })
+}
+function dash_work_delete(req, res, next) { 
+  var parameters = {
+    "wsid": req.body.wsidx
+  }
+  console.log(parameters.wsid)
+  dashDAO.delete_WorkStatus(parameters).then((db_data)=> {
+    console.log("delete work")
+    res.redirect('/dash/work_chart/1')
   })
 }
 
@@ -521,6 +539,7 @@ module.exports = {
     dash_manpower_update,
     dash_manpower_detail,
     dash_manpower_updatedata,
+    dash_manpower_delete,
     dash_notice,
     dash_notice_write,
     dash_notice_insert,
@@ -536,7 +555,7 @@ module.exports = {
     dash_work_update,
     dash_work_updatedata,
     dash_work_detail,
-    dash_worker_chart,
+    dash_work_delete,
     dash_userchecklistUpdate,
     dash_worker_chart,
     dash_test,
