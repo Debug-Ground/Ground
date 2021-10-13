@@ -5,20 +5,20 @@
         <div class="col-lg-12 grid-margin stretch-card">
           <div class="card">
             <div class="card-body">
-              <h2 style="color:#4B49AC; margin:25px 0 10px 0;"><i class="mdi mdi-bullhorn"></i>&nbsp;공지사항 글쓰기</h2>
+              <h2 style="color:#4B49AC; margin:25px 0 10px 0;"><i class="mdi mdi-bullhorn"></i>&nbsp;공지사항 수정하기</h2>
               <p class="card-description" style="margin: 0 0 30px 20px;">
-                Ground 공지사항 작성해주세요.
+                Ground 공지사항 수정해주세요.
               </p>
               <form class="forms-sample" style="margin: 50px 0 0 0;" action="/dash/noticeUpdate" method="POST">
                 <div class="form-group">
                     <input type="text" class="form-control" id= "antitle" name = "antitle" placeholder="제목" style="height: 50px; margin: 30px 0 0 0" value="<%= db_data[0].antitle %>">
                 </div>
 
-                <textarea id="summernote" name="ancontent"></textarea>
+                <textarea id="summernote" name="ancontent"><%- db_data[0].ancontent %></textarea>
 
                 <script>
                     $('#summernote').summernote({
-                        placeholder: '<%= db_data[0].ancontent %>',
+                        placeholder: '수정해주세요',
                         tabsize: 2,
                         height: 450,
                         toolbar: [
@@ -39,7 +39,7 @@
                     <i class="mdi mdi-hospital"></i>                                                    
                       &nbsp; 수정완료
                     </button>
-                    <button type="button" class="btn btn-inverse-danger btn-fw"style="float: right; margin: 0 0 0 15px">
+                    <button type="button" class="btn btn-inverse-danger btn-fw"style="float: right; margin: 0 0 0 15px" onclick="location.href='/dash/notice/1'">
                         <i class="mdi mdi-minus"></i>                                                    
                         &nbsp; 취소
                     </button>

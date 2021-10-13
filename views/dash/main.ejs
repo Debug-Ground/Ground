@@ -26,7 +26,7 @@
             <div class="col-md-6 grid-margin stretch-card">
                 <div class="card tale-bg">
                     <div class="card-people mt-auto">
-                        <img src="../dash_assets/images/dashboard/people.svg" alt="people">
+                        <img src="../dash_assets/images/dashboard/people.svg" alt="people" onerror="this.src='/upload/noimage.png'">
                         <div class="weather-info">
                             <div class="d-flex">
                                 <div>
@@ -295,7 +295,7 @@
                             <% for (var i = 0; i< mainAt.length; i++) { %>
                             <li>
                                 <div class="d-flex">
-                                    <img src="/upload/<%=mainAt[i].wImage %>" alt="user">
+                                    <img src="/upload/<%=mainAt[i].wImage %>" alt="user" onerror="this.src='/upload/noimage.png'">
                                     <div>
                                         <p class="text-info mb-1"><%=mainAt[i].wName %></p>
                                         <p class="mb-0"><%=mainAt[i].wRegular %></p>
