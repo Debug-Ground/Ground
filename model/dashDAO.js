@@ -341,20 +341,20 @@ function select_accidentDateCountGraph() {
 function select_accidentDateCount() {
     return new Promise ((resolve, reject) => {
         db.query(`SELECT YEAR('aDate') AS 'date', COUNT(*) AS cnt FROM Accident WHERE aDate LIKE CONCAT('%',DATE_FORMAT(NOW(), '%Y'),'%') GROUP BY 'Date'
-                    UNION
-                  SELECT MONTH('aDate') AS 'date', COUNT(*) AS cnt FROM Accident WHERE aDate LIKE CONCAT('%',DATE_FORMAT(NOW(), '%Y-%m'),'%') GROUP BY 'Date'
-                    UNION
-                  SELECT * FROM (SELECT DATE_FORMAT(aa.temp_date, '%Y-%m-%d') date, COUNT(w.wDate) AS cnt FROM temp_date aa
-                  LEFT JOIN Worker w ON (w.wDate = aa.temp_date) GROUP BY date) a WHERE date LIKE CONCAT('%', DATE_FORMAT(NOW(),'%Y-%m-%d'),'%') GROUP BY date`, function(err,db_data) {
+        UNION
+      SELECT MONTH('aDate') AS 'date', COUNT(*) AS cnt FROM Accident WHERE aDate LIKE CONCAT('%',DATE_FORMAT(NOW(), '%Y-%m'),'%') GROUP BY 'Date'
+        UNION
+      SELECT * FROM (SELECT DATE_FORMAT(aa.temp_date, '%Y-%m-%d') date, COUNT(ac.aDate) AS cnt FROM temp_date aa
+      LEFT JOIN Accident ac ON (ac.aDate = aa.temp_date) GROUP BY date) a WHERE date LIKE CONCAT('%', DATE_FORMAT(NOW(),'%Y-%m-%d'),'%') GROUP BY date`, function(err,db_data) {
                 if (err) {
                 logger.error(
                     "DB error [Accident]"+
                     "\n \t" + `SELECT YEAR('aDate') AS 'date', COUNT(*) AS cnt FROM Accident WHERE aDate LIKE CONCAT('%',DATE_FORMAT(NOW(), '%Y'),'%') GROUP BY 'Date'
-                                    UNION
-                                SELECT MONTH('aDate') AS 'date', COUNT(*) AS cnt FROM Accident WHERE aDate LIKE CONCAT('%',DATE_FORMAT(NOW(), '%Y-%m'),'%') GROUP BY 'Date'
-                                    UNION
-                                SELECT * FROM (SELECT DATE_FORMAT(aa.temp_date, '%Y-%m-%d') date, COUNT(w.wDate) AS cnt FROM temp_date aa
-                                LEFT JOIN Worker w ON (w.wDate = aa.temp_date) GROUP BY date) a WHERE date LIKE CONCAT('%', DATE_FORMAT(NOW(),'%Y-%m-%d'),'%') GROUP BY date`+
+                    UNION
+                  SELECT MONTH('aDate') AS 'date', COUNT(*) AS cnt FROM Accident WHERE aDate LIKE CONCAT('%',DATE_FORMAT(NOW(), '%Y-%m'),'%') GROUP BY 'Date'
+                    UNION
+                  SELECT * FROM (SELECT DATE_FORMAT(aa.temp_date, '%Y-%m-%d') date, COUNT(ac.aDate) AS cnt FROM temp_date aa
+                  LEFT JOIN Accident ac ON (ac.aDate = aa.temp_date) GROUP BY date) a WHERE date LIKE CONCAT('%', DATE_FORMAT(NOW(),'%Y-%m-%d'),'%') GROUP BY date`+
                     "\n \t" + err);
                 reject('DB ERR');
                 //throw error;
