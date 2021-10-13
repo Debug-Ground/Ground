@@ -180,7 +180,11 @@
                                     <td><%= workStatus[i].wsName %></td>
                                     <td><%= dayjs(workStatus[i].wsEndDate).format('YY. MM. DD') %></td>
                                     <td class="font-weight-medium">
-                                        <div class="badge badge-success"><%= workStatus[i].sStatus %></div>
+                                        <% if (workStatus[i].percent > 99) { %>
+                                            <div class="badge badge-primary">완료</div>
+                                        <% } else { %>
+                                            <div class="badge badge-success">진행중</div>
+                                        <% } %>
                                     </td>
                                 </tr>
                                 <% } %>

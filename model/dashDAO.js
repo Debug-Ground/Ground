@@ -555,11 +555,11 @@ function delete_WorkStatus(parameters) {
 
 function select_WorkerStatus() {
     return new Promise ((resolve, reject) => {
-        db.query(`SELECT wsName, wsEndDate, sStatus FROM WorkStatus ORDER BY wsStartDate DESC LIMIT 7;`, function(err,db_data) {
+        db.query(`SELECT wsName, wsEndDate, ROUND(((TIMESTAMPDIFF(DAY, wsStartDate, NOW()))/(TIMESTAMPDIFF(DAY, wsStartDate, wsEndDate))) * 100) AS percent FROM WorkStatus ORDER BY wsStartDate DESC LIMIT 7;`, function(err,db_data) {
             if (err) {
                 logger.error(
                     "DB error [WorkStatus]"+
-                    "\n \t" + `SELECT wsName, wsEndDate, sStatus FROM WorkStatus ORDER BY wsStartDate DESC LIMIT 7;`+
+                    "\n \t" + `SELECT wsName, wsEndDate, ROUND(((TIMESTAMPDIFF(DAY, wsStartDate, NOW()))/(TIMESTAMPDIFF(DAY, wsStartDate, wsEndDate))) * 100) AS percent FROM WorkStatus ORDER BY wsStartDate DESC LIMIT 7;`+
                     "\n \t" + err);
                 reject('DB ERR');
                 //throw error;
