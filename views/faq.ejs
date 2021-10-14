@@ -58,11 +58,13 @@
 
         </ul>
       </nav><!-- .nav-menu -->
-
-      <a class="get-started-btn2 scrollto" id="joinmenu" style="color: white;"></a>
-      <a href="#about" id="startbtn" class="get-started-btn scrollto">시작하기</a>
-      <a id="loginmenu" class="get-started-btn2 scrollto" style="color: white;" onclick="logout()"></a>
-
+      <% if (username == undefined) { %>
+        <a id="joinmenu" href="/auth/kakao">LOGIN</a>
+      <% } else { %>
+        <a id="loginmenu" class="get-started-btn2 scrollto"><%= username %></a>
+        <a id="loginmenu" class="get-started-btn2 scrollto" href="/auth/logout">LOGOUT</a>
+        <a href="/dash" id="startbtn" class="get-started-btn scrollto">시작하기</a>
+      <% } %>
     </div>
   </header><!-- End Header -->
 
@@ -273,34 +275,3 @@
 
 </body>
 </html>
-
-
-<script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-app.js"></script>
-<!-- TODO: Add SDKs for Firebase products that you want to use https://firebase.google.com/docs/web/setup#available-libraries -->
-<script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-analytics.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-auth.js"></script>
-
-  <script>
-        // firebase 중요 설정 키값
-    const firebaseConfig = {
-      apiKey: "AIzaSyD8-ubMdZ2UaWRklxYrFoN1WXr1LIjNbgI",
-      authDomain: "ground-315511.firebaseapp.com",
-    };
-    // firebase 초기화
-    firebase.initializeApp(firebaseConfig);
-    firebase.auth().onAuthStateChanged(function(user) {
-      if (user) {
-        document.getElementById("loginmenu").innerHTML = "로그아웃";
-        document.getElementById("joinmenu").innerHTML = user.displayName + " 님";
-      } else {
-        document.getElementById("startbtn").className='d-none';
-        document.getElementById("joinmenu").className='d-none';
-        document.getElementById("loginmenu").innerHTML = "로그인";
-        document.getElementById("loginmenu").href = "/auth/signIn";
-      }
-    });
-
-    function logout () {
-      firebase.auth().signOut();
-    }
-  </script>

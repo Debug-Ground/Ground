@@ -4,19 +4,11 @@ var logger = require('../config/logger');
 
 function insert_userInfo(parameters) {
     return new Promise(function (resolve, reject) {
-<<<<<<< HEAD
-        db.query(`INSERT INTO Worker SET wid = '${parameters.wid}', wName = '${parameters.wName}', wEmail = '${parameters.wEmail}', wImage = '${parameters.wImage}', wRegular='사원', wDate=NOW()`, function (error, db_data) {
-            if (error) {
-                logger.error(
-                    "DB error [Worker]"+
-                    "\n \t" + `INSERT INTO Worker SET wid = '${parameters.wid}', wName = '${parameters.wName}', wEmail = '${parameters.wEmail}', wImage = '${parameters.wImage}'  ,wRegular='사원',   wDate=NOW()` +
-=======
         db.query(`INSERT INTO Worker SET wid = '${parameters.wid}', wName = '${parameters.wName}', wEmail = '${parameters.wEmail}', wImage = '${parameters.wImage}',wRegular = '일용직',  wDate=NOW()`, function (error, db_data) {
             if (error) {
                 logger.error(
                     "DB error [Worker]"+
                     "\n \t" + `INSERT INTO Worker SET wid = '${parameters.wid}', wName = '${parameters.wName}', wEmail = '${parameters.wEmail}', wImage = '${parameters.wImage}' ,wRegular = '일용직',  wDate=NOW()` +
->>>>>>> cdfa7602f101eed96a6ee35581d7cf54bea53c63
                     "\n \t" + error);
                 reject('DB ERR');
                 //throw error;

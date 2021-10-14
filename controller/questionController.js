@@ -16,22 +16,25 @@ function qinsertData(req, res, next) {
     "qtitle" : req.body.title,
     "qcontent" : req.body.summernote,
     "qdate" : new dayjs().format("YYYY-MM-DD HH-mm-ss"),
-    "qwriter" : req.body.writerx
+    "qwriter" : req.session.wName
   }
+  console.log(parameters.qwriter)
   questionDao.insertQuestion(parameters).then(
   (db_data) => {
     console.log(req.body.summernote)
       res.redirect("/question/1")
     }).catch(err=>res.send("<script>alert('err');</script>"));
 }
+
 function updateData(req,res, next) {
   var parameters = {
     "qtitle" : req.body.title,
     "qcontent" : req.body.summernote,
     "qdate" : new dayjs().format("YYYY-MM-DD HH-mm-ss"),
-    "qwriter" : req.body.writerx,
+    "qwriter" : req.session.wName,
     "qidx" : req.body.qidx
   }
+  console.log(req.session.wName)
   questionDao.updateQuestion(parameters).then((db_data) => {
     res.redirect('/question/1')
   }).catch(err=>res.send("<script>alert('err');</script>"));

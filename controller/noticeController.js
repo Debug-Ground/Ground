@@ -30,7 +30,7 @@ function insertData(req, res, next) {
     "ntitle" : req.body.title,
     "ncontent" : req.body.summernote,
     "ndate" : new dayjs().format("YYYY-MM-DD HH-mm-ss"),
-    "nwriter" : req.body.writerx
+    "nwriter" : req.session.wName
   }
   noticeDao.insertNotice(parameters).then(
     (db_data) => {
@@ -43,7 +43,7 @@ function insertData(req, res, next) {
       "ntitle" : req.body.title,
       "ncontent" : req.body.summernote,
       "ndate" : new dayjs().format("YYYY-MM-DD HH-mm-ss"),
-      "nwriter" : req.body.writerx,
+      "nwriter" : req.session.wName,
       "nid" : req.body.nidx
     }
     noticeDao.updateNotice(parameters).then((db_data) => {
@@ -95,7 +95,7 @@ function androidResult(req, res, next) {
     "ntitle" : req.body.ntitle,
     "ncontent" : req.body.ncontent,
     "ndate" : new dayjs().format("YYYY-MM-DD HH-mm-ss"),
-    "nwriter" : req.body.nwriter
+    "nwriter" : req.session.wName
   }
   noticeDao.insertNotice(parameters).then((db_data) => {
     console.log(parameters);

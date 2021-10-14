@@ -29,7 +29,7 @@ function dash_main(req, res, next) {
                   mainAt = db_data
                   dashDAO.select_TodayWorker().then((db_data)=> {
                     TodayWk = db_data
-                    res.render('dash/main',{acCount,dateCount, graphCount,workCount,stickCount,workStatus, mainWorker, TodayWk,mainAt,dayjs});
+                    res.render('dash/main',{acCount,dateCount, graphCount,workCount,stickCount,workStatus, mainWorker, TodayWk,mainAt,dayjs, userImage : req.session.wImage});
                   })
                 })
               })
@@ -94,13 +94,13 @@ function dash_checklistDelete(req, res, next) {
 
 function dash_accident(req, res, next) { 
   dashDAO.select_accident().then((db_data)=>{
-    res.render('dash/accident', { username : req.session.wName, db_data : db_data, a_num:req.params.num, max_value:7});  
+    res.render('dash/accident', { username : req.session.wName, db_data : db_data, a_num:req.params.num, max_value:7,userImage : req.session.wImage});  
   })    
 }
 
 function dash_accident_add(req, res, next) { 
   dashDAO.select_accident().then((db_data)=>{
-    res.render('dash/accident_add', { username : req.session.wName, db_data : db_data});  
+    res.render('dash/accident_add', { username : req.session.wName, userImage : req.session.wImage,db_data : db_data});  
   })    
 }
 
@@ -126,7 +126,7 @@ function dash_accident_update(req,res,next){
     "aid" : req.params.num,
   }  
   dashDAO.select_accidentDetail(parameters).then((db_data)=>{
-    res.render('dash/accident_update',{ username : req.session.wName,db_data})
+    res.render('dash/accident_update',{ username : req.session.wName,db_data,userImage : req.session.wImage})
   })  
 }
 
@@ -155,7 +155,7 @@ function dash_accident_detail(req, res, next) {
   } 
   dashDAO.select_accidentDetail(parameters).then((db_data)=>{
     console.log(db_data)
-    res.render('dash/accident_detail', { username : req.session.wName, db_data : db_data});  
+    res.render('dash/accident_detail', { username : req.session.wName, db_data : db_data,userImage : req.session.wImage});  
   })    
 }
 function dash_accident_delete(req, res, next) {
@@ -168,13 +168,13 @@ function dash_accident_delete(req, res, next) {
 }
 
 function dash_cctv(req, res, next) { 
-    res.render('dash/cctv',{username : req.session.wName});  
+    res.render('dash/cctv',{username : req.session.wName,userImage : req.session.wImage});  
 }
 
 function dash_manpower(req, res, next) { 
   dashDAO.select_manpower().then((db_data)=> {
     console.log(db_data)
-    res.render('dash/manpower',{db_data,m_num:req.params.num, max_value:7,username : req.session.wName});  
+    res.render('dash/manpower',{db_data,m_num:req.params.num, max_value:7,username : req.session.wName,userImage : req.session.wImage});  
   })
 }
 
@@ -184,7 +184,7 @@ function dash_manpower_update(req, res, next) {
   }
   dashDAO.select_manpowercheck(parameters).then((db_data)=> {
   console.log(db_data)
-  res.render('dash/manpower_update',{db_data, username : req.session.wName});  
+  res.render('dash/manpower_update',{db_data, username : req.session.wName,userImage : req.session.wImage});  
   })
 }
 
@@ -194,7 +194,7 @@ function dash_manpower_detail(req, res, next) {
   }
   dashDAO.select_manpowercheck(parameters).then((db_data)=> {
   console.log(db_data)
-  res.render('dash/manpower_detail',{db_data, username : req.session.wName});  
+  res.render('dash/manpower_detail',{db_data, username : req.session.wName,userImage : req.session.wImage});  
   })
 }
 function dash_manpower_delete(req, res, next) {
@@ -224,12 +224,12 @@ function dash_manpower_updatedata(req, res, next) {
 
 function dash_notice(req, res, next) { 
   dashDAO.select_anNotice().then((db_data)=> {
-    res.render('dash/notice',{db_data, an_num: req.params.num, max_value: 8});  
+    res.render('dash/notice',{db_data, an_num: req.params.num, max_value: 8,userImage : req.session.wImage});  
   })
 }
 
 function dash_notice_write(req, res, next) { 
-  res.render('dash/notice_write',{username : req.session.wName});  
+  res.render('dash/notice_write',{username : req.session.wName,userImage : req.session.wImage});  
 }
 
 function dash_notice_insert(req, res, next) { 
@@ -248,7 +248,7 @@ function dash_notice_update(req, res, next) {
   }
   dashDAO.select_anNoticeDetail(parameters).then((db_data)=> {
     console.log(db_data)
-    res.render('dash/notice_update',{db_data, username : req.session.wName});
+    res.render('dash/notice_update',{db_data, username : req.session.wName,userImage : req.session.wImage});
   })
 }
 
@@ -268,7 +268,7 @@ function dash_notice_detail(req, res, next) {
     "anid": req.params.num
   }
   dashDAO.select_anNoticeDetail(parameters).then((db_data)=> {
-    res.render('dash/notice_detail',{db_data, username : req.session.wName});
+    res.render('dash/notice_detail',{db_data, username : req.session.wName,userImage : req.session.wImage});
   })
 }
 
@@ -298,19 +298,19 @@ function dash_Appnotice_detail(req, res, next) {
 function dash_timecard(req, res, next) { 
   dashDAO.select_timecard().then((db_data)=> {
     console.log(db_data)
-    res.render('dash/timecard',{db_data, t_num:req.params.num, max_value:7,username : req.session.wName});
+    res.render('dash/timecard',{db_data, t_num:req.params.num, max_value:7,username : req.session.wName,userImage : req.session.wImage});
   })
 }
 
 function dash_work(req, res, next) { 
   dashDAO.select_WorkStatus().then((db_data)=>{
     console.log(db_data)
-    res.render('dash/work',{db_data, ws_num:req.params.num, max_value:7,username : req.session.wName});  
+    res.render('dash/work',{db_data, ws_num:req.params.num, max_value:7,username : req.session.wName,userImage : req.session.wImage});  
   })
 }
 
 function dash_work_add(req, res, next) { 
-  res.render('dash/work_add',{username : req.session.wName});  
+  res.render('dash/work_add',{username : req.session.wName,userImage : req.session.wImage});  
 }
 
 function dash_work_insert(req, res, next) { 
@@ -335,7 +335,7 @@ function dash_work_update(req, res, next) {
   }
   dashDAO.select_WorkStatusDetail(parameters).then((db_data)=> {
     console.log(db_data)
-    res.render('dash/work_update',{db_data,username : req.session.wName});  
+    res.render('dash/work_update',{db_data,username : req.session.wName,userImage : req.session.wImage});  
   })
 }
 
@@ -363,7 +363,7 @@ function dash_work_detail(req, res, next) {
   }
   dashDAO.select_WorkStatusDetail(parameters).then((db_data)=> {
     console.log(db_data)
-    res.render('dash/work_detail',{db_data,username : req.session.wName});  
+    res.render('dash/work_detail',{db_data,username : req.session.wName,userImage : req.session.wImage});  
   })
 }
 function dash_work_delete(req, res, next) { 
@@ -382,13 +382,13 @@ function dash_worker_chart(req, res, next) {
     StickData = db_data
     dashDAO.select_regularCount().then((db_data)=> {
       RegularData = db_data
-      res.render('dash/worker_chart',{StickData, RegularData,username : req.session.wName});    
+      res.render('dash/worker_chart',{StickData, RegularData,username : req.session.wName,userImage : req.session.wImage});    
     })
   })
 }
 
 function dash_test(req, res, next) { 
-  res.render('dash/test',{username : req.session.wName});  
+  res.render('dash/test',{username : req.session.wName,userImage : req.session.wImage});  
 }
 
 function dash_test_send(req, res, next) {
